@@ -9,7 +9,7 @@ use Config;
 
 require Exporter;	
 	@ISA = qw(Exporter);	
-	@EXPORT = qw( writelog initlog closelog usage get_label on_exit); 
+	@EXPORT = qw( writelog initlog closelog usage get_label on_exit sig_handler); 
 	@EXPORT_OK = qw(); 
 
 
@@ -256,6 +256,17 @@ sub on_exit{
     die "Terminated\n\n";
 }
 
+#######################################
+# sig_handler() - catch INT signal
+#  
+#sigtrap - Perl pragma to enable simple signal handling
+#use sigtrap 'handler' => \&my_handler, 'normal-signals';
+#######################################
+sub sig_handler
+{
+    print STDERR "INT signal received!!!\n";
+    die "\n caught $SIG{INT}",@_,"\n";
+}
 
 #######################################
 # usage() - print out input and exit the program
