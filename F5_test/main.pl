@@ -9,14 +9,13 @@
 # Comments: So far only full pathes of input files/folders are supported
 # Test is failed after every first discrepancy
 # Dependencies:
+# Use functions of ../perl/lib/Init/Partner.pm"
 #
 #############################################
 
-
-use strict;
-use warnings;
+#use strict;
+#use warnings;
 use threads;
-
 
 use lib "../perl/lib";
 use Partner::Init;
@@ -50,9 +49,9 @@ use constant {  SUCCESS        => 0,
                 NO_TEST_FILE   => 9,
             };   
 
-my $LOG=(-d "$ENV{PWD}/LOG")?"$ENV{PWD}/LOG/${0}_$$.log":"${0}_$$.log";
+my $LOG="${0}_$$.log";
 my $DEBUG=(defined($ENV{DEBUG}))?$ENV{DEBUG}:0;
-
+our $RET=0;
 #set up $DEBUG option and rid out the '-debug' from input
 no strict;
 map{ $main::DEBUG=1 if(/-debug\b/i && splice(@ARGV,$i,1) );$i++; } @ARGV;
@@ -80,7 +79,7 @@ my( $progName, #program to run
     @files2chk, # list of folders to start test within
    )=get_args();
 
-initlog ($LOG);
+initlog ($LOG); 
 writelog ("Started");
 
 #unless (-x $progName){print_report(TST_PRG_FAILED) && exit 1 }
@@ -140,21 +139,23 @@ sub sig_handler
 
 
 #######################################
-# usage() - <description>
+# print_usage() - <description>
 #
 #######################################
-sub usage
+sub print_usage
 {
    my $str=<<END;
 $0 - <description>
 
 Usage:
- $0 <parameteres> <-debug> 
+ $0 <program> <list of fullpaths> [/debug] 
  where
-    
+    program - the fullpath to program performs test
+	list - full pathes of files or folders to test;
+	
  
 For ex.
- $0 
+ $0 /home/user/test.pl /home/user/tests/file1.in /home/user/tests1 
 
 END
 
@@ -181,7 +182,7 @@ sub get_args(;@){
 
     my $FUNCNAME=(caller(0))[3];
     
-    main::usage unless @ARGV;
+    main::print_usage unless @ARGV;
     
     #in case array of references passed in
     #${$_[0]}="value";

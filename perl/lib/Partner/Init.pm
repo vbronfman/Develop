@@ -89,18 +89,7 @@ print keys %inputargs;
 
 }
 
-
-sub func2(){
-
-print "in initfunc";
-
-}
-
-sub usage {
-    
-    print STDOUT @_;
-    exit 1;
-}
+ 
 
 sub initlog(;$$){
 $LOG=shift;
@@ -267,5 +256,14 @@ sub on_exit{
     die "Terminated\n\n";
 }
 
+
+#######################################
+# usage() - print out input and exit the program
+#
+#######################################
+sub usage {
+print @_; 
+exit;
+}
 1;
 
