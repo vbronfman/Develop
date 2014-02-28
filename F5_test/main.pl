@@ -69,6 +69,7 @@ my $TEST_EXT=".test";
 #######################################
 
 
+
 #coolect input
 #read_conf($CONF_FILE);
 #array of Job objects. Contain overall details of the launch
@@ -79,6 +80,7 @@ my( $progName, #program to run
     @files2chk, # list of folders to start test within
    )=get_args();
 
+#initlog ($LOG,1);:setting a second parameter up sends output into log file and suppresses on-screen output
 initlog ($LOG); 
 writelog ("Started");
 
@@ -93,5 +95,5 @@ writelog ("Finished");
 
 closelog;
 
-exit $main::RET;
+exit $RET;
 

@@ -91,12 +91,34 @@ sub get_args(;@){
 # number of tests are failed: reasons, *** discrepancy between input and output files
     
 sub print_report(;@){
+	
     my $FUNCNAME=(caller(0))[3];
      my @jobs=@_;
-     
+     $state={};
+	 
+	say '*'x30,"\n","\t\tREPORT"; 
     for my $job (@jobs){
-        say join ' ', $FUNCNAME,$job->{path}, $job->{status}, $job->{cmd} ;
-    }
+			print '-'x20 , "\n";
+
+	say "Input file: ",$job->{path};
+	
+	#if defined $state->{$job->{status}}=$jobs;
+	# switch grabbed from http://stackoverflow.com/questions/844616/obtain-a-switch-case-behaviour-in-perl-5
+	my $switch = {
+		FAILED() => sub { say "TEST failed"; say "Lines are different: ", join ",", @{$job->{wrong_line}}  },
+		NO_TEST_FILE() => sub { say "NO_TEST_FILE";  },
+		SUCCESS() => sub { say "SUCCESS";  },
+		FILE_NOT_FOUND() => sub { say "FILE_NOT_FOUND "; },
+		FOLDER_EMPTY() => sub { say "supplied folder is empty "; },
+		TST_PRG_FAILED() => sub { say "test program fafilure "; },
+		RUN() => sub { say "test RUN - actually wrong status "; },
+		'default' => sub { say "unrecognized"; }
+	};
+	$switch->{$job->{status}} ? $switch->{$job->{status}}->() : $switch->{'default'}->();
+		}
+		
+        
+    #print values $status->{'SUCCEED'};
     
     my $total_tests=@jobs;
     my $succeed = 0;
@@ -104,17 +126,15 @@ sub print_report(;@){
     
     map {$failed++ if ($_->{status}) } @jobs; #success is 0
     $succeed=$total_tests - $failed;
-    my$report=<<END;
     
-    REPORT
-    
-    Total number of tests is
+	
+	my$report=<<END;
     
     # Summary
     # overal number of tests $total_tests
     # number of tests are succeeded $succeed
     # number of tests are failed: $failed
-    reasons, *** discrepancy between input and output files
+    
     
 END
 
@@ -128,7 +148,9 @@ print $report;
 #######################################
 sub all_files2chk {
     use File::Spec;
-    
+    #test_file extensions
+my $TEST_EXT=".test";
+
     my$progName=shift;
     my $ref_list=shift;
     
@@ -152,12 +174,13 @@ sub all_files2chk {
                 #checks if apropriate test file exists.
                 my ($file,$dir,$sufx)=fileparse($_,".in");
                 my $testfile = File::Spec->catfile($in,$file.$TEST_EXT);
+				say "Check $testfile";
 
 #add object
                 push @jobs,Job->new(cmd=>$progName,
                                     path=>File::Spec->catfile($in,$_), #could be a more sophisticated but it's 12 PM now
                                     testfile => $testfile,
-                                    status=>((-e $testfile)?undef:NO_TEST_FILE),
+                                    status=>((-e "$testfile")?undef:NO_TEST_FILE),
                         );
             }
             
@@ -178,7 +201,7 @@ sub all_files2chk {
             push @jobs, Job->new(cmd=>$progName,
                         path=>$in,
                         testfile => $testfile,
-                        status=>((-e $testfile)?undef:NO_TEST_FILE),
+                        status=>((-e "$testfile")?undef:NO_TEST_FILE),
                         );
         }
     }
@@ -225,15 +248,27 @@ sub run_test {
     $job->{'status'}=SUCCESS;
 
 #sorry, pretty straightforward     
-    if (open(my $out,"-|","$job->{cmd} \"$job->{path}\"") &&
-        open(TEST,"<","$job->{testfile}") ){
+   # if (open(my $out,"-|","$job->{cmd} \"$job->{path}\"") &&
+   my $res=open(my $out,"-|","$job->{cmd} \"$job->{path}\"") or warn "ERROR $job->{cmd} ";
+   #check if command piped
+  # if (eof($out)){ close $out;; $job->{status}=TST_PRG_FAILED; return $job;}
+   
+   if( open(TEST,"<","$job->{testfile}") ){
             for(<$out>){
                 ++$job->{total_lines};
-                if ((my $str=readline (TEST)) ne $_)
-                        {$job->{status}=FAILED;
-                         push $job->{wrong_line}, $job->{total_lines}}
+                if ((my $str=readline (TEST)) ne $_){
+					$job->{status}=FAILED;
+					#say "DEBUG string is $_";
+                    push $job->{wrong_line}, $job->{total_lines}}
             }
-        close $out;  
+        
+		close $out; 
+		#close returns exit code of program launched at the end of the pipe 
+		my $exit = $? >> 8;
+		if ($exit) {
+			say "Error start program $job->{cmd} exit:($exit)";
+			$job->{status}=TST_PRG_FAILED;
+		}		 
         close TEST;       
     }
     else {
