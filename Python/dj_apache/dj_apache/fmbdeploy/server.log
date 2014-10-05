@@ -1,9 +1,0 @@
-06-24 18:15 __main__     INFO     Started. Logfile: server.log
-06-24 18:15 __main__     INFO     Got connection from [('10.13.86.78', 58152)]
-06-24 18:15 __main__     INFO     Received: ['D:\\Develop\\Python\\dj_apache\\dj_apache\\fmbdeploy\\Client.py', 'osn18169', 'Message from client']
-06-24 18:15 __main__     INFO     run_cmd
-06-24 18:15 __main__     ERROR    Cought exception run_cmd: global name 'settings' is not defined
-06-24 18:28 __main__     INFO     Got connection from [('10.13.86.78', 58200)]
-06-24 18:28 __main__     INFO     Received: {'debug': False, 'oper': 'run', 'verbose': False, 'rcmd': 'Message from client', 'server': 'osn18169'}
-06-24 18:28 __main__     INFO     run_cmd
-06-24 18:28 __main__     ERROR    Cought exception run_cmd: global name 'settings' is not defined

@@ -1,13 +1,14 @@
 #!/bin/env perl -I ../../perl/lib
 
 #############################################
-# <script name> - Monitor the status of Product line
+# <script name> - 
 # and send notification
 # Main module
 #
-# Developed by <developer> at <date>
-# Comments: So far only full pathes of input files/folders are supported
-# Test is failed after every first discrepancy
+# Developed by V.Bronfman at <date>
+# Comments: So far absolute path  is  supported for input files/folders
+# Test is failed after very first discrepancy
+#
 # Dependencies:
 # Use functions of ../perl/lib/Init/Partner.pm"
 #
