@@ -1,0 +1,33 @@
+06-17 15:00 __main__     INFO     Program started
+06-17 15:00 fmb_deploy_utils INFO     file_exist:deploy.cfg True
+06-17 15:00 fmb_deploy_utils INFO     file_exist:deploy.cfg True
+06-17 15:00 fmb_deploy_utils INFO     XML is valid
+06-17 15:00 fmb_deploy_utils INFO     C:\Program Files\Borland\StarTeam Cross-Platform 2009\stcmd.exe
+06-17 15:00 fmb_deploy_utils INFO     ['C:\\Program Files\\Borland\\StarTeam Cross-Platform 2009\\stcmd.exe', 'co', '-p', 'ccmngr:QweQwe11@starteam1:49201/PM_ALM/PM_ALM/Develop/FILE_DEPLOYER/TEST_FOLDER', '-vl', 'TEST_LABEL', '-nologo', '-eol', 'lf', '-o', '-fp', '/ba/app01/oracle/product/OraHome_1/myforms', '-is', '-fs', '-ts', '-x', '*.fmb', '*.pll']
+06-17 15:00 fmb_deploy_utils INFO     return code = 0
+06-17 15:00 fmb_deploy_utils INFO     b'Folder: TEST_FOLDER  (working dir: D:\\ba\\app01\\oracle\\product\\OraHome_1\\myforms)\r\nfile_pll.pll: checked out\r\ntest.fmb: checked out\r\ntest1.fmb: checked out\r\nNew Text Document.fmb: checked out\r\nNew Text Document.pll: checked out\r\nNew_Text_Document_Copy.fmb: checked out\r\n'
+06-17 15:00 fmb_deploy_utils DEBUG    make_file_list eof 
+
+06-17 15:00 fmb_deploy_utils DEBUG    make_file_list eof 
+;splitted: ['Folder', ' TEST_FOLDER  (working dir', ' D', '\\ba\\app01\\oracle\\product\\OraHome_1\\myforms)']
+06-17 15:00 fmb_deploy_utils DEBUG    make_file_list eof 
+;splitted: ['file_pll.pll', ' checked out']
+06-17 15:00 fmb_deploy_utils INFO     file checked out "file_pll.pll"
+06-17 15:00 fmb_deploy_utils DEBUG    make_file_list eof 
+;splitted: ['test.fmb', ' checked out']
+06-17 15:00 fmb_deploy_utils INFO     file checked out "test.fmb"
+06-17 15:00 fmb_deploy_utils DEBUG    make_file_list eof 
+;splitted: ['test1.fmb', ' checked out']
+06-17 15:00 fmb_deploy_utils INFO     file checked out "test1.fmb"
+06-17 15:00 fmb_deploy_utils DEBUG    make_file_list eof 
+;splitted: ['New Text Document.fmb', ' checked out']
+06-17 15:00 fmb_deploy_utils INFO     file checked out "New Text Document.fmb"
+06-17 15:00 fmb_deploy_utils DEBUG    make_file_list eof 
+;splitted: ['New Text Document.pll', ' checked out']
+06-17 15:00 fmb_deploy_utils INFO     file checked out "New Text Document.pll"
+06-17 15:00 fmb_deploy_utils DEBUG    make_file_list eof 
+;splitted: ['New_Text_Document_Copy.fmb', ' checked out']
+06-17 15:00 fmb_deploy_utils INFO     file checked out "New_Text_Document_Copy.fmb"
+06-17 15:00 fmb_deploy_utils DEBUG    make_file_list eof 
+;splitted: ['']
+06-17 15:00 __main__     DEBUG     dict_keys(['New Text Document.fmb', 'test1.fmb', 'New Text Document.pll', 'New_Text_Document_Copy.fmb', 'file_pll.pll', 'test.fmb'])
