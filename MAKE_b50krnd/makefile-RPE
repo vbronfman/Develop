@@ -1,0 +1,18 @@
+SUBMODULE = $(notdir $(CURDIR))
+
+#LIBTYPE = static
+#STAND_ALONE = yes
+#EXTS += IFCWrapper
+#FOUT = ./UdrCombiner.cpp
+
+include ../ModuleDef.mk
+include $(ACTION_FILE)
+
+INCFLAGS +=  -I../../../regex
+INCFLAGS +=  -I../../../externals/IFCWrapper/include/curl
+INCFLAGS +=  -I../../../externals/IFCWrapper/include
+INCFLAGS +=  -I../DXL/include
+INCFLAGS +=  -I../PEL -I../CEL
+INCFLAGS +=  -I../../../externals/ttclasses/include
+LIBFLAGS += -L../../../regex/build/sunpro
+LIBS += -lboost_regex_v9
