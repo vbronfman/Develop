@@ -1,0 +1,274 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>Template::Manual::Syntax - Directive syntax, structure and semantics</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>Template::Manual::Syntax - Directive syntax, structure and semantics</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#tag_styles">Tag Styles</a></li>
+	<li><a href="#comments">Comments</a></li>
+	<li><a href="#chomping_whitespace">Chomping Whitespace</a></li>
+	<li><a href="#implicit_directives__get_and_set">Implicit Directives: GET and SET</a></li>
+	<li><a href="#block_directives">Block Directives</a></li>
+	<li><a href="#capturing_block_output">Capturing Block Output</a></li>
+	<li><a href="#chaining_filters">Chaining Filters</a></li>
+	<li><a href="#multiple_directive_blocks">Multiple Directive Blocks</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Manual::Syntax - Directive syntax, structure and semantics</p>
+<p>
+</p>
+<hr />
+<h1><a name="tag_styles">Tag Styles</a></h1>
+<p>By default, template directives are embedded within the character sequences
+<code>[%</code> and <code>%]</code>.</p>
+<pre>
+    [% PROCESS header %]
+    
+    &lt;h1&gt;Hello World!&lt;/h1&gt;
+    &lt;a href=&quot;[% page.next %]&quot;&gt;&lt;img src=&quot;[% icon.next %].gif&quot;&gt;&lt;/a&gt;
+    
+    [% PROCESS footer %]</pre>
+<p>You can change the tag characters using the <code>START_TAG</code>, <code>END_TAG</code> and
+<code>TAG_STYLE</code> configuration options. You can also use the <code>TAGS</code> directive to
+define a new tag style for the current template file.</p>
+<p>You can also set the <code>INTERPOLATE</code> option to allow simple variable references
+to be embedded directly in templates, prefixed by a <code>$</code>.</p>
+<pre>
+    # INTERPOLATE = 0
+    &lt;td&gt;[% name %]&lt;/td&gt;
+    &lt;td&gt;[% email %]&lt;/td&gt;
+    
+    # INTERPOLATE = 1
+    &lt;td&gt;$name&lt;/td&gt;
+    &lt;td&gt;$email&lt;/td&gt;</pre>
+<p>Directives may be embedded anywhere in a line of text and can be split
+across several lines.  Insignificant whitespace is generally ignored
+within the directive.</p>
+<pre>
+    [% INCLUDE header
+         title = 'Hello World' 
+         bgcol = '#ffffff' 
+    %]
+    
+    [%INCLUDE menu align='right'%]
+    
+    Name: [% name %]  ([%id%])</pre>
+<p>
+</p>
+<hr />
+<h1><a name="comments">Comments</a></h1>
+<p>The <code>#</code> character is used to indicate comments within a directive.
+When placed immediately inside the opening directive tag, it causes
+the entire directive to be ignored.</p>
+<pre>
+    [%# this entire directive is ignored no
+        matter how many lines it wraps onto
+    %]</pre>
+<p>In any other position, it causes the remainder of the current line to 
+be treated as a comment.</p>
+<pre>
+    [% # this is a comment
+       theta = 20      # so is this
+       rho   = 30      # &lt;aol&gt;me too!&lt;/aol&gt;
+    %]</pre>
+<p>
+</p>
+<hr />
+<h1><a name="chomping_whitespace">Chomping Whitespace</a></h1>
+<p>You can add <code>-</code> or <code>+</code> to the immediate start or end of a directive
+tag to control the whitespace chomping options.  See the <code>PRE_CHOMP</code> and
+<code>POST_CHOMP</code> options for further details.</p>
+<pre>
+    [% BLOCK foo -%]    # remove trailing newline
+    This is block foo
+    [%- END %]          # remove leading newline</pre>
+<p>
+</p>
+<hr />
+<h1><a name="implicit_directives__get_and_set">Implicit Directives: GET and SET</a></h1>
+<p>The simplest directives are <code>GET</code> and <code>SET</code> which retrieve and update
+variable values respectively. The <code>GET</code> and <code>SET</code> keywords are actually
+optional as the parser is smart enough to see them for what they really are
+(but note the caveat below on using side-effect notation). Thus, you'll
+generally see:</p>
+<pre>
+    [% SET foo = 10 %]
+    [% GET foo %]</pre>
+<p>written as:</p>
+<pre>
+    [% foo = 10 %]
+    [% foo %]</pre>
+<p>You can also express simple logical statements as implicit <code>GET</code> directives:</p>
+<pre>
+    [% title or template.title or 'Default Title' %]
+    
+    [% mode == 'graphics' ? &quot;Graphics Mode Enabled&quot; : &quot;Text Mode&quot; %]</pre>
+<p>All other directives should start with a keyword specified in UPPER
+CASE (but see the <code>ANYCASE</code> option).  All directives keywords are in
+UPPER CASE to make them visually distinctive and to distinguish them
+from variables of the same name but different case.  It is perfectly
+valid, for example, to define a variable called <code>stop</code> which is
+entirely separate from the <code>STOP</code> directive.</p>
+<pre>
+    [% stop = 'Clackett Lane Bus Depot' %]
+    
+    The bus will next stop at [% stop %]    # variable
+    
+    [% STOP %]                              # directive</pre>
+<p>
+</p>
+<hr />
+<h1><a name="block_directives">Block Directives</a></h1>
+<p>Directives such as <code>FOREACH</code>, <code>WHILE</code>, <code>BLOCK</code>, <code>FILTER</code>, etc., mark the
+start of a block which may contain text or other directives up to the matching
+<code>END</code> directive. Blocks may be nested indefinitely. The <code>IF</code>, <code>UNLESS</code>,
+<code>ELSIF</code> and <code>ELSE</code> directives also define blocks and may be grouped together
+in the usual manner.</p>
+<pre>
+    [% FOREACH item = [ 'foo' 'bar' 'baz' ] %]
+       * Item: [% item %]
+    [% END %]
+    
+    [% BLOCK footer %]
+       Copyright 2000 [% me %]
+       [% INCLUDE company/logo %]
+    [% END %]
+    
+    [% IF foo %]
+       [% FOREACH thing = foo.things %]
+          [% thing %]
+       [% END %]
+    [% ELSIF bar %]
+       [% INCLUDE barinfo %]
+    [% ELSE %]
+       do nothing...
+    [% END %]</pre>
+<p>Block directives can also be used in a convenient side-effect notation.</p>
+<pre>
+    [% INCLUDE userinfo FOREACH user = userlist %]
+    
+    [% INCLUDE debugtxt msg=&quot;file: $error.info&quot; 
+         IF debugging %] 
+         
+    [% &quot;Danger Will Robinson&quot; IF atrisk %]</pre>
+<p>versus:</p>
+<pre>
+    [% FOREACH user = userlist %]
+       [% INCLUDE userinfo %]
+    [% END %]
+    
+    [% IF debugging %]
+       [% INCLUDE debugtxt msg=&quot;file: $error.info&quot; %]
+    [% END %]
+    
+    [% IF atrisk %]
+    Danger Will Robinson
+    [% END %]</pre>
+<p>
+</p>
+<hr />
+<h1><a name="capturing_block_output">Capturing Block Output</a></h1>
+<p>The output of a directive can be captured by simply assigning the directive
+to a variable.</p>
+<pre>
+    [% headtext = PROCESS header title=&quot;Hello World&quot; %]
+    
+    [% people = PROCESS userinfo FOREACH user = userlist %]</pre>
+<p>This can be used in conjunction with the <code>BLOCK</code> directive for defining large 
+blocks of text or other content.</p>
+<pre>
+    [% poem = BLOCK %]
+       The boy stood on the burning deck,
+       His fleece was white as snow.
+       A rolling stone gathers no moss,
+       And Keith is sure to follow.
+    [% END %]</pre>
+<p>Note one important caveat of using this syntax in conjunction with side-effect
+notation.  The following directive does not behave as might be expected:</p>
+<pre>
+    [% var = 'value' IF some_condition %]   # does not work</pre>
+<p>In this case, the directive is interpreted as (spacing added for clarity)</p>
+<pre>
+    [% var = IF some_condition %]
+       value
+    [% END %]</pre>
+<p>rather than</p>
+<pre>
+    [% IF some_condition %]
+       [% var = 'value' %]
+    [% END %]</pre>
+<p>The variable is assigned the output of the <code>IF</code> block which returns
+<code>'value'</code> if true, but nothing if false.  In other words, the following
+directive will always cause 'var' to be cleared.</p>
+<pre>
+    [% var = 'value' IF 0 %]</pre>
+<p>To achieve the expected behaviour, the directive should be written as:</p>
+<pre>
+    [% SET var = 'value' IF some_condition %]</pre>
+<p>
+</p>
+<hr />
+<h1><a name="chaining_filters">Chaining Filters</a></h1>
+<p>Multiple <code>FILTER</code> directives can be chained together in sequence.  They
+are called in the order defined, piping the output of one into the 
+input of the next.</p>
+<pre>
+    [% PROCESS somefile FILTER truncate(100) FILTER html %]</pre>
+<p>The pipe character, <code>|</code>, can also be used as an alias for <code>FILTER</code>.</p>
+<pre>
+    [% PROCESS somefile | truncate(100) | html %]</pre>
+<p>
+</p>
+<hr />
+<h1><a name="multiple_directive_blocks">Multiple Directive Blocks</a></h1>
+<p>Multiple directives can be included within a single tag when delimited
+by semi-colons.  Note however that the <code>TAGS</code> directive must always
+be specified in a tag by itself.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">IF</span> <span class="variable">title</span><span class="operator">;</span> 
+          <span class="variable">INCLUDE</span> <span class="variable">header</span><span class="operator">;</span> 
+       <span class="variable">ELSE</span><span class="operator">;</span> 
+          <span class="variable">INCLUDE</span> <span class="variable">other</span><span class="operator">/</span><span class="variable">header</span>  <span class="variable">title</span><span class="operator">=</span><span class="string">"Some Other Title"</span><span class="operator">;</span>
+       <span class="keyword">END</span>
+    <span class="variable">%]</span>
+</pre>
+<p>versus</p>
+<pre>
+    [% IF title %]
+       [% INCLUDE header %]
+    [% ELSE %]
+       [% INCLUDE other/header  title=&quot;Some Other Title&quot; %]
+    [% END %]</pre>
+
+</body>
+
+</html>

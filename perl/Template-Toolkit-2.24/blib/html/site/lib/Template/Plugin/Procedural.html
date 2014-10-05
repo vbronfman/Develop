@@ -1,0 +1,94 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>Template::Plugin::Procedural - Base class for procedural plugins</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>Template::Plugin::Procedural - Base class for procedural plugins</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Plugin::Procedural - Base class for procedural plugins</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    <span class="keyword">package</span> <span class="variable">Template::Plugin::LWPSimple</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">base</span> <span class="string">qw(Template::Plugin::Procedural)</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">LWP::Simple</span><span class="operator">;</span>  <span class="comment"># exports 'get'</span>
+    <span class="number">1</span><span class="operator">;</span>
+</pre>
+<pre>
+    [% USE LWPSimple %]
+    [% LWPSimple.get(&quot;<a href="http://www.tt2.org/&quot">http://www.tt2.org/&quot</a>;) %]</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p><code>Template::Plugin::Procedural</code> is a base class for Template Toolkit
+plugins that causes defined subroutines to be called directly rather
+than as a method.  Essentially this means that subroutines will not
+receive the class name or object as its first argument.</p>
+<p>This is most useful when creating plugins for modules that normally
+work by exporting subroutines that do not expect such additional
+arguments.</p>
+<p>Despite the fact that subroutines will not be called in an OO manner,
+inheritance still function as normal.  A class that uses
+<code>Template::Plugin::Procedural</code> can be subclassed and both subroutines
+defined in the subclass and subroutines defined in the original class
+will be available to the Template Toolkit and will be called without
+the class/object argument.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Mark Fowler &lt;<a href="mailto:mark@twoshortplanks.com">mark@twoshortplanks.com</a>&gt; <a href="http://www.twoshortplanks.com">http://www.twoshortplanks.com</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 2002 Mark Fowler &lt;<a href="mailto:mark@twoshortplanks.com">mark@twoshortplanks.com</a>&gt;</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a>, <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin.html">the Template::Plugin manpage</a></p>
+
+</body>
+
+</html>

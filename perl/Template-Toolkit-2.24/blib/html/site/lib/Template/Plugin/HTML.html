@@ -1,0 +1,137 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>Template::Plugin::HTML - Plugin to create HTML elements</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>Template::Plugin::HTML - Plugin to create HTML elements</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#methods">METHODS</a></li>
+	<ul>
+
+		<li><a href="#escape_text_">escape(text)</a></li>
+		<li><a href="#attributes_hash_">attributes(hash)</a></li>
+		<li><a href="#element_type__attributes_">element(type, attributes)</a></li>
+	</ul>
+
+	<li><a href="#debugging">DEBUGGING</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Plugin::HTML - Plugin to create HTML elements</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">USE</span> <span class="variable">HTML</span> <span class="variable">%]</span>
+    
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">HTML</span><span class="operator">.</span><span class="variable">escape</span><span class="operator">(</span><span class="string">"if (a &lt; b &amp;&amp; c &gt; d) ..."</span> <span class="variable">%]</span>
+    
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">HTML</span><span class="operator">.</span><span class="variable">element</span><span class="operator">(</span><span class="string">table</span> <span class="operator">=&gt;</span> <span class="operator">{</span> <span class="string">border</span> <span class="operator">=&gt;</span> <span class="number">1</span><span class="operator">,</span> <span class="string">cellpadding</span> <span class="operator">=&gt;</span> <span class="number">2</span> <span class="operator">}</span><span class="operator">)</span> <span class="variable">%]</span>
+    
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">HTML</span><span class="operator">.</span><span class="variable">attributes</span><span class="operator">(</span><span class="string">border</span> <span class="operator">=&gt;</span> <span class="number">1</span><span class="operator">,</span> <span class="string">cellpadding</span> <span class="operator">=&gt;</span> <span class="number">2</span><span class="operator">)</span> <span class="variable">%]</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>The <code>HTML</code> plugin is a very basic plugin, implementing a few useful
+methods for generating HTML.</p>
+<p>
+</p>
+<hr />
+<h1><a name="methods">METHODS</a></h1>
+<p>
+</p>
+<h2><a name="escape_text_">escape(text)</a></h2>
+<p>Returns the source text with any HTML reserved characters such as 
+<code>&lt;</code>, <code>&gt;</code>, etc., correctly esacped to their entity equivalents.</p>
+<p>
+</p>
+<h2><a name="attributes_hash_">attributes(hash)</a></h2>
+<p>Returns the elements of the hash array passed by reference correctly
+formatted (e.g. values quoted and correctly escaped) as attributes for
+an HTML element.</p>
+<p>
+</p>
+<h2><a name="element_type__attributes_">element(type, attributes)</a></h2>
+<p>Generates an HTML element of the specified type and with the attributes
+provided as an optional hash array reference as the second argument or
+as named arguments.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">HTML</span><span class="operator">.</span><span class="variable">element</span><span class="operator">(</span><span class="string">table</span> <span class="operator">=&gt;</span> <span class="operator">{</span> <span class="string">border</span> <span class="operator">=&gt;</span> <span class="number">1</span><span class="operator">,</span> <span class="string">cellpadding</span> <span class="operator">=&gt;</span> <span class="number">2</span> <span class="operator">}</span><span class="operator">)</span> <span class="variable">%]</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">HTML</span><span class="operator">.</span><span class="variable">element</span><span class="operator">(</span><span class="string">'table'</span><span class="operator">,</span> <span class="variable">border</span><span class="operator">=</span><span class="number">1</span><span class="operator">,</span> <span class="variable">cellpadding</span><span class="operator">=</span><span class="number">2</span><span class="operator">)</span> <span class="variable">%]</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">HTML</span><span class="operator">.</span><span class="variable">element</span><span class="operator">(</span><span class="string">table</span> <span class="operator">=&gt;</span> <span class="variable">attribs</span><span class="operator">)</span> <span class="variable">%]</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="debugging">DEBUGGING</a></h1>
+<p>The HTML plugin accepts a <code>sorted</code> option as a constructor argument
+which, when set to any true value, causes the attributes generated by
+the <code>attributes()</code> method (either directly or via <code>element()</code>) to be
+returned in sorted order.  Order of attributes isn't important in
+HTML, but this is provided mainly for the purposes of debugging where
+it is useful to have attributes generated in a deterministic order
+rather than whatever order the hash happened to feel like returning
+the keys in.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">USE</span> <span class="variable">HTML</span><span class="operator">(</span><span class="variable">sorted</span><span class="operator">=</span><span class="number">1</span><span class="operator">)</span> <span class="variable">%]</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">HTML</span><span class="operator">.</span><span class="variable">element</span><span class="operator">(</span> <span class="string">foo</span> <span class="operator">=&gt;</span> <span class="operator">{</span> <span class="string">charlie</span> <span class="operator">=&gt;</span> <span class="number">1</span><span class="operator">,</span> <span class="string">bravo</span> <span class="operator">=&gt;</span> <span class="number">2</span><span class="operator">,</span> <span class="string">alpha</span> <span class="operator">=&gt;</span> <span class="number">3</span> <span class="operator">}</span> <span class="operator">)</span> <span class="variable">%]</span>
+</pre>
+<p>generates:</p>
+<pre>
+    &lt;foo alpha=&quot;3&quot; bravo=&quot;2&quot; charlie=&quot;1&quot;&gt;</pre>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin.html">the Template::Plugin manpage</a></p>
+
+</body>
+
+</html>

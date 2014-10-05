@@ -1,0 +1,56 @@
+
+2012-08-05 12:05:01	 ##### D:\Develop\Perl\billing_version_get_project_label.pl Started ##### 
+12:05:01	 Started
+
+2012-08-05 12:05:16	 ##### D:\Develop\Perl\billing_version_get_project_label.pl Started ##### 
+12:05:16	 Started
+
+2012-08-05 12:05:47	 ##### D:\Develop\Perl\billing_version_get_project_label.pl Started ##### 
+12:05:47	 Started
+
+2012-08-05 12:07:02	 ##### D:\Develop\Perl\billing_version_get_project_label.pl Started ##### 
+12:07:02	 Started
+
+2012-08-05 12:08:07	 ##### D:\Develop\Perl\billing_version_get_project_label.pl Started ##### 
+12:08:07	 Started
+
+2012-08-05 13:37:08	 ##### D:\Develop\Perl\billing_version_get_project_label.pl Started ##### 
+13:37:08	 Started
+
+2012-08-05 13:37:50	 ##### D:\Develop\Perl\billing_version_get_project_label.pl Started ##### 
+13:37:50	 Started
+
+2012-08-05 13:38:09	 ##### D:\Develop\Perl\billing_version_get_project_label.pl Started ##### 
+13:38:09	 Started
+
+2012-08-05 13:40:17	 ##### D:\Develop\Perl\billing_version_get_project_label.pl Started ##### 
+13:40:17	 Started
+13:40:18	 stcmd co -p "vbronfman:Redbl00d10@starteam1:49201/﻿PM_IFBL/50-DeliveryBRIT\PARAMETER_VALUE_BRIT.sql/" -vl BRIT_15_07_2012 -stop -nologo -eol lf -o -fp /home/test_user/Develop/GET_BILLING_VER -is -fs  -ts -x
+
+2012-08-05 13:40:54	 ##### D:\Develop\Perl\billing_version_get_project_label.pl Started ##### 
+13:40:54	 Started
+
+2012-08-05 13:41:26	 ##### D:\Develop\Perl\billing_version_get_project_label.pl Started ##### 
+13:41:26	 Started
+
+2012-08-05 13:43:25	 ##### D:\Develop\Perl\billing_version_get_project_label.pl Started ##### 
+13:43:25	 Started
+
+2012-08-05 13:44:23	 ##### D:\Develop\Perl\billing_version_get_project_label.pl Started ##### 
+13:44:23	 Started
+
+2012-08-05 13:44:51	 ##### D:\Develop\Perl\billing_version_get_project_label.pl Started ##### 
+13:44:52	 Started
+
+2012-08-05 13:47:36	 ##### D:\Develop\Perl\billing_version_get_project_label.pl Started ##### 
+13:47:36	 Started
+
+2012-08-05 13:47:55	 ##### D:\Develop\Perl\billing_version_get_project_label.pl Started ##### 
+13:47:55	 Started
+
+2012-08-05 17:01:26	 ##### D:\Develop\Perl\billing_version_get_project_label.pl Started ##### 
+17:01:27	 Started
+17:01:30	 stcmd co -p "vbronfman:Redbl00d10@starteam1:49201/﻿PM_IFBL/50-Delivery/" -vl BRIT_15_07_2012 -stop -nologo -eol lf -o -fp /home/test_user/Develop/GET_BILLING_VER -is -fs  -ts -x
+
+2012-08-05 21:17:03	 ##### D:\Develop\Perl\billing_version_get_project_label.pl Started ##### 
+21:17:03	 Started

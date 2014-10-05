@@ -1,0 +1,69 @@
+<font color=red>BUILD FINISHED </font>
+###################################################
+#      BUILD TST3 20130131_1717
+###################################################
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130131_171742/1_create_SHIYUCH_CONTRACTS_REQUESTS.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130131_171742/1_Create_Deactive_cont_log.sql
+	Start running ..
+STATUS 		: OK
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130131_171742/1_pck_dunn_installment_body.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130131_171742/1_insert_aru_charge_type.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130131_171742/1_create_table_restricted_prgcode_change.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130131_171742/1_alter_CD_INVOICE_LINES_VIEW_TEMP.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130131_171742/3_GC_COPY_CDL_INV_DETAIL_spec.sql
+	Start running ..
+STATUS 		: OK
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130131_171742/3_CD_SET_CREDIT_LINK_spec.sql
+	Start running ..
+STATUS 		: OK
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130131_171742/5_GC_COPY_CDL_INV_DETAIL_body.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130131_171742/5_CD_SET_CREDIT_LINK_body.sql
+	Start running ..
+STATUS 		: OK
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130131_171742/6_GC_DEACTIVATE_CONT_BILL_SPEC.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130131_171742/6_GC_MASS_DEACT_CONT_BILLING_SPEC.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130131_171742/7_billing_param_1710_ins.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130131_171742/7_GC_DEACTIVATE_CONT_BILL_BODY.sql
+	Start running ..
+STATUS 		: OK
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130131_171742/7_GC_MASS_DEACT_CONT_BILLING_BODY.sql
+	Start running ..
+STATUS 		: OK
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130131_171742/10_INSERT_DEPOSIT_VANTIVE_CASE.sql
+	Start running ..
+STATUS 		: ERROR
+################ END OF BUILD  ####################

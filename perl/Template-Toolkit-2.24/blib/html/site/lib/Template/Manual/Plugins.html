@@ -1,0 +1,345 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>Template::Manual::Plugins - Standard plugins</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>Template::Manual::Plugins - Standard plugins</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#template_toolkit_plugins">TEMPLATE TOOLKIT PLUGINS</a></li>
+	<ul>
+
+		<li><a href="#assert">Assert</a></li>
+		<li><a href="#cgi">CGI</a></li>
+		<li><a href="#datafile">Datafile</a></li>
+		<li><a href="#date">Date</a></li>
+		<li><a href="#directory">Directory</a></li>
+		<li><a href="#dbi">DBI</a></li>
+		<li><a href="#dumper">Dumper</a></li>
+		<li><a href="#file">File</a></li>
+		<li><a href="#filter">Filter</a></li>
+		<li><a href="#format">Format</a></li>
+		<li><a href="#gd">GD</a></li>
+		<li><a href="#html">HTML</a></li>
+		<li><a href="#iterator">Iterator</a></li>
+		<li><a href="#pod">Pod</a></li>
+		<li><a href="#scalar">Scalar</a></li>
+		<li><a href="#string">String</a></li>
+		<li><a href="#table">Table</a></li>
+		<li><a href="#url">URL</a></li>
+		<li><a href="#wrap">Wrap</a></li>
+		<li><a href="#xml">XML</a></li>
+	</ul>
+
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Manual::Plugins - Standard plugins</p>
+<p>
+</p>
+<hr />
+<h1><a name="template_toolkit_plugins">TEMPLATE TOOLKIT PLUGINS</a></h1>
+<p>The following plugin modules are distributed with the Template
+Toolkit.  Some of the plugins interface to external modules (detailed
+below) which should be downloaded from any CPAN site and installed
+before using the plugin.</p>
+<p>
+</p>
+<h2><a name="assert">Assert</a></h2>
+<p>New in 2.20!  The <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Assert.html">Assert</a> plugin adds an 
+<code>assert</code> virtual method that you can use to catch undefined values.</p>
+<p>For example, consider this dotop:</p>
+<pre>
+    [% user.name %]</pre>
+<p>If <code>user.name</code> is an undefined value then TT will silently ignore the 
+fact and print nothing.  If you <code>USE</code> the <code>assert</code> plugin then you
+can add the <code>assert</code> vmethod between the <code>user</code> and <code>name</code> elements,
+like so:</p>
+<pre>
+    [% user.assert.name %]</pre>
+<p>Now, if <code>user.name</code> is an undefined value, an exception will be thrown:</p>
+<pre>
+    assert error - undefined value for name</pre>
+<p>
+</p>
+<h2><a name="cgi">CGI</a></h2>
+<p>The <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/CGI.html">CGI</a> plugin is a wrapper around Lincoln Stein's
+CGI.pm module. The plugin is distributed with the Template Toolkit (see
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/CGI.html">the Template::Plugin::CGI manpage</a>) and the <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/CGI.html">the CGI manpage</a> module itself is distributed with
+recent versions Perl, or is available from CPAN.</p>
+<pre>
+    [% USE CGI %]
+    [% CGI.param('param_name') %]
+    [% CGI.start_form %]
+    [% CGI.popup_menu( Name   =&gt; 'color', 
+                       Values =&gt; [ 'Green', 'Brown' ] ) %]
+    [% CGI.end_form %]</pre>
+<p>
+</p>
+<h2><a name="datafile">Datafile</a></h2>
+<p>Provides an interface to data stored in a plain text file in a simple
+delimited format.  The first line in the file specifies field names
+which should be delimiter by any non-word character sequence.
+Subsequent lines define data using the same delimiter as in the first
+line.  Blank lines and comments (lines starting '#') are ignored.  See
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Datafile.html">the Template::Plugin::Datafile manpage</a> for further details.</p>
+<p>/tmp/mydata:</p>
+<pre>
+    # define names for each field
+    id : email : name : tel
+    # here's the data
+    fred : fred@here.com : Fred Smith : 555-1234
+    bill : bill@here.com : Bill White : 555-5678</pre>
+<p>example:</p>
+<pre>
+    [% USE userlist = datafile('/tmp/mydata') %]
+    
+    [% FOREACH user = userlist %]
+       [% user.name %] ([% user.id %])
+    [% END %]</pre>
+<p>
+</p>
+<h2><a name="date">Date</a></h2>
+<p>The <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Date.html">Date</a> plugin provides an easy way to generate
+formatted time and date strings by delegating to the <a href="../../../../lib/POSIX.html">the POSIX manpage</a> <code>strftime()</code>
+routine. See <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Date.html">the Template::Plugin::Date manpage</a> and <a href="../../../../lib/POSIX.html">the POSIX manpage</a> for further details.</p>
+<pre>
+    [% USE date %]
+    [% date.format %]           # current time/date
+    
+    File last modified: [% date.format(template.modtime) %]</pre>
+<p>
+</p>
+<h2><a name="directory">Directory</a></h2>
+<p>The <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Directory.html">Directory</a> plugin provides a simple
+interface to a directory and the files within it. See
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Directory.html">the Template::Plugin::Directory manpage</a> for further details.</p>
+<pre>
+    [% USE dir = Directory('/tmp') %]
+    [% FOREACH file = dir.files %]
+        # all the plain files in the directory
+    [% END %]
+    [% FOREACH file = dir.dirs %]
+        # all the sub-directories
+    [% END %]</pre>
+<p>
+</p>
+<h2><a name="dbi">DBI</a></h2>
+<p>The <code>DBI</code> plugin is no longer distributed as part of the Template Toolkit
+(as of version 2.15).  It is now available as a separate <a href="../../../../Template/DBI.html">the Template::DBI manpage</a>
+distribution from CPAN.</p>
+<p>
+</p>
+<h2><a name="dumper">Dumper</a></h2>
+<p>The <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Dumper.html">Dumper</a> plugin provides an interface to the
+Data::Dumper module. See <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Dumper.html">the Template::Plugin::Dumper manpage</a> and <a href="../../../../lib/Data/Dumper.html">the Data::Dumper manpage</a> for
+futher details.</p>
+<pre>
+    [% USE dumper(indent=0, pad=&quot;&lt;br&gt;&quot;) %]
+    [% dumper.dump(myvar, yourvar) %]</pre>
+<p>
+</p>
+<h2><a name="file">File</a></h2>
+<p>The <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/File.html">File</a> plugin provides a general abstraction for
+files and can be used to fetch information about specific files within a
+filesystem. See <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/File.html">the Template::Plugin::File manpage</a> for further details.</p>
+<pre>
+    [% USE File('/tmp/foo.html') %]
+    [% File.name %]     # foo.html
+    [% File.dir %]      # /tmp
+    [% File.mtime %]    # modification time</pre>
+<p>
+</p>
+<h2><a name="filter">Filter</a></h2>
+<p>This module implements a base class plugin which can be subclassed
+to easily create your own modules that define and install new filters.</p>
+<pre>
+    <span class="keyword">package</span> <span class="variable">MyOrg::Template::Plugin::MyFilter</span><span class="operator">;</span>
+    
+    <span class="keyword">use</span> <span class="variable">Template::Plugin::Filter</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">base</span> <span class="string">qw( Template::Plugin::Filter )</span><span class="operator">;</span>
+    
+    <span class="keyword">sub</span><span class="variable"> filter </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="operator">(</span><span class="variable">$self</span><span class="operator">,</span> <span class="variable">$text</span><span class="operator">)</span> <span class="operator">=</span> <span class="variable">@_</span><span class="operator">;</span>
+        <span class="comment"># ...mungify $text...</span>
+        <span class="keyword">return</span> <span class="variable">$text</span><span class="operator">;</span>
+    <span class="operator">}</span>
+</pre>
+<p>Example of use:</p>
+<pre>
+    # now load it...
+    [% USE MyFilter %]
+    
+    # ...and use the returned object as a filter
+    [% FILTER $MyFilter %]
+      ...
+    [% END %]</pre>
+<p>See <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Filter.html">the Template::Plugin::Filter manpage</a> for further details.</p>
+<p>
+</p>
+<h2><a name="format">Format</a></h2>
+<p>The <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Format.html">Format</a> plugin provides a simple way to format
+text according to a <a href="../../../../lib/pods/perlfunc.html#printf"><code>printf()</code></a>-like format. See <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Format.html">the Template::Plugin::Format manpage</a> for
+further details.</p>
+<pre>
+    [% USE bold = format('&lt;b&gt;%s&lt;/b&gt;') %]
+    [% bold('Hello') %]</pre>
+<p>
+</p>
+<h2><a name="gd">GD</a></h2>
+<p>The <code>GD</code> plugins are no longer part of the core Template Toolkit distribution.
+They are now available from CPAN in a separate <a href="../../../../Template/GD.html">the Template::GD manpage</a> distribution.</p>
+<p>
+</p>
+<h2><a name="html">HTML</a></h2>
+<p>The <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/HTML.html">HTML</a> plugin is very basic, implementing a few
+useful methods for generating HTML. It is likely to be extended in the future
+or integrated with a larger project to generate HTML elements in a generic way.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">USE</span> <span class="variable">HTML</span> <span class="variable">%]</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">HTML</span><span class="operator">.</span><span class="variable">escape</span><span class="operator">(</span><span class="string">"if (a &lt; b &amp;&amp; c &gt; d) ..."</span> <span class="variable">%]</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">HTML</span><span class="operator">.</span><span class="variable">attributes</span><span class="operator">(</span><span class="string">border</span> <span class="operator">=&gt;</span> <span class="number">1</span><span class="operator">,</span> <span class="string">cellpadding</span> <span class="operator">=&gt;</span> <span class="number">2</span><span class="operator">)</span> <span class="variable">%]</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">HTML</span><span class="operator">.</span><span class="variable">element</span><span class="operator">(</span><span class="string">table</span> <span class="operator">=&gt;</span> <span class="operator">{</span> <span class="string">border</span> <span class="operator">=&gt;</span> <span class="number">1</span><span class="operator">,</span> <span class="string">cellpadding</span> <span class="operator">=&gt;</span> <span class="number">2</span> <span class="operator">}</span><span class="operator">)</span> <span class="variable">%]</span>
+</pre>
+<p>See <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/HTML.html">the Template::Plugin::HTML manpage</a> for further details.</p>
+<p>
+</p>
+<h2><a name="iterator">Iterator</a></h2>
+<p>The <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Iterator.html">Iterator</a> plugin provides a way to create a
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Iterator.html">the Template::Iterator manpage</a> object to iterate over a data set. An iterator is
+created automatically by the <code>FOREACH</code> directive and is aliased to the <code>loop</code>
+variable. This plugin allows an iterator to be explicitly created with a given
+name, or the default plugin name, <code>iterator</code>. See
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Iterator.html">the Template::Plugin::Iterator manpage</a> for further details.</p>
+<pre>
+    [% USE iterator(list, args) %]
+    
+    [% FOREACH item = iterator %]
+       [% '&lt;ul&gt;' IF iterator.first %]
+       &lt;li&gt;[% item %]
+       [% '&lt;/ul&gt;' IF iterator.last %]
+    [% END %]</pre>
+<p>
+</p>
+<h2><a name="pod">Pod</a></h2>
+<p>This plugin provides an interface to the <a href="../../../../Pod/POM.html">Pod::POM</a> module
+which parses POD documents into an internal object model which can
+then be traversed and presented through the Template Toolkit.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">USE</span> <span class="variable">Pod</span><span class="operator">(</span><span class="variable">podfile</span><span class="operator">)</span> <span class="variable">%]</span>
+    
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">FOREACH</span> <span class="variable">head1</span> <span class="operator">=</span> <span class="variable">Pod</span><span class="operator">.</span><span class="variable">head1</span><span class="operator">;</span>
+         <span class="variable">FOREACH</span> <span class="variable">head2</span> <span class="operator">=</span> <span class="variable">head1</span><span class="operator">/</span><span class="variable">head2</span><span class="operator">;</span>
+           <span class="operator">...</span>
+         <span class="keyword">END</span><span class="operator">;</span>
+       <span class="keyword">END</span>
+    <span class="variable">%]</span>
+</pre>
+<p>
+</p>
+<h2><a name="scalar">Scalar</a></h2>
+<p>The Template Toolkit calls user-defined subroutines and object methods
+using Perl's array context by default.</p>
+<pre>
+    # TT2 calls object methods in array context by default
+    [% object.method %]</pre>
+<p>This plugin module provides a way for you to call subroutines and methods 
+in scalar context.</p>
+<pre>
+    [% USE scalar %]
+    
+    # force it to use scalar context
+    [% object.scalar.method %]
+    
+    # also works with subroutine references
+    [% scalar.my_sub_ref %]</pre>
+<p>
+</p>
+<h2><a name="string">String</a></h2>
+<p>The <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/String.html">String</a> plugin implements an object-oriented
+interface for manipulating strings. See <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/String.html">the Template::Plugin::String manpage</a> for
+further details.</p>
+<pre>
+    [% USE String 'Hello' %]
+    [% String.append(' World') %]
+    
+    [% msg = String.new('Another string') %]
+    [% msg.replace('string', 'text') %]
+    
+    The string &quot;[% msg %]&quot; is [% msg.length %] characters long.</pre>
+<p>
+</p>
+<h2><a name="table">Table</a></h2>
+<p>The <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Table.html">Table</a> plugin allows you to format a list of
+data items into a virtual table by specifying a fixed number of rows or
+columns, with an optional overlap. See <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Table.html">the Template::Plugin::Table manpage</a> for further
+details.</p>
+<pre>
+    [% USE table(list, rows=10, overlap=1) %]
+    
+    [% FOREACH item = table.col(3) %]
+       [% item %]
+    [% END %]</pre>
+<p>
+</p>
+<h2><a name="url">URL</a></h2>
+<p>The <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/URL.html">URL</a> plugin provides a simple way of contructing
+URLs from a base part and a variable set of parameters. See
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/URL.html">the Template::Plugin::URL manpage</a> for further details.</p>
+<pre>
+    [% USE mycgi = url('/cgi-bin/bar.pl', debug=1) %]
+    
+    [% mycgi %]
+       # ==&gt; /cgi/bin/bar.pl?debug=1
+       
+    [% mycgi(mode='submit') %]
+       # ==&gt; /cgi/bin/bar.pl?mode=submit&amp;debug=1</pre>
+<p>
+</p>
+<h2><a name="wrap">Wrap</a></h2>
+<p>The <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Wrap.html">Wrap</a> plugin uses the <a href="../../../../lib/GD/Text/Wrap.html">the Text::Wrap manpage</a> module to
+provide simple paragraph formatting. See <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Wrap.html">the Template::Plugin::Wrap manpage</a> and
+<a href="../../../../lib/GD/Text/Wrap.html">the Text::Wrap manpage</a> for further details.</p>
+<pre>
+    [% USE wrap %]
+    [% wrap(mytext, 40, '* ', '  ') %]  # use wrap sub
+    [% mytext FILTER wrap(40) -%]       # or wrap FILTER</pre>
+<p>The <code>Text::Wrap</code> module is available from CPAN:</p>
+<pre>
+    <a href="http://www.cpan.org/modules/by-module/Text/">http://www.cpan.org/modules/by-module/Text/</a></pre>
+<p>
+</p>
+<h2><a name="xml">XML</a></h2>
+<p>The <code>XML::DOM</code>, <code>XML::RSS</code>, <code>XML::Simple</code> and <code>XML::XPath</code> plugins are no
+longer distributed with the Template Toolkit as of version 2.15</p>
+<p>They are now available in a separate <a href="../../../../Template/XML.html">the Template::XML manpage</a> distribution.</p>
+
+</body>
+
+</html>

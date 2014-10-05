@@ -1,0 +1,51 @@
+<ROOT>
+        <NAME>IT-Lab Monitor ENVIRONMENT </NAME>
+        <BODY>
+                <TABLE>
+                        <HEADER_ROW>
+                                <HEADER nowrap="nowrap" font-weight="600">ENVIRONMENT</HEADER>
+                                <HEADER nowrap="nowrap" font-weight="600">PRODUCT NAME</HEADER>
+                                <HEADER nowrap="nowrap" font-weight="600">PROCESS NAME</HEADER>
+				<HEADER nowrap="nowrap" font-weight="600">STATUS</HEADER>
+                                <HEADER nowrap="nowrap" font-weight="600" type="number">NUM OF PROCESSES</HEADER>
+                        </HEADER_ROW>
+
+[%  FOREACH job IN var3 %]
+<ROW>
+	<DATA nowrap="nowrap">[% job.env %] </DATA>
+	<DATA nowrap="nowrap">[% job.ITsystem %]</DATA>
+	<DATA nowrap="nowrap">[% job.prod %]</DATA>
+
+[% SWITCH job.status %]
+    [%   CASE '0' %]
+        <DATA nowrap="nowrap" text-align="right" background-color="green">
+           [% status = 'UP' %]
+    [%   CASE '1' %]
+        <DATA nowrap="nowrap" text-align="right" background-color="red">
+       [% status = 'DOWN' %]
+       [%   CASE '-1' %]
+        <DATA nowrap="nowrap" text-align="right" background-color="red">
+       [% status = 'DOWN' %]
+    [%   CASE '3' %]
+        <DATA nowrap="nowrap" text-align="right" background-color="yellow">
+       [% status = 'WARNING' %]
+    [%   CASE '4' %]
+        <DATA nowrap="nowrap" text-align="right" background-color="yellow">
+       [% status = 'COMMAND IS TIMED OUT' %]
+    [%   CASE %]                         
+        <DATA nowrap="nowrap" text-align="right" background-color="grey">
+        [% status = 'UNDEFINED' %] 
+      
+[% END %]
+
+[% status %]</DATA>  
+    
+ </ROW>
+[% END %]
+
+
+                </TABLE>
+        </BODY>
+        <STATUS>Info</STATUS>
+        <ICON>Amc_MU_Default.gif</ICON>
+</ROOT>

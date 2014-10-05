@@ -1,0 +1,13 @@
+<font color=red>BUILD FINISHED </font>
+###################################################
+#      BUILD TST3 20130414_1313
+###################################################
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201304_20130414_131357/1_REP1914.SQL
+	Start running ..
+STATUS 		: OK
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201304_20130414_131357/3_P_rep1888_POPULATE_data.prc
+	Start running ..
+STATUS 		: OK
+################ END OF BUILD  ####################

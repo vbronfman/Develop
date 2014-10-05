@@ -1,0 +1,348 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../scineplex.css">
+<title>Template::Service - General purpose template processing service</title>
+<link rel="stylesheet" href="../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',3);</script>
+<h1><a>Template::Service - General purpose template processing service</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#methods">METHODS</a></li>
+	<ul>
+
+		<li><a href="#new___config_"><code>new(\%config)</code></a></li>
+		<li><a href="#process__input____replace_">process($input, \%replace)</a></li>
+		<li><a href="#context__"><code>context()</code></a></li>
+	</ul>
+
+	<li><a href="#configuration_options">CONFIGURATION OPTIONS</a></li>
+	<ul>
+
+		<li><a href="#pre_process__post_process">PRE_PROCESS, POST_PROCESS</a></li>
+		<li><a href="#process">PROCESS</a></li>
+		<li><a href="#error">ERROR</a></li>
+		<li><a href="#auto_reset">AUTO_RESET</a></li>
+		<li><a href="#debug">DEBUG</a></li>
+	</ul>
+
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Service - General purpose template processing service</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template::Service</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$service</span> <span class="operator">=</span> <span class="variable">Template::Service</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">PRE_PROCESS</span>  <span class="operator">=&gt;</span> <span class="operator">[</span> <span class="string">'config'</span><span class="operator">,</span> <span class="string">'header'</span> <span class="operator">]</span><span class="operator">,</span>
+        <span class="string">POST_PROCESS</span> <span class="operator">=&gt;</span> <span class="string">'footer'</span><span class="operator">,</span>
+        <span class="string">ERROR</span>        <span class="operator">=&gt;</span> <span class="operator">{</span>
+            <span class="string">user</span>     <span class="operator">=&gt;</span> <span class="string">'user/index.html'</span><span class="operator">,</span> 
+            <span class="string">dbi</span>      <span class="operator">=&gt;</span> <span class="string">'error/database'</span><span class="operator">,</span>
+            <span class="string">default</span>  <span class="operator">=&gt;</span> <span class="string">'error/default'</span><span class="operator">,</span>
+        <span class="operator">}</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+    
+    <span class="keyword">my</span> <span class="variable">$output</span> <span class="operator">=</span> <span class="variable">$service</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="variable">$template_name</span><span class="operator">,</span> <span class="operator">\</span><span class="variable">%replace</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$service</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>The <code>Template::Service</code> module implements an object class for providing
+a consistent template processing service.</p>
+<p>Standard header (<em>PRE_PROCESS</em>) and footer
+(<em>POST_PROCESS</em>) templates may be specified which
+are prepended and appended to all templates processed by the service (but not
+any other templates or blocks <code>INCLUDE</code>d or <code>PROCESS</code>ed from within). An
+<em>ERROR</em> hash may be specified which redirects the service to an alternate
+template file in the case of uncaught exceptions being thrown. This allows
+errors to be automatically handled by the service and a guaranteed valid
+response to be generated regardless of any processing problems encountered.</p>
+<p>A default <code>Template::Service</code> object is created by the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a> module.
+Any <code>Template::Service</code> options may be passed to the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a>
+<em>new()</em> constructor method and will be forwarded to the
+<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Service.html">the Template::Service manpage</a> constructor.</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">PRE_PROCESS</span>  <span class="operator">=&gt;</span> <span class="string">'header'</span><span class="operator">,</span>
+        <span class="string">POST_PROCESS</span> <span class="operator">=&gt;</span> <span class="string">'footer'</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>Similarly, the <code>Template::Service</code> constructor will forward all configuration
+parameters onto other default objects (e.g. <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a>) that it may
+need to instantiate.</p>
+<p>A <code>Template::Service</code> object (or subclass) can be explicitly instantiated and
+passed to the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a> <em>new()</em> constructor method as the
+<em>SERVICE</em> item.</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">Template::Service</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$service</span> <span class="operator">=</span> <span class="variable">Template::Service</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">PRE_PROCESS</span>  <span class="operator">=&gt;</span> <span class="string">'header'</span><span class="operator">,</span>
+        <span class="string">POST_PROCESS</span> <span class="operator">=&gt;</span> <span class="string">'footer'</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+    
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">SERVICE</span> <span class="operator">=&gt;</span> <span class="variable">$service</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>The <code>Template::Service</code> module can be sub-classed to create custom service
+handlers.</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">MyOrg::Template::Service</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$service</span> <span class="operator">=</span> <span class="variable">MyOrg::Template::Service</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">PRE_PROCESS</span>  <span class="operator">=&gt;</span> <span class="string">'header'</span><span class="operator">,</span>
+        <span class="string">POST_PROCESS</span> <span class="operator">=&gt;</span> <span class="string">'footer'</span><span class="operator">,</span>
+        <span class="string">COOL_OPTION</span>  <span class="operator">=&gt;</span> <span class="string">'enabled in spades'</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+    
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">SERVICE</span> <span class="operator">=&gt;</span> <span class="variable">$service</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>The <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a> module uses the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Config.html">the Template::Config manpage</a>
+<a href="../../../Template/Config#service().html">service()</a> factory method to create a default
+service object when required. The <code>$Template::Config::SERVICE</code> package
+variable may be set to specify an alternate service module. This will be
+loaded automatically and its <em>new()</em> constructor method called by the
+<a href="../../../Template/Config#service().html">service()</a> factory method when a default service
+object is required. Thus the previous example could be written as:</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template</span><span class="operator">;</span>
+    
+    <span class="variable">$Template::Config::SERVICE</span> <span class="operator">=</span> <span class="string">'MyOrg::Template::Service'</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">PRE_PROCESS</span>  <span class="operator">=&gt;</span> <span class="string">'header'</span><span class="operator">,</span>
+        <span class="string">POST_PROCESS</span> <span class="operator">=&gt;</span> <span class="string">'footer'</span><span class="operator">,</span>
+        <span class="string">COOL_OPTION</span>  <span class="operator">=&gt;</span> <span class="string">'enabled in spades'</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="methods">METHODS</a></h1>
+<p>
+</p>
+<h2><a name="new___config_"><code>new(\%config)</code></a></h2>
+<p>The <code>new()</code> constructor method is called to instantiate a <code>Template::Service</code>
+object.  Configuration parameters may be specified as a HASH reference or
+as a list of <code>name =&gt; value</code> pairs.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$service1</span> <span class="operator">=</span> <span class="variable">Template::Service</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">PRE_PROCESS</span>  <span class="operator">=&gt;</span> <span class="string">'header'</span><span class="operator">,</span>
+        <span class="string">POST_PROCESS</span> <span class="operator">=&gt;</span> <span class="string">'footer'</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+    
+    <span class="keyword">my</span> <span class="variable">$service2</span> <span class="operator">=</span> <span class="variable">Template::Service</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span> <span class="string">ERROR</span> <span class="operator">=&gt;</span> <span class="string">'error.html'</span> <span class="operator">);</span>
+</pre>
+<p>The <code>new()</code> method returns a <code>Template::Service</code> object or <a href="../../../lib/pods/perlfunc.html#undef"><code>undef</code></a> on
+error. In the latter case, a relevant error message can be retrieved by the
+<a href="../../../Template/Base#error().html">error()</a> class method or directly from the
+<code>$Template::Service::ERROR</code> package variable.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$service</span> <span class="operator">=</span> <span class="variable">Template::Service</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(\</span><span class="variable">%config</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">Template::Service</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">();</span>
+        
+    <span class="keyword">my</span> <span class="variable">$service</span> <span class="operator">=</span> <span class="variable">Template::Service</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(\</span><span class="variable">%config</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$Template::Service::ERROR</span><span class="operator">;</span>
+</pre>
+<p>
+</p>
+<h2><a name="process__input____replace_">process($input, \%replace)</a></h2>
+<p>The <code>process()</code> method is called to process a template specified as the first
+parameter, <code>$input</code>. This may be a file name, file handle (e.g. <code>GLOB</code> or
+<code>IO::Handle</code>) or a reference to a text string containing the template text. An
+additional hash reference may be passed containing template variable
+definitions.</p>
+<p>The method processes the template, adding any
+<em>PRE_PROCESS</em> or
+<em>POST_PROCESS</em> templates defined, and returns the
+output text. An uncaught exception thrown by the template will be handled by a
+relevant <em>ERROR</em> handler if defined. Errors that occur in the
+<em>PRE_PROCESS</em> or
+<em>POST_PROCESS</em> templates, or those that occur in the
+main input template and aren't handled, cause the method to return <a href="../../../lib/pods/perlfunc.html#undef"><code>undef</code></a> to
+indicate failure. The appropriate error message can be retrieved via the
+<a href="../../../Template/Base#error().html">error()</a> method.</p>
+<pre>
+    <span class="variable">$service</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="string">'myfile.html'</span><span class="operator">,</span> <span class="operator">{</span> <span class="string">title</span> <span class="operator">=&gt;</span> <span class="string">'My Test File'</span> <span class="operator">}</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$service</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">();</span>
+</pre>
+<p>
+</p>
+<h2><a name="context__"><code>context()</code></a></h2>
+<p>Returns a reference to the internal context object which is, by default, an
+instance of the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a> class.</p>
+<p>
+</p>
+<hr />
+<h1><a name="configuration_options">CONFIGURATION OPTIONS</a></h1>
+<p>The following list summarises the configuration options that can be provided
+to the <code>Template::Service</code> <em>new()</em> constructor. Please consult
+<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Manual/Config.html">the Template::Manual::Config manpage</a> for further details and examples of each
+configuration option in use.</p>
+<p>
+</p>
+<h2><a name="pre_process__post_process">PRE_PROCESS, POST_PROCESS</a></h2>
+<p>The <a href="../../../Template/Manual/Config#PRE_PROCESS_POST_PROCESS.html">PRE_PROCESS</a> and
+<a href="../../../Template/Manual/Config#PRE_PROCESS_POST_PROCESS.html">POST_PROCESS</a> options may
+be set to contain the name(s) of template files which should be processed
+immediately before and/or after each template. These do not get added to
+templates processed into a document via directives such as <code>INCLUDE</code>
+<code>PROCESS</code>, <code>WRAPPER</code>, etc.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$service</span> <span class="operator">=</span> <span class="variable">Template::Service</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">PRE_PROCESS</span>  <span class="operator">=&gt;</span> <span class="string">'header'</span><span class="operator">,</span>
+        <span class="string">POST_PROCESS</span> <span class="operator">=&gt;</span> <span class="string">'footer'</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">;</span>
+</pre>
+<p>Multiple templates may be specified as a reference to a list.  Each is 
+processed in the order defined.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$service</span> <span class="operator">=</span> <span class="variable">Template::Service</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">PRE_PROCESS</span>  <span class="operator">=&gt;</span> <span class="operator">[</span> <span class="string">'config'</span><span class="operator">,</span> <span class="string">'header'</span> <span class="operator">]</span><span class="operator">,</span>
+        <span class="string">POST_PROCESS</span> <span class="operator">=&gt;</span> <span class="string">'footer'</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">;</span>
+</pre>
+<p>
+</p>
+<h2><a name="process">PROCESS</a></h2>
+<p>The <a href="../../../Template/Manual/Config#PROCESS.html">PROCESS</a> option may be set to contain
+the name(s) of template files which should be processed instead of the main
+template passed to the <code>Template::Service</code> <em>process()</em> method. This can be used to
+apply consistent wrappers around all templates, similar to the use of
+<em>PRE_PROCESS</em> and 
+<em>POST_PROCESS</em> templates.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$service</span> <span class="operator">=</span> <span class="variable">Template::Service</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">PROCESS</span>  <span class="operator">=&gt;</span> <span class="string">'content'</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">;</span>
+    
+    <span class="comment"># processes 'content' instead of 'foo.html'</span>
+    <span class="variable">$service</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="string">'foo.html'</span><span class="operator">);</span>
+</pre>
+<p>A reference to the original template is available in the <code>template</code>
+variable.  Metadata items can be inspected and the template can be
+processed by specifying it as a variable reference (i.e. prefixed by
+'<code>$</code>') to an <code>INCLUDE</code>, <code>PROCESS</code> or <code>WRAPPER</code> directive.</p>
+<p>Example <code>PROCESS</code> template:</p>
+<pre>
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;[% template.title %]&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+      [% PROCESS $template %]
+      &lt;/body&gt;
+    &lt;/html&gt;</pre>
+<p>
+</p>
+<h2><a name="error">ERROR</a></h2>
+<p>The <a href="../../../Template/Manual/Config#ERROR.html">ERROR</a> (or <code>ERRORS</code> if you prefer)
+configuration item can be used to name a single template or specify a hash
+array mapping exception types to templates which should be used for error
+handling. If an uncaught exception is raised from within a template then the
+appropriate error template will instead be processed.</p>
+<p>If specified as a single value then that template will be processed 
+for all uncaught exceptions.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$service</span> <span class="operator">=</span> <span class="variable">Template::Service</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">ERROR</span> <span class="operator">=&gt;</span> <span class="string">'error.html'</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>If the <a href="../../../Template/Manual/Config#ERROR.html">ERROR/ERRORS</a> item is a hash reference
+the keys are assumed to be exception types and the relevant template for a
+given exception will be selected. A <code>default</code> template may be provided for
+the general case.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$service</span> <span class="operator">=</span> <span class="variable">Template::Service</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">ERRORS</span> <span class="operator">=&gt;</span> <span class="operator">{</span>
+            <span class="string">user</span>     <span class="operator">=&gt;</span> <span class="string">'user/index.html'</span><span class="operator">,</span>
+            <span class="string">dbi</span>      <span class="operator">=&gt;</span> <span class="string">'error/database'</span><span class="operator">,</span>
+            <span class="string">default</span>  <span class="operator">=&gt;</span> <span class="string">'error/default'</span><span class="operator">,</span>
+        <span class="operator">}</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="auto_reset">AUTO_RESET</a></h2>
+<p>The <a href="../../../Template/Manual/Config#AUTO_RESET.html">AUTO_RESET</a> option is set by default
+and causes the local <code>BLOCKS</code> cache for the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a> object to be
+reset on each call to the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a> <em>process()</em> method.
+This ensures that any <code>BLOCK</code>s defined within a template will only persist until
+that template is finished processing.</p>
+<p>
+</p>
+<h2><a name="debug">DEBUG</a></h2>
+<p>The <a href="../../../Template/Manual/Config#DEBUG.html">DEBUG</a> option can be used to enable
+debugging messages from the <code>Template::Service</code> module by setting it to include
+the <code>DEBUG_SERVICE</code> value.</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template::Constants</span> <span class="string">qw( :debug )</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">DEBUG</span> <span class="operator">=&gt;</span> <span class="variable">DEBUG_SERVICE</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a>, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a></p>
+
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+/home/oracle/ROSH/TEST1/BUILD/src/PM_Invoice_PM_Invoice_201304_20130318_142900/1_INVREP_EQUIPMENT_DETAILS_cre.sql
+CONNECT STRING : REP_GEN/REP_GEN@B4UTST1
+
+Table dropped.
+
+SUBPARTITION SP1201_BC01_1,
+*
+ERROR at line 62:
+ORA-14004: missing PARTITION keyword 
+
+
+
+Table dropped.
+
+
+Table created.
+
+
+----------------------------------------------------------------

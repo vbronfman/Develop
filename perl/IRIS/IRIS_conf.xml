@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>-->
+<config>
+
+<operations>
+<!--  -->
+   <operation id="1" name="manage_listener" state="disabled" type="script">
+      <environment env="TST1" state="disabled">
+       <host>JINN</host>
+       <user>vantive</user>
+       <password>vantive</password>
+       </environment>
+    
+      <cmd command="status" timeout="0">manage_listener</cmd>
+   </operation>
+   
+   <!--  -->
+   <operation id="1" name="lock_users" state="disabled" type="sql">
+      <environment env="TST1" state="disabled">
+       <host>vantivedb</host>
+       <user>swb</user>
+       <password></password>
+      </environment>
+    
+      <cmd command="status" timeout="0">manage_listener
+      
+      </cmd>
+   </operation>
+
+
+
+</operations>
+
+<mail>
+<sendto>
+    
+    <recipient>_Shay.Rozenbaum@orange.co.il</recipient>
+    <recipient>_gilad.malachi@orange.co.il</recipient>
+    <recipient>vlad.bronfman@orange.co.il</recipient>
+    <recipient>_slavik.bikov@orange.co.il</recipient>
+</sendto>
+<sender>""</sender>
+
+<!--Template-->
+<template_dir>./templates</template_dir>
+<out_html>monitor_mail.html</out_html>
+<input_template>monitor_mail_template.tt</input_template>
+
+<!-- send_notificataion -->
+<subject_file>./templates/subject</subject_file>
+</mail>
+
+</config>

@@ -1,0 +1,123 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>Template::Plugin::Dumper - Plugin interface to Data::Dumper</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>Template::Plugin::Dumper - Plugin interface to Data::Dumper</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#methods">METHODS</a></li>
+	<ul>
+
+		<li><a href="#dump__"><a href="../../../../lib/pods/perlfunc.html#dump"><code>dump()</code></a></a></li>
+		<li><a href="#dump_html__"><code>dump_html()</code></a></li>
+	</ul>
+
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Plugin::Dumper - Plugin interface to Data::Dumper</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    [% USE Dumper %]
+    
+    [% Dumper.dump(variable) %]
+    [% Dumper.dump_html(variable) %]</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This is a very simple Template Toolkit Plugin Interface to the <a href="../../../../lib/Data/Dumper.html">the Data::Dumper manpage</a>
+module.  A <code>Dumper</code> object will be instantiated via the following directive:</p>
+<pre>
+    [% USE Dumper %]</pre>
+<p>As a standard plugin, you can also specify its name in lower case:</p>
+<pre>
+    [% USE dumper %]</pre>
+<p>The <code>Data::Dumper</code> <code>Pad</code>, <code>Indent</code> and <code>Varname</code> options are supported
+as constructor arguments to affect the output generated.  See <a href="../../../../lib/Data/Dumper.html">the Data::Dumper manpage</a>
+for further details.</p>
+<pre>
+    [% USE dumper(Indent=0, Pad=&quot;&lt;br&gt;&quot;) %]</pre>
+<p>These options can also be specified in lower case.</p>
+<pre>
+    [% USE dumper(indent=0, pad=&quot;&lt;br&gt;&quot;) %]</pre>
+<p>
+</p>
+<hr />
+<h1><a name="methods">METHODS</a></h1>
+<p>There are two methods supported by the <code>Dumper</code> object.  Each will
+output into the template the contents of the variables passed to the
+object method.</p>
+<p>
+</p>
+<h2><a name="dump__"><a href="../../../../lib/pods/perlfunc.html#dump"><code>dump()</code></a></a></h2>
+<p>Generates a raw text dump of the data structure(s) passed</p>
+<pre>
+    [% USE Dumper %]
+    [% Dumper.dump(myvar) %]
+    [% Dumper.dump(myvar, yourvar) %]</pre>
+<p>
+</p>
+<h2><a name="dump_html__"><code>dump_html()</code></a></h2>
+<p>Generates a dump of the data structures, as per <a href="../../../../lib/pods/perlfunc.html#dump">dump()</a>, but with the 
+characters &lt;, &gt; and &amp; converted to their equivalent HTML
+entities and newlines converted to &lt;br&gt;.</p>
+<pre>
+    [% USE Dumper %]
+    [% Dumper.dump_html(myvar) %]</pre>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Simon Matthews &lt;<a href="mailto:sam@tt2.org">sam@tt2.org</a>&gt;</p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 2000 Simon Matthews.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin.html">the Template::Plugin manpage</a>, <a href="../../../../lib/Data/Dumper.html">the Data::Dumper manpage</a></p>
+
+</body>
+
+</html>

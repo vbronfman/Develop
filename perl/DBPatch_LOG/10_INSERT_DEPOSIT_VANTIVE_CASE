@@ -1,0 +1,76 @@
+/home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/10_INSERT_DEPOSIT_VANTIVE_CASE.sql
+CONNECT STRING : ASHRAIT/ashrait_pass@BSCSTST3
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+
+Commit complete.
+
+
+Commit complete.
+
+
+----------------------------------------------------------------

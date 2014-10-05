@@ -1,0 +1,13 @@
+/home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/7_billing_param_1710_ins.sql
+CONNECT STRING : ASHRAIT/ashrait_pass@BSCSTST3
+Insert into BILLING_PARAMETERS
+*
+ERROR at line 1:
+ORA-00001: unique constraint (REPORTS.BILL_PARAMS_UK_INK) violated 
+
+
+
+Commit complete.
+
+
+----------------------------------------------------------------

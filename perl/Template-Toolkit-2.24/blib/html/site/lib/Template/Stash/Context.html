@@ -1,0 +1,126 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>Template::Stash::Context - Experimetal stash allowing list/scalar context definition</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>Template::Stash::Context - Experimetal stash allowing list/scalar context definition</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#version">VERSION</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Stash::Context - Experimetal stash allowing list/scalar context definition</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">Template::Stash::Context</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$stash</span> <span class="operator">=</span> <span class="variable">Template::Stash::Context</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(\</span><span class="variable">%vars</span><span class="operator">);</span>
+    <span class="keyword">my</span> <span class="variable">$tt2</span>   <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> <span class="string">STASH</span> <span class="operator">=&gt;</span> <span class="variable">$stash</span> <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This is an alternate stash object which includes a patch from 
+Craig Barratt to implement various new virtual methods to allow
+dotted template variable to denote if object methods and subroutines
+should be called in scalar or list context.  It adds a little overhead
+to each stash call and I'm a little wary of applying that to the core
+default stash without investigating the effects first. So for now,
+it's implemented as a separate stash module which will allow us to 
+test it out, benchmark it and switch it in or out as we require.</p>
+<p>This is what Craig has to say about it:</p>
+<p>Here's a better set of features for the core.  Attached is a new version
+of Stash.pm (based on TT2.02) that:</p>
+<p>* supports the special op &quot;scalar&quot; that forces scalar context on
+function calls, eg:</p>
+<pre>
+    cgi.param(&quot;foo&quot;).scalar</pre>
+<p>calls cgi.param(&quot;foo&quot;) in scalar context (unlike my wimpy
+scalar op from last night).  Array context is the default.</p>
+<p>With non-function operands, scalar behaves like the perl
+version (eg: no-op for scalar, size for arrays, etc).</p>
+<p>* supports the special op &quot;ref&quot; that behaves like the perl ref.
+If applied to a function the function is not called.  Eg:</p>
+<pre>
+    cgi.param(&quot;foo&quot;).ref</pre>
+<p>does *not* call cgi.param and evaluates to &quot;CODE&quot;.  Similarly,
+HASH.ref, ARRAY.ref return what you expect.</p>
+<p>* adds a new scalar and list op called &quot;array&quot; that is a no-op for
+arrays and promotes scalars to one-element arrays.</p>
+<p>* allows scalar ops to be applied to arrays and hashes in place,
+eg: ARRAY.repeat(3) repeats each element in place.</p>
+<p>* allows list ops to be applied to scalars by promoting the scalars
+to one-element arrays (like an implicit &quot;array&quot;).  So you can
+do things like SCALAR.size, SCALAR.join and get a useful result.</p>
+<p>This also means you can now use x.0 to safely get the first element
+whether x is an array or scalar.</p>
+<p>The new Stash.pm passes the TT2.02 test suite.  But I haven't tested the
+new features very much.  One nagging implementation problem is that the
+&quot;scalar&quot; and &quot;ref&quot; ops have higher precedence than user variable names.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt;</p>
+<p><a href="http://wardley.org/|http://wardley.org/">http://wardley.org/|http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="version">VERSION</a></h1>
+<p>1.63, distributed as part of the
+Template Toolkit version 2.19, released on 27 April 2007.</p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<pre>
+  Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.</pre>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Stash.html">Template::Stash</a></p>
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<h1>DB Patch Log </h1>
+
+<body>
+DB Patch Log
+
+<table border=3>
+<tr><th colspan="3" style="background-color: #07A133; color: #ffffff;"> [% var1 %] </th></tr>
+  <tr style="background-color: #07A133; color: #ffffff;">
+    
+    <th>View</th>
+    <th>File</th>
+    <th>Status</th> 
+   
+</tr>
+
+
+[% FOREACH key IN var2 %]
+
+ <tr>
+ [% name = key.value.1 %]
+ [% matches= name.match ('\w+/(\w+)_\d+_\d+_\d+/')%]
+ <td>
+ [% matches.0 %]
+ </td>
+ <td>[% key.key %][% key.value.2 %]</td>
+ 
+ 
+   [% SWITCH key.value.0 %]
+   [%   CASE 'OK' %]
+        <td align="center" style=" color:black; background-color: #07A133">
+           [% key.value.0 %]</td>
+   [%   CASE 'ERROR' %]
+        <td align="center" style=" color:black; background-color: red">
+	<a href="cid:attach-[% key.key %].txt">[% key.value.0 %]</a> </td>
+[%   CASE 'WARNING' %]
+        <td align="center" style=" color:black; background-color: yellow">
+	<a href="cid:attach-[% key.key %].txt">[% key.value.0 %]</a> </td>
+	[% END %]
+   
+	
+</tr>
+
+
+[% END %]
+
+        </body>
+
+
+

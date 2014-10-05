@@ -1,0 +1,5 @@
+package Pkg1;
+$msg="Inside of Package1";
+
+
+1;

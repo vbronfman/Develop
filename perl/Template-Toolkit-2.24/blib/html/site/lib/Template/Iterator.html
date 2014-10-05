@@ -1,0 +1,296 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../scineplex.css">
+<title>Template::Iterator - Data iterator used by the FOREACH directive</title>
+<link rel="stylesheet" href="../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',3);</script>
+<h1><a>Template::Iterator - Data iterator used by the FOREACH directive</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#public_methods">PUBLIC METHODS</a></li>
+	<ul>
+
+		<li><a href="#new__data_"><code>new($data)</code></a></li>
+		<li><a href="#get_first__"><code>get_first()</code></a></li>
+		<li><a href="#get_next__"><code>get_next()</code></a></li>
+		<li><a href="#get_all__"><code>get_all()</code></a></li>
+		<li><a href="#size__"><a href="../../../lib/pods/perlfunc.html#size"><code>size()</code></a></a></li>
+		<li><a href="#max__"><code>max()</code></a></li>
+		<li><a href="#index__"><a href="../../../lib/pods/perlfunc.html#index"><code>index()</code></a></a></li>
+		<li><a href="#count__"><code>count()</code></a></li>
+		<li><a href="#first__"><code>first()</code></a></li>
+		<li><a href="#last__"><a href="../../../lib/pods/perlfunc.html#last"><code>last()</code></a></a></li>
+		<li><a href="#prev__"><code>prev()</code></a></li>
+		<li><a href="#next__"><a href="../../../lib/pods/perlfunc.html#next"><code>next()</code></a></a></li>
+		<li><a href="#parity__"><code>parity()</code></a></li>
+		<li><a href="#odd__"><code>odd()</code></a></li>
+		<li><a href="#even__"><code>even()</code></a></li>
+	</ul>
+
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Iterator - Data iterator used by the FOREACH directive</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$iter</span> <span class="operator">=</span> <span class="variable">Template::Iterator</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(\</span><span class="variable">@data</span><span class="operator">,</span> <span class="operator">\</span><span class="variable">%options</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>The <code>Template::Iterator</code> module defines a generic data iterator for use 
+by the <code>FOREACH</code> directive.</p>
+<p>It may be used as the base class for custom iterators.</p>
+<p>
+</p>
+<hr />
+<h1><a name="public_methods">PUBLIC METHODS</a></h1>
+<p>
+</p>
+<h2><a name="new__data_"><code>new($data)</code></a></h2>
+<p>Constructor method.  A reference to a list of values is passed as the
+first parameter.  Subsequent calls to <em>get_first()</em> and <em>get_next()</em> calls 
+will return each element from the list.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$iter</span> <span class="operator">=</span> <span class="variable">Template::Iterator</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">[</span> <span class="string">'foo'</span><span class="operator">,</span> <span class="string">'bar'</span><span class="operator">,</span> <span class="string">'baz'</span> <span class="operator">]</span><span class="operator">);</span>
+</pre>
+<p>The constructor will also accept a reference to a hash array and will 
+expand it into a list in which each entry is a hash array containing
+a '<code>key</code>' and '<code>value</code>' item, sorted according to the hash keys.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$iter</span> <span class="operator">=</span> <span class="variable">Template::Iterator</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> 
+        <span class="string">foo</span> <span class="operator">=&gt;</span> <span class="string">'Foo Item'</span><span class="operator">,</span>
+        <span class="string">bar</span> <span class="operator">=&gt;</span> <span class="string">'Bar Item'</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>This is equivalent to:</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$iter</span> <span class="operator">=</span> <span class="variable">Template::Iterator</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">[</span>
+        <span class="operator">{</span> <span class="string">key</span> <span class="operator">=&gt;</span> <span class="string">'bar'</span><span class="operator">,</span> <span class="string">value</span> <span class="operator">=&gt;</span> <span class="string">'Bar Item'</span> <span class="operator">}</span><span class="operator">,</span>
+        <span class="operator">{</span> <span class="string">key</span> <span class="operator">=&gt;</span> <span class="string">'foo'</span><span class="operator">,</span> <span class="string">value</span> <span class="operator">=&gt;</span> <span class="string">'Foo Item'</span> <span class="operator">}</span><span class="operator">,</span>
+    <span class="operator">]</span><span class="operator">);</span>
+</pre>
+<p>When passed a single item which is not an array reference, the constructor
+will automatically create a list containing that single item.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$iter</span> <span class="operator">=</span> <span class="variable">Template::Iterator</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="string">'foo'</span><span class="operator">);</span>
+</pre>
+<p>This is equivalent to:</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$iter</span> <span class="operator">=</span> <span class="variable">Template::Iterator</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">[</span> <span class="string">'foo'</span> <span class="operator">]</span><span class="operator">);</span>
+</pre>
+<p>Note that a single item which is an object based on a blessed ARRAY 
+references will NOT be treated as an array and will be folded into 
+a list containing that one object reference.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$list</span> <span class="operator">=</span> <span class="keyword">bless</span> <span class="operator">[</span> <span class="string">'foo'</span><span class="operator">,</span> <span class="string">'bar'</span> <span class="operator">]</span><span class="operator">,</span> <span class="string">'MyListClass'</span><span class="operator">;</span>
+    <span class="keyword">my</span> <span class="variable">$iter</span> <span class="operator">=</span> <span class="variable">Template::Iterator</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="variable">$list</span><span class="operator">);</span>
+</pre>
+<p>equivalent to:</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$iter</span> <span class="operator">=</span> <span class="variable">Template::Iterator</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">[</span> <span class="variable">$list</span> <span class="operator">]</span><span class="operator">);</span>
+</pre>
+<p>If the object provides an <code>as_list()</code> method then the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Iterator.html">the Template::Iterator manpage</a>
+constructor will call that method to return the list of data.  For example:</p>
+<pre>
+    <span class="keyword">package</span> <span class="variable">MyListObject</span><span class="operator">;</span>
+    
+    <span class="keyword">sub</span><span class="variable"> new </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="variable">$class</span> <span class="operator">=</span> <span class="keyword">shift</span><span class="operator">;</span>
+        <span class="keyword">bless</span> <span class="operator">[</span> <span class="variable">@_</span> <span class="operator">]</span><span class="operator">,</span> <span class="variable">$class</span><span class="operator">;</span>
+    <span class="operator">}</span>
+</pre>
+<pre>
+    <span class="keyword">package</span> <span class="variable">main</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$list</span> <span class="operator">=</span> <span class="variable">MyListObject</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="string">'foo'</span><span class="operator">,</span> <span class="string">'bar'</span><span class="operator">);</span>
+    <span class="keyword">my</span> <span class="variable">$iter</span> <span class="operator">=</span> <span class="variable">Template::Iterator</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="variable">$list</span><span class="operator">);</span>
+</pre>
+<p>This is then functionally equivalent to:</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$iter</span> <span class="operator">=</span> <span class="variable">Template::Iterator</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">[</span> <span class="variable">$list</span> <span class="operator">]</span><span class="operator">);</span>
+</pre>
+<p>The iterator will return only one item, a reference to the <code>MyListObject</code>
+object, <code>$list</code>.</p>
+<p>By adding an <code>as_list()</code> method to the <code>MyListObject</code> class, we can force
+the <code>Template::Iterator</code> constructor to treat the object as a list and 
+use the data contained within.</p>
+<pre>
+    <span class="keyword">package</span> <span class="variable">MyListObject</span><span class="operator">;</span>
+    
+    <span class="operator">...</span>
+    
+    <span class="keyword">sub</span><span class="variable"> as_list </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="variable">$self</span> <span class="operator">=</span> <span class="keyword">shift</span><span class="operator">;</span>
+        <span class="keyword">return</span> <span class="variable">$self</span><span class="operator">;</span>
+    <span class="operator">}</span>
+    
+    <span class="keyword">package</span> <span class="variable">main</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$list</span> <span class="operator">=</span> <span class="variable">MyListObject</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="string">'foo'</span><span class="operator">,</span> <span class="string">'bar'</span><span class="operator">);</span>
+    <span class="keyword">my</span> <span class="variable">$iter</span> <span class="operator">=</span> <span class="variable">Template::Iterator</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="variable">$list</span><span class="operator">);</span>
+</pre>
+<p>The iterator will now return the two items, '<code>foo</code>' and '<code>bar</code>', which the 
+<code>MyObjectList</code> encapsulates.</p>
+<p>
+</p>
+<h2><a name="get_first__"><code>get_first()</code></a></h2>
+<p>Returns a <code>($value, $error)</code> pair for the first item in the iterator set.
+The <code>$error</code> returned may be zero or undefined to indicate a valid datum
+was successfully returned.  Returns an error of <code>STATUS_DONE</code> if the list 
+is empty.</p>
+<p>
+</p>
+<h2><a name="get_next__"><code>get_next()</code></a></h2>
+<p>Returns a <code>($value, $error)</code> pair for the next item in the iterator set.
+Returns an error of <code>STATUS_DONE</code> if all items in the list have been 
+visited.</p>
+<p>
+</p>
+<h2><a name="get_all__"><code>get_all()</code></a></h2>
+<p>Returns a <code>(\@values, $error)</code> pair for all remaining items in the iterator 
+set.  Returns an error of <code>STATUS_DONE</code> if all items in the list have been 
+visited.</p>
+<p>
+</p>
+<h2><a name="size__"><a href="../../../lib/pods/perlfunc.html#size"><code>size()</code></a></a></h2>
+<p>Returns the size of the data set or undef if unknown.</p>
+<p>
+</p>
+<h2><a name="max__"><code>max()</code></a></h2>
+<p>Returns the maximum index number (i.e. the index of the last element) 
+which is equivalent to <a href="../../../lib/pods/perlfunc.html#size">size()</a> - <code>1</code>.</p>
+<p>
+</p>
+<h2><a name="index__"><a href="../../../lib/pods/perlfunc.html#index"><code>index()</code></a></a></h2>
+<p>Returns the current index number which is in the range <code>0</code> to <em>max()</em>.</p>
+<p>
+</p>
+<h2><a name="count__"><code>count()</code></a></h2>
+<p>Returns the current iteration count in the range <code>1</code> to <a href="../../../lib/pods/perlfunc.html#size">size()</a>.  This is
+equivalent to <a href="../../../lib/pods/perlfunc.html#index">index()</a> + <code>1</code>.</p>
+<p>
+</p>
+<h2><a name="first__"><code>first()</code></a></h2>
+<p>Returns a boolean value to indicate if the iterator is currently on 
+the first iteration of the set.</p>
+<p>
+</p>
+<h2><a name="last__"><a href="../../../lib/pods/perlfunc.html#last"><code>last()</code></a></a></h2>
+<p>Returns a boolean value to indicate if the iterator is currently on
+the last iteration of the set.</p>
+<p>
+</p>
+<h2><a name="prev__"><code>prev()</code></a></h2>
+<p>Returns the previous item in the data set, or <a href="../../../lib/pods/perlfunc.html#undef"><code>undef</code></a> if the iterator is
+on the first item.</p>
+<p>
+</p>
+<h2><a name="next__"><a href="../../../lib/pods/perlfunc.html#next"><code>next()</code></a></a></h2>
+<p>Returns the next item in the data set or <a href="../../../lib/pods/perlfunc.html#undef"><code>undef</code></a> if the iterator is on the 
+last item.</p>
+<p>
+</p>
+<h2><a name="parity__"><code>parity()</code></a></h2>
+<p>Returns the text string <code>even</code> or <code>odd</code> to indicate the parity of the 
+current iteration count (starting at 1).  This is typically used to create
+striped <em>zebra tables</em>.</p>
+<pre>
+    &lt;table&gt;
+    [% FOREACH name IN ['Arthur', 'Ford', 'Trillian'] -%]
+      &lt;tr class=&quot;[% loop.parity %]&quot;&gt;
+        &lt;td&gt;[% name %]&lt;/td&gt;
+      &lt;/tr&gt;
+    [% END %]
+    &lt;/table&gt;</pre>
+<p>This will produce the following output:</p>
+<pre>
+    &lt;table&gt;
+      &lt;tr class=&quot;odd&quot;&gt;
+        &lt;td&gt;Arthur&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr class=&quot;even&quot;&gt;
+        &lt;td&gt;Ford&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr class=&quot;odd&quot;&gt;
+        &lt;td&gt;Trillian&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;</pre>
+<p>You can then style the <code>tr.odd</code> and <code>tr.even</code> elements using CSS:</p>
+<pre>
+    tr.odd td {
+        background-color: black;
+        color: white;
+    }
+    
+    tr.even td {
+        background-color: white;
+        color: black;
+    }</pre>
+<p>
+</p>
+<h2><a name="odd__"><code>odd()</code></a></h2>
+<p>Returns a boolean (0/1) value to indicate if the current iterator count
+(starting at 1) is an odd number. In other words, this will return a true
+value for the first iterator, the third, fifth, and so on.</p>
+<p>
+</p>
+<h2><a name="even__"><code>even()</code></a></h2>
+<p>Returns a boolean (0/1) value to indicate if the current iterator count
+(starting at 1) is an even number. In other words, this will return a true
+value for the second iteration, the fourth, sixth, and so on.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a></p>
+
+</body>
+
+</html>

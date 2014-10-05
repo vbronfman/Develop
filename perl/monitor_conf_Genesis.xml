@@ -1,0 +1,1161 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>-->
+
+<!--
+	Monitor application configuration file
+In order to add environment:
+- copy any <environment> section of a same product
+- update connection properties
+- verify at a monitored  host   availability of command/script specified in <command> 
+
+-->
+
+<monitor> 
+
+<products>
+<!-- osagent ioragent cms_billing cms_spectra cms_adapter provisioning -->
+    <product id="1" ITsystem="OSAGENT" name="OSAGENT" state="disabled">
+       <environment env="TST1" state="disabled"> 
+            <account>targys@it4tst1_old</account>
+            <account>targys2@it4tst1_old</account>
+            <user></user>
+       </environment>
+       <environment env="TST3" state="disabled"> 
+            <account>targys@vmcmstst3_rh5</account>
+            <account>targys2@vmcmstst3_rh5</account>
+            <user></user>
+       </environment>
+       <environment env="Train1" state="disabled"> 
+            <account>targys@tetra</account>
+            <account>targys2@tetra</account>
+            <user></user>
+       </environment>
+       
+        <environment env="Train2" state="disabled"> 
+            <account>targys@tetra</account>
+            <account>targys2@tetra</account>
+            <user></user>
+        </environment>
+       <cmd command="status" timeout="0">./bin/osagent.sh status</cmd>
+    </product>
+    
+    <product id="2" ITsystem="IORAGENT" name="IORAgent">
+    <!--  undef    -->
+        <environment env="TST1" db="bscstst1" state="disabled"> 
+        <account>targys@znbilldbdev01</account>
+        <user></user>
+        </environment>
+       <environment env="TST3" db="bscstst3" state="enabled"> 
+        <account>targys@vmcmstst3</account>
+        <user></user>
+        </environment>
+       <environment env="Train1" db="bstrain2" state="enabled"> 
+        <account>targys@tetra</account>
+        <user></user>
+        </environment>
+       
+    <environment env="Train2" db="bstrain3" state="disabled"> 
+        <account>targys@tetra</account>
+        <user></user>
+    <!--   <db>bstrain1</db> -->
+        </environment>
+    <!-- Variable ${DB} will be replaced with value of <db> section   -->
+       <cmd command="status" timeout="0"> ./bin/ioragent.sh status ${DB} </cmd>
+    
+    </product>
+    
+    <product id="3" ITsystem="CMS_BILLING" name="CMS_Billing">
+        <!--  undef    -->
+        
+        <environment env="TST1" state="enabled"> 
+        <account>targys2@it4tst1_old</account>
+        <user></user>
+        </environment>
+       <environment env="TST3" state="enabled"> 
+        <account>targys2@vmcmstst3_rh5</account>
+        <user></user>
+        </environment>
+       <environment env="Train1" > 
+        <account>targys@tetra</account>
+        <user></user>
+        </environment>
+       
+    <environment env="Train2" state="disabled"> 
+        <account>targys@tetra</account>
+        <user></user>
+        </environment>
+    <!-- Variable ${DB} will be replaced with value of 'environment' attribute   -->
+       <cmd command="status" timeout="0">./bin/statusCMS -m bill 4</cmd>
+    </product>
+    
+    <product id="4" ITsystem="CMS_Spectra" name="CMS_Spectra">
+        <!--  undef    -->
+        <environment env="TST1" state="enabled" > 
+        <account>targys2@it4tst1_old</account>
+        <user></user>
+        </environment>
+       <environment env="TST3" state="enabled"> 
+        <account>targys2@vmcmstst3_rh5</account>
+        <user></user>
+        </environment>
+       <environment env="Train1" state="enabled"> 
+        <account>targys2@tetra</account>
+        <user></user>
+        </environment>
+       
+    <environment env="Train2" state="disabled"> 
+        <account>targys2@tetra</account>
+        <user></user>
+        </environment>
+       <cmd command="status" timeout="60">./bin/statusCMS -m spectra 4</cmd>
+    
+    </product>
+    
+    <product id="5" ITsystem="CMS_ADAPTER" name="CMS_Adapter">
+    <!--  undef    -->
+    
+        <environment env="TST1" state="enabled"> 
+            <account>tibco55@Kermit</account>
+        </environment>
+       <environment env="TST3" state="enabled"> 
+            <account>tibco@it3tst3</account>
+        </environment>
+    
+       <environment env="Train1" state="disabled"> 
+        <account>tibco54@IFBLTRN1</account>
+        <user></user>
+       </environment>
+        
+        <environment env="Train2" state="disabled"> 
+        <account>tibco54@IFBLTRN2</account>
+        <user></user>
+        </environment>
+       
+       <cmd command="status" timeout="0">./cmsadapter/bin/statusCMSAdapter</cmd> 
+    </product>
+    
+
+ <product id="33" ITsystem="PapiAdapter" name="PapiAdapter" state="enabled">
+    
+        <environment env="TST1" state="enabled"> 
+            <account>targys@it4tst1_old</account>
+            <account>targys2@it4tst1_old</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>targys@vmcmstst3_rh5</account>
+            <account>targys2@vmcmstst3_rh5</account>
+
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="disabled"> 
+            <account>targys@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>targys@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>cmsbldev2@vmit12dev02</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev3" state="disabled"> 
+            <account>cmsbldev2@vmit12dev02</account>
+            <user></user>
+        </environment>
+
+        <cmd command="status" timeout="0">
+            papiadapter/bin/checkLoadAdapter
+        </cmd>
+    
+    </product>
+  
+    <product id="14" ITsystem="BA" name="HTTP_Server" >
+    
+        <environment env="TST1" state="enabled"> 
+            <account>oracle@it2tst1</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>oracle@vmbatest3</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="enabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>oracle@vmit9dev02</account>
+            <user></user>
+        </environment>
+	
+	<environment env="Dev3" state="disabled"> 
+            <account>oracle@vmit9dev03</account>
+            <user></user>
+        </environment>
+
+        <cmd command="status" timeout="0">
+            perl statusBA.pl HTTP_Server
+        </cmd>
+    </product>
+	
+	<product id="15" ITsystem="BA" name="home" >
+    
+        <environment env="TST1" state="enabled"> 
+            <account>oracle@it2tst1</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>oracle@vmbatest3</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="enabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>oracle@vmit9dev02</account>
+            <user></user>
+        </environment>
+	
+	<environment env="Dev3" state="disabled"> 
+            <account>oracle@vmit9dev03</account>
+            <user></user>
+        </environment>
+
+        <cmd command="status" timeout="0">perl statusBA.pl home</cmd>
+	</product>
+	
+	<product id="16" ITsystem="BA" name="OC4J_BI_Forms" >
+    
+        <environment env="TST1" state="enabled"> 
+            <account>oracle@it2tst1</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>oracle@vmbatest3</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="enabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>oracle@vmit9dev02</account>
+            <user></user>
+        </environment>
+	
+	<environment env="Dev3" state="disabled"> 
+            <account>oracle@vmit9dev03</account>
+            <user></user>
+        </environment>	
+
+        <cmd command="status" timeout="0">perl statusBA.pl OC4J_BI_Forms</cmd>
+	</product>
+	
+	<product id="17" ITsystem="BA" name="ReportsServer" >
+    
+        <environment env="TST1" state="enabled"> 
+            <account>oracle@it2tst1</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>oracle@vmbatest3</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="enabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>oracle@vmit9dev02</account>
+            <user></user>
+        </environment>
+	
+	<environment env="Dev3" state="disabled"> 
+            <account>oracle@vmit9dev03</account>
+            <user></user>
+        </environment>
+
+        <cmd command="status" timeout="0">perl statusBA.pl ReportsServer</cmd>
+	</product>
+
+    <product id="34" name="TEST1" state="disabled">
+       <!--  undef  @tetra petra --> 
+        <environment env="TEST_ENV1" state="enabled"> 
+        <account>ccmngr@ponda</account>
+        <user></user>
+        </environment>
+        <environment env="TEST_ENV2" state="enabled"> 
+        <account>ccmngr@ponda</account>
+        <user></user>
+        </environment>
+           <cmd command="status" timeout="0"> Develop/Monitor/test_failure $RET $ENV{COMPUTERNAME}</cmd>
+    </product>
+    
+      
+    <product id="37" name="TEST3" state="disabled">
+       <!--  undef  @tetra petra --> 
+        <environment env="TEST_ENV1" state="enabled"> 
+        <account>ccmngr@ponda</account>
+        <user></user>
+        </environment>
+        <environment env="TEST_ENV2" state="enabled"> 
+        <account>ccmngr@ponda</account>
+        <user></user>
+        </environment>
+           <cmd command="status" timeout="0"> Develop/Monitor/test_failure</cmd>
+    </product>
+
+
+<product id="11" ITsystem="VANTIVE" name="iwcacheds" >
+    
+    <environment env="TST1" state="enabled"> 
+        <account>vantive@znvantst1</account>
+        <user></user>
+        </environment>
+    <environment env="TST3" state="enabled"> 
+        <account>vantive@znvantst3</account>
+        <user></user>
+        </environment>
+    <environment env="TrainB" state="enabled"> 
+        <account>vantive@petra</account>
+        <user></user>
+        </environment>
+    <environment env="TrainC" state="disabled"> 
+        <account>vantive@petra</account>
+        <user></user>
+        </environment>
+    
+    <environment env="Dev2" state="enabled"> 
+        <account>vantive@znit10dev02</account>
+        <user></user>
+	</environment>
+    
+    <environment env="Dev3" state="enabled"> 
+        <account>vantive@znit10dev03</account>
+        <user></user>
+	</environment>
+    
+    <cmd command="status" timeout="60">vantive85_3/status_vantive.csh iwcacheds</cmd>
+    
+    </product>
+    
+        <product id="12" ITsystem="VANTIVE" name="iwalarmds" state="enabled">
+    
+    <environment env="TST1" state="enabled"> 
+        <account>vantive@znvantst1</account>
+        <user></user>
+        </environment>
+    <environment env="TST3" state="enabled"> 
+        <account>vantive@znvantst3</account>
+        <user></user>
+        </environment>
+    <environment env="TrainB" state="disabled"> 
+        <account>vantive@petra</account>
+        <user></user>
+        </environment>
+    <environment env="TrainC" state="disabled"> 
+        <account>vantive@petra</account>
+        <user></user>
+        </environment>
+    
+    <environment env="Dev2" state="enabled"> 
+        <account>vantive@znit10dev02</account>
+        <user></user>
+	</environment>
+    
+    <environment env="Dev3" state="enabled"> 
+        <account>vantive@znit10dev03</account>
+        <user></user>
+	</environment>
+    
+   <!-- <cmd command="status" timeout="120">pgrep iwalarmds</cmd> -->
+<cmd command="status" timeout="120">vantive85_3/status_vantive.csh iwalarmds</cmd>
+    
+    </product>
+    
+    <product id="13" ITsystem="VANTIVE" name="vanserv" state="enabled" >
+    
+    <environment env="TST1" state="enabled"> 
+        <account>vantive@znvantst1</account>
+        <user></user>
+        </environment>
+    <environment env="TST3" state="enabled"> 
+        <account>vantive@znvantst3</account>
+        <user></user>
+        </environment>
+    <environment env="TrainB" state="enabled"> 
+        <account>vantive@petra</account>
+        <user></user>
+        </environment>
+    <environment env="TrainC" state="disabled"> 
+        <account>vantive@petra</account>
+        <user></user>
+        </environment>
+    
+    <environment env="Dev2" state="enabled"> 
+        <account>vantive@znit10dev02</account>
+        <user></user>
+	</environment>
+    
+    <environment env="Dev3" state="enabled"> 
+        <account>vantive@znit10dev03</account>
+        <user></user>
+	</environment>
+    
+    <cmd command="status" timeout="60">vantive85_3/status_vantive.csh vanserv</cmd>
+    
+    </product>
+    
+<product id="6" ITsystem="PROVISIONING" name="VMD" state="enabled">1
+       <!--  undef  @tetra petra --> 
+        <environment env="TST1" state="enabled"> 
+        <account>bscstst1@znbillapptst1</account>
+        <user></user>
+        </environment>
+       <environment env="TST3" state="enabled"> 
+        <account>bscstst3@znbillapptst3</account>
+        <user></user>
+        </environment>
+       <environment env="Train1" state="disabled"> 
+        <account>undef</account>
+        <user></user>
+        </environment>
+       
+    <environment env="Train2" state="disabled"> 
+        <account>undef</account>
+        <user></user>
+        </environment>
+    <environment env="Dev2" state="enabled"> 
+        <account>bscsdev2@znit10dev02</account>
+        <user></user>
+        </environment>
+    <environment env="Dev3" state="enabled"> 
+        <account>bscsdev3@znit10dev03</account>
+        <user></user>
+        </environment>
+       <cmd command="status" timeout="0">/ITLAB_share/itlab/provisioning.sh -statusvmd</cmd>
+    
+    </product>
+    
+    
+    <product id="6" ITsystem="PROVISIONING" name="GMD" state="enabled">
+       <!--  undef  @tetra petra --> 
+        <environment env="TST1" state="enabled"> 
+        <account>bscstst1@znbillapptst1</account>
+        <user></user>
+        </environment>
+       <environment env="TST3" state="enabled"> 
+        <account>bscstst3@znbillapptst3</account>
+        <user></user>
+        </environment>
+       <environment env="Train1" state="disabled"> 
+        <account>undef</account>
+        <user></user>
+        </environment>
+       
+    <environment env="Train2" state="disabled"> 
+        <account>undef</account>
+        <user></user>
+        </environment>
+    <environment env="Dev2" state="enabled"> 
+        <account>bscsdev2@znit10dev02</account>
+        <user></user>
+        </environment>
+    <environment env="Dev3" state="enabled"> 
+        <account>bscsdev3@znit10dev03</account>
+        <user></user>
+        </environment>
+       <cmd command="status" timeout="0">/ITLAB_share/itlab/provisioning.sh -statusgmd</cmd>
+    
+    </product>
+    
+    
+    <product id="6" ITsystem="PROVISIONING" name="CONDACT" state="enabled">
+       <!--  undef  @tetra petra --> 
+        <environment env="TST1" state="enabled"> 
+        <account>bscstst1@znbillapptst1</account>
+        <user></user>
+        </environment>
+       <environment env="TST3" state="enabled"> 
+        <account>bscstst3@znbillapptst3</account>
+        <user></user>
+        </environment>
+    <environment env="Dev2" state="enabled"> 
+        <account>bscsdev2@znit10dev02</account>
+        <user></user>
+        </environment>
+    <environment env="Dev3" state="enabled"> 
+        <account>bscsdev3@znit10dev03</account>
+        <user></user>
+        </environment>
+    <cmd command="status" timeout="0">/ITLAB_share/itlab/provisioning.sh -statuscondact</cmd>
+    
+    </product>
+ 
+
+
+<product id="18" ITsystem="RTX" name="DATA" >
+    
+        <environment env="TST1" state="disabled">   
+            <account>oracle@it2tst1</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>rattst3@znbillapptst3</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>ratdev2@znit10dev02</account>
+            <user></user>
+        </environment>
+	
+	<environment env="Dev3" state="enabled"> 
+            <account>ratdev3@znit10dev03</account>
+            <user></user>
+        </environment>
+
+        <cmd command="status" timeout="0">
+            . ~/.profile;ps -ef| grep -v grep | grep  DATA
+        </cmd>
+    </product>
+
+
+	
+	<product id="19" ITsystem="RTX" name="DIH" >
+    
+        <environment env="TST1" state="disabled"> 
+            <account>oracle@it2tst1</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>rattst3@znbillapptst3</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>ratdev2@znit10dev02</account>
+            <user></user>
+        </environment>
+	
+	<environment env="Dev3" state="enabled"> 
+            <account>ratdev3@znit10dev03</account>
+            <user></user>
+        </environment>
+
+        <cmd command="status" timeout="0">
+            . ~/.profile;ps -ef| grep -v grep | grep -i DIH
+        </cmd>
+	</product>
+	
+	<product id="20" ITsystem="RTX" name="FIH" >
+    
+        <environment env="TST1" state="disabled"> 
+            <account>oracle@it2tst1</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>rattst3@znbillapptst3</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>ratdev2@znit10dev02</account>
+            <user></user>
+        </environment>
+	
+	<environment env="Dev3" state="enabled"> 
+            <account>ratdev3@znit10dev03</account>
+            <user></user>
+        </environment>
+
+        <cmd command="status" timeout="0">
+            . ~/.profile;ps -ef| grep -v grep | grep -i FIH
+        </cmd>
+	</product>
+	
+	<product id="21" ITsystem="RTX" name="RDH_PRIH" >
+    
+        <environment env="TST1" state="disabled"> 
+            <account>oracle@it2tst1</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>rattst3@znbillapptst3</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>ratdev2@znit10dev02</account>
+            <user></user>
+        </environment>
+	
+	<environment env="Dev3" state="enabled"> 
+            <account>ratdev3@znit10dev03</account>
+            <user></user>
+        </environment>
+
+        <cmd command="status" timeout="0">
+            . ~/.profile;ps -ef| grep -v grep | grep -i RDH_PRIH
+        </cmd>
+	</product>
+
+	
+	<product id="22" ITsystem="RTX" name="RDH_RIH" >
+    
+        <environment env="TST1" state="disabled"> 
+            <account>oracle@it2tst1</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>rattst3@znbillapptst3</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>ratdev2@znit10dev02</account>
+            <user></user>
+        </environment>
+	
+	<environment env="Dev3" state="enabled"> 
+            <account>ratdev3@znit10dev03</account>
+            <user></user>
+        </environment>
+
+        <cmd command="status" timeout="0">
+            . ~/.profile;ps -ef| grep -v grep | grep -i RDH_RIH
+        </cmd>
+	</product>
+
+	
+	<product id="23" ITsystem="RTX" name="RIH" >
+    
+        <environment env="TST1" state="disabled"> 
+            <account>oracle@it2tst1</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>rattst3@znbillapptst3</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>ratdev2@znit10dev02</account>
+            <user></user>
+        </environment>
+	
+	<environment env="Dev3" state="enabled"> 
+            <account>ratdev3@znit10dev03</account>
+            <user></user>
+        </environment>
+
+        <cmd command="status" timeout="0">
+            . ~/.profile;ps -ef| grep -v grep | grep -i RIH
+        </cmd>
+    
+    </product>
+
+
+<product id="24" ITsystem="RTX" name="rihec" >
+    
+        <environment env="TST1" state="disabled"> 
+            <account>oracle@it2tst1</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>rattst3@znbillapptst3</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>ratdev2@znit10dev02</account>
+            <user></user>
+        </environment>
+	
+	<environment env="Dev3" state="enabled"> 
+            <account>ratdev3@znit10dev03</account>
+            <user></user>
+        </environment>
+
+        <cmd command="status" timeout="0">
+            . ~/.profile;ps -ef| grep -v grep | grep -i rihec
+        </cmd>
+    
+    </product>
+
+
+<product id="25" ITsystem="RTX" name="prih" >
+    
+        <environment env="TST1" state="disabled"> 
+            <account>oracle@it2tst1</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>rattst3@znbillapptst3</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>ratdev2@znit10dev02</account>
+            <user></user>
+        </environment>
+	
+	<environment env="Dev3" state="enabled"> 
+            <account>ratdev3@znit10dev03</account>
+            <user></user>
+        </environment>
+
+        <cmd command="status" timeout="0">
+            . ~/.profile;ps -ef| grep -v grep | grep  prih
+        </cmd>
+    
+    </product>
+
+<product id="26" ITsystem="RTX" name="RPE" >
+    
+        <environment env="TST1" state="disabled"> 
+            <account>oracle@it2tst1</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>rattst3@znbillapptst3</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>ratdev2@znit10dev02</account>
+            <user></user>
+        </environment>
+	
+	<environment env="Dev3" state="enabled"> 
+            <account>ratdev3@znit10dev03</account>
+            <user></user>
+        </environment>
+
+        <cmd command="status" timeout="0">
+            . ~/.profile;ps -ef| grep -v grep | grep -i RPE
+        </cmd>
+    
+    </product>
+
+
+
+<product id="27" ITsystem="RTX" name="FUH" >
+    
+        <environment env="TST1" state="disabled"> 
+            <account>oracle@it2tst1</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>rattst3@znbillapptst3</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>ratdev2@znit10dev02</account>
+            <user></user>
+        </environment>
+	
+	<environment env="Dev3" state="enabled"> 
+            <account>ratdev3@znit10dev03</account>
+            <user></user>
+        </environment>
+
+        <cmd command="status" timeout="0">
+            . ~/.profile;ps -ef| grep -v grep | grep -i FUH
+        </cmd>
+    
+    </product>
+
+<product id="28" ITsystem="RTX" name="RLH" >
+    
+        <environment env="TST1" state="disabled"> 
+            <account>oracle@it2tst1</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>rattst3@znbillapptst3</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>ratdev2@znit10dev02</account>
+            <user></user>
+        </environment>
+	
+	<environment env="Dev3" state="enabled"> 
+            <account>ratdev3@znit10dev03</account>
+            <user></user>
+        </environment>
+
+        <cmd command="status" timeout="0">
+            . ~/.profile;ps -ef| grep -v grep | grep -i RLH
+        </cmd>
+    
+    </product>
+
+<product id="29" ITsystem="RTX" name="UDRSYNC" >
+    
+        <environment env="TST1" state="disabled"> 
+            <account>oracle@it2tst1</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>rattst3@znbillapptst3</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>ratdev2@znit10dev02</account>
+            <user></user>
+        </environment>
+	
+	<environment env="Dev3" state="enabled"> 
+            <account>ratdev3@znit10dev03</account>
+            <user></user>
+        </environment>
+
+        <cmd command="status" timeout="0">
+            . ~/.profile;ps -ef| grep -v grep | grep -i UDRSYNC
+        </cmd>
+    
+    </product>
+
+<product id="30" ITsystem="RTX" name="GUHEC" >
+    
+        <environment env="TST1" state="disabled"> 
+            <account>oracle@it2tst1</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>rattst3@znbillapptst3</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>ratdev2@znit10dev02</account>
+            <user></user>
+        </environment>
+	
+	<environment env="Dev3" state="enabled"> 
+            <account>ratdev3@znit10dev03</account>
+            <user></user>
+        </environment>
+
+        <cmd command="status" timeout="0">
+            . ~/.profile;ps -ef| grep -v grep | grep -i GUHEC
+        </cmd>
+    
+    </product>
+
+	<product id="31" ITsystem="RTX" name="RVSH" >
+    
+        <environment env="TST1" state="disabled"> 
+            <account>rattst1@znbillapptst1</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>rattst3@znbillapptst3</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>ratdev2@znit10dev02</account>
+            <user></user>
+        </environment>
+	
+	<environment env="Dev3" state="enabled"> 
+            <account>ratdev3@znit10dev03</account>
+            <user></user>
+        </environment>
+
+        <cmd command="status" timeout="0">
+            . ~/.profile;ps -ef| grep -v grep | grep -i RVSH
+        </cmd>
+    
+    </product>
+
+<product id="31" ITsystem="TibcoIFBL" name="rvrd" >
+    
+	<environment env="Tst1" state="disabled"> 
+            <account>unknown@unknown</account>
+            <user></user>
+        </environment>
+       
+
+<environment env="Dev2" state="enabled"> 
+            <account>tbifblbe@vmit12dev02</account>
+            <user></user>
+        </environment>
+
+<environment env="Dev3" state="disabled"> 
+            <account>tbifblbe@vmit12dev03</account>
+            <user></user>
+        </environment>
+
+  <cmd command="status" timeout="0">
+            pgrep -i rvrd
+        </cmd>
+  
+</product>
+
+<product id="31" ITsystem="TibcoIFBL" name="hawkagent" >
+    
+	<environment env="Tst1" state="disabled"> 
+            <account>unknown@unknown</account>
+            <user></user>
+        </environment>
+       
+
+<environment env="Dev2" state="enabled"> 
+            <account>tbifblbe@vmit12dev02</account>
+            <user></user>
+        </environment>
+
+<environment env="Dev3" state="disabled"> 
+            <account>tbifblbe@vmit12dev03</account>
+            <user></user>
+        </environment>
+
+	<cmd command="status" timeout="0">
+            pgrep -i hawkagent
+        </cmd>
+</product>
+
+<product id="31" ITsystem="TibcoIFBL" name="tibcoadmin" >
+    
+	<environment env="Tst1" state="disabled"> 
+            <account>unknown@unknown</account>
+            <user></user>
+        </environment>
+       
+
+	<environment env="Dev2" state="enabled"> 
+		    <account>tbifblbe@vmit12dev02</account>
+		    <user></user>
+		</environment>
+	
+	<environment env="Dev3" state="disabled"> 
+		    <account>tbifblbe@vmit12dev03</account>
+		    <user></user>
+		</environment>
+	
+	<cmd command="status" timeout="0">
+		    pgrep -i tibcoadmin
+		</cmd>
+
+</product>
+
+</products>
+    
+    <mail>
+    <sendto>
+        <!-- <recipient> </recipient> -->
+    </sendto>
+
+    <sender>""</sender>
+    
+    <!--Template-->
+    <template_dir>./templates</template_dir>
+    <out_html>/ITLAB_share/itlab/Monitor/Genesis_monitor.xml</out_html>
+    <input_template>Genesis_monitor.tt</input_template>
+    
+    <!-- send_notificataion -->
+    <subject_file>./templates/subject</subject_file>
+    </mail>
+
+</monitor>

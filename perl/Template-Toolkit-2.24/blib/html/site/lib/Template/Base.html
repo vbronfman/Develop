@@ -1,0 +1,192 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../scineplex.css">
+<title>Template::Base - Base class module implementing common functionality</title>
+<link rel="stylesheet" href="../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',3);</script>
+<h1><a>Template::Base - Base class module implementing common functionality</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#public_methods">PUBLIC METHODS</a></li>
+	<ul>
+
+		<li><a href="#new___config_"><code>new(\%config)</code></a></li>
+		<li><a href="#error__msg______">error($msg, ...)</a></li>
+		<li><a href="#debug__msg______">debug($msg, ...)</a></li>
+		<li><a href="#module_version__"><code>module_version()</code></a></li>
+	</ul>
+
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Base - Base class module implementing common functionality</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    <span class="keyword">package</span> <span class="variable">My::Module</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">base</span> <span class="string">qw( Template::Base )</span><span class="operator">;</span>
+    
+    <span class="keyword">sub</span><span class="variable"> _init </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="operator">(</span><span class="variable">$self</span><span class="operator">,</span> <span class="variable">$config</span><span class="operator">)</span> <span class="operator">=</span> <span class="variable">@_</span><span class="operator">;</span>
+        <span class="variable">$self</span><span class="operator">-&gt;</span><span class="operator">{</span> <span class="variable">doodah</span> <span class="operator">}</span> <span class="operator">=</span> <span class="variable">$config</span><span class="operator">-&gt;</span><span class="operator">{</span> <span class="variable">doodah</span> <span class="operator">}</span>
+            <span class="operator">||</span> <span class="keyword">return</span> <span class="variable">$self</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(</span><span class="string">"No 'doodah' specified"</span><span class="operator">);</span>
+        <span class="keyword">return</span> <span class="variable">$self</span><span class="operator">;</span>
+    <span class="operator">}</span>
+    
+    <span class="keyword">package</span> <span class="variable">main</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$object</span> <span class="operator">=</span> <span class="variable">My::Module</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> <span class="string">doodah</span> <span class="operator">=&gt;</span> <span class="string">'foobar'</span> <span class="operator">}</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">My::Module</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">();</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>Base class module which implements a constructor and error reporting 
+functionality for various Template Toolkit modules.</p>
+<p>
+</p>
+<hr />
+<h1><a name="public_methods">PUBLIC METHODS</a></h1>
+<p>
+</p>
+<h2><a name="new___config_"><code>new(\%config)</code></a></h2>
+<p>Constructor method which accepts a reference to a hash array or a list 
+of <code>name =&gt; value</code> parameters which are folded into a hash.  The 
+<code>_init()</code> method is then called, passing the configuration hash and should
+return true/false to indicate success or failure.  A new object reference
+is returned, or undef on error.  Any error message raised can be examined
+via the <em>error()</em> class method or directly via the <code>$ERROR</code> package variable 
+in the derived class.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$module</span> <span class="operator">=</span> <span class="variable">My::Module</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> <span class="operator">...</span> <span class="operator">}</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">My::Module</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$module</span> <span class="operator">=</span> <span class="variable">My::Module</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> <span class="operator">...</span> <span class="operator">}</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="string">"constructor error: </span><span class="variable">$My</span><span class="string">::Module::ERROR\n"</span><span class="operator">;</span>
+</pre>
+<p>
+</p>
+<h2><a name="error__msg______">error($msg, ...)</a></h2>
+<p>May be called as an object method to get/set the internal <code>_ERROR</code> member
+or as a class method to get/set the <code>$ERROR</code> variable in the derived class's
+package.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$module</span> <span class="operator">=</span> <span class="variable">My::Module</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> <span class="operator">...</span> <span class="operator">}</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">My::Module</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="variable">$module</span><span class="operator">-&gt;</span><span class="variable">do_something</span><span class="operator">()</span> 
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$module</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<p>When called with parameters (multiple params are concatenated), this
+method will set the relevant variable and return undef.  This is most
+often used within object methods to report errors to the caller.</p>
+<pre>
+    <span class="keyword">package</span> <span class="variable">My::Module</span><span class="operator">;</span>
+    
+    <span class="keyword">sub</span><span class="variable"> foobar </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="variable">$self</span> <span class="operator">=</span> <span class="keyword">shift</span><span class="operator">;</span>
+        
+        <span class="comment"># some other code...</span>
+        
+        <span class="keyword">return</span> <span class="variable">$self</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(</span><span class="string">'some kind of error...'</span><span class="operator">)</span>
+            <span class="keyword">if</span> <span class="variable">$some_condition</span><span class="operator">;</span>
+    <span class="operator">}</span>
+</pre>
+<p>
+</p>
+<h2><a name="debug__msg______">debug($msg, ...)</a></h2>
+<p>Generates a debugging message by concatenating all arguments
+passed into a string and printing it to <code>STDERR</code>.  A prefix is
+added to indicate the module of the caller.</p>
+<pre>
+    <span class="keyword">package</span> <span class="variable">My::Module</span><span class="operator">;</span>
+    
+    <span class="keyword">sub</span><span class="variable"> foobar </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="variable">$self</span> <span class="operator">=</span> <span class="keyword">shift</span><span class="operator">;</span>
+        
+        <span class="variable">$self</span><span class="operator">-&gt;</span><span class="variable">debug</span><span class="operator">(</span><span class="string">'called foobar()'</span><span class="operator">);</span>
+        
+        <span class="comment"># some other code...</span>
+    <span class="operator">}</span>
+</pre>
+<p>When the <code>foobar()</code> method is called, the following message
+is sent to <code>STDERR</code>:</p>
+<pre>
+    [My::Module] called foobar()</pre>
+<p>Objects can set an internal <code>DEBUG</code> value which the <code>debug()</code>
+method will examine.  If this value sets the relevant bits
+to indicate <code>DEBUG_CALLER</code> then the file and line number of
+the caller will be appened to the message.</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template::Constants</span> <span class="string">qw( :debug )</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$module</span> <span class="operator">=</span> <span class="variable">My::Module</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">DEBUG</span> <span class="operator">=&gt;</span> <span class="variable">DEBUG_SERVICE</span> <span class="operator">|</span> <span class="variable">DEBUG_CONTEXT</span> <span class="operator">|</span> <span class="variable">DEBUG_CALLER</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+    
+    <span class="variable">$module</span><span class="operator">-&gt;</span><span class="variable">foobar</span><span class="operator">();</span>
+</pre>
+<p>This generates an error message such as:</p>
+<pre>
+    [My::Module] called foobar() at My/Module.pm line 6</pre>
+<p>
+</p>
+<h2><a name="module_version__"><code>module_version()</code></a></h2>
+<p>Returns the version number for a module, as defined by the <code>$VERSION</code>
+package variable.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a></p>
+
+</body>
+
+</html>

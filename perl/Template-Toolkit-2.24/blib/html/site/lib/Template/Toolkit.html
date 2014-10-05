@@ -1,0 +1,146 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../scineplex.css">
+<title>Template::Toolkit - Template Processing System</title>
+<link rel="stylesheet" href="../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',3);</script>
+<h1><a>Template::Toolkit - Template Processing System</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#introduction">Introduction</a></li>
+	<li><a href="#documentation">Documentation</a></li>
+	<li><a href="#author">Author</a></li>
+	<li><a href="#copyright">Copyright</a></li>
+	<li><a href="#see_also">See Also</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Toolkit - Template Processing System</p>
+<p>
+</p>
+<hr />
+<h1><a name="introduction">Introduction</a></h1>
+<p>The Template Toolkit is a collection of Perl modules which implement a
+fast, flexible, powerful and extensible template processing system.</p>
+<p>It is &quot;input-agnostic&quot; and can be used equally well for processing any 
+kind of text documents: HTML, XML, CSS, Javascript, Perl code, plain text,
+and so on.  However, it is most often used for generating static and
+dynamic web content, so that's what we'll focus on here.</p>
+<p>Although the Template Toolkit is written in Perl, you don't need to be a Perl
+programmer to use it. It was designed to allow non-programmers to easily
+create and maintain template-based web sites without having to mess around
+writing Perl code or going crazy with cut-n-paste.</p>
+<p>However, the Template Toolkit is also designed to be extremely flexible and
+extensible. If you are a Perl programmer, or know someone who is, then you can
+easily hook the Template Toolkit into your existing code, data, databases and
+web applications. Furthermore, you can easily extend the Template Toolkit
+through the use of its plugin mechanism and other developer APIs.</p>
+<p>Whatever context you use it in, the primary purpose of the Template Toolkit is
+to allow you to create a clear separation between the presentation elements of
+your web site and everything else.</p>
+<p>If you're generating static web pages, then you can use it to separate the
+commonly repeated user interface elements on each page (headers, menus,
+footers, etc.) from the core content. If you're generating dynamic web pages
+for the front end of a web application, then you'll also be using it to keep 
+the back-end Perl code entirely separate from the front-end HTML templates.
+Either way, a <em>clear separation of concerns</em> is what allow you to 
+concentrate on one thing at a time without the other things getting in your
+way.  And that's what the Template Toolkit is all about.</p>
+<p>
+</p>
+<hr />
+<h1><a name="documentation">Documentation</a></h1>
+<p>The documentation for the Template Toolkit is organised into five sections.</p>
+<p>The <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Manual.html">the Template::Manual manpage</a> contains detailed information about using the Template
+Toolkit. It gives examples of its use and includes a full reference of the
+template language, configuration options, filters, plugins and other component
+parts.</p>
+<p>The <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Modules.html">the Template::Modules manpage</a> page lists the Perl modules that comprise the
+Template Toolkit. It gives a brief explanation of what each of them does, and
+provides a link to the complete documentation for each module for further
+information. If you're a Perl programmer looking to use the Template Toolkit
+from your Perl programs then this section is likely to be of interest.</p>
+<p>Most, if not all of the information you need to call the Template Toolkit from
+Perl is in the documentation for the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a> module. You only really need
+to start thinking about the other modules if you want to extend or modify the
+Template Toolkit in some way, or if you're interested in looking under the
+hood to see how it all works.</p>
+<p>The documentation for each module is embedded as POD in each
+module, so you can always use <code>perldoc</code> from the command line to read a
+module's documentation.  e.g.</p>
+<pre>
+    $ <a href="../../../lib/pods/perldoc.html">perldoc</a> Template
+    $ <a href="../../../lib/pods/perldoc.html">perldoc</a> Template::Context
+      ...etc...</pre>
+<p>It's worth noting that all the other documentation, including the user manual
+is available as POD.  e.g.</p>
+<pre>
+    $ <a href="../../../lib/pods/perldoc.html">perldoc</a> Template::Manual
+    $ <a href="../../../lib/pods/perldoc.html">perldoc</a> Template::Manual::Config
+      ...etc...</pre>
+<p>The <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Tools.html">the Template::Tools manpage</a> section contains the documentation for 
+<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/bin/tpage.html">Template::Tools::tpage</a> and <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/bin/ttree.html">Template::Tools::ttree</a>.
+These are two command line programs that are distributed with the 
+Template Toolkit.  <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Tools/tpage.html">tpage</a> is used to process
+a single template file, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Tools/ttree.html">ttree</a> for processing
+entire directories of template files.</p>
+<p>The <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Tutorial.html">the Template::Tutorial manpage</a> section contains two introductory tutorials on using
+the Template Toolkit. The first is <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Tutorial/Web.html">the Template::Tutorial::Web manpage</a> on generating
+web content. The second is <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Tutorial/Datafile.html">the Template::Tutorial::Datafile manpage</a> on using the
+Template Toolkit to generate other data formats including XML.</p>
+<p>The final section of the manual is <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/FAQ.html">the Template::FAQ manpage</a> which contains answers
+to some of the Frequently Asked Questions about the Template Toolkit.</p>
+<p>You can read the documentation in HTML format either online at the Template 
+Toolkit web site, <a href="http://template-toolkit.org/">http://template-toolkit.org/</a>, or by downloading the 
+HTML version of the documentation from 
+<a href="http://template-toolkit.org/download/index.html#html_docs">http://template-toolkit.org/download/index.html#html_docs</a> and unpacking
+it on your local machine.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">Author</a></h1>
+<p>The Template Toolkit was written by Andy Wardley (<a href="http://wardley.org/">http://wardley.org/</a>
+<em><a href="mailto:mailto:abw@wardley.org">mailto:abw@wardley.org</a></em>) with assistance and contributions from a great 
+number of people.  Please see <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Manual/Credits.html">the Template::Manual::Credits manpage</a> for a full list.</p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">Copyright</a></h1>
+<p>Copyright (C) 1996-2008 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">See Also</a></h1>
+<p><a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a>, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Manual.html">the Template::Manual manpage</a>, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Modules.html">the Template::Modules manpage</a>, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Tools.html">the Template::Tools manpage</a>,
+<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Tutorial.html">the Template::Tutorial manpage</a></p>
+
+</body>
+
+</html>

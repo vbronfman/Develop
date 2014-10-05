@@ -1,0 +1,117 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>Template::Plugin::Datafile - Plugin to construct records from a simple data file</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>Template::Plugin::Datafile - Plugin to construct records from a simple data file</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#bugs">BUGS</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Plugin::Datafile - Plugin to construct records from a simple data file</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    [% USE mydata = datafile('/path/to/datafile') %]
+    [% USE mydata = datafile('/path/to/datafile', delim = '|') %]
+    
+    [% FOREACH record = mydata %]
+       [% record.this %]  [% record.that %]
+    [% END %]</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This plugin provides a simple facility to construct a list of hash 
+references, each of which represents a data record of known structure,
+from a data file.</p>
+<pre>
+    [% USE datafile(filename) %]</pre>
+<p>A absolute filename must be specified (for this initial implementation at 
+least - in a future version it might also use the <code>INCLUDE_PATH</code>).  An 
+optional <code>delim</code> parameter may also be provided to specify an alternate
+delimiter character.</p>
+<pre>
+    [% USE userlist = datafile('/path/to/file/users')     %]
+    [% USE things   = datafile('items', delim = '|') %]</pre>
+<p>The format of the file is intentionally simple.  The first line
+defines the field names, delimited by colons with optional surrounding
+whitespace.  Subsequent lines then defines records containing data
+items, also delimited by colons.  e.g.</p>
+<pre>
+    id : name : email : tel
+    abw : Andy Wardley : abw@tt2.org : 555-1234
+    sam : Simon Matthews : sam@tt2.org : 555-9876</pre>
+<p>Each line is read, split into composite fields, and then used to 
+initialise a hash array containing the field names as relevant keys.
+The plugin returns a blessed list reference containing the hash 
+references in the order as defined in the file.</p>
+<pre>
+    [% FOREACH user = userlist %]
+       [% user.id %]: [% user.name %]
+    [% END %]</pre>
+<p>The first line of the file <strong>must</strong> contain the field definitions.
+After the first line, blank lines will be ignored, along with comment
+line which start with a '<code>#</code>'.</p>
+<p>
+</p>
+<hr />
+<h1><a name="bugs">BUGS</a></h1>
+<p>Should handle file names relative to <code>INCLUDE_PATH</code>.
+Doesn't permit use of '<code>:</code>' in a field.  Some escaping mechanism is required.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin.html">the Template::Plugin manpage</a></p>
+
+</body>
+
+</html>

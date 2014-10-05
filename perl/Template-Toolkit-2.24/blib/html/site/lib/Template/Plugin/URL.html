@@ -1,0 +1,150 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>Template::Plugin::URL - Plugin to construct complex URLs</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>Template::Plugin::URL - Plugin to construct complex URLs</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Plugin::URL - Plugin to construct complex URLs</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">USE</span> <span class="variable">url</span><span class="operator">(</span><span class="string">'/cgi-bin/foo.pl'</span><span class="operator">)</span> <span class="variable">%]</span>
+    
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">url</span><span class="operator">(</span><span class="variable">debug</span> <span class="operator">=</span> <span class="number">1</span><span class="operator">,</span> <span class="variable">id</span> <span class="operator">=</span> <span class="number">123</span><span class="operator">)</span> <span class="variable">%]</span>
+       <span class="comment"># ==&gt; /cgi/bin/foo.pl?debug=1&amp;amp;id=123</span>
+</pre>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">USE</span> <span class="variable">mycgi</span> <span class="operator">=</span> <span class="variable">url</span><span class="operator">(</span><span class="string">'/cgi-bin/bar.pl'</span><span class="operator">,</span> <span class="variable">mode</span><span class="operator">=</span><span class="string">'browse'</span><span class="operator">,</span> <span class="variable">debug</span><span class="operator">=</span><span class="number">1</span><span class="operator">)</span> <span class="variable">%]</span>
+    
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">mycgi</span> <span class="variable">%]</span>
+       <span class="comment"># ==&gt; /cgi/bin/bar.pl?mode=browse&amp;amp;debug=1</span>
+    
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">mycgi</span><span class="operator">(</span><span class="variable">mode</span><span class="operator">=</span><span class="string">'submit'</span><span class="operator">)</span> <span class="variable">%]</span>
+       <span class="comment"># ==&gt; /cgi/bin/bar.pl?mode=submit&amp;amp;debug=1</span>
+    
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">mycgi</span><span class="operator">(</span><span class="variable">debug</span><span class="operator">=</span><span class="string">'d2 p0'</span><span class="operator">,</span> <span class="variable">id</span><span class="operator">=</span><span class="string">'D4-2k[4]'</span><span class="operator">)</span> <span class="variable">%]</span>
+       <span class="comment"># ==&gt; /cgi-bin/bar.pl?mode=browse&amp;amp;debug=d2%20p0&amp;amp;id=D4-2k%5B4%5D</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>The <code>URL</code> plugin can be used to construct complex URLs from a base stem 
+and a hash array of additional query parameters.</p>
+<p>The constructor should be passed a base URL and optionally, a hash array
+reference of default parameters and values.  Used from with a template,
+it would look something like the following:</p>
+<pre>
+    [% USE url('<a href="http://www.somewhere.com/cgi-bin/foo.pl">http://www.somewhere.com/cgi-bin/foo.pl</a>') %]
+    [% USE url('/cgi-bin/bar.pl', mode='browse') %]
+    [% USE url('/cgi-bin/baz.pl', mode='browse', debug=1) %]</pre>
+<p>When the plugin is then called without any arguments, the default base
+and parameters are returned as a formatted query string.</p>
+<pre>
+    [% url %]</pre>
+<p>For the above three examples, these will produce the following outputs:</p>
+<pre>
+    <span class="variable">http</span><span class="operator">:</span><span class="regex">//www</span><span class="operator">.</span><span class="variable">somewhere</span><span class="operator">.</span><span class="variable">com</span><span class="operator">/</span><span class="variable">cgi</span><span class="operator">-</span><span class="variable">bin</span><span class="operator">/</span><span class="variable">foo</span><span class="operator">.</span><span class="variable">pl</span>
+    <span class="operator">/</span><span class="variable">cgi</span><span class="operator">-</span><span class="variable">bin</span><span class="operator">/</span><span class="variable">bar</span><span class="operator">.</span><span class="variable">pl</span><span class="operator">?</span><span class="variable">mode</span><span class="operator">=</span><span class="variable">browse</span>
+    <span class="operator">/</span><span class="variable">cgi</span><span class="operator">-</span><span class="variable">bin</span><span class="operator">/</span><span class="variable">baz</span><span class="operator">.</span><span class="variable">pl</span><span class="operator">?</span><span class="variable">mode</span><span class="operator">=</span><span class="variable">browse</span><span class="operator">&amp;</span><span class="variable">amp</span><span class="operator">;</span><span class="variable">debug</span><span class="operator">=</span><span class="number">1</span>
+</pre>
+<p>Note that additional parameters are separated by '<code>&amp;amp;</code>' rather than
+simply '<code>&amp;</code>'.  This is the correct behaviour for HTML pages but is,
+unfortunately, incorrect when creating URLs that do not need to be
+encoded safely for HTML.  This is likely to be corrected in a future
+version of the plugin (most probably with TT3).  In the mean time, you
+can set <code>$Template::Plugin::URL::JOINT</code> to <code>&amp;</code> to get the correct
+behaviour.</p>
+<p>Additional parameters may be also be specified to the URL:</p>
+<pre>
+    [% url(mode='submit', id='wiz') %]</pre>
+<p>Which, for the same three examples, produces:</p>
+<pre>
+    <span class="variable">http</span><span class="operator">:</span><span class="regex">//www</span><span class="operator">.</span><span class="variable">somewhere</span><span class="operator">.</span><span class="variable">com</span><span class="operator">/</span><span class="variable">cgi</span><span class="operator">-</span><span class="variable">bin</span><span class="operator">/</span><span class="variable">foo</span><span class="operator">.</span><span class="variable">pl</span><span class="operator">?</span><span class="variable">mode</span><span class="operator">=</span><span class="variable">submit</span><span class="operator">&amp;</span><span class="variable">amp</span><span class="operator">;</span><span class="variable">id</span><span class="operator">=</span><span class="variable">wiz</span>
+    <span class="operator">/</span><span class="variable">cgi</span><span class="operator">-</span><span class="variable">bin</span><span class="operator">/</span><span class="variable">bar</span><span class="operator">.</span><span class="variable">pl</span><span class="operator">?</span><span class="variable">mode</span><span class="operator">=</span><span class="variable">browse</span><span class="operator">&amp;</span><span class="variable">amp</span><span class="operator">;</span><span class="variable">id</span><span class="operator">=</span><span class="variable">wiz</span>
+    <span class="operator">/</span><span class="variable">cgi</span><span class="operator">-</span><span class="variable">bin</span><span class="operator">/</span><span class="variable">baz</span><span class="operator">.</span><span class="variable">pl</span><span class="operator">?</span><span class="variable">mode</span><span class="operator">=</span><span class="variable">browse</span><span class="operator">&amp;</span><span class="variable">amp</span><span class="operator">;</span><span class="variable">debug</span><span class="operator">=</span><span class="number">1</span><span class="operator">&amp;</span><span class="variable">amp</span><span class="operator">;</span><span class="variable">id</span><span class="operator">=</span><span class="variable">wiz</span>
+</pre>
+<p>A new base URL may also be specified as the first option:</p>
+<pre>
+    [% url('/cgi-bin/waz.pl', test=1) %]</pre>
+<p>producing</p>
+<pre>
+    <span class="regex">/cgi-bin/waz</span><span class="operator">.</span><span class="variable">pl</span><span class="operator">?</span><span class="variable">test</span><span class="operator">=</span><span class="number">1</span>
+    <span class="operator">/</span><span class="variable">cgi</span><span class="operator">-</span><span class="variable">bin</span><span class="operator">/</span><span class="variable">waz</span><span class="operator">.</span><span class="variable">pl</span><span class="operator">?</span><span class="variable">mode</span><span class="operator">=</span><span class="variable">browse</span><span class="operator">&amp;</span><span class="variable">amp</span><span class="operator">;</span><span class="variable">test</span><span class="operator">=</span><span class="number">1</span>
+    <span class="operator">/</span><span class="variable">cgi</span><span class="operator">-</span><span class="variable">bin</span><span class="operator">/</span><span class="variable">waz</span><span class="operator">.</span><span class="variable">pl</span><span class="operator">?</span><span class="variable">mode</span><span class="operator">=</span><span class="variable">browse</span><span class="operator">&amp;</span><span class="variable">amp</span><span class="operator">;</span><span class="variable">debug</span><span class="operator">=</span><span class="number">1</span><span class="operator">&amp;</span><span class="variable">amp</span><span class="operator">;</span><span class="variable">test</span><span class="operator">=</span><span class="number">1</span>
+</pre>
+<p>The ordering of the parameters is non-deterministic due to fact that 
+Perl's hashes themselves are unordered.  This isn't a problem as the 
+ordering of CGI parameters is insignificant (to the best of my knowledge).
+All values will be properly escaped thanks to some code borrowed from
+Lincoln Stein's <code>CGI</code> module.  e.g.</p>
+<pre>
+    [% USE url('/cgi-bin/woz.pl') %]
+    [% url(name=&quot;Elrich von Benjy d'Weiro&quot;) %]</pre>
+<p>Here the spaces and &quot;<code>'</code>&quot; character are escaped in the output:</p>
+<pre>
+    /cgi-bin/woz.pl?name=Elrich%20von%20Benjy%20d%27Weiro</pre>
+<p>An alternate name may be provided for the plugin at construction time
+as per regular Template Toolkit syntax.</p>
+<pre>
+    [% USE mycgi = url('cgi-bin/min.pl') %]
+    [% mycgi(debug=1) %]</pre>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin.html">the Template::Plugin manpage</a></p>
+
+</body>
+
+</html>

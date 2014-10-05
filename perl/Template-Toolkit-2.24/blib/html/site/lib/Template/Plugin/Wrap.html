@@ -1,0 +1,125 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>Template::Plugin::Wrap - Plugin interface to Text::Wrap</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>Template::Plugin::Wrap - Plugin interface to Text::Wrap</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Plugin::Wrap - Plugin interface to Text::Wrap</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    [% USE wrap %]
+    
+    # call wrap subroutine
+    [% wrap(mytext, width, initial_tab,  subsequent_tab) %]
+    
+    # or use wrap FILTER
+    [% mytext FILTER wrap(width, initital_tab, subsequent_tab) %]</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This plugin provides an interface to the <a href="../../../../lib/GD/Text/Wrap.html">the Text::Wrap manpage</a> module which 
+provides simple paragraph formatting.</p>
+<p>It defines a <code>wrap</code> subroutine which can be called, passing the input
+text and further optional parameters to specify the page width (default:
+72), and tab characters for the first and subsequent lines (no defaults).</p>
+<pre>
+    [% USE wrap %]
+    
+    [% text = BLOCK %]
+    First, attach the transmutex multiplier to the cross-wired 
+    quantum homogeniser.
+    [% END %]
+    
+    [% wrap(text, 40, '* ', '  ') %]</pre>
+<p>Output:</p>
+<pre>
+    * First, attach the transmutex
+      multiplier to the cross-wired quantum
+      homogeniser.</pre>
+<p>It also registers a <code>wrap</code> filter which accepts the same three optional 
+arguments but takes the input text directly via the filter input.</p>
+<p>Example 1:</p>
+<pre>
+    [% FILTER bullet = wrap(40, '* ', '  ') -%]
+    First, attach the transmutex multiplier to the cross-wired quantum
+    homogeniser.
+    [%- END %]</pre>
+<p>Output:</p>
+<pre>
+    * First, attach the transmutex
+      multiplier to the cross-wired quantum
+      homogeniser.</pre>
+<p>Example 2:</p>
+<pre>
+    [% FILTER bullet -%]
+    Then remodulate the shield to match the harmonic frequency, taking 
+    care to correct the phase difference.
+    [% END %]</pre>
+<p>Output:</p>
+<pre>
+    * Then remodulate the shield to match
+      the harmonic frequency, taking 
+      care to correct the phase difference.</pre>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>The <a href="../../../../lib/GD/Text/Wrap.html">the Text::Wrap manpage</a> module was written by David Muir Sharnoff
+with help from Tim Pierce and many others.</p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin.html">the Template::Plugin manpage</a>, <a href="../../../../lib/GD/Text/Wrap.html">the Text::Wrap manpage</a></p>
+
+</body>
+
+</html>

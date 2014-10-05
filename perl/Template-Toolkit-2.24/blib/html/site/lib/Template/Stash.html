@@ -1,0 +1,267 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../scineplex.css">
+<title>Template::Stash - Magical storage for template variables</title>
+<link rel="stylesheet" href="../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',3);</script>
+<h1><a>Template::Stash - Magical storage for template variables</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#public_methods">PUBLIC METHODS</a></li>
+	<ul>
+
+		<li><a href="#new___params_"><code>new(\%params)</code></a></li>
+		<li><a href="#get__variable_"><code>get($variable)</code></a></li>
+		<li><a href="#set__variable___value___default_">set($variable, $value, $default)</a></li>
+		<li><a href="#update__variables_"><code>update($variables)</code></a></li>
+		<li><a href="#getref__variable_"><code>getref($variable)</code></a></li>
+		<li><a href="#clone___params_"><code>clone(\%params)</code></a></li>
+		<li><a href="#declone__"><code>declone()</code></a></li>
+		<li><a href="#define_vmethod__type___name___code_">define_vmethod($type, $name, $code)</a></li>
+	</ul>
+
+	<li><a href="#internal_methods">INTERNAL METHODS</a></li>
+	<ul>
+
+		<li><a href="#dotop__root___item____args___lvalue_">dotop($root, $item, \@args, $lvalue)</a></li>
+		<li><a href="#undefined__ident___args_">undefined($ident, $args)</a></li>
+	</ul>
+
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Stash - Magical storage for template variables</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template::Stash</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$stash</span> <span class="operator">=</span> <span class="variable">Template::Stash</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(\</span><span class="variable">%vars</span><span class="operator">);</span>
+    
+    <span class="comment"># get variable values</span>
+    <span class="variable">$value</span> <span class="operator">=</span> <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">get</span><span class="operator">(</span><span class="variable">$variable</span><span class="operator">);</span>
+    <span class="variable">$value</span> <span class="operator">=</span> <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">get</span><span class="operator">(\</span><span class="variable">@compound</span><span class="operator">);</span>
+    
+    <span class="comment"># set variable value</span>
+    <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">set</span><span class="operator">(</span><span class="variable">$variable</span><span class="operator">,</span> <span class="variable">$value</span><span class="operator">);</span>
+    <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">set</span><span class="operator">(\</span><span class="variable">@compound</span><span class="operator">,</span> <span class="variable">$value</span><span class="operator">);</span>
+    
+    <span class="comment"># default variable value</span>
+    <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">set</span><span class="operator">(</span><span class="variable">$variable</span><span class="operator">,</span> <span class="variable">$value</span><span class="operator">,</span> <span class="number">1</span><span class="operator">);</span>
+    <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">set</span><span class="operator">(\</span><span class="variable">@compound</span><span class="operator">,</span> <span class="variable">$value</span><span class="operator">,</span> <span class="number">1</span><span class="operator">);</span>
+    
+    <span class="comment"># set variable values en masse</span>
+    <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">update</span><span class="operator">(\</span><span class="variable">%new_vars</span><span class="operator">)</span>
+    
+    <span class="comment"># methods for (de-)localising variables</span>
+    <span class="variable">$stash</span> <span class="operator">=</span> <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">clone</span><span class="operator">(\</span><span class="variable">%new_vars</span><span class="operator">);</span>
+    <span class="variable">$stash</span> <span class="operator">=</span> <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">declone</span><span class="operator">();</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>The <code>Template::Stash</code> module defines an object class which is used to store
+variable values for the runtime use of the template processor.  Variable
+values are stored internally in a hash reference (which itself is blessed 
+to create the object) and are accessible via the <em>get()</em> and <em>set()</em> methods.</p>
+<p>Variables may reference hash arrays, lists, subroutines and objects
+as well as simple values.  The stash automatically performs the right
+magic when dealing with variables, calling code or object methods,
+indexing into lists, hashes, etc.</p>
+<p>The stash has <em>clone()</em> and <em>declone()</em> methods which are used by the
+template processor to make temporary copies of the stash for
+localising changes made to variables.</p>
+<p>
+</p>
+<hr />
+<h1><a name="public_methods">PUBLIC METHODS</a></h1>
+<p>
+</p>
+<h2><a name="new___params_"><code>new(\%params)</code></a></h2>
+<p>The <code>new()</code> constructor method creates and returns a reference to a new
+<code>Template::Stash</code> object.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$stash</span> <span class="operator">=</span> <span class="variable">Template::Stash</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">();</span>
+</pre>
+<p>A hash reference may be passed to provide variables and values which
+should be used to initialise the stash.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$stash</span> <span class="operator">=</span> <span class="variable">Template::Stash</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> <span class="string">var1</span> <span class="operator">=&gt;</span> <span class="string">'value1'</span><span class="operator">,</span> 
+                                       <span class="string">var2</span> <span class="operator">=&gt;</span> <span class="string">'value2'</span> <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="get__variable_"><code>get($variable)</code></a></h2>
+<p>The <code>get()</code> method retrieves the variable named by the first parameter.</p>
+<pre>
+    <span class="variable">$value</span> <span class="operator">=</span> <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">get</span><span class="operator">(</span><span class="string">'var1'</span><span class="operator">);</span>
+</pre>
+<p>Dotted compound variables can be retrieved by specifying the variable
+elements by reference to a list.  Each node in the variable occupies
+two entries in the list.  The first gives the name of the variable
+element, the second is a reference to a list of arguments for that 
+element, or <code>0</code> if none.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">foo</span><span class="operator">.</span><span class="variable">bar</span><span class="operator">(</span><span class="number">10</span><span class="operator">).</span><span class="variable">baz</span><span class="operator">(</span><span class="number">20</span><span class="operator">)</span> <span class="variable">%]</span>
+    
+    <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">get</span><span class="operator">(</span><span class="operator">[</span> <span class="string">'foo'</span><span class="operator">,</span> <span class="number">0</span><span class="operator">,</span> <span class="string">'bar'</span><span class="operator">,</span> <span class="operator">[</span> <span class="number">10</span> <span class="operator">]</span><span class="operator">,</span> <span class="string">'baz'</span><span class="operator">,</span> <span class="operator">[</span> <span class="number">20</span> <span class="operator">]</span> <span class="operator">]</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="set__variable___value___default_">set($variable, $value, $default)</a></h2>
+<p>The <code>set()</code> method sets the variable name in the first parameter to the 
+value specified in the second.</p>
+<pre>
+    <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">set</span><span class="operator">(</span><span class="string">'var1'</span><span class="operator">,</span> <span class="string">'value1'</span><span class="operator">);</span>
+</pre>
+<p>If the third parameter evaluates to a true value, the variable is
+set only if it did not have a true value before.</p>
+<pre>
+    <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">set</span><span class="operator">(</span><span class="string">'var2'</span><span class="operator">,</span> <span class="string">'default_value'</span><span class="operator">,</span> <span class="number">1</span><span class="operator">);</span>
+</pre>
+<p>Dotted compound variables may be specified as per <em>get()</em> above.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">foo</span><span class="operator">.</span><span class="variable">bar</span> <span class="operator">=</span> <span class="number">30</span> <span class="variable">%]</span>
+    
+    <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">set</span><span class="operator">(</span><span class="operator">[</span> <span class="string">'foo'</span><span class="operator">,</span> <span class="number">0</span><span class="operator">,</span> <span class="string">'bar'</span><span class="operator">,</span> <span class="number">0</span> <span class="operator">]</span><span class="operator">,</span> <span class="number">30</span><span class="operator">);</span>
+</pre>
+<p>The magical variable '<code>IMPORT</code>' can be specified whose corresponding
+value should be a hash reference.  The contents of the hash array are
+copied (i.e. imported) into the current namespace.</p>
+<pre>
+    <span class="comment"># foo.bar = baz, foo.wiz = waz</span>
+    <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">set</span><span class="operator">(</span><span class="string">'foo'</span><span class="operator">,</span> <span class="operator">{</span> <span class="string">'bar'</span> <span class="operator">=&gt;</span> <span class="string">'baz'</span><span class="operator">,</span> <span class="string">'wiz'</span> <span class="operator">=&gt;</span> <span class="string">'waz'</span> <span class="operator">}</span><span class="operator">);</span>
+    
+    <span class="comment"># import 'foo' into main namespace: bar = baz, wiz = waz</span>
+    <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">set</span><span class="operator">(</span><span class="string">'IMPORT'</span><span class="operator">,</span> <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">get</span><span class="operator">(</span><span class="string">'foo'</span><span class="operator">));</span>
+</pre>
+<p>
+</p>
+<h2><a name="update__variables_"><code>update($variables)</code></a></h2>
+<p>This method can be used to set or update several variables in one go.</p>
+<pre>
+    <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">update</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">foo</span> <span class="operator">=&gt;</span> <span class="number">10</span><span class="operator">,</span>
+        <span class="string">bar</span> <span class="operator">=&gt;</span> <span class="number">20</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="getref__variable_"><code>getref($variable)</code></a></h2>
+<p>This undocumented feature returns a closure which can be called to get the
+value of a variable.  It is used to implement variable references which are
+evlauted lazily.</p>
+<pre>
+    [% x = \foo.bar.baz %]          # x is a reference to foo.bar.baz
+    [% x %]                         # evalautes foo.bar.baz</pre>
+<p>
+</p>
+<h2><a name="clone___params_"><code>clone(\%params)</code></a></h2>
+<p>The <code>clone()</code> method creates and returns a new <code>Template::Stash</code> object
+which represents a localised copy of the parent stash. Variables can be freely
+updated in the cloned stash and when <em>declone()</em> is called, the original stash
+is returned with all its members intact and in the same state as they were
+before <code>clone()</code> was called.</p>
+<p>For convenience, a hash of parameters may be passed into <code>clone()</code> which 
+is used to update any simple variable (i.e. those that don't contain any 
+namespace elements like <code>foo</code> and <code>bar</code> but not <code>foo.bar</code>) variables while 
+cloning the stash.  For adding and updating complex variables, the <em>set()</em> 
+method should be used after calling <code>clone().</code>  This will correctly resolve
+and/or create any necessary namespace hashes.</p>
+<p>A cloned stash maintains a reference to the stash that it was copied 
+from in its <code>_PARENT</code> member.</p>
+<p>
+</p>
+<h2><a name="declone__"><code>declone()</code></a></h2>
+<p>The <code>declone()</code> method returns the <code>_PARENT</code> reference and can be used to
+restore the state of a stash as described above.</p>
+<p>
+</p>
+<h2><a name="define_vmethod__type___name___code_">define_vmethod($type, $name, $code)</a></h2>
+<p>This method can be used to define new virtual methods.  The first argument
+should be either <a href="../../../lib/pods/perlfunc.html#scalar"><code>scalar</code></a> or <code>item</code> to define scalar virtual method, <code>hash</code>
+to define hash virtual methods, or either <code>array</code> or <code>list</code> for list virtual
+methods.  The second argument should be the name of the new method.  The third
+argument should be a reference to a subroutine implementing the method.  The
+data item on which the virtual method is called is passed to the subroutine as
+the first argument.</p>
+<pre>
+    <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">define_vmethod</span><span class="operator">(</span>
+        <span class="string">item</span> <span class="operator">=&gt;</span> <span class="string">ucfirst</span> <span class="operator">=&gt;</span> <span class="keyword">sub</span><span class="variable"> </span><span class="operator">{</span>
+            <span class="keyword">my</span> <span class="variable">$text</span> <span class="operator">=</span> <span class="keyword">shift</span><span class="operator">;</span>
+            <span class="keyword">return</span> <span class="keyword">ucfirst</span> <span class="variable">$text</span>
+        <span class="operator">}</span>
+    <span class="operator">);</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="internal_methods">INTERNAL METHODS</a></h1>
+<p>
+</p>
+<h2><a name="dotop__root___item____args___lvalue_">dotop($root, $item, \@args, $lvalue)</a></h2>
+<p>This is the core <code>dot</code> operation method which evaluates elements of 
+variables against their root.</p>
+<p>
+</p>
+<h2><a name="undefined__ident___args_">undefined($ident, $args)</a></h2>
+<p>This method is called when <em>get()</em> encounters an undefined value.  If the 
+<code>STRICT|Template::Manual::Config#STRICT</code> option is in effect then it will
+throw an exception indicating the use of an undefined value.  Otherwise it
+will silently return an empty string.</p>
+<p>The method can be redefined in a subclass to implement alternate handling
+of undefined values.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2012 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a>, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a></p>
+
+</body>
+
+</html>

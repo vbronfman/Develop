@@ -1,0 +1,6600 @@
+
+2013-06-10 10:24:14 	##### D:\Develop\Perl\comp_fmx_err.pl Started ##### 
+10:24:25	 Started
+1 new_infodata_others.fmb 
+compiling new_infodata_others.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling package body INFO_ALL...
+
+Compilation error on package body INFO_ALL:
+
+PL/SQL ERROR 0 at line 0, column 0
+
+####################
+2 contract_tab_new.fmb 
+compiling contract_tab_new.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+FRM-30429: Block with Precompute Summaries must specify Query Data Source Type as Table or FROM clause query.
+
+Block: CONTRACT_TAB
+
+####################
+3 wof_cust.fmb 
+compiling wof_cust.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure ERR_FILE... 
+
+Compilation error on procedure ERR_FILE:
+
+PL/SQL ERROR 306 at line 3, column 28
+
+wrong number or types of arguments in call to 'CUST_NAME'
+
+PL/SQL ERROR 0 at line 3, column 11
+
+SQL Statement ignored
+
+PL/SQL ERROR 364 at line 12, column 43
+
+loop index variable 'I' use is invalid
+
+PL/SQL ERROR 0 at line 12, column 8
+
+####################
+4 install_run1.fmb 
+compiling install_run1.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+Compiling procedure RUN_RDF... 
+
+Compilation error on procedure RUN_RDF:
+
+PL/SQL ERROR 0 at line 24, column 5
+
+Compiling procedure RUN_STOP_USER... 
+
+Compilation error on procedure RUN_STOP_USER:
+
+PL/SQL ERROR 0 at line 15, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 22, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 27, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 34, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 58, column 5
+
+Compiling procedure MOVE_FILES_TO_PROD... 
+
+Compilation error on procedure MOVE_FILES_TO_PROD:
+
+PL/SQL ERROR 0 at line 80, column 14
+
+Compiling procedure FAIL_PROC... 
+
+Compilation error on procedure FAIL_PROC:
+
+PL/SQL ERROR 0 at line 9, column 3
+
+Compiling procedure RUN_BAT... 
+
+Compilation error on procedure RUN_BAT:
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling function GET_HOST... 
+
+Compilation error on function GET_HOST: 
+
+PL/SQL ERROR 201 at line 7, column 8
+
+identifier 'IN2PROD.BSCS_SESSIONS' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure RUN... 
+
+Compilation error on procedure RUN:
+
+PL/SQL ERROR 0 at line 53, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 57, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 78, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 87, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 116, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 125, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 134, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 137, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 146, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 164, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 172, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 194, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 202, column 3
+
+Compiling procedure UPDATE_DAIRY_STATUS... 
+
+Compilation error on procedure UPDATE_DAIRY_STATUS:
+
+PL/SQL ERROR 201 at line 17, column 12
+
+identifier 'IT_DIARY' must be declared
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling procedure RUN_SQL... 
+
+Compilation error on procedure RUN_SQL:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 36, column 7
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 76, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 90, column 5
+
+Compiling function CHECK_INVALID_AFTER... 
+
+Compilation error on function CHECK_INVALID_AFTER: 
+
+PL/SQL ERROR 201 at line 18, column 17
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 15, column 8
+
+Compiling procedure CHECK_INVALID_BEFORE... 
+
+Compilation error on procedure CHECK_INVALID_BEFORE:
+
+PL/SQL ERROR 201 at line 29, column 18
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 26, column 9
+
+Compiling function CHECK_TEST_AND_PROD... 
+
+Compilation error on function CHECK_TEST_AND_PROD: 
+
+PL/SQL ERROR 201 at line 13, column 15
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure COMPILE_INVALIDS... 
+
+Compilation error on procedure COMPILE_INVALIDS:
+
+PL/SQL ERROR 0 at line 13, column 5
+
+Compiling procedure RUN_FMB... 
+
+Compilation error on procedure RUN_FMB:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+####################
+5 retro_invoice2.fmb 
+compiling retro_invoice2.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure CALL_IF_SEND_LOG... 
+
+Compilation error on procedure CALL_IF_SEND_LOG:
+
+PL/SQL ERROR 201 at line 113, column 13
+
+identifier 'REPORTS.RETRO_LOG' must be declared
+
+PL/SQL ERROR 0 at line 113, column 1
+
+Compiling package body PCK_PARAM_BLOCK...
+
+Compilation error on package body PCK_PARAM_BLOCK:
+
+PL/SQL ERROR 0 at line 86, column 9
+
+Compiling procedure RUN_REPORT... 
+
+Compilation error on procedure RUN_REPORT:
+
+PL/SQL ERROR 201 at line 128, column 23
+
+identifier 'JOB_ID.NEXTVAL' must be declared
+
+PL/SQL ERROR 0 at line 128, column 16
+
+SQL Statement ignored
+
+PL/SQL ERROR 201 at line 142, column 28
+
+identifier 'JOBS_TAB' must be declared
+
+PL/SQL ERROR 0 at line 142, column 16
+
+SQL Statement ignored
+
+PL/SQL ERROR 201 at line 174, column 16
+
+identifier 'SEND_PIPE' must be declared
+
+PL/SQL ERROR 0 at line 174, column 16
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 219, column 14
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 284, column 12
+
+Statement ignored
+
+PL/SQL ERROR 201 at line 356, column 25
+
+identifier 'CALL_REQUEST_FAX' must be declared
+
+PL/SQL ERROR 0 at line 354, column 18
+
+SQL Statement ignored
+
+PL/SQL ERROR 201 at line 360, column 30
+
+identifier 'CALL_REQUEST_FAX' must be declared
+
+PL/SQL ERROR 0 at line 360, column 18
+
+SQL Statement ignored
+
+PL/SQL ERROR 0 at line 441, column 7
+
+Compiling function COUNT_SUCCESS_TERMINATED_JOBS... 
+
+Compilation error on function COUNT_SUCCESS_TERMINATED_JOBS: 
+
+PL/SQL ERROR 201 at line 12, column 8
+
+identifier 'JOBS_TAB' must be declared
+
+PL/SQL ERROR 0 at line 11, column 1
+
+Compiling function CHECK_ALREADY_CALCULATED... 
+
+Compilation error on function CHECK_ALREADY_CALCULATED: 
+
+PL/SQL ERROR 201 at line 19, column 7
+
+identifier 'JOBS_TAB' must be declared
+
+PL/SQL ERROR 0 at line 18, column 1
+
+####################
+6 install_logs1.fmb 
+compiling install_logs1.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure SET_ITEM_RIGHTS... 
+
+Compilation error on procedure SET_ITEM_RIGHTS:
+
+PL/SQL ERROR 201 at line 16, column 25
+
+identifier 'IN2PROD.DEC2BIN' must be declared
+
+PL/SQL ERROR 0 at line 16, column 7
+
+####################
+7 cm_hever.fmb 
+compiling cm_hever.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling WHEN-BUTTON-PRESSED trigger on REFRESH_HEVER_TBL item in CONTROL data block...
+
+Compilation error on WHEN-BUTTON-PRESSED trigger on REFRESH_HEVER_TBL item in CONTROL data block:
+
+PL/SQL ERROR 905 at line 12, column 10
+
+object REPORTS.REFRESH_HEVER_PAYMENT_DATA is invalid
+
+PL/SQL ERROR 0 at line 12, column 3
+
+####################
+8 invoice_manage.fmb 
+compiling invoice_manage.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling PRE-UPDATE trigger on BF_CHARGE_GROUP_REF data block...
+
+Compilation error on PRE-UPDATE trigger on BF_CHARGE_GROUP_REF data block:
+
+PL/SQL ERROR 395 at line 8, column 9
+
+wrong number of values in VALUES clause of INSERT statement
+
+PL/SQL ERROR 0 at line 7, column 3
+
+####################
+9 nd_batch.fmb 
+compiling nd_batch.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure START_JOB... 
+
+Compilation error on procedure START_JOB:
+
+PL/SQL ERROR 201 at line 7, column 3
+
+identifier 'RUN_SUBMIT' must be declared
+
+PL/SQL ERROR 0 at line 7, column 3
+
+####################
+10 barepscr.fmb 
+compiling barepscr.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+####################
+11 install_plan1.fmb 
+compiling install_plan1.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+Compiling function FIND_VIEW_OBJ... 
+
+Compilation error on function FIND_VIEW_OBJ: 
+
+PL/SQL ERROR 0 at line 0, column 0
+
+Compiling procedure CHECK_HAS_PASS... 
+
+Compilation error on procedure CHECK_HAS_PASS:
+
+PL/SQL ERROR 0 at line 6, column 5
+
+Compiling procedure FIND_ALL_FILES... 
+
+Compilation error on procedure FIND_ALL_FILES:
+
+PL/SQL ERROR 0 at line 19, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 30, column 5
+
+Compiling procedure GET_FILES3... 
+
+Compilation error on procedure GET_FILES3:
+
+PL/SQL ERROR 201 at line 16, column 10
+
+identifier 'SYN_CONFIGLABEL' must be declared
+
+PL/SQL ERROR 0 at line 15, column 5
+
+SQL Statement ignored
+
+PL/SQL ERROR 364 at line 39, column 55
+
+loop index variable 'F' use is invalid
+
+PL/SQL ERROR 0 at line 39, column 5
+
+Compiling procedure WHEN_EXIT... 
+
+Compilation error on procedure WHEN_EXIT:
+
+PL/SQL ERROR 0 at line 15, column 6
+
+Compiling procedure SAVE_ALL... 
+
+Compilation error on procedure SAVE_ALL:
+
+PL/SQL ERROR 0 at line 77, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 79, column 5
+
+Statement ignored
+
+PL/SQL ERROR 201 at line 99, column 13
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 92, column 5
+
+####################
+12 barepoper.fmb 
+compiling barepoper.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+####################
+13 FREE_INVOICE.fmb 
+compiling FREE_INVOICE.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling WHEN-BUTTON-PRESSED trigger on CREATE_RULE item in CONTROL data block...
+
+Compilation error on WHEN-BUTTON-PRESSED trigger on CREATE_RULE item in CONTROL data block:
+
+PL/SQL ERROR 306 at line 102, column 21
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 102, column 12
+
+Statement ignored
+
+PL/SQL ERROR 306 at line 179, column 21
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 179, column 12
+
+Compiling WHEN-BUTTON-PRESSED trigger on UPDATE_RULE item in CONTROL data block...
+
+Compilation error on WHEN-BUTTON-PRESSED trigger on UPDATE_RULE item in CONTROL data block:
+
+PL/SQL ERROR 306 at line 564, column 18
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 564, column 9
+
+Statement ignored
+
+PL/SQL ERROR 306 at line 611, column 27
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 611, column 18
+
+Statement ignored
+
+PL/SQL ERROR 306 at line 653, column 27
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 653, column 18
+
+####################
+14 cn_history.fmb 
+compiling cn_history.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling POST-QUERY trigger on CN_HISTORY data block...
+
+Compilation error on POST-QUERY trigger on CN_HISTORY data block:
+
+PL/SQL ERROR 327 at line 10, column 9
+
+"CN_INVOICES" is not in SQL scope here
+
+PL/SQL ERROR 0 at line 10, column 2
+
+####################
+15 fd_activity.fmb 
+compiling fd_activity.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function CHECK_DATA... 
+
+Compilation error on function CHECK_DATA: 
+
+PL/SQL ERROR 306 at line 137, column 3
+
+wrong number or types of arguments in call to 'CHECK_CSCURBALANCE'
+
+PL/SQL ERROR 0 at line 137, column 3
+
+####################
+16 nd_dunn_odcanit.fmb 
+compiling nd_dunn_odcanit.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling POST-QUERY trigger on CUST_TO_LAWYER data block...
+
+Compilation error on POST-QUERY trigger on CUST_TO_LAWYER data block:
+
+PL/SQL ERROR 201 at line 4, column 8
+
+identifier 'PCK_GET_CUSTOMER_BRAND_TYPE.F_GET_CUSTOMER_BRAND_TYPE' must be declared
+
+PL/SQL ERROR 0 at line 4, column 1
+
+####################
+17 install_run1_old.fmb 
+compiling install_run1_old.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+Compiling procedure RUN_RDF... 
+
+Compilation error on procedure RUN_RDF:
+
+PL/SQL ERROR 0 at line 24, column 5
+
+Compiling procedure RUN_STOP_USER... 
+
+Compilation error on procedure RUN_STOP_USER:
+
+PL/SQL ERROR 0 at line 15, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 22, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 27, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 34, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 58, column 5
+
+Compiling procedure MOVE_FILES_TO_PROD... 
+
+Compilation error on procedure MOVE_FILES_TO_PROD:
+
+PL/SQL ERROR 0 at line 80, column 14
+
+Compiling procedure FAIL_PROC... 
+
+Compilation error on procedure FAIL_PROC:
+
+PL/SQL ERROR 0 at line 9, column 3
+
+Compiling procedure RUN_BAT... 
+
+Compilation error on procedure RUN_BAT:
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling function GET_HOST... 
+
+Compilation error on function GET_HOST: 
+
+PL/SQL ERROR 201 at line 7, column 8
+
+identifier 'IN2PROD.BSCS_SESSIONS' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure RUN... 
+
+Compilation error on procedure RUN:
+
+PL/SQL ERROR 0 at line 53, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 57, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 78, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 87, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 116, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 125, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 134, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 137, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 146, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 164, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 172, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 194, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 202, column 3
+
+Compiling procedure UPDATE_DAIRY_STATUS... 
+
+Compilation error on procedure UPDATE_DAIRY_STATUS:
+
+PL/SQL ERROR 201 at line 17, column 12
+
+identifier 'IT_DIARY' must be declared
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling procedure RUN_SQL... 
+
+Compilation error on procedure RUN_SQL:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 36, column 7
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 76, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 90, column 5
+
+Compiling function CHECK_INVALID_AFTER... 
+
+Compilation error on function CHECK_INVALID_AFTER: 
+
+PL/SQL ERROR 201 at line 18, column 17
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 15, column 8
+
+Compiling procedure CHECK_INVALID_BEFORE... 
+
+Compilation error on procedure CHECK_INVALID_BEFORE:
+
+PL/SQL ERROR 201 at line 29, column 18
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 26, column 9
+
+Compiling function CHECK_TEST_AND_PROD... 
+
+Compilation error on function CHECK_TEST_AND_PROD: 
+
+PL/SQL ERROR 201 at line 13, column 15
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure COMPILE_INVALIDS... 
+
+Compilation error on procedure COMPILE_INVALIDS:
+
+PL/SQL ERROR 0 at line 13, column 5
+
+Compiling procedure RUN_FMB... 
+
+Compilation error on procedure RUN_FMB:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+####################
+END10:24:25	 Finished
+2013-06-10 10:24:25	 ##### D:\Develop\Perl\comp_fmx_err.pl Finished ###### 
+
+2013-06-10 10:26:31 	##### D:\Develop\Perl\comp_fmx_err.pl Started ##### 
+10:26:42	 Started
+ new_infodata_others.fmb
+compiling new_infodata_others.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling package body INFO_ALL...
+
+Compilation error on package body INFO_ALL:
+
+PL/SQL ERROR 0 at line 0, column 0
+
+####################
+ contract_tab_new.fmb
+compiling contract_tab_new.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+FRM-30429: Block with Precompute Summaries must specify Query Data Source Type as Table or FROM clause query.
+
+Block: CONTRACT_TAB
+
+####################
+ wof_cust.fmb
+compiling wof_cust.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure ERR_FILE... 
+
+Compilation error on procedure ERR_FILE:
+
+PL/SQL ERROR 306 at line 3, column 28
+
+wrong number or types of arguments in call to 'CUST_NAME'
+
+PL/SQL ERROR 0 at line 3, column 11
+
+SQL Statement ignored
+
+PL/SQL ERROR 364 at line 12, column 43
+
+loop index variable 'I' use is invalid
+
+PL/SQL ERROR 0 at line 12, column 8
+
+####################
+ install_run1.fmb
+compiling install_run1.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+Compiling procedure RUN_RDF... 
+
+Compilation error on procedure RUN_RDF:
+
+PL/SQL ERROR 0 at line 24, column 5
+
+Compiling procedure RUN_STOP_USER... 
+
+Compilation error on procedure RUN_STOP_USER:
+
+PL/SQL ERROR 0 at line 15, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 22, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 27, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 34, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 58, column 5
+
+Compiling procedure MOVE_FILES_TO_PROD... 
+
+Compilation error on procedure MOVE_FILES_TO_PROD:
+
+PL/SQL ERROR 0 at line 80, column 14
+
+Compiling procedure FAIL_PROC... 
+
+Compilation error on procedure FAIL_PROC:
+
+PL/SQL ERROR 0 at line 9, column 3
+
+Compiling procedure RUN_BAT... 
+
+Compilation error on procedure RUN_BAT:
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling function GET_HOST... 
+
+Compilation error on function GET_HOST: 
+
+PL/SQL ERROR 201 at line 7, column 8
+
+identifier 'IN2PROD.BSCS_SESSIONS' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure RUN... 
+
+Compilation error on procedure RUN:
+
+PL/SQL ERROR 0 at line 53, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 57, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 78, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 87, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 116, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 125, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 134, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 137, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 146, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 164, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 172, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 194, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 202, column 3
+
+Compiling procedure UPDATE_DAIRY_STATUS... 
+
+Compilation error on procedure UPDATE_DAIRY_STATUS:
+
+PL/SQL ERROR 201 at line 17, column 12
+
+identifier 'IT_DIARY' must be declared
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling procedure RUN_SQL... 
+
+Compilation error on procedure RUN_SQL:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 36, column 7
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 76, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 90, column 5
+
+Compiling function CHECK_INVALID_AFTER... 
+
+Compilation error on function CHECK_INVALID_AFTER: 
+
+PL/SQL ERROR 201 at line 18, column 17
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 15, column 8
+
+Compiling procedure CHECK_INVALID_BEFORE... 
+
+Compilation error on procedure CHECK_INVALID_BEFORE:
+
+PL/SQL ERROR 201 at line 29, column 18
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 26, column 9
+
+Compiling function CHECK_TEST_AND_PROD... 
+
+Compilation error on function CHECK_TEST_AND_PROD: 
+
+PL/SQL ERROR 201 at line 13, column 15
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure COMPILE_INVALIDS... 
+
+Compilation error on procedure COMPILE_INVALIDS:
+
+PL/SQL ERROR 0 at line 13, column 5
+
+Compiling procedure RUN_FMB... 
+
+Compilation error on procedure RUN_FMB:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+####################
+ retro_invoice2.fmb
+compiling retro_invoice2.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure CALL_IF_SEND_LOG... 
+
+Compilation error on procedure CALL_IF_SEND_LOG:
+
+PL/SQL ERROR 201 at line 113, column 13
+
+identifier 'REPORTS.RETRO_LOG' must be declared
+
+PL/SQL ERROR 0 at line 113, column 1
+
+Compiling package body PCK_PARAM_BLOCK...
+
+Compilation error on package body PCK_PARAM_BLOCK:
+
+PL/SQL ERROR 0 at line 86, column 9
+
+Compiling procedure RUN_REPORT... 
+
+Compilation error on procedure RUN_REPORT:
+
+PL/SQL ERROR 201 at line 128, column 23
+
+identifier 'JOB_ID.NEXTVAL' must be declared
+
+PL/SQL ERROR 0 at line 128, column 16
+
+SQL Statement ignored
+
+PL/SQL ERROR 201 at line 142, column 28
+
+identifier 'JOBS_TAB' must be declared
+
+PL/SQL ERROR 0 at line 142, column 16
+
+SQL Statement ignored
+
+PL/SQL ERROR 201 at line 174, column 16
+
+identifier 'SEND_PIPE' must be declared
+
+PL/SQL ERROR 0 at line 174, column 16
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 219, column 14
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 284, column 12
+
+Statement ignored
+
+PL/SQL ERROR 201 at line 356, column 25
+
+identifier 'CALL_REQUEST_FAX' must be declared
+
+PL/SQL ERROR 0 at line 354, column 18
+
+SQL Statement ignored
+
+PL/SQL ERROR 201 at line 360, column 30
+
+identifier 'CALL_REQUEST_FAX' must be declared
+
+PL/SQL ERROR 0 at line 360, column 18
+
+SQL Statement ignored
+
+PL/SQL ERROR 0 at line 441, column 7
+
+Compiling function COUNT_SUCCESS_TERMINATED_JOBS... 
+
+Compilation error on function COUNT_SUCCESS_TERMINATED_JOBS: 
+
+PL/SQL ERROR 201 at line 12, column 8
+
+identifier 'JOBS_TAB' must be declared
+
+PL/SQL ERROR 0 at line 11, column 1
+
+Compiling function CHECK_ALREADY_CALCULATED... 
+
+Compilation error on function CHECK_ALREADY_CALCULATED: 
+
+PL/SQL ERROR 201 at line 19, column 7
+
+identifier 'JOBS_TAB' must be declared
+
+PL/SQL ERROR 0 at line 18, column 1
+
+####################
+ install_logs1.fmb
+compiling install_logs1.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure SET_ITEM_RIGHTS... 
+
+Compilation error on procedure SET_ITEM_RIGHTS:
+
+PL/SQL ERROR 201 at line 16, column 25
+
+identifier 'IN2PROD.DEC2BIN' must be declared
+
+PL/SQL ERROR 0 at line 16, column 7
+
+####################
+ cm_hever.fmb
+compiling cm_hever.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling WHEN-BUTTON-PRESSED trigger on REFRESH_HEVER_TBL item in CONTROL data block...
+
+Compilation error on WHEN-BUTTON-PRESSED trigger on REFRESH_HEVER_TBL item in CONTROL data block:
+
+PL/SQL ERROR 905 at line 12, column 10
+
+object REPORTS.REFRESH_HEVER_PAYMENT_DATA is invalid
+
+PL/SQL ERROR 0 at line 12, column 3
+
+####################
+ invoice_manage.fmb
+compiling invoice_manage.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling PRE-UPDATE trigger on BF_CHARGE_GROUP_REF data block...
+
+Compilation error on PRE-UPDATE trigger on BF_CHARGE_GROUP_REF data block:
+
+PL/SQL ERROR 395 at line 8, column 9
+
+wrong number of values in VALUES clause of INSERT statement
+
+PL/SQL ERROR 0 at line 7, column 3
+
+####################
+ nd_batch.fmb
+compiling nd_batch.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure START_JOB... 
+
+Compilation error on procedure START_JOB:
+
+PL/SQL ERROR 201 at line 7, column 3
+
+identifier 'RUN_SUBMIT' must be declared
+
+PL/SQL ERROR 0 at line 7, column 3
+
+####################
+ barepscr.fmb
+compiling barepscr.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+####################
+ install_plan1.fmb
+compiling install_plan1.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+Compiling function FIND_VIEW_OBJ... 
+
+Compilation error on function FIND_VIEW_OBJ: 
+
+PL/SQL ERROR 0 at line 0, column 0
+
+Compiling procedure CHECK_HAS_PASS... 
+
+Compilation error on procedure CHECK_HAS_PASS:
+
+PL/SQL ERROR 0 at line 6, column 5
+
+Compiling procedure FIND_ALL_FILES... 
+
+Compilation error on procedure FIND_ALL_FILES:
+
+PL/SQL ERROR 0 at line 19, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 30, column 5
+
+Compiling procedure GET_FILES3... 
+
+Compilation error on procedure GET_FILES3:
+
+PL/SQL ERROR 201 at line 16, column 10
+
+identifier 'SYN_CONFIGLABEL' must be declared
+
+PL/SQL ERROR 0 at line 15, column 5
+
+SQL Statement ignored
+
+PL/SQL ERROR 364 at line 39, column 55
+
+loop index variable 'F' use is invalid
+
+PL/SQL ERROR 0 at line 39, column 5
+
+Compiling procedure WHEN_EXIT... 
+
+Compilation error on procedure WHEN_EXIT:
+
+PL/SQL ERROR 0 at line 15, column 6
+
+Compiling procedure SAVE_ALL... 
+
+Compilation error on procedure SAVE_ALL:
+
+PL/SQL ERROR 0 at line 77, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 79, column 5
+
+Statement ignored
+
+PL/SQL ERROR 201 at line 99, column 13
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 92, column 5
+
+####################
+ barepoper.fmb
+compiling barepoper.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+####################
+ FREE_INVOICE.fmb
+compiling FREE_INVOICE.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling WHEN-BUTTON-PRESSED trigger on CREATE_RULE item in CONTROL data block...
+
+Compilation error on WHEN-BUTTON-PRESSED trigger on CREATE_RULE item in CONTROL data block:
+
+PL/SQL ERROR 306 at line 102, column 21
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 102, column 12
+
+Statement ignored
+
+PL/SQL ERROR 306 at line 179, column 21
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 179, column 12
+
+Compiling WHEN-BUTTON-PRESSED trigger on UPDATE_RULE item in CONTROL data block...
+
+Compilation error on WHEN-BUTTON-PRESSED trigger on UPDATE_RULE item in CONTROL data block:
+
+PL/SQL ERROR 306 at line 564, column 18
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 564, column 9
+
+Statement ignored
+
+PL/SQL ERROR 306 at line 611, column 27
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 611, column 18
+
+Statement ignored
+
+PL/SQL ERROR 306 at line 653, column 27
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 653, column 18
+
+####################
+ cn_history.fmb
+compiling cn_history.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling POST-QUERY trigger on CN_HISTORY data block...
+
+Compilation error on POST-QUERY trigger on CN_HISTORY data block:
+
+PL/SQL ERROR 327 at line 10, column 9
+
+"CN_INVOICES" is not in SQL scope here
+
+PL/SQL ERROR 0 at line 10, column 2
+
+####################
+ fd_activity.fmb
+compiling fd_activity.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function CHECK_DATA... 
+
+Compilation error on function CHECK_DATA: 
+
+PL/SQL ERROR 306 at line 137, column 3
+
+wrong number or types of arguments in call to 'CHECK_CSCURBALANCE'
+
+PL/SQL ERROR 0 at line 137, column 3
+
+####################
+ nd_dunn_odcanit.fmb
+compiling nd_dunn_odcanit.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling POST-QUERY trigger on CUST_TO_LAWYER data block...
+
+Compilation error on POST-QUERY trigger on CUST_TO_LAWYER data block:
+
+PL/SQL ERROR 201 at line 4, column 8
+
+identifier 'PCK_GET_CUSTOMER_BRAND_TYPE.F_GET_CUSTOMER_BRAND_TYPE' must be declared
+
+PL/SQL ERROR 0 at line 4, column 1
+
+####################
+ install_run1_old.fmb
+compiling install_run1_old.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+Compiling procedure RUN_RDF... 
+
+Compilation error on procedure RUN_RDF:
+
+PL/SQL ERROR 0 at line 24, column 5
+
+Compiling procedure RUN_STOP_USER... 
+
+Compilation error on procedure RUN_STOP_USER:
+
+PL/SQL ERROR 0 at line 15, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 22, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 27, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 34, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 58, column 5
+
+Compiling procedure MOVE_FILES_TO_PROD... 
+
+Compilation error on procedure MOVE_FILES_TO_PROD:
+
+PL/SQL ERROR 0 at line 80, column 14
+
+Compiling procedure FAIL_PROC... 
+
+Compilation error on procedure FAIL_PROC:
+
+PL/SQL ERROR 0 at line 9, column 3
+
+Compiling procedure RUN_BAT... 
+
+Compilation error on procedure RUN_BAT:
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling function GET_HOST... 
+
+Compilation error on function GET_HOST: 
+
+PL/SQL ERROR 201 at line 7, column 8
+
+identifier 'IN2PROD.BSCS_SESSIONS' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure RUN... 
+
+Compilation error on procedure RUN:
+
+PL/SQL ERROR 0 at line 53, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 57, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 78, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 87, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 116, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 125, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 134, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 137, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 146, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 164, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 172, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 194, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 202, column 3
+
+Compiling procedure UPDATE_DAIRY_STATUS... 
+
+Compilation error on procedure UPDATE_DAIRY_STATUS:
+
+PL/SQL ERROR 201 at line 17, column 12
+
+identifier 'IT_DIARY' must be declared
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling procedure RUN_SQL... 
+
+Compilation error on procedure RUN_SQL:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 36, column 7
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 76, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 90, column 5
+
+Compiling function CHECK_INVALID_AFTER... 
+
+Compilation error on function CHECK_INVALID_AFTER: 
+
+PL/SQL ERROR 201 at line 18, column 17
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 15, column 8
+
+Compiling procedure CHECK_INVALID_BEFORE... 
+
+Compilation error on procedure CHECK_INVALID_BEFORE:
+
+PL/SQL ERROR 201 at line 29, column 18
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 26, column 9
+
+Compiling function CHECK_TEST_AND_PROD... 
+
+Compilation error on function CHECK_TEST_AND_PROD: 
+
+PL/SQL ERROR 201 at line 13, column 15
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure COMPILE_INVALIDS... 
+
+Compilation error on procedure COMPILE_INVALIDS:
+
+PL/SQL ERROR 0 at line 13, column 5
+
+Compiling procedure RUN_FMB... 
+
+Compilation error on procedure RUN_FMB:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+####################
+10:26:42	 Numbers of errors is 17 
+10:26:42	 Finished
+2013-06-10 10:26:42	 ##### D:\Develop\Perl\comp_fmx_err.pl Finished ###### 
+
+2013-06-10 10:28:01 	##### D:\Develop\Perl\comp_fmx_err.pl Started ##### 
+10:28:01	 Started
+##############################
+ new_infodata_others.fmb
+compiling new_infodata_others.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling package body INFO_ALL...
+
+Compilation error on package body INFO_ALL:
+
+PL/SQL ERROR 0 at line 0, column 0
+
+##############################
+##############################
+ contract_tab_new.fmb
+compiling contract_tab_new.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+FRM-30429: Block with Precompute Summaries must specify Query Data Source Type as Table or FROM clause query.
+
+Block: CONTRACT_TAB
+
+##############################
+##############################
+ wof_cust.fmb
+compiling wof_cust.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure ERR_FILE... 
+
+Compilation error on procedure ERR_FILE:
+
+PL/SQL ERROR 306 at line 3, column 28
+
+wrong number or types of arguments in call to 'CUST_NAME'
+
+PL/SQL ERROR 0 at line 3, column 11
+
+SQL Statement ignored
+
+PL/SQL ERROR 364 at line 12, column 43
+
+loop index variable 'I' use is invalid
+
+PL/SQL ERROR 0 at line 12, column 8
+
+##############################
+##############################
+ install_run1.fmb
+compiling install_run1.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+Compiling procedure RUN_RDF... 
+
+Compilation error on procedure RUN_RDF:
+
+PL/SQL ERROR 0 at line 24, column 5
+
+Compiling procedure RUN_STOP_USER... 
+
+Compilation error on procedure RUN_STOP_USER:
+
+PL/SQL ERROR 0 at line 15, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 22, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 27, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 34, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 58, column 5
+
+Compiling procedure MOVE_FILES_TO_PROD... 
+
+Compilation error on procedure MOVE_FILES_TO_PROD:
+
+PL/SQL ERROR 0 at line 80, column 14
+
+Compiling procedure FAIL_PROC... 
+
+Compilation error on procedure FAIL_PROC:
+
+PL/SQL ERROR 0 at line 9, column 3
+
+Compiling procedure RUN_BAT... 
+
+Compilation error on procedure RUN_BAT:
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling function GET_HOST... 
+
+Compilation error on function GET_HOST: 
+
+PL/SQL ERROR 201 at line 7, column 8
+
+identifier 'IN2PROD.BSCS_SESSIONS' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure RUN... 
+
+Compilation error on procedure RUN:
+
+PL/SQL ERROR 0 at line 53, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 57, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 78, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 87, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 116, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 125, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 134, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 137, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 146, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 164, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 172, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 194, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 202, column 3
+
+Compiling procedure UPDATE_DAIRY_STATUS... 
+
+Compilation error on procedure UPDATE_DAIRY_STATUS:
+
+PL/SQL ERROR 201 at line 17, column 12
+
+identifier 'IT_DIARY' must be declared
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling procedure RUN_SQL... 
+
+Compilation error on procedure RUN_SQL:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 36, column 7
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 76, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 90, column 5
+
+Compiling function CHECK_INVALID_AFTER... 
+
+Compilation error on function CHECK_INVALID_AFTER: 
+
+PL/SQL ERROR 201 at line 18, column 17
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 15, column 8
+
+Compiling procedure CHECK_INVALID_BEFORE... 
+
+Compilation error on procedure CHECK_INVALID_BEFORE:
+
+PL/SQL ERROR 201 at line 29, column 18
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 26, column 9
+
+Compiling function CHECK_TEST_AND_PROD... 
+
+Compilation error on function CHECK_TEST_AND_PROD: 
+
+PL/SQL ERROR 201 at line 13, column 15
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure COMPILE_INVALIDS... 
+
+Compilation error on procedure COMPILE_INVALIDS:
+
+PL/SQL ERROR 0 at line 13, column 5
+
+Compiling procedure RUN_FMB... 
+
+Compilation error on procedure RUN_FMB:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+##############################
+##############################
+ retro_invoice2.fmb
+compiling retro_invoice2.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure CALL_IF_SEND_LOG... 
+
+Compilation error on procedure CALL_IF_SEND_LOG:
+
+PL/SQL ERROR 201 at line 113, column 13
+
+identifier 'REPORTS.RETRO_LOG' must be declared
+
+PL/SQL ERROR 0 at line 113, column 1
+
+Compiling package body PCK_PARAM_BLOCK...
+
+Compilation error on package body PCK_PARAM_BLOCK:
+
+PL/SQL ERROR 0 at line 86, column 9
+
+Compiling procedure RUN_REPORT... 
+
+Compilation error on procedure RUN_REPORT:
+
+PL/SQL ERROR 201 at line 128, column 23
+
+identifier 'JOB_ID.NEXTVAL' must be declared
+
+PL/SQL ERROR 0 at line 128, column 16
+
+SQL Statement ignored
+
+PL/SQL ERROR 201 at line 142, column 28
+
+identifier 'JOBS_TAB' must be declared
+
+PL/SQL ERROR 0 at line 142, column 16
+
+SQL Statement ignored
+
+PL/SQL ERROR 201 at line 174, column 16
+
+identifier 'SEND_PIPE' must be declared
+
+PL/SQL ERROR 0 at line 174, column 16
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 219, column 14
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 284, column 12
+
+Statement ignored
+
+PL/SQL ERROR 201 at line 356, column 25
+
+identifier 'CALL_REQUEST_FAX' must be declared
+
+PL/SQL ERROR 0 at line 354, column 18
+
+SQL Statement ignored
+
+PL/SQL ERROR 201 at line 360, column 30
+
+identifier 'CALL_REQUEST_FAX' must be declared
+
+PL/SQL ERROR 0 at line 360, column 18
+
+SQL Statement ignored
+
+PL/SQL ERROR 0 at line 441, column 7
+
+Compiling function COUNT_SUCCESS_TERMINATED_JOBS... 
+
+Compilation error on function COUNT_SUCCESS_TERMINATED_JOBS: 
+
+PL/SQL ERROR 201 at line 12, column 8
+
+identifier 'JOBS_TAB' must be declared
+
+PL/SQL ERROR 0 at line 11, column 1
+
+Compiling function CHECK_ALREADY_CALCULATED... 
+
+Compilation error on function CHECK_ALREADY_CALCULATED: 
+
+PL/SQL ERROR 201 at line 19, column 7
+
+identifier 'JOBS_TAB' must be declared
+
+PL/SQL ERROR 0 at line 18, column 1
+
+##############################
+##############################
+ install_logs1.fmb
+compiling install_logs1.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure SET_ITEM_RIGHTS... 
+
+Compilation error on procedure SET_ITEM_RIGHTS:
+
+PL/SQL ERROR 201 at line 16, column 25
+
+identifier 'IN2PROD.DEC2BIN' must be declared
+
+PL/SQL ERROR 0 at line 16, column 7
+
+##############################
+##############################
+ cm_hever.fmb
+compiling cm_hever.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling WHEN-BUTTON-PRESSED trigger on REFRESH_HEVER_TBL item in CONTROL data block...
+
+Compilation error on WHEN-BUTTON-PRESSED trigger on REFRESH_HEVER_TBL item in CONTROL data block:
+
+PL/SQL ERROR 905 at line 12, column 10
+
+object REPORTS.REFRESH_HEVER_PAYMENT_DATA is invalid
+
+PL/SQL ERROR 0 at line 12, column 3
+
+##############################
+##############################
+ invoice_manage.fmb
+compiling invoice_manage.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling PRE-UPDATE trigger on BF_CHARGE_GROUP_REF data block...
+
+Compilation error on PRE-UPDATE trigger on BF_CHARGE_GROUP_REF data block:
+
+PL/SQL ERROR 395 at line 8, column 9
+
+wrong number of values in VALUES clause of INSERT statement
+
+PL/SQL ERROR 0 at line 7, column 3
+
+##############################
+##############################
+ nd_batch.fmb
+compiling nd_batch.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure START_JOB... 
+
+Compilation error on procedure START_JOB:
+
+PL/SQL ERROR 201 at line 7, column 3
+
+identifier 'RUN_SUBMIT' must be declared
+
+PL/SQL ERROR 0 at line 7, column 3
+
+##############################
+##############################
+ barepscr.fmb
+compiling barepscr.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+##############################
+##############################
+ install_plan1.fmb
+compiling install_plan1.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+Compiling function FIND_VIEW_OBJ... 
+
+Compilation error on function FIND_VIEW_OBJ: 
+
+PL/SQL ERROR 0 at line 0, column 0
+
+Compiling procedure CHECK_HAS_PASS... 
+
+Compilation error on procedure CHECK_HAS_PASS:
+
+PL/SQL ERROR 0 at line 6, column 5
+
+Compiling procedure FIND_ALL_FILES... 
+
+Compilation error on procedure FIND_ALL_FILES:
+
+PL/SQL ERROR 0 at line 19, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 30, column 5
+
+Compiling procedure GET_FILES3... 
+
+Compilation error on procedure GET_FILES3:
+
+PL/SQL ERROR 201 at line 16, column 10
+
+identifier 'SYN_CONFIGLABEL' must be declared
+
+PL/SQL ERROR 0 at line 15, column 5
+
+SQL Statement ignored
+
+PL/SQL ERROR 364 at line 39, column 55
+
+loop index variable 'F' use is invalid
+
+PL/SQL ERROR 0 at line 39, column 5
+
+Compiling procedure WHEN_EXIT... 
+
+Compilation error on procedure WHEN_EXIT:
+
+PL/SQL ERROR 0 at line 15, column 6
+
+Compiling procedure SAVE_ALL... 
+
+Compilation error on procedure SAVE_ALL:
+
+PL/SQL ERROR 0 at line 77, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 79, column 5
+
+Statement ignored
+
+PL/SQL ERROR 201 at line 99, column 13
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 92, column 5
+
+##############################
+##############################
+ barepoper.fmb
+compiling barepoper.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+##############################
+##############################
+ FREE_INVOICE.fmb
+compiling FREE_INVOICE.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling WHEN-BUTTON-PRESSED trigger on CREATE_RULE item in CONTROL data block...
+
+Compilation error on WHEN-BUTTON-PRESSED trigger on CREATE_RULE item in CONTROL data block:
+
+PL/SQL ERROR 306 at line 102, column 21
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 102, column 12
+
+Statement ignored
+
+PL/SQL ERROR 306 at line 179, column 21
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 179, column 12
+
+Compiling WHEN-BUTTON-PRESSED trigger on UPDATE_RULE item in CONTROL data block...
+
+Compilation error on WHEN-BUTTON-PRESSED trigger on UPDATE_RULE item in CONTROL data block:
+
+PL/SQL ERROR 306 at line 564, column 18
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 564, column 9
+
+Statement ignored
+
+PL/SQL ERROR 306 at line 611, column 27
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 611, column 18
+
+Statement ignored
+
+PL/SQL ERROR 306 at line 653, column 27
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 653, column 18
+
+##############################
+##############################
+ cn_history.fmb
+compiling cn_history.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling POST-QUERY trigger on CN_HISTORY data block...
+
+Compilation error on POST-QUERY trigger on CN_HISTORY data block:
+
+PL/SQL ERROR 327 at line 10, column 9
+
+"CN_INVOICES" is not in SQL scope here
+
+PL/SQL ERROR 0 at line 10, column 2
+
+##############################
+##############################
+ fd_activity.fmb
+compiling fd_activity.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function CHECK_DATA... 
+
+Compilation error on function CHECK_DATA: 
+
+PL/SQL ERROR 306 at line 137, column 3
+
+wrong number or types of arguments in call to 'CHECK_CSCURBALANCE'
+
+PL/SQL ERROR 0 at line 137, column 3
+
+##############################
+##############################
+ nd_dunn_odcanit.fmb
+compiling nd_dunn_odcanit.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling POST-QUERY trigger on CUST_TO_LAWYER data block...
+
+Compilation error on POST-QUERY trigger on CUST_TO_LAWYER data block:
+
+PL/SQL ERROR 201 at line 4, column 8
+
+identifier 'PCK_GET_CUSTOMER_BRAND_TYPE.F_GET_CUSTOMER_BRAND_TYPE' must be declared
+
+PL/SQL ERROR 0 at line 4, column 1
+
+##############################
+##############################
+ install_run1_old.fmb
+compiling install_run1_old.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+Compiling procedure RUN_RDF... 
+
+Compilation error on procedure RUN_RDF:
+
+PL/SQL ERROR 0 at line 24, column 5
+
+Compiling procedure RUN_STOP_USER... 
+
+Compilation error on procedure RUN_STOP_USER:
+
+PL/SQL ERROR 0 at line 15, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 22, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 27, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 34, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 58, column 5
+
+Compiling procedure MOVE_FILES_TO_PROD... 
+
+Compilation error on procedure MOVE_FILES_TO_PROD:
+
+PL/SQL ERROR 0 at line 80, column 14
+
+Compiling procedure FAIL_PROC... 
+
+Compilation error on procedure FAIL_PROC:
+
+PL/SQL ERROR 0 at line 9, column 3
+
+Compiling procedure RUN_BAT... 
+
+Compilation error on procedure RUN_BAT:
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling function GET_HOST... 
+
+Compilation error on function GET_HOST: 
+
+PL/SQL ERROR 201 at line 7, column 8
+
+identifier 'IN2PROD.BSCS_SESSIONS' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure RUN... 
+
+Compilation error on procedure RUN:
+
+PL/SQL ERROR 0 at line 53, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 57, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 78, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 87, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 116, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 125, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 134, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 137, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 146, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 164, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 172, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 194, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 202, column 3
+
+Compiling procedure UPDATE_DAIRY_STATUS... 
+
+Compilation error on procedure UPDATE_DAIRY_STATUS:
+
+PL/SQL ERROR 201 at line 17, column 12
+
+identifier 'IT_DIARY' must be declared
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling procedure RUN_SQL... 
+
+Compilation error on procedure RUN_SQL:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 36, column 7
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 76, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 90, column 5
+
+Compiling function CHECK_INVALID_AFTER... 
+
+Compilation error on function CHECK_INVALID_AFTER: 
+
+PL/SQL ERROR 201 at line 18, column 17
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 15, column 8
+
+Compiling procedure CHECK_INVALID_BEFORE... 
+
+Compilation error on procedure CHECK_INVALID_BEFORE:
+
+PL/SQL ERROR 201 at line 29, column 18
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 26, column 9
+
+Compiling function CHECK_TEST_AND_PROD... 
+
+Compilation error on function CHECK_TEST_AND_PROD: 
+
+PL/SQL ERROR 201 at line 13, column 15
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure COMPILE_INVALIDS... 
+
+Compilation error on procedure COMPILE_INVALIDS:
+
+PL/SQL ERROR 0 at line 13, column 5
+
+Compiling procedure RUN_FMB... 
+
+Compilation error on procedure RUN_FMB:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+##############################
+10:28:02	 Numbers of errors is 17 
+10:28:02	 Finished
+2013-06-10 10:28:02	 ##### D:\Develop\Perl\comp_fmx_err.pl Finished ###### 
+
+2013-06-10 10:28:25 	##### D:\Develop\Perl\comp_fmx_err.pl Started ##### 
+10:28:25	 Started
+ new_infodata_others.fmb
+##############################
+compiling new_infodata_others.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling package body INFO_ALL...
+
+Compilation error on package body INFO_ALL:
+
+PL/SQL ERROR 0 at line 0, column 0
+
+##############################
+ contract_tab_new.fmb
+##############################
+compiling contract_tab_new.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+FRM-30429: Block with Precompute Summaries must specify Query Data Source Type as Table or FROM clause query.
+
+Block: CONTRACT_TAB
+
+##############################
+ wof_cust.fmb
+##############################
+compiling wof_cust.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure ERR_FILE... 
+
+Compilation error on procedure ERR_FILE:
+
+PL/SQL ERROR 306 at line 3, column 28
+
+wrong number or types of arguments in call to 'CUST_NAME'
+
+PL/SQL ERROR 0 at line 3, column 11
+
+SQL Statement ignored
+
+PL/SQL ERROR 364 at line 12, column 43
+
+loop index variable 'I' use is invalid
+
+PL/SQL ERROR 0 at line 12, column 8
+
+##############################
+ install_run1.fmb
+##############################
+compiling install_run1.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+Compiling procedure RUN_RDF... 
+
+Compilation error on procedure RUN_RDF:
+
+PL/SQL ERROR 0 at line 24, column 5
+
+Compiling procedure RUN_STOP_USER... 
+
+Compilation error on procedure RUN_STOP_USER:
+
+PL/SQL ERROR 0 at line 15, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 22, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 27, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 34, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 58, column 5
+
+Compiling procedure MOVE_FILES_TO_PROD... 
+
+Compilation error on procedure MOVE_FILES_TO_PROD:
+
+PL/SQL ERROR 0 at line 80, column 14
+
+Compiling procedure FAIL_PROC... 
+
+Compilation error on procedure FAIL_PROC:
+
+PL/SQL ERROR 0 at line 9, column 3
+
+Compiling procedure RUN_BAT... 
+
+Compilation error on procedure RUN_BAT:
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling function GET_HOST... 
+
+Compilation error on function GET_HOST: 
+
+PL/SQL ERROR 201 at line 7, column 8
+
+identifier 'IN2PROD.BSCS_SESSIONS' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure RUN... 
+
+Compilation error on procedure RUN:
+
+PL/SQL ERROR 0 at line 53, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 57, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 78, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 87, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 116, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 125, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 134, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 137, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 146, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 164, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 172, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 194, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 202, column 3
+
+Compiling procedure UPDATE_DAIRY_STATUS... 
+
+Compilation error on procedure UPDATE_DAIRY_STATUS:
+
+PL/SQL ERROR 201 at line 17, column 12
+
+identifier 'IT_DIARY' must be declared
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling procedure RUN_SQL... 
+
+Compilation error on procedure RUN_SQL:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 36, column 7
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 76, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 90, column 5
+
+Compiling function CHECK_INVALID_AFTER... 
+
+Compilation error on function CHECK_INVALID_AFTER: 
+
+PL/SQL ERROR 201 at line 18, column 17
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 15, column 8
+
+Compiling procedure CHECK_INVALID_BEFORE... 
+
+Compilation error on procedure CHECK_INVALID_BEFORE:
+
+PL/SQL ERROR 201 at line 29, column 18
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 26, column 9
+
+Compiling function CHECK_TEST_AND_PROD... 
+
+Compilation error on function CHECK_TEST_AND_PROD: 
+
+PL/SQL ERROR 201 at line 13, column 15
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure COMPILE_INVALIDS... 
+
+Compilation error on procedure COMPILE_INVALIDS:
+
+PL/SQL ERROR 0 at line 13, column 5
+
+Compiling procedure RUN_FMB... 
+
+Compilation error on procedure RUN_FMB:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+##############################
+ retro_invoice2.fmb
+##############################
+compiling retro_invoice2.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure CALL_IF_SEND_LOG... 
+
+Compilation error on procedure CALL_IF_SEND_LOG:
+
+PL/SQL ERROR 201 at line 113, column 13
+
+identifier 'REPORTS.RETRO_LOG' must be declared
+
+PL/SQL ERROR 0 at line 113, column 1
+
+Compiling package body PCK_PARAM_BLOCK...
+
+Compilation error on package body PCK_PARAM_BLOCK:
+
+PL/SQL ERROR 0 at line 86, column 9
+
+Compiling procedure RUN_REPORT... 
+
+Compilation error on procedure RUN_REPORT:
+
+PL/SQL ERROR 201 at line 128, column 23
+
+identifier 'JOB_ID.NEXTVAL' must be declared
+
+PL/SQL ERROR 0 at line 128, column 16
+
+SQL Statement ignored
+
+PL/SQL ERROR 201 at line 142, column 28
+
+identifier 'JOBS_TAB' must be declared
+
+PL/SQL ERROR 0 at line 142, column 16
+
+SQL Statement ignored
+
+PL/SQL ERROR 201 at line 174, column 16
+
+identifier 'SEND_PIPE' must be declared
+
+PL/SQL ERROR 0 at line 174, column 16
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 219, column 14
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 284, column 12
+
+Statement ignored
+
+PL/SQL ERROR 201 at line 356, column 25
+
+identifier 'CALL_REQUEST_FAX' must be declared
+
+PL/SQL ERROR 0 at line 354, column 18
+
+SQL Statement ignored
+
+PL/SQL ERROR 201 at line 360, column 30
+
+identifier 'CALL_REQUEST_FAX' must be declared
+
+PL/SQL ERROR 0 at line 360, column 18
+
+SQL Statement ignored
+
+PL/SQL ERROR 0 at line 441, column 7
+
+Compiling function COUNT_SUCCESS_TERMINATED_JOBS... 
+
+Compilation error on function COUNT_SUCCESS_TERMINATED_JOBS: 
+
+PL/SQL ERROR 201 at line 12, column 8
+
+identifier 'JOBS_TAB' must be declared
+
+PL/SQL ERROR 0 at line 11, column 1
+
+Compiling function CHECK_ALREADY_CALCULATED... 
+
+Compilation error on function CHECK_ALREADY_CALCULATED: 
+
+PL/SQL ERROR 201 at line 19, column 7
+
+identifier 'JOBS_TAB' must be declared
+
+PL/SQL ERROR 0 at line 18, column 1
+
+##############################
+ install_logs1.fmb
+##############################
+compiling install_logs1.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure SET_ITEM_RIGHTS... 
+
+Compilation error on procedure SET_ITEM_RIGHTS:
+
+PL/SQL ERROR 201 at line 16, column 25
+
+identifier 'IN2PROD.DEC2BIN' must be declared
+
+PL/SQL ERROR 0 at line 16, column 7
+
+##############################
+ cm_hever.fmb
+##############################
+compiling cm_hever.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling WHEN-BUTTON-PRESSED trigger on REFRESH_HEVER_TBL item in CONTROL data block...
+
+Compilation error on WHEN-BUTTON-PRESSED trigger on REFRESH_HEVER_TBL item in CONTROL data block:
+
+PL/SQL ERROR 905 at line 12, column 10
+
+object REPORTS.REFRESH_HEVER_PAYMENT_DATA is invalid
+
+PL/SQL ERROR 0 at line 12, column 3
+
+##############################
+ invoice_manage.fmb
+##############################
+compiling invoice_manage.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling PRE-UPDATE trigger on BF_CHARGE_GROUP_REF data block...
+
+Compilation error on PRE-UPDATE trigger on BF_CHARGE_GROUP_REF data block:
+
+PL/SQL ERROR 395 at line 8, column 9
+
+wrong number of values in VALUES clause of INSERT statement
+
+PL/SQL ERROR 0 at line 7, column 3
+
+##############################
+ nd_batch.fmb
+##############################
+compiling nd_batch.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure START_JOB... 
+
+Compilation error on procedure START_JOB:
+
+PL/SQL ERROR 201 at line 7, column 3
+
+identifier 'RUN_SUBMIT' must be declared
+
+PL/SQL ERROR 0 at line 7, column 3
+
+##############################
+ barepscr.fmb
+##############################
+compiling barepscr.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+##############################
+ install_plan1.fmb
+##############################
+compiling install_plan1.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+Compiling function FIND_VIEW_OBJ... 
+
+Compilation error on function FIND_VIEW_OBJ: 
+
+PL/SQL ERROR 0 at line 0, column 0
+
+Compiling procedure CHECK_HAS_PASS... 
+
+Compilation error on procedure CHECK_HAS_PASS:
+
+PL/SQL ERROR 0 at line 6, column 5
+
+Compiling procedure FIND_ALL_FILES... 
+
+Compilation error on procedure FIND_ALL_FILES:
+
+PL/SQL ERROR 0 at line 19, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 30, column 5
+
+Compiling procedure GET_FILES3... 
+
+Compilation error on procedure GET_FILES3:
+
+PL/SQL ERROR 201 at line 16, column 10
+
+identifier 'SYN_CONFIGLABEL' must be declared
+
+PL/SQL ERROR 0 at line 15, column 5
+
+SQL Statement ignored
+
+PL/SQL ERROR 364 at line 39, column 55
+
+loop index variable 'F' use is invalid
+
+PL/SQL ERROR 0 at line 39, column 5
+
+Compiling procedure WHEN_EXIT... 
+
+Compilation error on procedure WHEN_EXIT:
+
+PL/SQL ERROR 0 at line 15, column 6
+
+Compiling procedure SAVE_ALL... 
+
+Compilation error on procedure SAVE_ALL:
+
+PL/SQL ERROR 0 at line 77, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 79, column 5
+
+Statement ignored
+
+PL/SQL ERROR 201 at line 99, column 13
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 92, column 5
+
+##############################
+ barepoper.fmb
+##############################
+compiling barepoper.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+##############################
+ FREE_INVOICE.fmb
+##############################
+compiling FREE_INVOICE.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling WHEN-BUTTON-PRESSED trigger on CREATE_RULE item in CONTROL data block...
+
+Compilation error on WHEN-BUTTON-PRESSED trigger on CREATE_RULE item in CONTROL data block:
+
+PL/SQL ERROR 306 at line 102, column 21
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 102, column 12
+
+Statement ignored
+
+PL/SQL ERROR 306 at line 179, column 21
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 179, column 12
+
+Compiling WHEN-BUTTON-PRESSED trigger on UPDATE_RULE item in CONTROL data block...
+
+Compilation error on WHEN-BUTTON-PRESSED trigger on UPDATE_RULE item in CONTROL data block:
+
+PL/SQL ERROR 306 at line 564, column 18
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 564, column 9
+
+Statement ignored
+
+PL/SQL ERROR 306 at line 611, column 27
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 611, column 18
+
+Statement ignored
+
+PL/SQL ERROR 306 at line 653, column 27
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 653, column 18
+
+##############################
+ cn_history.fmb
+##############################
+compiling cn_history.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling POST-QUERY trigger on CN_HISTORY data block...
+
+Compilation error on POST-QUERY trigger on CN_HISTORY data block:
+
+PL/SQL ERROR 327 at line 10, column 9
+
+"CN_INVOICES" is not in SQL scope here
+
+PL/SQL ERROR 0 at line 10, column 2
+
+##############################
+ fd_activity.fmb
+##############################
+compiling fd_activity.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function CHECK_DATA... 
+
+Compilation error on function CHECK_DATA: 
+
+PL/SQL ERROR 306 at line 137, column 3
+
+wrong number or types of arguments in call to 'CHECK_CSCURBALANCE'
+
+PL/SQL ERROR 0 at line 137, column 3
+
+##############################
+ nd_dunn_odcanit.fmb
+##############################
+compiling nd_dunn_odcanit.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling POST-QUERY trigger on CUST_TO_LAWYER data block...
+
+Compilation error on POST-QUERY trigger on CUST_TO_LAWYER data block:
+
+PL/SQL ERROR 201 at line 4, column 8
+
+identifier 'PCK_GET_CUSTOMER_BRAND_TYPE.F_GET_CUSTOMER_BRAND_TYPE' must be declared
+
+PL/SQL ERROR 0 at line 4, column 1
+
+##############################
+ install_run1_old.fmb
+##############################
+compiling install_run1_old.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+Compiling procedure RUN_RDF... 
+
+Compilation error on procedure RUN_RDF:
+
+PL/SQL ERROR 0 at line 24, column 5
+
+Compiling procedure RUN_STOP_USER... 
+
+Compilation error on procedure RUN_STOP_USER:
+
+PL/SQL ERROR 0 at line 15, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 22, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 27, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 34, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 58, column 5
+
+Compiling procedure MOVE_FILES_TO_PROD... 
+
+Compilation error on procedure MOVE_FILES_TO_PROD:
+
+PL/SQL ERROR 0 at line 80, column 14
+
+Compiling procedure FAIL_PROC... 
+
+Compilation error on procedure FAIL_PROC:
+
+PL/SQL ERROR 0 at line 9, column 3
+
+Compiling procedure RUN_BAT... 
+
+Compilation error on procedure RUN_BAT:
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling function GET_HOST... 
+
+Compilation error on function GET_HOST: 
+
+PL/SQL ERROR 201 at line 7, column 8
+
+identifier 'IN2PROD.BSCS_SESSIONS' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure RUN... 
+
+Compilation error on procedure RUN:
+
+PL/SQL ERROR 0 at line 53, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 57, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 78, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 87, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 116, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 125, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 134, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 137, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 146, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 164, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 172, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 194, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 202, column 3
+
+Compiling procedure UPDATE_DAIRY_STATUS... 
+
+Compilation error on procedure UPDATE_DAIRY_STATUS:
+
+PL/SQL ERROR 201 at line 17, column 12
+
+identifier 'IT_DIARY' must be declared
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling procedure RUN_SQL... 
+
+Compilation error on procedure RUN_SQL:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 36, column 7
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 76, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 90, column 5
+
+Compiling function CHECK_INVALID_AFTER... 
+
+Compilation error on function CHECK_INVALID_AFTER: 
+
+PL/SQL ERROR 201 at line 18, column 17
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 15, column 8
+
+Compiling procedure CHECK_INVALID_BEFORE... 
+
+Compilation error on procedure CHECK_INVALID_BEFORE:
+
+PL/SQL ERROR 201 at line 29, column 18
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 26, column 9
+
+Compiling function CHECK_TEST_AND_PROD... 
+
+Compilation error on function CHECK_TEST_AND_PROD: 
+
+PL/SQL ERROR 201 at line 13, column 15
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure COMPILE_INVALIDS... 
+
+Compilation error on procedure COMPILE_INVALIDS:
+
+PL/SQL ERROR 0 at line 13, column 5
+
+Compiling procedure RUN_FMB... 
+
+Compilation error on procedure RUN_FMB:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+##############################
+10:28:25	 Numbers of errors is 17 
+10:28:25	 Finished
+2013-06-10 10:28:25	 ##### D:\Develop\Perl\comp_fmx_err.pl Finished ###### 
+
+2013-06-10 10:30:30 	##### D:\Develop\Perl\comp_fmx_err.pl Started ##### 
+10:30:30	 Started
+##############################
+new_infodata_others.fmb
+##############################
+compiling new_infodata_others.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling package body INFO_ALL...
+
+Compilation error on package body INFO_ALL:
+
+PL/SQL ERROR 0 at line 0, column 0
+
+##############################
+##############################
+contract_tab_new.fmb
+##############################
+compiling contract_tab_new.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+FRM-30429: Block with Precompute Summaries must specify Query Data Source Type as Table or FROM clause query.
+
+Block: CONTRACT_TAB
+
+##############################
+##############################
+wof_cust.fmb
+##############################
+compiling wof_cust.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure ERR_FILE... 
+
+Compilation error on procedure ERR_FILE:
+
+PL/SQL ERROR 306 at line 3, column 28
+
+wrong number or types of arguments in call to 'CUST_NAME'
+
+PL/SQL ERROR 0 at line 3, column 11
+
+SQL Statement ignored
+
+PL/SQL ERROR 364 at line 12, column 43
+
+loop index variable 'I' use is invalid
+
+PL/SQL ERROR 0 at line 12, column 8
+
+##############################
+##############################
+install_run1.fmb
+##############################
+compiling install_run1.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+Compiling procedure RUN_RDF... 
+
+Compilation error on procedure RUN_RDF:
+
+PL/SQL ERROR 0 at line 24, column 5
+
+Compiling procedure RUN_STOP_USER... 
+
+Compilation error on procedure RUN_STOP_USER:
+
+PL/SQL ERROR 0 at line 15, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 22, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 27, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 34, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 58, column 5
+
+Compiling procedure MOVE_FILES_TO_PROD... 
+
+Compilation error on procedure MOVE_FILES_TO_PROD:
+
+PL/SQL ERROR 0 at line 80, column 14
+
+Compiling procedure FAIL_PROC... 
+
+Compilation error on procedure FAIL_PROC:
+
+PL/SQL ERROR 0 at line 9, column 3
+
+Compiling procedure RUN_BAT... 
+
+Compilation error on procedure RUN_BAT:
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling function GET_HOST... 
+
+Compilation error on function GET_HOST: 
+
+PL/SQL ERROR 201 at line 7, column 8
+
+identifier 'IN2PROD.BSCS_SESSIONS' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure RUN... 
+
+Compilation error on procedure RUN:
+
+PL/SQL ERROR 0 at line 53, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 57, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 78, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 87, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 116, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 125, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 134, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 137, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 146, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 164, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 172, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 194, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 202, column 3
+
+Compiling procedure UPDATE_DAIRY_STATUS... 
+
+Compilation error on procedure UPDATE_DAIRY_STATUS:
+
+PL/SQL ERROR 201 at line 17, column 12
+
+identifier 'IT_DIARY' must be declared
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling procedure RUN_SQL... 
+
+Compilation error on procedure RUN_SQL:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 36, column 7
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 76, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 90, column 5
+
+Compiling function CHECK_INVALID_AFTER... 
+
+Compilation error on function CHECK_INVALID_AFTER: 
+
+PL/SQL ERROR 201 at line 18, column 17
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 15, column 8
+
+Compiling procedure CHECK_INVALID_BEFORE... 
+
+Compilation error on procedure CHECK_INVALID_BEFORE:
+
+PL/SQL ERROR 201 at line 29, column 18
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 26, column 9
+
+Compiling function CHECK_TEST_AND_PROD... 
+
+Compilation error on function CHECK_TEST_AND_PROD: 
+
+PL/SQL ERROR 201 at line 13, column 15
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure COMPILE_INVALIDS... 
+
+Compilation error on procedure COMPILE_INVALIDS:
+
+PL/SQL ERROR 0 at line 13, column 5
+
+Compiling procedure RUN_FMB... 
+
+Compilation error on procedure RUN_FMB:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+##############################
+##############################
+retro_invoice2.fmb
+##############################
+compiling retro_invoice2.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure CALL_IF_SEND_LOG... 
+
+Compilation error on procedure CALL_IF_SEND_LOG:
+
+PL/SQL ERROR 201 at line 113, column 13
+
+identifier 'REPORTS.RETRO_LOG' must be declared
+
+PL/SQL ERROR 0 at line 113, column 1
+
+Compiling package body PCK_PARAM_BLOCK...
+
+Compilation error on package body PCK_PARAM_BLOCK:
+
+PL/SQL ERROR 0 at line 86, column 9
+
+Compiling procedure RUN_REPORT... 
+
+Compilation error on procedure RUN_REPORT:
+
+PL/SQL ERROR 201 at line 128, column 23
+
+identifier 'JOB_ID.NEXTVAL' must be declared
+
+PL/SQL ERROR 0 at line 128, column 16
+
+SQL Statement ignored
+
+PL/SQL ERROR 201 at line 142, column 28
+
+identifier 'JOBS_TAB' must be declared
+
+PL/SQL ERROR 0 at line 142, column 16
+
+SQL Statement ignored
+
+PL/SQL ERROR 201 at line 174, column 16
+
+identifier 'SEND_PIPE' must be declared
+
+PL/SQL ERROR 0 at line 174, column 16
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 219, column 14
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 284, column 12
+
+Statement ignored
+
+PL/SQL ERROR 201 at line 356, column 25
+
+identifier 'CALL_REQUEST_FAX' must be declared
+
+PL/SQL ERROR 0 at line 354, column 18
+
+SQL Statement ignored
+
+PL/SQL ERROR 201 at line 360, column 30
+
+identifier 'CALL_REQUEST_FAX' must be declared
+
+PL/SQL ERROR 0 at line 360, column 18
+
+SQL Statement ignored
+
+PL/SQL ERROR 0 at line 441, column 7
+
+Compiling function COUNT_SUCCESS_TERMINATED_JOBS... 
+
+Compilation error on function COUNT_SUCCESS_TERMINATED_JOBS: 
+
+PL/SQL ERROR 201 at line 12, column 8
+
+identifier 'JOBS_TAB' must be declared
+
+PL/SQL ERROR 0 at line 11, column 1
+
+Compiling function CHECK_ALREADY_CALCULATED... 
+
+Compilation error on function CHECK_ALREADY_CALCULATED: 
+
+PL/SQL ERROR 201 at line 19, column 7
+
+identifier 'JOBS_TAB' must be declared
+
+PL/SQL ERROR 0 at line 18, column 1
+
+##############################
+##############################
+install_logs1.fmb
+##############################
+compiling install_logs1.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure SET_ITEM_RIGHTS... 
+
+Compilation error on procedure SET_ITEM_RIGHTS:
+
+PL/SQL ERROR 201 at line 16, column 25
+
+identifier 'IN2PROD.DEC2BIN' must be declared
+
+PL/SQL ERROR 0 at line 16, column 7
+
+##############################
+##############################
+cm_hever.fmb
+##############################
+compiling cm_hever.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling WHEN-BUTTON-PRESSED trigger on REFRESH_HEVER_TBL item in CONTROL data block...
+
+Compilation error on WHEN-BUTTON-PRESSED trigger on REFRESH_HEVER_TBL item in CONTROL data block:
+
+PL/SQL ERROR 905 at line 12, column 10
+
+object REPORTS.REFRESH_HEVER_PAYMENT_DATA is invalid
+
+PL/SQL ERROR 0 at line 12, column 3
+
+##############################
+##############################
+invoice_manage.fmb
+##############################
+compiling invoice_manage.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling PRE-UPDATE trigger on BF_CHARGE_GROUP_REF data block...
+
+Compilation error on PRE-UPDATE trigger on BF_CHARGE_GROUP_REF data block:
+
+PL/SQL ERROR 395 at line 8, column 9
+
+wrong number of values in VALUES clause of INSERT statement
+
+PL/SQL ERROR 0 at line 7, column 3
+
+##############################
+##############################
+nd_batch.fmb
+##############################
+compiling nd_batch.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure START_JOB... 
+
+Compilation error on procedure START_JOB:
+
+PL/SQL ERROR 201 at line 7, column 3
+
+identifier 'RUN_SUBMIT' must be declared
+
+PL/SQL ERROR 0 at line 7, column 3
+
+##############################
+##############################
+barepscr.fmb
+##############################
+compiling barepscr.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+##############################
+##############################
+install_plan1.fmb
+##############################
+compiling install_plan1.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+Compiling function FIND_VIEW_OBJ... 
+
+Compilation error on function FIND_VIEW_OBJ: 
+
+PL/SQL ERROR 0 at line 0, column 0
+
+Compiling procedure CHECK_HAS_PASS... 
+
+Compilation error on procedure CHECK_HAS_PASS:
+
+PL/SQL ERROR 0 at line 6, column 5
+
+Compiling procedure FIND_ALL_FILES... 
+
+Compilation error on procedure FIND_ALL_FILES:
+
+PL/SQL ERROR 0 at line 19, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 30, column 5
+
+Compiling procedure GET_FILES3... 
+
+Compilation error on procedure GET_FILES3:
+
+PL/SQL ERROR 201 at line 16, column 10
+
+identifier 'SYN_CONFIGLABEL' must be declared
+
+PL/SQL ERROR 0 at line 15, column 5
+
+SQL Statement ignored
+
+PL/SQL ERROR 364 at line 39, column 55
+
+loop index variable 'F' use is invalid
+
+PL/SQL ERROR 0 at line 39, column 5
+
+Compiling procedure WHEN_EXIT... 
+
+Compilation error on procedure WHEN_EXIT:
+
+PL/SQL ERROR 0 at line 15, column 6
+
+Compiling procedure SAVE_ALL... 
+
+Compilation error on procedure SAVE_ALL:
+
+PL/SQL ERROR 0 at line 77, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 79, column 5
+
+Statement ignored
+
+PL/SQL ERROR 201 at line 99, column 13
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 92, column 5
+
+##############################
+##############################
+barepoper.fmb
+##############################
+compiling barepoper.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+##############################
+##############################
+FREE_INVOICE.fmb
+##############################
+compiling FREE_INVOICE.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling WHEN-BUTTON-PRESSED trigger on CREATE_RULE item in CONTROL data block...
+
+Compilation error on WHEN-BUTTON-PRESSED trigger on CREATE_RULE item in CONTROL data block:
+
+PL/SQL ERROR 306 at line 102, column 21
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 102, column 12
+
+Statement ignored
+
+PL/SQL ERROR 306 at line 179, column 21
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 179, column 12
+
+Compiling WHEN-BUTTON-PRESSED trigger on UPDATE_RULE item in CONTROL data block...
+
+Compilation error on WHEN-BUTTON-PRESSED trigger on UPDATE_RULE item in CONTROL data block:
+
+PL/SQL ERROR 306 at line 564, column 18
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 564, column 9
+
+Statement ignored
+
+PL/SQL ERROR 306 at line 611, column 27
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 611, column 18
+
+Statement ignored
+
+PL/SQL ERROR 306 at line 653, column 27
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 653, column 18
+
+##############################
+##############################
+cn_history.fmb
+##############################
+compiling cn_history.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling POST-QUERY trigger on CN_HISTORY data block...
+
+Compilation error on POST-QUERY trigger on CN_HISTORY data block:
+
+PL/SQL ERROR 327 at line 10, column 9
+
+"CN_INVOICES" is not in SQL scope here
+
+PL/SQL ERROR 0 at line 10, column 2
+
+##############################
+##############################
+fd_activity.fmb
+##############################
+compiling fd_activity.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function CHECK_DATA... 
+
+Compilation error on function CHECK_DATA: 
+
+PL/SQL ERROR 306 at line 137, column 3
+
+wrong number or types of arguments in call to 'CHECK_CSCURBALANCE'
+
+PL/SQL ERROR 0 at line 137, column 3
+
+##############################
+##############################
+nd_dunn_odcanit.fmb
+##############################
+compiling nd_dunn_odcanit.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling POST-QUERY trigger on CUST_TO_LAWYER data block...
+
+Compilation error on POST-QUERY trigger on CUST_TO_LAWYER data block:
+
+PL/SQL ERROR 201 at line 4, column 8
+
+identifier 'PCK_GET_CUSTOMER_BRAND_TYPE.F_GET_CUSTOMER_BRAND_TYPE' must be declared
+
+PL/SQL ERROR 0 at line 4, column 1
+
+##############################
+##############################
+install_run1_old.fmb
+##############################
+compiling install_run1_old.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+Compiling procedure RUN_RDF... 
+
+Compilation error on procedure RUN_RDF:
+
+PL/SQL ERROR 0 at line 24, column 5
+
+Compiling procedure RUN_STOP_USER... 
+
+Compilation error on procedure RUN_STOP_USER:
+
+PL/SQL ERROR 0 at line 15, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 22, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 27, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 34, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 58, column 5
+
+Compiling procedure MOVE_FILES_TO_PROD... 
+
+Compilation error on procedure MOVE_FILES_TO_PROD:
+
+PL/SQL ERROR 0 at line 80, column 14
+
+Compiling procedure FAIL_PROC... 
+
+Compilation error on procedure FAIL_PROC:
+
+PL/SQL ERROR 0 at line 9, column 3
+
+Compiling procedure RUN_BAT... 
+
+Compilation error on procedure RUN_BAT:
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling function GET_HOST... 
+
+Compilation error on function GET_HOST: 
+
+PL/SQL ERROR 201 at line 7, column 8
+
+identifier 'IN2PROD.BSCS_SESSIONS' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure RUN... 
+
+Compilation error on procedure RUN:
+
+PL/SQL ERROR 0 at line 53, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 57, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 78, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 87, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 116, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 125, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 134, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 137, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 146, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 164, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 172, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 194, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 202, column 3
+
+Compiling procedure UPDATE_DAIRY_STATUS... 
+
+Compilation error on procedure UPDATE_DAIRY_STATUS:
+
+PL/SQL ERROR 201 at line 17, column 12
+
+identifier 'IT_DIARY' must be declared
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling procedure RUN_SQL... 
+
+Compilation error on procedure RUN_SQL:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 36, column 7
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 76, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 90, column 5
+
+Compiling function CHECK_INVALID_AFTER... 
+
+Compilation error on function CHECK_INVALID_AFTER: 
+
+PL/SQL ERROR 201 at line 18, column 17
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 15, column 8
+
+Compiling procedure CHECK_INVALID_BEFORE... 
+
+Compilation error on procedure CHECK_INVALID_BEFORE:
+
+PL/SQL ERROR 201 at line 29, column 18
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 26, column 9
+
+Compiling function CHECK_TEST_AND_PROD... 
+
+Compilation error on function CHECK_TEST_AND_PROD: 
+
+PL/SQL ERROR 201 at line 13, column 15
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure COMPILE_INVALIDS... 
+
+Compilation error on procedure COMPILE_INVALIDS:
+
+PL/SQL ERROR 0 at line 13, column 5
+
+Compiling procedure RUN_FMB... 
+
+Compilation error on procedure RUN_FMB:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+##############################
+10:30:30	 Numbers of errors is 17 
+10:30:30	 Finished
+2013-06-10 10:30:30	 ##### D:\Develop\Perl\comp_fmx_err.pl Finished ###### 
+
+2013-06-10 10:31:04 	##### D:\Develop\Perl\comp_fmx_err.pl Started ##### 
+10:31:04	 Started
+##############################
+new_infodata_others.fmb
+##############################
+compiling new_infodata_others.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling package body INFO_ALL...
+
+Compilation error on package body INFO_ALL:
+
+PL/SQL ERROR 0 at line 0, column 0
+
+##############################
+contract_tab_new.fmb
+##############################
+compiling contract_tab_new.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+FRM-30429: Block with Precompute Summaries must specify Query Data Source Type as Table or FROM clause query.
+
+Block: CONTRACT_TAB
+
+##############################
+wof_cust.fmb
+##############################
+compiling wof_cust.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure ERR_FILE... 
+
+Compilation error on procedure ERR_FILE:
+
+PL/SQL ERROR 306 at line 3, column 28
+
+wrong number or types of arguments in call to 'CUST_NAME'
+
+PL/SQL ERROR 0 at line 3, column 11
+
+SQL Statement ignored
+
+PL/SQL ERROR 364 at line 12, column 43
+
+loop index variable 'I' use is invalid
+
+PL/SQL ERROR 0 at line 12, column 8
+
+##############################
+install_run1.fmb
+##############################
+compiling install_run1.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+Compiling procedure RUN_RDF... 
+
+Compilation error on procedure RUN_RDF:
+
+PL/SQL ERROR 0 at line 24, column 5
+
+Compiling procedure RUN_STOP_USER... 
+
+Compilation error on procedure RUN_STOP_USER:
+
+PL/SQL ERROR 0 at line 15, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 22, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 27, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 34, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 58, column 5
+
+Compiling procedure MOVE_FILES_TO_PROD... 
+
+Compilation error on procedure MOVE_FILES_TO_PROD:
+
+PL/SQL ERROR 0 at line 80, column 14
+
+Compiling procedure FAIL_PROC... 
+
+Compilation error on procedure FAIL_PROC:
+
+PL/SQL ERROR 0 at line 9, column 3
+
+Compiling procedure RUN_BAT... 
+
+Compilation error on procedure RUN_BAT:
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling function GET_HOST... 
+
+Compilation error on function GET_HOST: 
+
+PL/SQL ERROR 201 at line 7, column 8
+
+identifier 'IN2PROD.BSCS_SESSIONS' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure RUN... 
+
+Compilation error on procedure RUN:
+
+PL/SQL ERROR 0 at line 53, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 57, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 78, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 87, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 116, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 125, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 134, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 137, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 146, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 164, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 172, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 194, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 202, column 3
+
+Compiling procedure UPDATE_DAIRY_STATUS... 
+
+Compilation error on procedure UPDATE_DAIRY_STATUS:
+
+PL/SQL ERROR 201 at line 17, column 12
+
+identifier 'IT_DIARY' must be declared
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling procedure RUN_SQL... 
+
+Compilation error on procedure RUN_SQL:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 36, column 7
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 76, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 90, column 5
+
+Compiling function CHECK_INVALID_AFTER... 
+
+Compilation error on function CHECK_INVALID_AFTER: 
+
+PL/SQL ERROR 201 at line 18, column 17
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 15, column 8
+
+Compiling procedure CHECK_INVALID_BEFORE... 
+
+Compilation error on procedure CHECK_INVALID_BEFORE:
+
+PL/SQL ERROR 201 at line 29, column 18
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 26, column 9
+
+Compiling function CHECK_TEST_AND_PROD... 
+
+Compilation error on function CHECK_TEST_AND_PROD: 
+
+PL/SQL ERROR 201 at line 13, column 15
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure COMPILE_INVALIDS... 
+
+Compilation error on procedure COMPILE_INVALIDS:
+
+PL/SQL ERROR 0 at line 13, column 5
+
+Compiling procedure RUN_FMB... 
+
+Compilation error on procedure RUN_FMB:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+##############################
+retro_invoice2.fmb
+##############################
+compiling retro_invoice2.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure CALL_IF_SEND_LOG... 
+
+Compilation error on procedure CALL_IF_SEND_LOG:
+
+PL/SQL ERROR 201 at line 113, column 13
+
+identifier 'REPORTS.RETRO_LOG' must be declared
+
+PL/SQL ERROR 0 at line 113, column 1
+
+Compiling package body PCK_PARAM_BLOCK...
+
+Compilation error on package body PCK_PARAM_BLOCK:
+
+PL/SQL ERROR 0 at line 86, column 9
+
+Compiling procedure RUN_REPORT... 
+
+Compilation error on procedure RUN_REPORT:
+
+PL/SQL ERROR 201 at line 128, column 23
+
+identifier 'JOB_ID.NEXTVAL' must be declared
+
+PL/SQL ERROR 0 at line 128, column 16
+
+SQL Statement ignored
+
+PL/SQL ERROR 201 at line 142, column 28
+
+identifier 'JOBS_TAB' must be declared
+
+PL/SQL ERROR 0 at line 142, column 16
+
+SQL Statement ignored
+
+PL/SQL ERROR 201 at line 174, column 16
+
+identifier 'SEND_PIPE' must be declared
+
+PL/SQL ERROR 0 at line 174, column 16
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 219, column 14
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 284, column 12
+
+Statement ignored
+
+PL/SQL ERROR 201 at line 356, column 25
+
+identifier 'CALL_REQUEST_FAX' must be declared
+
+PL/SQL ERROR 0 at line 354, column 18
+
+SQL Statement ignored
+
+PL/SQL ERROR 201 at line 360, column 30
+
+identifier 'CALL_REQUEST_FAX' must be declared
+
+PL/SQL ERROR 0 at line 360, column 18
+
+SQL Statement ignored
+
+PL/SQL ERROR 0 at line 441, column 7
+
+Compiling function COUNT_SUCCESS_TERMINATED_JOBS... 
+
+Compilation error on function COUNT_SUCCESS_TERMINATED_JOBS: 
+
+PL/SQL ERROR 201 at line 12, column 8
+
+identifier 'JOBS_TAB' must be declared
+
+PL/SQL ERROR 0 at line 11, column 1
+
+Compiling function CHECK_ALREADY_CALCULATED... 
+
+Compilation error on function CHECK_ALREADY_CALCULATED: 
+
+PL/SQL ERROR 201 at line 19, column 7
+
+identifier 'JOBS_TAB' must be declared
+
+PL/SQL ERROR 0 at line 18, column 1
+
+##############################
+install_logs1.fmb
+##############################
+compiling install_logs1.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure SET_ITEM_RIGHTS... 
+
+Compilation error on procedure SET_ITEM_RIGHTS:
+
+PL/SQL ERROR 201 at line 16, column 25
+
+identifier 'IN2PROD.DEC2BIN' must be declared
+
+PL/SQL ERROR 0 at line 16, column 7
+
+##############################
+cm_hever.fmb
+##############################
+compiling cm_hever.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling WHEN-BUTTON-PRESSED trigger on REFRESH_HEVER_TBL item in CONTROL data block...
+
+Compilation error on WHEN-BUTTON-PRESSED trigger on REFRESH_HEVER_TBL item in CONTROL data block:
+
+PL/SQL ERROR 905 at line 12, column 10
+
+object REPORTS.REFRESH_HEVER_PAYMENT_DATA is invalid
+
+PL/SQL ERROR 0 at line 12, column 3
+
+##############################
+invoice_manage.fmb
+##############################
+compiling invoice_manage.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling PRE-UPDATE trigger on BF_CHARGE_GROUP_REF data block...
+
+Compilation error on PRE-UPDATE trigger on BF_CHARGE_GROUP_REF data block:
+
+PL/SQL ERROR 395 at line 8, column 9
+
+wrong number of values in VALUES clause of INSERT statement
+
+PL/SQL ERROR 0 at line 7, column 3
+
+##############################
+nd_batch.fmb
+##############################
+compiling nd_batch.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling procedure START_JOB... 
+
+Compilation error on procedure START_JOB:
+
+PL/SQL ERROR 201 at line 7, column 3
+
+identifier 'RUN_SUBMIT' must be declared
+
+PL/SQL ERROR 0 at line 7, column 3
+
+##############################
+barepscr.fmb
+##############################
+compiling barepscr.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+##############################
+install_plan1.fmb
+##############################
+compiling install_plan1.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+Compiling function FIND_VIEW_OBJ... 
+
+Compilation error on function FIND_VIEW_OBJ: 
+
+PL/SQL ERROR 0 at line 0, column 0
+
+Compiling procedure CHECK_HAS_PASS... 
+
+Compilation error on procedure CHECK_HAS_PASS:
+
+PL/SQL ERROR 0 at line 6, column 5
+
+Compiling procedure FIND_ALL_FILES... 
+
+Compilation error on procedure FIND_ALL_FILES:
+
+PL/SQL ERROR 0 at line 19, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 30, column 5
+
+Compiling procedure GET_FILES3... 
+
+Compilation error on procedure GET_FILES3:
+
+PL/SQL ERROR 201 at line 16, column 10
+
+identifier 'SYN_CONFIGLABEL' must be declared
+
+PL/SQL ERROR 0 at line 15, column 5
+
+SQL Statement ignored
+
+PL/SQL ERROR 364 at line 39, column 55
+
+loop index variable 'F' use is invalid
+
+PL/SQL ERROR 0 at line 39, column 5
+
+Compiling procedure WHEN_EXIT... 
+
+Compilation error on procedure WHEN_EXIT:
+
+PL/SQL ERROR 0 at line 15, column 6
+
+Compiling procedure SAVE_ALL... 
+
+Compilation error on procedure SAVE_ALL:
+
+PL/SQL ERROR 0 at line 77, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 79, column 5
+
+Statement ignored
+
+PL/SQL ERROR 201 at line 99, column 13
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 92, column 5
+
+##############################
+barepoper.fmb
+##############################
+compiling barepoper.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+##############################
+FREE_INVOICE.fmb
+##############################
+compiling FREE_INVOICE.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling WHEN-BUTTON-PRESSED trigger on CREATE_RULE item in CONTROL data block...
+
+Compilation error on WHEN-BUTTON-PRESSED trigger on CREATE_RULE item in CONTROL data block:
+
+PL/SQL ERROR 306 at line 102, column 21
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 102, column 12
+
+Statement ignored
+
+PL/SQL ERROR 306 at line 179, column 21
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 179, column 12
+
+Compiling WHEN-BUTTON-PRESSED trigger on UPDATE_RULE item in CONTROL data block...
+
+Compilation error on WHEN-BUTTON-PRESSED trigger on UPDATE_RULE item in CONTROL data block:
+
+PL/SQL ERROR 306 at line 564, column 18
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 564, column 9
+
+Statement ignored
+
+PL/SQL ERROR 306 at line 611, column 27
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 611, column 18
+
+Statement ignored
+
+PL/SQL ERROR 306 at line 653, column 27
+
+wrong number or types of arguments in call to 'SET_FREE_INVOICE_SCHEDULER'
+
+PL/SQL ERROR 0 at line 653, column 18
+
+##############################
+cn_history.fmb
+##############################
+compiling cn_history.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling POST-QUERY trigger on CN_HISTORY data block...
+
+Compilation error on POST-QUERY trigger on CN_HISTORY data block:
+
+PL/SQL ERROR 327 at line 10, column 9
+
+"CN_INVOICES" is not in SQL scope here
+
+PL/SQL ERROR 0 at line 10, column 2
+
+##############################
+fd_activity.fmb
+##############################
+compiling fd_activity.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function CHECK_DATA... 
+
+Compilation error on function CHECK_DATA: 
+
+PL/SQL ERROR 306 at line 137, column 3
+
+wrong number or types of arguments in call to 'CHECK_CSCURBALANCE'
+
+PL/SQL ERROR 0 at line 137, column 3
+
+##############################
+nd_dunn_odcanit.fmb
+##############################
+compiling nd_dunn_odcanit.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling POST-QUERY trigger on CUST_TO_LAWYER data block...
+
+Compilation error on POST-QUERY trigger on CUST_TO_LAWYER data block:
+
+PL/SQL ERROR 201 at line 4, column 8
+
+identifier 'PCK_GET_CUSTOMER_BRAND_TYPE.F_GET_CUSTOMER_BRAND_TYPE' must be declared
+
+PL/SQL ERROR 0 at line 4, column 1
+
+##############################
+install_run1_old.fmb
+##############################
+compiling install_run1_old.fmb
+
+Oracle Database 10g Enterprise Edition Release 10.2.0.5.0 - 64bit Production
+
+     With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+PL/SQL Version 10.1.0.4.2 (Production)
+
+Oracle Procedure Builder V10.1.2.0.2 - Production
+
+Oracle Virtual Graphics System Version 10.1.2.0.0 (Production)
+
+Oracle Multimedia Version 10.1.2.0.2 (Production)
+
+Oracle Tools Integration Version 10.1.2.0.2 (Production)
+
+Oracle Tools Common Area Version 10.1.2.0.2
+
+Oracle CORE	10.1.0.4.0	Production
+
+Compiling function GET_PASSWORD... 
+
+Compilation error on function GET_PASSWORD: 
+
+PL/SQL ERROR 201 at line 11, column 7
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 10, column 2
+
+Compiling procedure RUN_RDF... 
+
+Compilation error on procedure RUN_RDF:
+
+PL/SQL ERROR 0 at line 24, column 5
+
+Compiling procedure RUN_STOP_USER... 
+
+Compilation error on procedure RUN_STOP_USER:
+
+PL/SQL ERROR 0 at line 15, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 22, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 27, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 34, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 58, column 5
+
+Compiling procedure MOVE_FILES_TO_PROD... 
+
+Compilation error on procedure MOVE_FILES_TO_PROD:
+
+PL/SQL ERROR 0 at line 80, column 14
+
+Compiling procedure FAIL_PROC... 
+
+Compilation error on procedure FAIL_PROC:
+
+PL/SQL ERROR 0 at line 9, column 3
+
+Compiling procedure RUN_BAT... 
+
+Compilation error on procedure RUN_BAT:
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling function GET_HOST... 
+
+Compilation error on function GET_HOST: 
+
+PL/SQL ERROR 201 at line 7, column 8
+
+identifier 'IN2PROD.BSCS_SESSIONS' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure RUN... 
+
+Compilation error on procedure RUN:
+
+PL/SQL ERROR 0 at line 53, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 57, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 78, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 87, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 116, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 125, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 134, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 137, column 11
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 146, column 9
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 164, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 172, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 194, column 3
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 202, column 3
+
+Compiling procedure UPDATE_DAIRY_STATUS... 
+
+Compilation error on procedure UPDATE_DAIRY_STATUS:
+
+PL/SQL ERROR 201 at line 17, column 12
+
+identifier 'IT_DIARY' must be declared
+
+PL/SQL ERROR 0 at line 17, column 5
+
+Compiling procedure RUN_SQL... 
+
+Compilation error on procedure RUN_SQL:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 36, column 7
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 76, column 5
+
+Statement ignored
+
+PL/SQL ERROR 0 at line 90, column 5
+
+Compiling function CHECK_INVALID_AFTER... 
+
+Compilation error on function CHECK_INVALID_AFTER: 
+
+PL/SQL ERROR 201 at line 18, column 17
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 15, column 8
+
+Compiling procedure CHECK_INVALID_BEFORE... 
+
+Compilation error on procedure CHECK_INVALID_BEFORE:
+
+PL/SQL ERROR 201 at line 29, column 18
+
+identifier 'IN2PROD.BSCS_DBA_OBJECTS' must be declared
+
+PL/SQL ERROR 0 at line 26, column 9
+
+Compiling function CHECK_TEST_AND_PROD... 
+
+Compilation error on function CHECK_TEST_AND_PROD: 
+
+PL/SQL ERROR 201 at line 13, column 15
+
+identifier 'DATABASE_USERS@DBAPROD' must be declared
+
+PL/SQL ERROR 0 at line 6, column 3
+
+Compiling procedure COMPILE_INVALIDS... 
+
+Compilation error on procedure COMPILE_INVALIDS:
+
+PL/SQL ERROR 0 at line 13, column 5
+
+Compiling procedure RUN_FMB... 
+
+Compilation error on procedure RUN_FMB:
+
+PL/SQL ERROR 0 at line 27, column 5
+
+10:31:05	 Numbers of errors is 17 
+10:31:05	 Finished
+2013-06-10 10:31:05	 ##### D:\Develop\Perl\comp_fmx_err.pl Finished ###### 

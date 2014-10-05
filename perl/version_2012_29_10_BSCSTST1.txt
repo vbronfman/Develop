@@ -1,0 +1,30 @@
+######## Label CABA_20121029 ########
+REPORTS/REPORTS@BSCSTST1;GC_SIM_DEALER_VALIDATION_BILL_body.sql;UNKNOWN
+REPORTS/REPORTS@BSCSTST1;Pck_Mabal_Update_BODY.sql;UNKNOWN
+######## Label Finance_20121029 ########
+INSTALMENTS/instal@BSCSTST1;pck_wof_population_body.sql;UNKNOWN
+INSTALMENTS/instal@BSCSTST1;pck_wof_population_spec.sql;UNKNOWN
+INSTALMENTS/instal@BSCSTST1;script_to_fix_wof_cancel_prod.sql;UNKNOWN
+NEW_DUNN/NEW_DUNN@BSCSTST1;Pck_Dunn_ar_transaction_erp_BODY.sql;UNKNOWN
+NEW_DUNN/NEW_DUNN@BSCSTST1;Pck_Dunn_ar_transaction_erp_SPEC.sql;UNKNOWN
+NEW_DUNN/NEW_DUNN@BSCSTST1;2_Create temporary Table.sql;UNKNOWN
+NEW_DUNN/NEW_DUNN@BSCSTST1;3_History Completion   FC_ERP_INVOICE column.sql;UNKNOWN
+NEW_DUNN/NEW_DUNN@BSCSTST1;4_History Completion   FC_NUM column.sql;UNKNOWN
+NEW_DUNN/NEW_DUNN@BSCSTST1;HSDR_PERFORM.pkb;UNKNOWN
+REPORTS/REPORTS@BSCSTST1;pck_calc_general_rates_body.sql;UNKNOWN
+REPORTS/REPORTS@BSCSTST1;pck_calc_general_rates_spec.sql;UNKNOWN
+REPORTS/REPORTS@BSCSTST1;general_rates_IS_for_interest_wof.sql;UNKNOWN
+######## Label Provisioning_2012_10_29 ########
+PROVISIONING/PROVISIONING@BSCSTST1;meteg_billing_filtered.sql;UNKNOWN
+VMD/SYSADM@BSCSTST1;vmd_if_services.sql;UNKNOWN
+VMD/SYSADM@BSCSTST1;vmd_command_AI_M.sql;UNKNOWN
+VMD/SYSADM@BSCSTST1;vmd_command_BY_M.sql;UNKNOWN
+VMD/SYSADM@BSCSTST1;vmd_command_DA_M.sql;UNKNOWN
+VMD/SYSADM@BSCSTST1;vmd_commands_E6_R.sql;UNKNOWN
+VMD/SYSADM@BSCSTST1;vmd_commands_E6_X.sql;UNKNOWN
+######## Label Core_invoice_20121029 ########
+INFO_BF/INFO_BF@;info_bf_bh_1100658.sql;UNKNOWN
+INFO_BF/INFO_BF@BSCSTST1;info_bf_bscsprod_1100658.sql;UNKNOWN
+NEW_DUNN/NEW_DUNN@BSCSTST1;טבלאות עודכנית.sql;UNKNOWN
+######## Label PM_BSS_20121029 ########
+REPORTS/REPORTS@BSCSTST1;REP_1916.sql;UNKNOWN

@@ -1,0 +1,330 @@
+###################################################
+#      BUILD TST3 20130205_1056
+###################################################
+FILE 	       : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/1_insert_aru_charge_type.sql
+CONNECT STRING : REPORTS/REPORTS@BSCSTST3
+insert into ARU_CHARGE_TYPE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.CHARGE_TYPE_PK) violated 
+
+
+insert into ARU_CHARGE_TYPE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.CHARGE_TYPE_PK) violated 
+
+
+
+Commit complete.
+
+
+Commit complete.
+
+
+----------------------------------------------------------------
+FILE 	       : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/1_pck_dunn_installment_body.sql
+CONNECT STRING : REPORTS/REPORTS@BSCSTST3
+
+Warning: Package Body created with compilation errors.
+
+
+----------------------------------------------------------------
+FILE 	       : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/1_alter_CD_INVOICE_LINES_VIEW_TEMP.sql
+CONNECT STRING : BGH_PARTNER/BGH_PARTNER@BHTST3
+    add (RPE_PACK_ID INTEGER,
+         *
+ERROR at line 2:
+ORA-01430: column being added already exists in table 
+
+
+    add (RPE_PACK_ID INTEGER,
+         *
+ERROR at line 2:
+ORA-01430: column being added already exists in table 
+
+
+
+----------------------------------------------------------------
+FILE 	       : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/1_create_table_restricted_prgcode_change.sql
+CONNECT STRING : REPORTS/REPORTS@BSCSTST3
+CREATE  TABLE RESTRICTED_PRGCODE_CHANGE(PRGCODE_FROM varchar2(10) NOT NULL,
+              *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+CREATE PUBLIC SYNONYM RESTRICTED_PRGCODE_CHANGE FOR RESTRICTED_PRGCODE_CHANGE
+                      *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+Grant succeeded.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+Commit complete.
+
+
+----------------------------------------------------------------
+FILE 	       : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/1_create_SHIYUCH_CONTRACTS_REQUESTS.sql
+CONNECT STRING : REPORTS/REPORTS@BSCSTST3
+
+Table dropped.
+
+
+Table created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Synonym created.
+
+
+Grant succeeded.
+
+ADD (comp_short_desc varchar2(3))
+     *
+ERROR at line 2:
+ORA-01430: column being added already exists in table 
+
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+Commit complete.
+
+
+Commit complete.
+
+
+View created.
+
+
+View created.
+
+
+----------------------------------------------------------------
+FILE 	       : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/6_GC_DEACTIVATE_CONT_BILL_SPEC.sql
+CONNECT STRING : REPORTS/REPORTS@BSCSTST3
+
+Package created.
+
+create public synonym GC_DEACTIVATE_CONT_BILL for reports.GC_DEACTIVATE_CONT_BILL 
+                      *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+Create synonym if_runner.GC_DEACTIVATE_CONT_BILL for reports.GC_DEACTIVATE_CONT_BILL
+                         *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+Create synonym if_runner.GC_DEACTIVATE_CONT_BILL for reports.GC_DEACTIVATE_CONT_BILL
+                         *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+----------------------------------------------------------------
+FILE 	       : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/6_GC_MASS_DEACT_CONT_BILLING_SPEC.sql
+CONNECT STRING : REPORTS/REPORTS@BSCSTST3
+
+Package created.
+
+create public synonym GC_MASS_DEACT_CONT_BILLING for reports.GC_MASS_DEACT_CONT_BILLING 
+                      *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+Create synonym if_runner.GC_MASS_DEACT_CONT_BILLING for reports.GC_MASS_DEACT_CONT_BILLING
+                         *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+Create synonym if_runner.GC_MASS_DEACT_CONT_BILLING for reports.GC_MASS_DEACT_CONT_BILLING
+                         *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+----------------------------------------------------------------
+FILE 	       : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/7_billing_param_1710_ins.sql
+CONNECT STRING : ASHRAIT/ashrait_pass@BSCSTST3
+Insert into BILLING_PARAMETERS
+*
+ERROR at line 1:
+ORA-00001: unique constraint (REPORTS.BILL_PARAMS_UK_INK) violated 
+
+
+
+Commit complete.
+
+
+----------------------------------------------------------------
+FILE 	       : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/10_INSERT_DEPOSIT_VANTIVE_CASE.sql
+CONNECT STRING : ASHRAIT/ashrait_pass@BSCSTST3
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+Insert into DEPOSIT_VANTIVE_CASE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.PK_SEQNO) violated 
+
+
+
+Commit complete.
+
+
+Commit complete.
+
+
+----------------------------------------------------------------

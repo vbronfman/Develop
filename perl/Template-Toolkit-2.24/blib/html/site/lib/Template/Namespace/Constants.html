@@ -1,0 +1,128 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>Template::Namespace::Constants - Compile time constant folding</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>Template::Namespace::Constants - Compile time constant folding</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#methods">METHODS</a></li>
+	<ul>
+
+		<li><a href="#new___constants_"><code>new(\%constants)</code></a></li>
+		<li><a href="#ident___ident_"><code>ident(\@ident)</code></a></li>
+	</ul>
+
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Namespace::Constants - Compile time constant folding</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    <span class="comment"># easy way to define constants</span>
+    <span class="keyword">use</span> <span class="variable">Template</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$tt</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">CONSTANTS</span> <span class="operator">=&gt;</span> <span class="operator">{</span>
+            <span class="string">pi</span> <span class="operator">=&gt;</span> <span class="number">3.14</span><span class="operator">,</span>
+            <span class="string">e</span>  <span class="operator">=&gt;</span> <span class="number">2.718</span><span class="operator">,</span>
+        <span class="operator">}</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<pre>
+    <span class="comment"># nitty-gritty, hands-dirty way</span>
+    <span class="keyword">use</span> <span class="variable">Template::Namespace::Constants</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$tt</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">NAMESPACE</span> <span class="operator">=&gt;</span> <span class="operator">{</span>
+            <span class="string">constants</span> <span class="operator">=&gt;</span> <span class="variable">Template::Namespace::Constants</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+                <span class="string">pi</span> <span class="operator">=&gt;</span> <span class="number">3.14</span><span class="operator">,</span>
+                <span class="string">e</span>  <span class="operator">=&gt;</span> <span class="number">2.718</span><span class="operator">,</span>
+            <span class="operator">}</span><span class="operator">,</span>
+        <span class="operator">}</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>The <code>Template::Namespace::Constants</code> module implements a namespace handler
+which is plugged into the <code>Template::Directive</code> compiler module.  This then
+performs compile time constant folding of variables in a particular namespace.</p>
+<p>
+</p>
+<hr />
+<h1><a name="methods">METHODS</a></h1>
+<p>
+</p>
+<h2><a name="new___constants_"><code>new(\%constants)</code></a></h2>
+<p>The <code>new()</code> constructor method creates and returns a reference to a new
+Template::Namespace::Constants object.  This creates an internal stash
+to store the constant variable definitions passed as arguments.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$handler</span> <span class="operator">=</span> <span class="variable">Template::Namespace::Constants</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">pi</span> <span class="operator">=&gt;</span> <span class="number">3.14</span><span class="operator">,</span>
+        <span class="string">e</span>  <span class="operator">=&gt;</span> <span class="number">2.718</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="ident___ident_"><code>ident(\@ident)</code></a></h2>
+<p>Method called to resolve a variable identifier into a compiled form.  In this
+case, the method fetches the corresponding constant value from its internal
+stash and returns it.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Directive.html">the Template::Directive manpage</a></p>
+
+</body>
+
+</html>

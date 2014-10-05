@@ -1,0 +1,121 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>No::Worries::DN - Distinguished Names handling without worries</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>No::Worries::DN - Distinguished Names handling without worries</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#functions">FUNCTIONS</a></li>
+	<li><a href="#formats">FORMATS</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>No::Worries::DN - Distinguished Names handling without worries</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+  <span class="keyword">use</span> <span class="variable">No::Worries::DN</span> <span class="string">qw(dn_parse dn_string)</span><span class="operator">;</span>
+</pre>
+<pre>
+  <span class="variable">$dn</span> <span class="operator">=</span> <span class="variable">dn_parse</span><span class="operator">(</span><span class="string">"/C=US/O=Acme Corporation/CN=John Doe"</span><span class="operator">);</span>
+  <span class="variable">$string</span> <span class="operator">=</span> <span class="variable">dn_string</span><span class="operator">(</span><span class="variable">$dn</span><span class="operator">,</span> <span class="variable">No::Worries::DN::FORMAT_JAVA</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This module eases Distinguished Names (DNs) handling by providing
+convenient functions to parse and convert DNs from and to different
+formats. All the functions <a href="../../../../lib/pods/perlfunc.html#die"><code>die()</code></a> on error.</p>
+<p>
+</p>
+<hr />
+<h1><a name="functions">FUNCTIONS</a></h1>
+<p>This module provides the following functions (none of them being
+exported by default):</p>
+<dl>
+<dt><strong><a name="dn_parse" class="item">dn_parse(STRING)</a></strong></dt>
+
+<dd>
+<p>parse a string containing DN information and return an array reference</p>
+</dd>
+<dt><strong><a name="dn_string" class="item">dn_string(DN, FORMAT)</a></strong></dt>
+
+<dd>
+<p>convert the given parsed DN (an array reference) into a string of the
+given format, this is somehow the opposite of <a href="#dn_parse"><code>dn_parse()</code></a></p>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="formats">FORMATS</a></h1>
+<p>Here are the supported formats:</p>
+<dl>
+<dt><strong><a name="no_worries_dn_format_rfc2253" class="item">No::Worries::DN::FORMAT_<a href="http://www.ietf.org/rfc/rfc2253.txt" class="rfc">RFC2253</a></a></strong></dt>
+
+<dd>
+<p>this is the format defined by <a href="http://www.ietf.org/rfc/rfc2253.txt" class="rfc">RFC 2253</a>, for instance:
+<code>CN=John Doe,O=Acme Corporation,C=US</code></p>
+</dd>
+<dt><strong><a name="no_worries_dn_format_java" class="item">No::Worries::DN::FORMAT_JAVA</a></strong></dt>
+
+<dd>
+<p>this is a variant of <a href="http://www.ietf.org/rfc/rfc2253.txt" class="rfc">RFC 2253</a>, with extra spaces, for instance:
+<code>CN=John Doe, O=Acme Corporation, C=US</code></p>
+</dd>
+<dt><strong><a name="no_worries_dn_format_openssl" class="item">No::Worries::DN::FORMAT_OPENSSL</a></strong></dt>
+
+<dd>
+<p>this is the default format used by OpenSSL, for instance:
+<code>/C=US/O=Acme Corporation/CN=John Doe</code></p>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries.html">the No::Worries manpage</a>.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Lionel Cons <a href="http://cern.ch/lionel.cons">http://cern.ch/lionel.cons</a></p>
+<p>Copyright CERN 2012</p>
+
+</body>
+
+</html>

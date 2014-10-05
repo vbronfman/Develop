@@ -1,0 +1,167 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>No::Worries::Warn - warning handling without worries</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>No::Worries::Warn - warning handling without worries</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#functions">FUNCTIONS</a></li>
+	<li><a href="#global_variables">GLOBAL VARIABLES</a></li>
+	<li><a href="#environment_variables">ENVIRONMENT VARIABLES</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>No::Worries::Warn - warning handling without worries</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+  <span class="keyword">use</span> <span class="variable">No::Worries::Warn</span> <span class="string">qw(warnf handler)</span><span class="operator">;</span>
+</pre>
+<pre>
+  <span class="keyword">if</span> <span class="operator">(</span><span class="keyword">open</span><span class="operator">(</span><span class="variable">$fh</span><span class="operator">,</span> <span class="string">"&lt;"</span><span class="operator">,</span> <span class="variable">$path</span><span class="operator">))</span> <span class="operator">{</span>
+      <span class="operator">...</span> <span class="variable">so</span> <span class="variable">something</span> <span class="variable">in</span> <span class="variable">case</span> <span class="variable">of</span> <span class="variable">success</span> <span class="operator">...</span>
+  <span class="operator">}</span> <span class="keyword">else</span> <span class="operator">{</span>
+      <span class="variable">warnf</span><span class="operator">(</span><span class="string">"cannot open(%s): %s"</span><span class="operator">,</span> <span class="variable">$path</span><span class="operator">,</span> <span class="variable">$!</span><span class="operator">);</span>
+      <span class="operator">...</span> <span class="keyword">do</span> <span class="variable">something</span> <span class="keyword">else</span> <span class="variable">in</span> <span class="variable">case</span> <span class="variable">of</span> <span class="variable">failure</span> <span class="operator">...</span>
+  <span class="operator">}</span>
+</pre>
+<pre>
+  $ ./myprog
+  myprog: cannot open(foo): No such file or directory</pre>
+<pre>
+  $ NO_WORRIES=cluck ./myprog
+  myprog: cannot open(foo): No such file or directory at myprog line 16
+        main::test() called at ./myprog line 19</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This module eases warning handling by providing a convenient wrapper
+around <a href="../../../../lib/pods/perlfunc.html#warn"><code>warn()</code></a> with sprintf()-like API. <a href="#warnf"><code>warnf()</code></a> is to <a href="../../../../lib/pods/perlfunc.html#warn"><code>warn()</code></a> what <a href="../../../../lib/pods/perlfunc.html#printf"><code>printf()</code></a>
+is to <a href="../../../../lib/pods/perlfunc.html#print"><code>print()</code></a> with, in addition, the trimming of leading and trailing
+spaces.</p>
+<p>It also provides a handler for <a href="../../../../lib/pods/perlfunc.html#warn"><code>warn()</code></a> that prepends a prefix
+($No::Worries::Warn::Prefix) to all warnings. It also uses the
+NO_WORRIES environment variable to find out if <a href="../../../../lib/Carp.html">the Carp manpage</a>'s <a href="#carp"><code>carp()</code></a> or
+<a href="#cluck"><code>cluck()</code></a> should be used instead of <a href="../../../../lib/pods/perlfunc.html#warn"><code>warn()</code></a>. Finally, the wrapper can be
+told to also log warnings to syslog (see $No::Worries::Warn::Syslog).</p>
+<p>This handler can be installed simply by importing it:</p>
+<pre>
+  <span class="keyword">use</span> <span class="variable">No::Worries::Warn</span> <span class="string">qw(warnf handler)</span><span class="operator">;</span>
+</pre>
+<p>Alternatively, it can be installed &quot;manually&quot;:</p>
+<pre>
+  <span class="keyword">use</span> <span class="variable">No::Worries::Warn</span> <span class="string">qw(warnf)</span><span class="operator">;</span>
+  <span class="variable">$SIG</span><span class="operator">{</span><span class="string">__WARN__</span><span class="operator">}</span> <span class="operator">=</span> <span class="operator">\&amp;</span><span class="variable">No::Worries::Warn::handler</span><span class="operator">;</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="functions">FUNCTIONS</a></h1>
+<p>This module provides the following functions (none of them being
+exported by default):</p>
+<dl>
+<dt><strong><a name="warnf" class="item">warnf(MESSAGE)</a></strong></dt>
+
+<dd>
+<p>report a warning described by the given MESSAGE</p>
+</dd>
+<dt><strong>warnf(FORMAT, ARGUMENTS...)</strong></dt>
+
+<dd>
+<p>idem but with sprintf()-like API</p>
+</dd>
+<dt><strong><a name="handler" class="item">handler(MESSAGE)</a></strong></dt>
+
+<dd>
+<p>$SIG{__WARN__} compatible warning handler (this function cannot be imported)</p>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="global_variables">GLOBAL VARIABLES</a></h1>
+<p>This module uses the following global variables (none of them being
+exported):</p>
+<dl>
+<dt><strong><a name="_prefix" class="item">$Prefix</a></strong></dt>
+
+<dd>
+<p>prefix to prepend to all warnings (default: the program name)</p>
+</dd>
+<dt><strong><a name="_syslog" class="item">$Syslog</a></strong></dt>
+
+<dd>
+<p>true if warnings should also be sent to syslog using
+<a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries/Syslog.html">the No::Worries::Syslog manpage</a>'s <code>syslog_warning()</code> (default: false)</p>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="environment_variables">ENVIRONMENT VARIABLES</a></h1>
+<p>This module uses the <code>NO_WORRIES</code> environment variable to find out
+how warnings will be reported. Supported values are:</p>
+<dl>
+<dt><strong><a name="carp" class="item"><code>carp</code></a></strong></dt>
+
+<dd>
+<p><a href="../../../../lib/Carp.html">the Carp manpage</a>'s <a href="#carp"><code>carp()</code></a> will be used instead of <a href="../../../../lib/pods/perlfunc.html#warn"><code>warn()</code></a></p>
+</dd>
+<dt><strong><a name="cluck" class="item"><code>cluck</code></a></strong></dt>
+
+<dd>
+<p><a href="../../../../lib/Carp.html">the Carp manpage</a>'s <a href="#cluck"><code>cluck()</code></a> will be used instead of <a href="../../../../lib/pods/perlfunc.html#warn"><code>warn()</code></a></p>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../../lib/Carp.html">the Carp manpage</a>,
+<a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries.html">the No::Worries manpage</a>,
+<a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries/Die.html">the No::Worries::Die manpage</a>,
+<a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries/Syslog.html">the No::Worries::Syslog manpage</a>.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Lionel Cons <a href="http://cern.ch/lionel.cons">http://cern.ch/lionel.cons</a></p>
+<p>Copyright CERN 2012</p>
+
+</body>
+
+</html>

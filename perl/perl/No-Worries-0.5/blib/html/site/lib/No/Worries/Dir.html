@@ -1,0 +1,152 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>No::Worries::Dir - directory handling without worries</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>No::Worries::Dir - directory handling without worries</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#functions">FUNCTIONS</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>No::Worries::Dir - directory handling without worries</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+  <span class="keyword">use</span> <span class="variable">No::Worries::Dir</span>
+      <span class="string">qw(dir_change dir_ensure dir_make dir_parent dir_read dir_remove)</span><span class="operator">;</span>
+</pre>
+<pre>
+  <span class="comment"># change directory</span>
+  <span class="variable">dir_change</span><span class="operator">(</span><span class="string">"/tmp"</span><span class="operator">);</span>
+</pre>
+<pre>
+  <span class="comment"># make sure a directory exists (not an error if it exists already)</span>
+  <span class="variable">dir_ensure</span><span class="operator">(</span><span class="string">"/tmp/some/path"</span><span class="operator">,</span> <span class="string">mode</span> <span class="operator">=&gt;</span> <span class="number">0770</span><span class="operator">);</span>
+</pre>
+<pre>
+  <span class="comment"># make a directory (an error if it exists already)</span>
+  <span class="variable">dir_make</span><span class="operator">(</span><span class="string">"/tmp/some/path"</span><span class="operator">,</span> <span class="string">mode</span> <span class="operator">=&gt;</span> <span class="number">0770</span><span class="operator">);</span>
+</pre>
+<pre>
+  <span class="comment"># find out the parent directory of some path</span>
+  <span class="variable">$parent</span> <span class="operator">=</span> <span class="variable">dir_parent</span><span class="operator">(</span><span class="variable">$path</span><span class="operator">);</span>
+  <span class="variable">dir_ensure</span><span class="operator">(</span><span class="variable">$parent</span><span class="operator">);</span>
+</pre>
+<pre>
+  <span class="comment"># read a directory</span>
+  <span class="keyword">foreach</span> <span class="variable">$name</span> <span class="operator">(</span><span class="variable">dir_read</span><span class="operator">(</span><span class="string">"/etc"</span><span class="operator">))</span> <span class="operator">{</span>
+      <span class="operator">...</span>
+  <span class="operator">}</span>
+</pre>
+<pre>
+  <span class="comment"># remove a directory</span>
+  <span class="variable">dir_remove</span><span class="operator">(</span><span class="string">"/tmp/some/path"</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This module eases directory handling by providing convenient wrappers
+around standard directory functions. All the functions <a href="../../../../lib/pods/perlfunc.html#die"><code>die()</code></a> on error.</p>
+<p>
+</p>
+<hr />
+<h1><a name="functions">FUNCTIONS</a></h1>
+<p>This module provides the following functions (none of them being
+exported by default):</p>
+<dl>
+<dt><strong><a name="dir_change" class="item">dir_change(PATH)</a></strong></dt>
+
+<dd>
+<p>change the working directory to the given path; this is a safe thin
+wrapper on top of <a href="../../../../lib/pods/perlfunc.html#chdir"><code>chdir()</code></a></p>
+</dd>
+<dt><strong><a name="dir_ensure" class="item">dir_ensure(PATH[, OPTIONS])</a></strong></dt>
+
+<dd>
+<p>make sure the given path is an existing directory, creating it
+(including its parents) if needed; supported options:</p>
+<ul>
+<li><strong><a name="mkdir" class="item"><code>mode</code>: numerical mode to use for <code>mkdir()</code> (default: 0777)</a></strong>
+
+</li>
+</ul>
+</dd>
+<dt><strong><a name="dir_make" class="item">dir_make(PATH[, OPTIONS])</a></strong></dt>
+
+<dd>
+<p>make the given directory; this is a safe thin wrapper on top of
+<a href="#mkdir"><code>mkdir()</code></a>; supported options:</p>
+<ul>
+<li><strong><code>mode</code>: numerical mode to use for <code>mkdir()</code> (default: 0777)</strong>
+
+</li>
+</ul>
+</dd>
+<dt><strong><a name="dir_parent" class="item">dir_parent(PATH)</a></strong></dt>
+
+<dd>
+<p>return the parent directory of the given path</p>
+</dd>
+<dt><strong><a name="dir_read" class="item">dir_read(PATH)</a></strong></dt>
+
+<dd>
+<p>read the given directory and return its list of entries except <code>.</code>
+and <code>..</code></p>
+</dd>
+<dt><strong><a name="dir_remove" class="item">dir_remove(PATH)</a></strong></dt>
+
+<dd>
+<p>remove the given directory (that must exist and be empty); this is a
+safe thin wrapper on top of <a href="../../../../lib/pods/perlfunc.html#rmdir"><code>rmdir()</code></a></p>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries.html">the No::Worries manpage</a>.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Lionel Cons <a href="http://cern.ch/lionel.cons">http://cern.ch/lionel.cons</a></p>
+<p>Copyright CERN 2012</p>
+
+</body>
+
+</html>

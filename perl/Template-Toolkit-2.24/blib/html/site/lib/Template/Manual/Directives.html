@@ -1,0 +1,1914 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>Template::Manual::Directives - Template directives</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>Template::Manual::Directives - Template directives</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#accessing_and_updating_template_variables">Accessing and Updating Template Variables</a></li>
+	<ul>
+
+		<li><a href="#get">GET</a></li>
+		<li><a href="#call">CALL</a></li>
+		<li><a href="#set">SET</a></li>
+		<li><a href="#default">DEFAULT</a></li>
+	</ul>
+
+	<li><a href="#processing_template_files_and_blocks">Processing Template Files and Blocks</a></li>
+	<ul>
+
+		<li><a href="#insert">INSERT</a></li>
+		<li><a href="#include">INCLUDE</a></li>
+		<li><a href="#process">PROCESS</a></li>
+		<li><a href="#wrapper">WRAPPER</a></li>
+		<li><a href="#block">BLOCK</a></li>
+	</ul>
+
+	<li><a href="#conditional_processing">Conditional Processing</a></li>
+	<ul>
+
+		<li><a href="#if___unless___elsif___else">IF / UNLESS / ELSIF / ELSE</a></li>
+		<li><a href="#switch___case">SWITCH / CASE</a></li>
+	</ul>
+
+	<li><a href="#loop_processing">Loop Processing</a></li>
+	<ul>
+
+		<li><a href="#foreach">FOREACH</a></li>
+		<li><a href="#while">WHILE</a></li>
+	</ul>
+
+	<li><a href="#filters__plugins__macros_and_perl">Filters, Plugins, Macros and Perl</a></li>
+	<ul>
+
+		<li><a href="#filter">FILTER</a></li>
+		<li><a href="#use">USE</a></li>
+		<li><a href="#macro">MACRO</a></li>
+		<li><a href="#perl">PERL</a></li>
+		<li><a href="#rawperl">RAWPERL</a></li>
+	</ul>
+
+	<li><a href="#exception_handling_and_flow_control">Exception Handling and Flow Control</a></li>
+	<ul>
+
+		<li><a href="#try___throw___catch___final">TRY / THROW / CATCH / FINAL</a></li>
+		<li><a href="#next">NEXT</a></li>
+		<li><a href="#last">LAST</a></li>
+		<li><a href="#return">RETURN</a></li>
+		<li><a href="#stop">STOP</a></li>
+		<li><a href="#clear">CLEAR</a></li>
+	</ul>
+
+	<li><a href="#miscellaneous">Miscellaneous</a></li>
+	<ul>
+
+		<li><a href="#meta">META</a></li>
+		<li><a href="#tags">TAGS</a></li>
+		<li><a href="#debug">DEBUG</a></li>
+	</ul>
+
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Manual::Directives - Template directives</p>
+<p>
+</p>
+<hr />
+<h1><a name="accessing_and_updating_template_variables">Accessing and Updating Template Variables</a></h1>
+<p>
+</p>
+<h2><a name="get">GET</a></h2>
+<p>The <code>GET</code> directive retrieves and outputs the value of the named variable.</p>
+<pre>
+    [% GET foo %]</pre>
+<p>The <code>GET</code> keyword is optional.  A variable can be specified in a directive
+tag by itself.</p>
+<pre>
+    [% foo %]</pre>
+<p>The variable can have an unlimited number of elements, each separated by a
+dot. Each element can have arguments specified within parentheses.</p>
+<pre>
+    [% foo %]
+    [% bar.baz %]
+    [% biz.baz(10) %]
+    ...etc...</pre>
+<p>See <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Manual/Variables.html">the Template::Manual::Variables manpage</a> for a full discussion on template
+variables.</p>
+<p>You can also specify expressions using the logical (<code>and</code>, <code>or</code>, <code>not</code>, <code>?</code>, <code>:</code>) and
+mathematic operators (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>mod</code>, <code>div</code>).</p>
+<pre>
+    [% template.title or default.title %]
+    
+    [% score * 100 %]
+    
+    [% order.nitems ? checkout(order.total) : 'no items' %]</pre>
+<p>The <code>div</code> operator returns the integer result of division.  Both <code>%</code> and 
+<code>mod</code> return the modulus (i.e. remainder) of division.</p>
+<pre>
+    [% 15 / 6 %]            # 2.5
+    [% 15 div 6 %]          # 2
+    [% 15 mod 6 %]          # 3</pre>
+<p>
+</p>
+<h2><a name="call">CALL</a></h2>
+<p>The <code>CALL</code> directive is similar to <code>GET</code> in evaluating the variable named,
+but doesn't print the result returned.  This can be useful when a
+variable is bound to a sub-routine or object method which you want to
+call but aren't interested in the value returned.</p>
+<pre>
+    [% CALL dbi.disconnect %]
+    
+    [% CALL inc_page_counter(page_count) %]</pre>
+<p>
+</p>
+<h2><a name="set">SET</a></h2>
+<p>The <code>SET</code> directive allows you to assign new values to existing variables
+or create new temporary variables.</p>
+<pre>
+    [% SET title = 'Hello World' %]</pre>
+<p>The <code>SET</code> keyword is also optional.</p>
+<pre>
+
+    [% title = 'Hello World' %]</pre>
+<p>Variables may be assigned the values of other variables, unquoted
+numbers (2.718), literal text ('single quotes') or quoted text
+(&quot;double quotes&quot;).  In the latter case, any variable references within
+the text will be interpolated when the string is evaluated.  Variables
+should be prefixed by <code>$</code>, using curly braces to explicitly scope
+the variable name where necessary.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">foo</span>  <span class="operator">=</span> <span class="string">'Foo'</span>  <span class="variable">%]</span>               <span class="comment"># literal value 'Foo'</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">bar</span>  <span class="operator">=</span>  <span class="variable">foo</span>   <span class="variable">%]</span>               <span class="comment"># value of variable 'foo'</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">cost</span> <span class="operator">=</span> <span class="string">'$100'</span> <span class="variable">%]</span>               <span class="comment"># literal value '$100'</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">item</span> <span class="operator">=</span> <span class="string">"</span><span class="variable">$bar</span><span class="string">: ${cost}.00"</span> <span class="variable">%]</span>   <span class="comment"># value "Foo: $100.00"</span>
+</pre>
+<p>Multiple variables may be assigned in the same directive and are 
+evaluated in the order specified.  Thus, the above could have been 
+written:</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">foo</span>  <span class="operator">=</span> <span class="string">'Foo'</span>
+       <span class="variable">bar</span>  <span class="operator">=</span> <span class="variable">foo</span>
+       <span class="variable">cost</span> <span class="operator">=</span> <span class="string">'$100'</span>
+       <span class="variable">item</span> <span class="operator">=</span> <span class="string">"</span><span class="variable">$bar</span><span class="string">: ${cost}.00"</span>
+    <span class="variable">%]</span>
+</pre>
+<p>Simple expressions can also be used, as per <code>GET</code>.</p>
+<pre>
+    [% ten    = 10 
+       twenty = 20
+       thirty = twenty + ten
+       forty  = 2 * twenty 
+       fifty  = 100 div 2
+       six    = twenty mod 7
+    %]</pre>
+<p>You can concatenate strings together using the <code>' _ '</code> operator.  In Perl 5,
+the <code>.</code> is used for string concatenation, but in Perl 6, as in the Template
+Toolkit, the <code>.</code> will be used as the method calling operator and <code>' _ '</code> will
+be used for string concatenation.  Note that the operator must be 
+specified with surrounding whitespace which, as Larry says, is construed as
+a feature:</p>
+<pre>
+    [% copyright = '(C) Copyright' _ year _ ' ' _ author %]</pre>
+<p>You can, of course, achieve a similar effect with double quoted string 
+interpolation.</p>
+<pre>
+    [% copyright = &quot;(C) Copyright $year $author&quot; %]</pre>
+<p>
+</p>
+<h2><a name="default">DEFAULT</a></h2>
+<p>The <code>DEFAULT</code> directive is similar to <code>SET</code> but only updates variables 
+that are currently undefined or have no &quot;true&quot; value (in the Perl
+sense).</p>
+<pre>
+    [% DEFAULT
+        name = 'John Doe'
+        id   = 'jdoe'
+    %]</pre>
+<p>This can be particularly useful in common template components to
+ensure that some sensible default are provided for otherwise 
+undefined variables.</p>
+<pre>
+    [% DEFAULT 
+       title = 'Hello World'
+       bgcol = '#ffffff'
+    %]
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;[% title %]&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body bgcolor=&quot;[% bgcol %]&quot;&gt;
+        ...etc...</pre>
+<p>
+</p>
+<hr />
+<h1><a name="processing_template_files_and_blocks">Processing Template Files and Blocks</a></h1>
+<p>
+</p>
+<h2><a name="insert">INSERT</a></h2>
+<p>The <code>INSERT</code> directive is used to insert the contents of an external file
+at the current position.</p>
+<pre>
+    [% INSERT myfile %]</pre>
+<p>No attempt to parse or process the file is made.  The contents,
+possibly including any embedded template directives, are inserted
+intact.</p>
+<p>The filename specified should be relative to one of the <code>INCLUDE_PATH</code>
+directories.  Absolute (i.e. starting with <code>/</code>) and relative
+(i.e. starting with <code>.</code>) filenames may be used if the <code>ABSOLUTE</code> and
+<code>RELATIVE</code> options are set, respectively.  Both these options are
+disabled by default.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">INCLUDE_PATH</span> <span class="operator">=&gt;</span> <span class="string">'/here:/there'</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+    
+    <span class="variable">$template</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="string">'myfile'</span><span class="operator">);</span>
+</pre>
+<p><em class="file">myfile</em>:</p>
+<pre>
+    [% INSERT foo %]            # looks for /here/foo then /there/foo
+    [% INSERT /etc/passwd %]    # file error: ABSOLUTE not set
+    [% INSERT ../secret %]      # file error: RELATIVE not set</pre>
+<p>For convenience, the filename does not need to be quoted as long as it
+contains only alphanumeric characters, underscores, dots or forward
+slashes.  Names containing any other characters should be quoted.</p>
+<pre>
+    [% INSERT misc/legalese.txt            %]
+    [% INSERT 'dos98/Program Files/stupid' %]</pre>
+<p>To evaluate a variable to specify a filename, you should explicitly
+prefix it with a <code>$</code> or use double-quoted string interpolation.</p>
+<pre>
+    [% language = 'en'
+       legalese = 'misc/legalese.txt' 
+    %]
+    
+    [% INSERT $legalese %]              # misc/legalese.txt
+    [% INSERT &quot;$language/$legalese&quot; %]  # en/misc/legalese.txt</pre>
+<p>Multiple files can be specified using <code>+</code> as a delimiter.  All files
+should be unquoted names or quoted strings.  Any variables should be
+interpolated into double-quoted strings.</p>
+<pre>
+    [% INSERT legalese.txt + warning.txt %]
+    [% INSERT  &quot;$legalese&quot; + warning.txt %]  # requires quoting</pre>
+<p>
+</p>
+<h2><a name="include">INCLUDE</a></h2>
+<p>The <code>INCLUDE</code> directive is used to process and include the output of
+another template file or block.</p>
+<pre>
+    [% INCLUDE header %]</pre>
+<p>If a <code>BLOCK</code> of the specified name is defined in the same file, or in a file
+from which the current template has been called (i.e. a parent template) then
+it will be used in preference to any file of the same name.</p>
+<pre>
+    [% INCLUDE table %]     # uses BLOCK defined below
+    
+    [% BLOCK table %]
+       &lt;table&gt;
+         ...
+       &lt;/table&gt;
+    [% END %]</pre>
+<p>If a <code>BLOCK</code> definition is not currently visible then the template name
+should be a file relative to one of the <code>INCLUDE_PATH</code> directories, or
+an absolute or relative file name if the <code>ABSOLUTE</code>/<code>RELATIVE</code> options are
+appropriately enabled.  The <code>INCLUDE</code> directive automatically quotes the
+filename specified, as per <code>INSERT</code> described above.  When a variable
+contains the name of the template for the <code>INCLUDE</code> directive, it should
+be explicitly prefixed by <code>$</code> or double-quoted</p>
+<pre>
+    [% myheader = 'my/misc/header' %]
+    [% INCLUDE   myheader  %]           # 'myheader'
+    [% INCLUDE  $myheader  %]           # 'my/misc/header'
+    [% INCLUDE &quot;$myheader&quot; %]           # 'my/misc/header'</pre>
+<p>Any template directives embedded within the file will be processed
+accordingly.  All variables currently defined will be visible and 
+accessible from within the included template.</p>
+<pre>
+    [% title = 'Hello World' %]
+    [% INCLUDE header %]
+    &lt;body&gt;
+    ...</pre>
+<p><em class="file">header</em>:</p>
+<pre>
+    &lt;html&gt;
+    &lt;title&gt;[% title %]&lt;/title&gt;</pre>
+<p>output:</p>
+<pre>
+    &lt;html&gt;
+    &lt;title&gt;Hello World&lt;/title&gt;
+    &lt;body&gt;
+    ...</pre>
+<p>Local variable definitions may be specified after the template name,
+temporarily masking any existing variables.  Insignificant whitespace
+is ignored within directives so you can add variable definitions on the
+same line, the next line or split across several line with comments
+interspersed, if you prefer.</p>
+<pre>
+    [% INCLUDE table %]
+    
+    [% INCLUDE table title=&quot;Active Projects&quot; %]
+    
+    [% INCLUDE table 
+         title   = &quot;Active Projects&quot; 
+         bgcolor = &quot;#80ff00&quot;    # chartreuse
+         border  = 2
+    %]</pre>
+<p>The <code>INCLUDE</code> directive localises (i.e. copies) all variables before
+processing the template.  Any changes made within the included
+template will not affect variables in the including template.</p>
+<pre>
+    [% foo = 10 %]
+    
+    foo is originally [% foo %]
+    [% INCLUDE bar %]
+    foo is still [% foo %]
+    
+    [% BLOCK bar %]
+       foo was [% foo %]
+       [% foo = 20 %]
+       foo is now [% foo %]
+    [% END %]</pre>
+<p>output:</p>
+<pre>
+    foo is originally 10
+       foo was 10
+       foo is now 20
+    foo is still 10</pre>
+<p>Technical Note: the localisation of the stash (that is, the process by
+which variables are copied before an <code>INCLUDE</code> to prevent being
+overwritten) is only skin deep.  The top-level variable namespace
+(hash) is copied, but no attempt is made to perform a deep-copy of
+other structures (hashes, arrays, objects, etc.)  Therefore, a <code>foo</code>
+variable referencing a hash will be copied to create a new <code>foo</code>
+variable but which points to the same hash array.  Thus, if you update
+compound variables (e.g. <code>foo.bar</code>) then you will change the original
+copy, regardless of any stash localisation.  If you're not worried
+about preserving variable values, or you trust the templates you're
+including then you might prefer to use the <code>PROCESS</code> directive which is
+faster by virtue of not performing any localisation.</p>
+<p>You can specify dotted variables as &quot;local&quot; variables to an <code>INCLUDE</code> directive.
+However, be aware that because of the localisation issues explained above (if
+you skipped the previous Technical Note above then you might want to go back
+and read it or skip this section too), the variables might not actualy be
+&quot;local&quot;. If the first element of the variable name already references a hash
+array then the variable update will affect the original variable.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">foo</span> <span class="operator">=</span> <span class="operator">{</span>
+           <span class="variable">bar</span> <span class="operator">=</span> <span class="string">'Baz'</span>
+       <span class="operator">}</span>
+    <span class="variable">%]</span>
+    
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">INCLUDE</span> <span class="variable">somefile</span> <span class="variable">foo</span><span class="operator">.</span><span class="variable">bar</span><span class="operator">=</span><span class="string">'Boz'</span> <span class="variable">%]</span>
+    
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">foo</span><span class="operator">.</span><span class="variable">bar</span> <span class="variable">%]</span>           <span class="comment"># Boz</span>
+</pre>
+<p>This behaviour can be a little unpredictable (and may well be improved
+upon in a future version).  If you know what you're doing with it and 
+you're sure that the variables in question are defined (nor not) as you 
+expect them to be, then you can rely on this feature to implement some
+powerful &quot;global&quot; data sharing techniques.  Otherwise, you might prefer
+to steer well clear and always pass simple (undotted) variables as 
+parameters to <code>INCLUDE</code> and other similar directives.</p>
+<p>If you want to process several templates in one go then you can 
+specify each of their names (quoted or unquoted names only, no unquoted
+<code>$variables</code>) joined together by <code>+</code>.  The <code>INCLUDE</code> directive
+will then process them in order.</p>
+<pre>
+    [% INCLUDE html/header + &quot;site/$header&quot; + site/menu
+         title = &quot;My Groovy Web Site&quot;
+    %]</pre>
+<p>The variable stash is localised once and then the templates specified
+are processed in order, all within that same variable context.  This
+makes it slightly faster than specifying several separate <code>INCLUDE</code>
+directives (because you only clone the variable stash once instead of
+n times), but not quite as &quot;safe&quot; because any variable changes in the
+first file will be visible in the second, third and so on.  This
+might be what you want, of course, but then again, it might not.</p>
+<p>
+</p>
+<h2><a name="process">PROCESS</a></h2>
+<p>The PROCESS directive is similar to <code>INCLUDE</code> but does not perform any 
+localisation of variables before processing the template.  Any changes
+made to variables within the included template will be visible in the
+including template.</p>
+<pre>
+    [% foo = 10 %]
+    
+    foo is [% foo %]
+    [% PROCESS bar %]
+    foo is [% foo %]
+    
+    [% BLOCK bar %]
+       [% foo = 20 %]
+       changed foo to [% foo %]
+    [% END %]</pre>
+<p>output:</p>
+<pre>
+    foo is 10
+       changed foo to 20
+    foo is 20</pre>
+<p>Parameters may be specified in the <code>PROCESS</code> directive, but these too will 
+become visible changes to current variable values.</p>
+<pre>
+    [% foo = 10 %]
+    foo is [% foo %]
+    [% PROCESS bar
+       foo = 20 
+    %]
+    foo is [% foo %]
+    
+    [% BLOCK bar %]
+       this is bar, foo is [% foo %]
+    [% END %]</pre>
+<p>output:</p>
+<pre>
+    foo is 10
+       this is bar, foo is 20
+    foo is 20</pre>
+<p>The <code>PROCESS</code> directive is slightly faster than <code>INCLUDE</code> because it
+avoids the need to localise (i.e. copy) the variable stash before
+processing the template.  As with <code>INSERT</code> and <code>INCLUDE</code>, the first
+parameter does not need to be quoted as long as it contains only
+alphanumeric characters, underscores, periods or forward slashes.
+A <code>$</code> prefix can be used to explicitly indicate a variable which 
+should be interpolated to provide the template name:</p>
+<pre>
+    [% myheader = 'my/misc/header' %]
+    [% PROCESS  myheader %]              # 'myheader'
+    [% PROCESS $myheader %]              # 'my/misc/header'</pre>
+<p>As with <code>INCLUDE</code>, multiple templates can be specified, delimited by
+<code>+</code>, and are processed in order.</p>
+<pre>
+    [% PROCESS html/header + my/header %]</pre>
+<p>
+</p>
+<h2><a name="wrapper">WRAPPER</a></h2>
+<p>It's not unusual to find yourself adding common headers and footers to 
+pages or sub-sections within a page.  Something like this:</p>
+<pre>
+    [% INCLUDE section/header
+       title = 'Quantum Mechanics'
+    %]
+       Quantum mechanics is a very interesting subject wish 
+       should prove easy for the layman to fully comprehend.
+    [% INCLUDE section/footer %]
+    
+    [% INCLUDE section/header
+       title = 'Desktop Nuclear Fusion for under $50'
+    %]
+       This describes a simple device which generates significant 
+       sustainable electrical power from common tap water by process 
+       of nuclear fusion.
+    [% INCLUDE section/footer %]</pre>
+<p>The individual template components being included might look like these:</p>
+<p>section/header:</p>
+<pre>
+    &lt;p&gt;
+    &lt;h2&gt;[% title %]&lt;/h2&gt;</pre>
+<p>section/footer:</p>
+<pre>
+    &lt;/p&gt;</pre>
+<p>The <code>WRAPPER</code> directive provides a way of simplifying this a little. It
+encloses a block up to a matching <code>END</code> directive, which is first processed
+to generate some output. This is then passed to the named template file or
+<code>BLOCK</code> as the <code>content</code> variable.</p>
+<pre>
+    [% WRAPPER section
+       title = 'Quantum Mechanics'
+    %]
+       Quantum mechanics is a very interesting subject wish 
+       should prove easy for the layman to fully comprehend.
+    [% END %]
+    
+    [% WRAPPER section
+       title = 'Desktop Nuclear Fusion for under $50'
+    %]
+       This describes a simple device which generates significant 
+       sustainable electrical power from common tap water by process 
+       of nuclear fusion.
+    [% END %]</pre>
+<p>The single 'section' template can then be defined as:</p>
+<pre>
+    &lt;h2&gt;[% title %]&lt;/h2&gt;
+    &lt;p&gt;
+      [% content %]
+    &lt;/p&gt;</pre>
+<p>Like other block directives, it can be used in side-effect notation:</p>
+<pre>
+    [% INSERT legalese.txt WRAPPER big_bold_table %]</pre>
+<p>It's also possible to specify multiple templates to a <code>WRAPPER</code> directive.
+The specification order indicates outermost to innermost wrapper templates.
+For example, given the following template block definitions:</p>
+<pre>
+    [% BLOCK bold   %]&lt;b&gt;[% content %]&lt;/b&gt;[% END %]
+    [% BLOCK italic %]&lt;i&gt;[% content %]&lt;/i&gt;[% END %]</pre>
+<p>the directive</p>
+<pre>
+    [% WRAPPER bold+italic %]Hello World[% END %]</pre>
+<p>would generate the following output:</p>
+<pre>
+    &lt;b&gt;&lt;i&gt;Hello World&lt;/i&gt;&lt;/b&gt;</pre>
+<p>
+</p>
+<h2><a name="block">BLOCK</a></h2>
+<p>The <code>BLOCK</code>...<code>END</code> construct can be used to define template component
+blocks which can be processed with the <code>INCLUDE</code>, <code>PROCESS</code> and <code>WRAPPER</code>
+directives.</p>
+<pre>
+    [% BLOCK tabrow %]
+    &lt;tr&gt;
+      &lt;td&gt;[% name %]&lt;td&gt;
+      &lt;td&gt;[% email %]&lt;/td&gt;
+    &lt;/tr&gt;
+    [% END %]
+    
+    &lt;table&gt;
+      [% PROCESS tabrow  name='Fred'  email='fred@nowhere.com' %]
+      [% PROCESS tabrow  name='Alan'  email='alan@nowhere.com' %]
+    &lt;/table&gt;</pre>
+<p>A <code>BLOCK</code> definition can be used before it is defined, as long as the
+definition resides in the same file.  The block definition itself does
+not generate any output.</p>
+<pre>
+    [% PROCESS tmpblk %]
+    
+    [% BLOCK tmpblk %] This is OK [% END %]</pre>
+<p>You can use an anonymous <code>BLOCK</code> to capture the output of a template
+fragment.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">julius</span> <span class="operator">=</span> <span class="variable">BLOCK</span> <span class="variable">%]</span>
+       <span class="variable">And</span> <span class="variable">Caesar's</span> <span class="variable">spirit</span><span class="operator">,</span> <span class="variable">ranging</span> <span class="keyword">for</span> <span class="variable">revenge</span><span class="operator">,</span>
+       <span class="variable">With</span> <span class="variable">Ate</span> <span class="variable">by</span> <span class="variable">his</span> <span class="variable">side</span> <span class="variable">come</span> <span class="variable">hot</span> <span class="variable">from</span> <span class="variable">hell</span><span class="operator">,</span>
+       <span class="variable">Shall</span> <span class="variable">in</span> <span class="variable">these</span> <span class="variable">confines</span> <span class="variable">with</span> <span class="variable">a</span> <span class="variable">monarch's</span> <span class="variable">voice</span>
+       <span class="variable">Cry</span>  <span class="string">'Havoc'</span><span class="operator">,</span> <span class="keyword">and</span> <span class="variable">let</span> <span class="variable">slip</span> <span class="variable">the</span> <span class="variable">dogs</span> <span class="variable">of</span> <span class="variable">war</span><span class="operator">;</span>
+       <span class="variable">That</span> <span class="variable">this</span> <span class="variable">foul</span> <span class="variable">deed</span> <span class="variable">shall</span> <span class="variable">smell</span> <span class="variable">above</span> <span class="variable">the</span> <span class="variable">earth</span>
+       <span class="variable">With</span> <span class="variable">carrion</span> <span class="variable">men</span><span class="operator">,</span> <span class="variable">groaning</span> <span class="keyword">for</span> <span class="variable">burial</span><span class="operator">.</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="keyword">END</span> <span class="variable">%]</span>
+</pre>
+<p>Like a named block, it can contain any other template directives which 
+are processed when the block is defined.  The output generated by the 
+block is then assigned to the variable <code>julius</code>.</p>
+<p>Anonymous <code>BLOCK</code>s can also be used to define block macros.  The
+enclosing block is processed each time the macro is called.</p>
+<pre>
+    [% MACRO locate BLOCK %]
+       The [% animal %] sat on the [% place %].
+    [% END %]
+    
+    [% locate(animal='cat', place='mat') %]    # The cat sat on the mat
+    [% locate(animal='dog', place='log') %]    # The dog sat on the log</pre>
+<p>
+</p>
+<hr />
+<h1><a name="conditional_processing">Conditional Processing</a></h1>
+<p>
+</p>
+<h2><a name="if___unless___elsif___else">IF / UNLESS / ELSIF / ELSE</a></h2>
+<p>The <code>IF</code> and <code>UNLESS</code> directives can be used to process or ignore a
+block based on some run-time condition.</p>
+<pre>
+    [% IF frames %]
+       [% INCLUDE frameset %]
+    [% END %]
+    
+    [% UNLESS text_mode %]
+       [% INCLUDE biglogo %]
+    [% END %]</pre>
+<p>Multiple conditions may be joined with <code>ELSIF</code> and/or <code>ELSE</code> blocks.</p>
+<pre>
+    [% IF age &lt; 10 %]
+       Hello [% name %], does your mother know you're 
+       using her AOL account?
+    [% ELSIF age &lt; 18 %]
+       Sorry, you're not old enough to enter 
+       (and too dumb to lie about your age)
+    [% ELSE %]
+       Welcome [% name %].
+    [% END %]</pre>
+<p>The following conditional and boolean operators may be used:</p>
+<pre>
+    == != &lt; &lt;= &gt; &gt;= &amp;&amp; || ! and or not</pre>
+<p>Conditions may be arbitrarily complex and are evaluated with the same
+precedence as in Perl.  Parenthesis may be used to explicitly
+determine evaluation order.</p>
+<pre>
+    # ridiculously contrived complex example
+    [% IF (name == 'admin' || uid &lt;= 0) &amp;&amp; mode == 'debug' %]
+       I'm confused.
+    [% ELSIF more &gt; less %]
+       That's more or less correct.
+    [% END %]</pre>
+<p>The <code>and</code>, <code>or</code> and <code>not</code> operator are provided as aliases for
+<code>&amp;&amp;</code>, <code>||</code> and <code>!</code>, respectively.  Unlike Perl, which treats 
+<code>and</code>, <code>or</code> and <code>not</code> as separate, lower-precedence versions of the 
+other operators, the Template Toolkit performs a straightforward substitution
+of <code>and</code> for <code>&amp;&amp;</code>, and so on.  That means that <code>and</code>, <code>or</code> and <code>not</code>
+have the same operator precedence as <code>&amp;&amp;</code>, <code>||</code> and <code>!</code>.</p>
+<p>
+</p>
+<h2><a name="switch___case">SWITCH / CASE</a></h2>
+<p>The <code>SWITCH</code> / <code>CASE</code> construct can be used to perform a multi-way
+conditional test.  The <code>SWITCH</code> directive expects an expression which is
+first evaluated and then compared against each CASE statement in turn.
+Each <code>CASE</code> directive should contain a single value or a list of values
+which should match.  <code>CASE</code> may also be left blank or written as 
+<code>[% CASE DEFAULT %]</code> to specify a default match.  Only one <code>CASE</code> matches,
+there is no drop-through between <code>CASE</code> statements.</p>
+<pre>
+    [% SWITCH myvar %]
+    [%   CASE 'value1' %]
+           ...
+    [%   CASE ['value2', 'value3'] %]   # multiple values
+           ...
+    [%   CASE myhash.keys %]            # ditto
+           ...
+    [%   CASE %]                        # default
+           ...
+    [% END %]</pre>
+<p>
+</p>
+<hr />
+<h1><a name="loop_processing">Loop Processing</a></h1>
+<p>
+</p>
+<h2><a name="foreach">FOREACH</a></h2>
+<p>The <code>FOREACH</code> directive will iterate through the items in a list, processing
+the enclosed block for each one.</p>
+<pre>
+    [% foo   = 'Foo'
+       items = [ 'one', 'two', 'three' ]
+    %]
+    
+    Things:
+    [% FOREACH thing IN [ foo 'Bar' &quot;$foo Baz&quot; ] %]
+       * [% thing %]
+    [% END %]
+    
+    Items:
+    [% FOREACH i IN items %]
+       * [% i %]
+    [% END %]
+    
+    Stuff:
+    [% stuff = [ foo &quot;$foo Bar&quot; ] %]
+    [% FOREACH s IN stuff %]
+       * [% s %]
+    [% END %]</pre>
+<p>output:</p>
+<pre>
+    Things:
+      * Foo
+      * Bar
+      * Foo Baz
+    
+    Items:
+      * one
+      * two
+      * three
+    
+    Stuff:
+      * Foo
+      * Foo Bar</pre>
+<p>You can use also use <code>=</code> instead of <code>IN</code> if you prefer.</p>
+<pre>
+    [% FOREACH i = items %]</pre>
+<p>When the <code>FOREACH</code> directive is used without specifying a target variable, 
+any iterated values which are hash references will be automatically 
+imported.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">userlist</span> <span class="operator">=</span> <span class="operator">[</span>
+        <span class="operator">{</span> <span class="string">id</span> <span class="operator">=&gt;</span> <span class="string">'tom'</span><span class="operator">,</span>   <span class="string">name</span> <span class="operator">=&gt;</span> <span class="string">'Thomas'</span>  <span class="operator">}</span><span class="operator">,</span>
+        <span class="operator">{</span> <span class="string">id</span> <span class="operator">=&gt;</span> <span class="string">'dick'</span><span class="operator">,</span>  <span class="string">name</span> <span class="operator">=&gt;</span> <span class="string">'Richard'</span>  <span class="operator">}</span><span class="operator">,</span>
+        <span class="operator">{</span> <span class="string">id</span> <span class="operator">=&gt;</span> <span class="string">'larry'</span><span class="operator">,</span> <span class="string">name</span> <span class="operator">=&gt;</span> <span class="string">'Lawrence'</span> <span class="operator">}</span><span class="operator">,</span>
+       <span class="operator">]</span>
+    <span class="variable">%]</span>
+    
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">FOREACH</span> <span class="variable">user</span> <span class="variable">IN</span> <span class="variable">userlist</span> <span class="variable">%]</span>
+       <span class="operator">[</span><span class="operator">% </span><span class="variable">user</span><span class="operator">.</span><span class="variable">id</span> <span class="variable">%]</span> <span class="operator">[</span><span class="operator">% </span><span class="variable">user</span><span class="operator">.</span><span class="variable">name</span> <span class="variable">%]</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="keyword">END</span> <span class="variable">%]</span>
+</pre>
+<p>short form:</p>
+<pre>
+    [% FOREACH userlist %]
+       [% id %] [% name %]
+    [% END %]</pre>
+<p>Note that this particular usage creates a localised variable context
+to prevent the imported hash keys from overwriting any existing
+variables.  The imported definitions and any other variables defined
+in such a <code>FOREACH</code> loop will be lost at the end of the loop, when the 
+previous context and variable values are restored.</p>
+<p>However, under normal operation, the loop variable remains in scope
+after the <code>FOREACH</code> loop has ended (caveat: overwriting any variable
+previously in scope). This is useful as the loop variable is secretly
+an iterator object (see below) and can be used to analyse the last
+entry processed by the loop.</p>
+<p>The <code>FOREACH</code> directive can also be used to iterate through the entries
+in a hash array.  Each entry in the hash is returned in sorted order
+(based on the key) as a hash array containing 'key' and 'value' items.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">users</span> <span class="operator">=</span> <span class="operator">{</span>
+         <span class="string">tom</span>   <span class="operator">=&gt;</span> <span class="string">'Thomas'</span><span class="operator">,</span>
+         <span class="string">dick</span>  <span class="operator">=&gt;</span> <span class="string">'Richard'</span><span class="operator">,</span>
+         <span class="string">larry</span> <span class="operator">=&gt;</span> <span class="string">'Lawrence'</span><span class="operator">,</span>
+       <span class="operator">}</span>
+    <span class="variable">%]</span>
+    
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">FOREACH</span> <span class="variable">u</span> <span class="variable">IN</span> <span class="variable">users</span> <span class="variable">%]</span>
+       <span class="operator">*</span> <span class="operator">[</span><span class="operator">% </span><span class="variable">u</span><span class="operator">.</span><span class="variable">key</span> <span class="variable">%]</span> <span class="operator">:</span> <span class="operator">[</span><span class="operator">% </span><span class="variable">u</span><span class="operator">.</span><span class="variable">value</span> <span class="variable">%]</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="keyword">END</span> <span class="variable">%]</span>
+</pre>
+<p>Output:</p>
+<pre>
+       * dick : Richard
+       * larry : Lawrence
+       * tom : Thomas</pre>
+<p>The <code>NEXT</code> directive starts the next iteration in the <code>FOREACH</code> loop.</p>
+<pre>
+    [% FOREACH user IN userlist %]
+       [% NEXT IF user.isguest %]
+       Name: [% user.name %]    Email: [% user.email %]
+    [% END %]</pre>
+<p>The <code>LAST</code> directive can be used to prematurely exit the loop.  <code>BREAK</code> is
+also provided as an alias for <code>LAST</code>.</p>
+<pre>
+    [% FOREACH match IN results.nsort('score').reverse %]
+       [% LAST IF match.score &lt; 50 %]
+       [% match.score %] : [% match.url %]
+    [% END %]</pre>
+<p>The <code>FOREACH</code> directive is implemented using the <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Iterator.html">the Template::Iterator manpage</a>
+module.  A reference to the iterator object for a <code>FOREACH</code> directive is
+implicitly available in the <code>loop</code> variable.  The following methods 
+can be called on the <code>loop</code> iterator.</p>
+<pre>
+    size()      number of elements in the list
+    max()       index number of last element (size - 1)
+    index()     index of current iteration from 0 to max()
+    count()     iteration counter from 1 to size() (i.e. index() + 1)
+    first()     true if the current iteration is the first
+    last()      true if the current iteration is the last
+    prev()      return the previous item in the list
+    next()      return the next item in the list</pre>
+<p>See <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Iterator.html">the Template::Iterator manpage</a> for further details.</p>
+<p>Example:</p>
+<pre>
+    [% FOREACH item IN [ 'foo', 'bar', 'baz' ] -%]
+       [%- &quot;&lt;ul&gt;\n&quot; IF loop.first %]
+       &lt;li&gt;[% loop.count %]/[% loop.size %]: [% item %]
+       [%- &quot;&lt;/ul&gt;\n&quot; IF loop.last %]
+    [% END %]</pre>
+<p>Output:</p>
+<pre>
+    &lt;ul&gt;
+    &lt;li&gt;1/3: foo
+    &lt;li&gt;2/3: bar
+    &lt;li&gt;3/3: baz
+    &lt;/ul&gt;</pre>
+<p>Nested loops will work as expected, with the <code>loop</code> variable correctly 
+referencing the innermost loop and being restored to any previous 
+value (i.e. an outer loop) at the end of the loop.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">FOREACH</span> <span class="variable">group</span> <span class="variable">IN</span> <span class="variable">grouplist</span><span class="operator">;</span>
+         <span class="comment"># loop =&gt; group iterator</span>
+         <span class="string">"Groups:\n"</span> <span class="variable">IF</span> <span class="variable">loop</span><span class="operator">.</span><span class="variable">first</span><span class="operator">;</span>
+         
+         <span class="variable">FOREACH</span> <span class="variable">user</span> <span class="variable">IN</span> <span class="variable">group</span><span class="operator">.</span><span class="variable">userlist</span><span class="operator">;</span>
+            <span class="comment"># loop =&gt; user iterator</span>
+            <span class="string">"</span><span class="variable">$loop</span><span class="string">.count: </span><span class="variable">$user</span><span class="string">.name\n"</span><span class="operator">;</span>
+         <span class="keyword">END</span><span class="operator">;</span>
+         
+         <span class="comment"># loop =&gt; group iterator</span>
+         <span class="string">"End of Groups\n"</span> <span class="variable">IF</span> <span class="variable">loop</span><span class="operator">.</span><span class="keyword">last</span><span class="operator">;</span>
+       <span class="keyword">END</span> 
+    <span class="variable">%]</span>
+</pre>
+<p>The <code>iterator</code> plugin can also be used to explicitly create an
+iterator object.  This can be useful within nested loops where you
+need to keep a reference to the outer iterator within the inner loop.
+The iterator plugin effectively allows you to create an iterator by a
+name other than <code>loop</code>.  See <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Iterator.html">the Template::Plugin::Iterator manpage</a> for further
+details.</p>
+<pre>
+    [% USE giter = iterator(grouplist) %]
+    
+    [% FOREACH group IN giter %]
+       [% FOREACH user IN group.userlist %]
+             user #[% loop.count %] in
+             group [% giter.count %] is
+             named [% user.name %]
+       [% END %]
+    [% END %]</pre>
+<p>
+</p>
+<h2><a name="while">WHILE</a></h2>
+<p>The <code>WHILE</code> directive can be used to repeatedly process a template block
+while a conditional expression evaluates true.  The expression may 
+be arbitrarily complex as per <code>IF</code> / <code>UNLESS</code>.</p>
+<pre>
+    [% WHILE total &lt; 100 %]
+       ...
+       [% total = calculate_new_total %]
+    [% END %]</pre>
+<p>An assignment can be enclosed in parenthesis to evaluate the assigned
+value.</p>
+<pre>
+    [% WHILE (user = get_next_user_record) %]
+       [% user.name %]
+    [% END %]</pre>
+<p>The <code>NEXT</code> directive can be used to start the next iteration of a 
+<code>WHILE</code> loop and <code>BREAK</code> can be used to exit the loop, both as per <code>FOREACH</code>.</p>
+<p>The Template Toolkit uses a failsafe counter to prevent runaway <code>WHILE</code>
+loops which would otherwise never terminate.  If the loop exceeds 1000
+iterations then an <a href="../../../../lib/pods/perlfunc.html#undef"><code>undef</code></a> exception will be thrown, reporting the
+error:</p>
+<pre>
+    WHILE loop terminated (&gt; 1000 iterations)</pre>
+<p>The <code>$Template::Directive::WHILE_MAX</code> variable controls this behaviour
+and can be set to a higher value if necessary.</p>
+<p>
+</p>
+<hr />
+<h1><a name="filters__plugins__macros_and_perl">Filters, Plugins, Macros and Perl</a></h1>
+<p>
+</p>
+<h2><a name="filter">FILTER</a></h2>
+<p>The <code>FILTER</code> directive can be used to post-process the output of a
+block.  A number of standard filters are provided with the Template
+Toolkit.  The <code>html</code> filter, for example, escapes the '&lt;', '&gt;'
+and '&amp;' characters to prevent them from being interpreted as HTML tags
+or entity reference markers.</p>
+<pre>
+    [% FILTER html %]
+       HTML text may have &lt; and &gt; characters embedded
+       which you want converted to the correct HTML entities.
+    [% END %]</pre>
+<p>output:</p>
+<pre>
+       <span class="variable">HTML</span> <span class="variable">text</span> <span class="variable">may</span> <span class="variable">have</span> <span class="operator">&amp;</span><span class="keyword">lt</span><span class="operator">;</span> <span class="keyword">and</span> <span class="operator">&amp;</span><span class="keyword">gt</span><span class="operator">;</span> <span class="variable">characters</span> <span class="variable">embedded</span>
+       <span class="variable">which</span> <span class="variable">you</span> <span class="variable">want</span> <span class="variable">converted</span> <span class="variable">to</span> <span class="variable">the</span> <span class="variable">correct</span> <span class="variable">HTML</span> <span class="variable">entities</span><span class="operator">.</span>
+</pre>
+<p>The <code>FILTER</code> directive can also follow various other non-block directives.
+For example:</p>
+<pre>
+    [% INCLUDE mytext FILTER html %]</pre>
+<p>The <code>|</code> character can also be used as an alias for <code>FILTER</code>.</p>
+<pre>
+    [% INCLUDE mytext | html %]</pre>
+<p>Multiple filters can be chained together and will be called in sequence.</p>
+<pre>
+    [% INCLUDE mytext FILTER html FILTER html_para %]</pre>
+<p>or</p>
+<pre>
+    [% INCLUDE mytext | html | html_para %]</pre>
+<p>Filters come in two flavours, known as 'static' or 'dynamic'.  A
+static filter is a simple subroutine which accepts a text string as
+the only argument and returns the modified text.  The <code>html</code> filter is
+an example of a static filter, implemented as:</p>
+<pre>
+    <span class="keyword">sub</span><span class="variable"> html_filter </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="variable">$text</span> <span class="operator">=</span> <span class="keyword">shift</span><span class="operator">;</span>
+        <span class="keyword">for</span> <span class="operator">(</span><span class="variable">$text</span><span class="operator">)</span> <span class="operator">{</span>
+            <span class="regex">s/&amp;/&amp;amp;/g</span><span class="operator">;</span>
+            <span class="regex">s/&lt;/&amp;lt;/g</span><span class="operator">;</span>
+            <span class="regex">s/&gt;/&amp;gt;/g</span><span class="operator">;</span>
+        <span class="operator">}</span>
+        <span class="keyword">return</span> <span class="variable">$text</span><span class="operator">;</span>
+    <span class="operator">}</span>
+</pre>
+<p>Dynamic filters can accept arguments which are specified when the filter
+is called from a template.  The <code>repeat</code> filter is such an example, 
+accepting a numerical argument which specifies the number of times
+that the input text should be repeated.</p>
+<pre>
+    [% FILTER repeat(3) %]blah [% END %]</pre>
+<p>output:</p>
+<pre>
+    blah blah blah</pre>
+<p>These are implemented as filter 'factories'.  The factory subroutine
+is passed a reference to the current <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a> object along
+with any additional arguments specified.  It should then return a
+subroutine reference (e.g. a closure) which implements the filter.
+The <code>repeat</code> filter factory is implemented like this:</p>
+<pre>
+    <span class="keyword">sub</span><span class="variable"> repeat_filter_factory </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="operator">(</span><span class="variable">$context</span><span class="operator">,</span> <span class="variable">$iter</span><span class="operator">)</span> <span class="operator">=</span> <span class="variable">@_</span><span class="operator">;</span>
+        <span class="variable">$iter</span> <span class="operator">=</span> <span class="number">1</span> <span class="keyword">unless</span> <span class="keyword">defined</span> <span class="variable">$iter</span><span class="operator">;</span>
+        
+        <span class="keyword">return</span> <span class="keyword">sub</span><span class="variable"> </span><span class="operator">{</span>
+            <span class="keyword">my</span> <span class="variable">$text</span> <span class="operator">=</span> <span class="keyword">shift</span><span class="operator">;</span>
+            <span class="variable">$text</span> <span class="operator">=</span> <span class="string">''</span> <span class="keyword">unless</span> <span class="keyword">defined</span> <span class="variable">$text</span><span class="operator">;</span>
+            <span class="keyword">return</span> <span class="keyword">join</span><span class="operator">(</span><span class="string">'\n'</span><span class="operator">,</span> <span class="variable">$text</span><span class="operator">)</span> <span class="operator">x</span> <span class="variable">$iter</span><span class="operator">;</span>
+        <span class="operator">}</span>
+    <span class="operator">}</span>
+</pre>
+<p>The <code>FILTERS</code> option, described in <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Manual/Config.html">the Template::Manual::Config manpage</a>, allows custom
+filters to be defined when a Template object is instantiated. The
+<a href="../../../../Template/Context#define_filter().html">define_filter()</a> method allows further
+filters to be defined at any time.</p>
+<p>When using a filter, it is possible to assign an alias to it for 
+further use.  This is most useful for dynamic filters that you want 
+to re-use with the same configuration.</p>
+<pre>
+    [% FILTER echo = repeat(2) %]
+    Is there anybody out there?
+    [% END %]
+    
+    [% FILTER echo %]
+    Mother, should I build a wall?
+    [% END %]</pre>
+<p>Output:</p>
+<pre>
+    Is there anybody out there?
+    Is there anybody out there?</pre>
+<pre>
+    Mother, should I build a wall?
+    Mother, should I build a wall?</pre>
+<p>The <code>FILTER</code> directive automatically quotes the name of the filter.  As
+with <code>INCLUDE</code> et al, you can use a variable to provide the name of the 
+filter, prefixed by <code>$</code>.</p>
+<pre>
+    [% myfilter = 'html' %]
+    [% FILTER $myfilter %]      # same as [% FILTER html %]
+       ...
+    [% END %]</pre>
+<p>A template variable can also be used to define a static filter
+subroutine.  However, the Template Toolkit will automatically call any
+subroutine bound to a variable and use the value returned.  Thus, the
+above example could be implemented as:</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$vars</span> <span class="operator">=</span> <span class="operator">{</span>
+        <span class="string">myfilter</span> <span class="operator">=&gt;</span> <span class="keyword">sub</span><span class="variable"> </span><span class="operator">{</span> <span class="keyword">return</span> <span class="string">'html'</span> <span class="operator">},</span>
+    <span class="operator">}</span><span class="operator">;</span>
+</pre>
+<p>template:</p>
+<pre>
+    [% FILTER $myfilter %]      # same as [% FILTER html %]
+       ...
+    [% END %]</pre>
+<p>To define a template variable that evaluates to a subroutine reference
+that can be used by the <code>FILTER</code> directive, you should create a
+subroutine that, when called automatically by the Template Toolkit,
+returns another subroutine reference which can then be used to perform
+the filter operation.  Note that only static filters can be
+implemented in this way.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$vars</span> <span class="operator">=</span> <span class="operator">{</span>
+        <span class="string">myfilter</span> <span class="operator">=&gt;</span> <span class="keyword">sub</span><span class="variable"> </span><span class="operator">{</span> <span class="operator">\&amp;</span><span class="variable">my_filter_sub</span> <span class="operator">},</span>
+    <span class="operator">}</span><span class="operator">;</span>
+    
+    <span class="keyword">sub</span><span class="variable"> my_filter_sub </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="variable">$text</span> <span class="operator">=</span> <span class="keyword">shift</span><span class="operator">;</span>
+        <span class="comment"># do something</span>
+        <span class="keyword">return</span> <span class="variable">$text</span><span class="operator">;</span>
+    <span class="operator">}</span>
+</pre>
+<p>template:</p>
+<pre>
+    [% FILTER $myfilter %]
+       ...
+    [% END %]</pre>
+<p>Alternately, you can bless a subroutine reference into a class (any
+class will do) to fool the Template Toolkit into thinking it's an
+object rather than a subroutine.  This will then bypass the automatic
+&quot;call-a-subroutine-to-return-a-value&quot; magic.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$vars</span> <span class="operator">=</span> <span class="operator">{</span>
+        <span class="string">myfilter</span> <span class="operator">=&gt;</span> <span class="keyword">bless</span><span class="operator">(\&amp;</span><span class="variable">my_filter_sub</span><span class="operator">,</span> <span class="string">'anything_you_like'</span><span class="operator">),</span>
+    <span class="operator">}</span><span class="operator">;</span>
+</pre>
+<p>template:</p>
+<pre>
+    [% FILTER $myfilter %]          
+       ...
+    [% END %]</pre>
+<p>Filters bound to template variables remain local to the variable context in
+which they are defined. That is, if you define a filter in a <code>PERL</code> block
+within a template that is loaded via <code>INCLUDE</code>, then the filter definition
+will only exist until the end of that template when the stash is delocalised,
+restoring the previous variable state. If you want to define a filter which
+persists for the lifetime of the processor, or define additional dynamic
+filter factories, then you can call the
+<a href="../../../../Template/Context#define_filter().html">define_filter()</a> method on the current
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a> object.</p>
+<p>See <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Manual/Filters.html">the Template::Manual::Filters manpage</a> for a complete list of available filters,
+their descriptions and examples of use.</p>
+<p>
+</p>
+<h2><a name="use">USE</a></h2>
+<p>The <code>USE</code> directive can be used to load and initialise &quot;plugin&quot;
+extension modules.</p>
+<pre>
+    [% USE myplugin %]</pre>
+<p>A plugin is a regular Perl module that conforms to a particular
+object-oriented interface, allowing it to be loaded into and used
+automatically by the Template Toolkit.  For details of this interface
+and information on writing plugins, consult <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin.html">the Template::Plugin manpage</a>.</p>
+<p>A number of standard plugins are included with the Template Toolkit
+(see below and <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Manual/Plugins.html">the Template::Manual::Plugins manpage</a>).  The names of these
+standard plugins are case insensitive.</p>
+<pre>
+    [% USE CGI   %]        # =&gt; Template::Plugin::CGI
+    [% USE Cgi   %]        # =&gt; Template::Plugin::CGI
+    [% USE cgi   %]        # =&gt; Template::Plugin::CGI</pre>
+<p>You can also define further plugins using the <code>PLUGINS</code> option.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$tt</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">PLUGINS</span> <span class="operator">=&gt;</span> <span class="operator">{</span>
+            <span class="string">foo</span> <span class="operator">=&gt;</span> <span class="string">'My::Plugin::Foo'</span><span class="operator">,</span>
+            <span class="string">bar</span> <span class="operator">=&gt;</span> <span class="string">'My::Plugin::Bar'</span><span class="operator">,</span>
+        <span class="operator">}</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>The recommended convention is to specify these plugin names in lower
+case.  The Template Toolkit first looks for an exact case-sensitive
+match and then tries the lower case conversion of the name specified.</p>
+<pre>
+    [% USE Foo %]      # look for 'Foo' then 'foo'</pre>
+<p>If you define all your <code>PLUGINS</code> with lower case names then they will be
+located regardless of how the user specifies the name in the <code>USE</code>
+directive.  If, on the other hand, you define your <code>PLUGINS</code> with upper
+or mixed case names then the name specified in the <code>USE</code> directive must
+match the case exactly.</p>
+<p>If the plugin isn't defined in either the standard plugins
+(<code>$Template::Plugins::STD_PLUGINS</code>) or via the <code>PLUGINS</code> option, then 
+the <code>PLUGIN_BASE</code> is searched.</p>
+<p>In this case the plugin name <em>is</em> case-sensitive.  It is appended to
+each of the <code>PLUGIN_BASE</code> module namespaces in turn (default:
+<code>Template::Plugin</code>) to construct a full module name which it attempts
+to locate and load.  Any periods, '<code>.</code>', in the name will be converted
+to '<code>::</code>'.</p>
+<pre>
+    [% USE MyPlugin %]     #  =&gt; Template::Plugin::MyPlugin
+    [% USE Foo.Bar  %]     #  =&gt; Template::Plugin::Foo::Bar</pre>
+<p>The <code>LOAD_PERL</code> option (disabled by default) provides a further way by
+which external Perl modules may be loaded.  If a regular Perl module
+(i.e. not a <code>Template::Plugin::*</code> or other module relative to some
+<code>PLUGIN_BASE</code>) supports an object-oriented interface and a <code>new()</code>
+constructor then it can be loaded and instantiated automatically.  The
+following trivial example shows how the IO::File module might be used.</p>
+<pre>
+    [% USE file = IO.File('/tmp/mydata') %]
+    
+    [% WHILE (line = file.getline) %]
+       &lt;!-- [% line %] --&gt;
+    [% END %]</pre>
+<p>Any additional parameters supplied in parenthesis after the plugin
+name will be also be passed to the <code>new()</code> constructor.  A reference to
+the current <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a> object is passed as the first
+parameter.</p>
+<pre>
+    [% USE MyPlugin('foo', 123) %]</pre>
+<p>equivalent to:</p>
+<pre>
+    <span class="variable">Template::Plugin::MyPlugin</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="variable">$context</span><span class="operator">,</span> <span class="string">'foo'</span><span class="operator">,</span> <span class="number">123</span><span class="operator">);</span>
+</pre>
+<p>The only exception to this is when a module is loaded via the
+<code>LOAD_PERL</code> option.  In this case the <code>$context</code> reference is <em>not</em>
+passed to the <code>new()</code> constructor.  This is based on the assumption that
+the module is a regular Perl module rather than a Template Toolkit
+plugin so isn't expecting a context reference and wouldn't know what
+to do with it anyway.</p>
+<p>Named parameters may also be specified.  These are collated into a
+hash which is passed by reference as the last parameter to the
+constructor, as per the general code calling interface.</p>
+<pre>
+    [% USE url('/cgi-bin/foo', mode='submit', debug=1) %]</pre>
+<p>equivalent to:</p>
+<pre>
+    <span class="variable">Template::Plugin::URL</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span>
+        <span class="variable">$context</span><span class="operator">,</span> 
+        <span class="string">'/cgi-bin/foo'</span>
+        <span class="operator">{</span> <span class="string">mode</span> <span class="operator">=&gt;</span> <span class="string">'submit'</span><span class="operator">,</span> <span class="string">debug</span> <span class="operator">=&gt;</span> <span class="number">1</span> <span class="operator">}</span>
+    <span class="operator">);</span>
+</pre>
+<p>The plugin may represent any data type; a simple variable, hash, list or
+code reference, but in the general case it will be an object reference.
+Methods can be called on the object (or the relevant members of the
+specific data type) in the usual way:</p>
+<pre>
+    [% USE table(mydata, rows=3) %]
+    
+    [% FOREACH row IN table.rows %]
+       &lt;tr&gt;    
+       [% FOREACH item IN row %]
+        &lt;td&gt;[% item %]&lt;/td&gt;
+       [% END %]
+       &lt;/tr&gt;
+    [% END %]</pre>
+<p>An alternative name may be provided for the plugin by which it can be 
+referenced:</p>
+<pre>
+    [% USE scores = table(myscores, cols=5) %]
+    
+    [% FOREACH row IN scores.rows %]
+       ...
+    [% END %]</pre>
+<p>You can use this approach to create multiple plugin objects with
+different configurations.  This example shows how the 
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Format.html">format</a> plugin is used to create 
+sub-routines bound to variables for formatting text as per <a href="../../../../lib/pods/perlfunc.html#printf"><code>printf()</code></a>.</p>
+<pre>
+    [% USE bold = format('&lt;b&gt;%s&lt;/b&gt;') %]
+    [% USE ital = format('&lt;i&gt;%s&lt;/i&gt;') %]
+    [% bold('This is bold')   %]
+    [% ital('This is italic') %]</pre>
+<p>Output:</p>
+<pre>
+    &lt;b&gt;This is bold&lt;/b&gt;
+    &lt;i&gt;This is italic&lt;/i&gt;</pre>
+<p>This next example shows how the <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/URL.html">URL</a> plugin can be
+used to build dynamic URLs from a base part and optional query parameters.</p>
+<pre>
+    [% USE mycgi = URL('/cgi-bin/foo.pl', debug=1) %]
+    &lt;a href=&quot;[% mycgi %]&quot;&gt;...
+    &lt;a href=&quot;[% mycgi(mode='submit') %]&quot;...</pre>
+<p>Output:</p>
+<pre>
+    &lt;a href=&quot;/cgi-bin/foo.pl?debug=1&quot;&gt;...
+    &lt;a href=&quot;/cgi-bin/foo.pl?mode=submit&amp;debug=1&quot;&gt;...</pre>
+<p>The <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/CGI.html">CGI</a> plugin is an example of one which delegates
+to another Perl module. In this this case, to Lincoln Stein's <code>CGI</code> module.
+All of the methods provided by the <code>CGI</code> module are available via the plugin.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">USE</span> <span class="variable">CGI</span><span class="operator">;</span>
+       <span class="variable">CGI</span><span class="operator">.</span><span class="variable">start_form</span><span class="operator">;</span>
+       <span class="variable">CGI</span><span class="operator">.</span><span class="variable">checkbox_group</span><span class="operator">(</span> <span class="variable">name</span>   <span class="operator">=</span> <span class="string">'colours'</span><span class="operator">,</span> 
+                           <span class="keyword">values</span> <span class="operator">=</span> <span class="operator">[</span> <span class="string">'red'</span> <span class="string">'green'</span> <span class="string">'blue'</span> <span class="operator">]</span> <span class="operator">);</span>
+       <span class="variable">CGI</span><span class="operator">.</span><span class="variable">popup_menu</span><span class="operator">(</span> <span class="variable">name</span>   <span class="operator">=</span> <span class="string">'items'</span><span class="operator">,</span> 
+                       <span class="keyword">values</span> <span class="operator">=</span> <span class="operator">[</span> <span class="string">'foo'</span> <span class="string">'bar'</span> <span class="string">'baz'</span> <span class="operator">]</span> <span class="operator">);</span>
+       <span class="variable">CGI</span><span class="operator">.</span><span class="variable">end_form</span> 
+    <span class="variable">%]</span>
+</pre>
+<p>See <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Manual/Plugins.html">the Template::Manual::Plugins manpage</a> for more information on the plugins
+distributed with the toolkit or available from CPAN.</p>
+<p>
+</p>
+<h2><a name="macro">MACRO</a></h2>
+<p>The <code>MACRO</code> directive allows you to define a directive or directive block
+which is then evaluated each time the macro is called.</p>
+<pre>
+    [% MACRO header INCLUDE header %]</pre>
+<p>Calling the macro as:</p>
+<pre>
+    [% header %]</pre>
+<p>is then equivalent to:</p>
+<pre>
+    [% INCLUDE header %]</pre>
+<p>Macros can be passed named parameters when called.  These values remain 
+local to the macro.</p>
+<pre>
+    [% header(title='Hello World') %]</pre>
+<p>equivalent to:</p>
+<pre>
+    [% INCLUDE header title='Hello World' %]</pre>
+<p>A <code>MACRO</code> definition may include parameter names.  Values passed to the 
+macros are then mapped to these local variables.  Other named parameters
+may follow these.</p>
+<pre>
+    [% MACRO header(title) INCLUDE header %]
+    [% header('Hello World') %]
+    [% header('Hello World', bgcol='#123456') %]</pre>
+<p>equivalent to:</p>
+<pre>
+    [% INCLUDE header title='Hello World' %]
+    [% INCLUDE header title='Hello World' bgcol='#123456' %]</pre>
+<p>Here's another example, defining a macro for display numbers
+in comma-delimited groups of 3, using the chunk and join virtual
+method.</p>
+<pre>
+    [% MACRO number(n) GET n.chunk(-3).join(',') %]
+    [% number(1234567) %]    # 1,234,567</pre>
+<p>A <code>MACRO</code> may precede any directive and must conform to the structure 
+of the directive.</p>
+<pre>
+    [% MACRO header IF frames %]
+       [% INCLUDE frames/header %]
+    [% ELSE %]
+       [% INCLUDE header %]
+    [% END %]
+    
+    [% header %]</pre>
+<p>A <code>MACRO</code> may also be defined as an anonymous <code>BLOCK</code>.  The block will be
+evaluated each time the macro is called.</p>
+<pre>
+    [% MACRO header BLOCK %]
+       ...content...
+    [% END %]
+    
+    [% header %]</pre>
+<p>If you've got the <code>EVAL_PERL</code> option set, then you can even define a
+<code>MACRO</code> as a <code>PERL</code> block (see below):</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">MACRO</span> <span class="variable">triple</span><span class="operator">(</span><span class="variable">n</span><span class="operator">)</span> <span class="variable">PERL</span> <span class="variable">%]</span>
+         <span class="keyword">my</span> <span class="variable">$n</span> <span class="operator">=</span> <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">get</span><span class="operator">(</span><span class="string">'n'</span><span class="operator">);</span>
+         <span class="keyword">print</span> <span class="variable">$n</span> <span class="operator">*</span> <span class="number">3</span><span class="operator">;</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="keyword">END</span> <span class="operator">-</span><span class="variable">%]</span>
+</pre>
+<p>
+</p>
+<h2><a name="perl">PERL</a></h2>
+<p>(for the advanced reader)</p>
+<p>The <code>PERL</code> directive is used to mark the start of a block which contains
+Perl code for evaluation.  The <code>EVAL_PERL</code> option must be enabled for Perl
+code to be evaluated or a <code>perl</code> exception will be thrown with the 
+message '<code>EVAL_PERL not set</code>'.</p>
+<p>Perl code is evaluated in the <code>Template::Perl</code> package.  The <code>$context</code>
+package variable contains a reference to the current <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a>
+object.  This can be used to access the functionality of the Template
+Toolkit to process other templates, load plugins, filters, etc.
+See <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a> for further details.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">PERL</span> <span class="variable">%]</span>
+       <span class="keyword">print</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">include</span><span class="operator">(</span><span class="string">'myfile'</span><span class="operator">);</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="keyword">END</span> <span class="variable">%]</span>
+</pre>
+<p>The <em>$stash</em> variable contains a reference to the top-level stash object
+which manages template variables.  Through this, variable values can
+be retrieved and updated.  See <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Stash.html">the Template::Stash manpage</a> for further details.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">PERL</span> <span class="variable">%]</span>
+       <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">set</span><span class="operator">(</span><span class="string">foo</span> <span class="operator">=&gt;</span> <span class="string">'bar'</span><span class="operator">);</span>
+       <span class="keyword">print</span> <span class="string">"foo value: "</span><span class="operator">,</span> <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">get</span><span class="operator">(</span><span class="string">'foo'</span><span class="operator">);</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="keyword">END</span> <span class="variable">%]</span>
+</pre>
+<p>Output:</p>
+<pre>
+    foo value: bar</pre>
+<p>Output is generated from the <code>PERL</code> block by calling <a href="../../../../lib/pods/perlfunc.html#print"><code>print()</code></a>.  Note that
+the <code>Template::Perl::PERLOUT</code> handle is selected (tied to an output
+buffer) instead of <code>STDOUT</code>.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">PERL</span> <span class="variable">%]</span>
+       <span class="keyword">print</span> <span class="string">"foo\n"</span><span class="operator">;</span>                           <span class="comment"># OK</span>
+       <span class="keyword">print</span> <span class="variable">PERLOUT</span> <span class="string">"bar\n"</span><span class="operator">;</span>                   <span class="comment"># OK, same as above</span>
+       <span class="keyword">print</span> <span class="variable">Template::Perl::PERLOUT</span> <span class="string">"baz\n"</span><span class="operator">;</span>   <span class="comment"># OK, same as above</span>
+       <span class="keyword">print</span> <span class="variable">STDOUT</span> <span class="string">"qux\n"</span><span class="operator">;</span>                    <span class="comment"># WRONG!</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="keyword">END</span> <span class="variable">%]</span>
+</pre>
+<p>The <code>PERL</code> block may contain other template directives.  These are
+processed before the Perl code is evaluated.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">name</span> <span class="operator">=</span> <span class="string">'Fred Smith'</span> <span class="variable">%]</span>
+    
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">PERL</span> <span class="variable">%]</span>
+       <span class="keyword">print</span> <span class="string">"[% name %]\n"</span><span class="operator">;</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="keyword">END</span> <span class="variable">%]</span>
+</pre>
+<p>Thus, the Perl code in the above example is evaluated as:</p>
+<pre>
+    <span class="keyword">print</span> <span class="string">"Fred Smith\n"</span><span class="operator">;</span>
+</pre>
+<p>Exceptions may be thrown from within <code>PERL</code> blocks using <a href="../../../../lib/pods/perlfunc.html#die"><code>die()</code></a>.
+They will be correctly caught by enclosing <code>TRY</code> blocks.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">TRY</span> <span class="variable">%]</span>
+       <span class="operator">[</span><span class="operator">% </span><span class="variable">PERL</span> <span class="variable">%]</span>
+          <span class="keyword">die</span> <span class="string">"nothing to live for\n"</span><span class="operator">;</span>
+       <span class="operator">[</span><span class="operator">% </span><span class="keyword">END</span> <span class="variable">%]</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">CATCH</span> <span class="variable">%]</span>
+       <span class="variable">error</span><span class="operator">:</span> <span class="operator">[</span><span class="operator">% </span><span class="variable">error</span><span class="operator">.</span><span class="variable">info</span> <span class="variable">%]</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="keyword">END</span> <span class="variable">%]</span>
+</pre>
+<p>output:
+       error: nothing to live for</p>
+<p>
+</p>
+<h2><a name="rawperl">RAWPERL</a></h2>
+<p>(for the very advanced reader)</p>
+<p>The Template Toolkit parser reads a source template and generates the
+text of a Perl subroutine as output.  It then uses <a href="../../../../lib/pods/perlfunc.html#eval"><code>eval()</code></a> to evaluate
+it into a subroutine reference.  This subroutine is then called to
+process the template, passing a reference to the current
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a> object through which the functionality of the
+Template Toolkit can be accessed.  The subroutine reference can be
+cached, allowing the template to be processed repeatedly without
+requiring any further parsing.</p>
+<p>For example, a template such as:</p>
+<pre>
+    [% PROCESS header %]
+    The [% animal %] sat on the [% location %]
+    [% PROCESS footer %]</pre>
+<p>is converted into the following Perl subroutine definition:</p>
+<pre>
+    <span class="keyword">sub</span><span class="variable"> </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="variable">$context</span> <span class="operator">=</span> <span class="keyword">shift</span><span class="operator">;</span>
+        <span class="keyword">my</span> <span class="variable">$stash</span>   <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">stash</span><span class="operator">;</span>
+        <span class="keyword">my</span> <span class="variable">$output</span>  <span class="operator">=</span> <span class="string">''</span><span class="operator">;</span>
+        <span class="keyword">my</span> <span class="variable">$error</span><span class="operator">;</span>
+        
+        <span class="keyword">eval</span> <span class="operator">{</span> <span class="variable">BLOCK</span><span class="operator">:</span> <span class="operator">{</span>
+            <span class="variable">$output</span> <span class="operator">.=</span>  <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="string">'header'</span><span class="operator">);</span>
+            <span class="variable">$output</span> <span class="operator">.=</span>  <span class="string">"The "</span><span class="operator">;</span>
+            <span class="variable">$output</span> <span class="operator">.=</span>  <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">get</span><span class="operator">(</span><span class="string">'animal'</span><span class="operator">);</span>
+            <span class="variable">$output</span> <span class="operator">.=</span>  <span class="string">" sat on the "</span><span class="operator">;</span>
+            <span class="variable">$output</span> <span class="operator">.=</span>  <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">get</span><span class="operator">(</span><span class="string">'location'</span><span class="operator">);</span>
+            <span class="variable">$output</span> <span class="operator">.=</span>  <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="string">'footer'</span><span class="operator">);</span>
+            <span class="variable">$output</span> <span class="operator">.=</span>  <span class="string">"\n"</span><span class="operator">;</span>
+        <span class="operator">}</span> <span class="operator">};</span>
+        <span class="keyword">if</span> <span class="operator">(</span><span class="variable">$@</span><span class="operator">)</span> <span class="operator">{</span>
+            <span class="variable">$error</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">catch</span><span class="operator">(</span><span class="variable">$@</span><span class="operator">,</span> <span class="operator">\</span><span class="variable">$output</span><span class="operator">);</span>
+            <span class="keyword">die</span> <span class="variable">$error</span> <span class="keyword">unless</span> <span class="variable">$error</span><span class="operator">-&gt;</span><span class="variable">type</span> <span class="keyword">eq</span> <span class="string">'return'</span><span class="operator">;</span>
+        <span class="operator">}</span>
+    
+        <span class="keyword">return</span> <span class="variable">$output</span><span class="operator">;</span>
+    <span class="operator">}</span>
+</pre>
+<p>To examine the Perl code generated, such as in the above example, set
+the <code>$Template::Parser::DEBUG</code> package variable to any true value.  You
+can also set the <code>$Template::Directive::PRETTY</code> variable true to have
+the code formatted in a readable manner for human consumption.  The
+source code for each generated template subroutine will be printed to
+<code>STDERR</code> on compilation (i.e. the first time a template is used).</p>
+<pre>
+    <span class="variable">$Template::Parser::DEBUG</span> <span class="operator">=</span> <span class="number">1</span><span class="operator">;</span>
+    <span class="variable">$Template::Directive::PRETTY</span> <span class="operator">=</span> <span class="number">1</span><span class="operator">;</span>
+    
+    <span class="variable">$template</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="variable">$file</span><span class="operator">,</span> <span class="variable">$vars</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$template</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<p>The <code>PERL</code> ... <code>END</code> construct allows Perl code to be embedded into a
+template when the <code>EVAL_PERL</code> option is set.  It is evaluated at
+&quot;runtime&quot; using <a href="../../../../lib/pods/perlfunc.html#eval"><code>eval()</code></a> each time the template subroutine is called.
+This is inherently flexible, but not as efficient as it could be,
+especially in a persistent server environment where a template may be
+processed many times.</p>
+<p>The <code>RAWPERL</code> directive allows you to write Perl code that is integrated
+directly into the generated Perl subroutine text.  It is evaluated
+once at compile time and is stored in cached form as part of the
+compiled template subroutine.  This makes <code>RAWPERL</code> blocks more
+efficient than <code>PERL</code> blocks.</p>
+<p>The downside is that you must code much closer to the metal. For example, in a
+<code>PERL</code> block you can call <a href="../../../../lib/pods/perlfunc.html#print">print()</a> to generate some output. <code>RAWPERL</code>
+blocks don't afford such luxury. The code is inserted directly into the
+generated subroutine text and should conform to the convention of appending to
+the <code>$output</code> variable.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">PROCESS</span>  <span class="variable">header</span> <span class="variable">%]</span>
+    
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">RAWPERL</span> <span class="variable">%]</span>
+       <span class="variable">$output</span> <span class="operator">.=</span> <span class="string">"Some output\n"</span><span class="operator">;</span>
+       <span class="operator">...</span>
+       <span class="variable">$output</span> <span class="operator">.=</span> <span class="string">"Some more output\n"</span><span class="operator">;</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="keyword">END</span> <span class="variable">%]</span>
+</pre>
+<p>The critical section of the generated subroutine for this example would 
+then look something like:</p>
+<pre>
+    <span class="operator">...</span>
+    <span class="keyword">eval</span> <span class="operator">{</span> <span class="variable">BLOCK</span><span class="operator">:</span> <span class="operator">{</span>
+        <span class="variable">$output</span> <span class="operator">.=</span>  <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="string">'header'</span><span class="operator">);</span>
+        <span class="variable">$output</span> <span class="operator">.=</span>  <span class="string">"\n"</span><span class="operator">;</span>
+        <span class="variable">$output</span> <span class="operator">.=</span> <span class="string">"Some output\n"</span><span class="operator">;</span>
+        <span class="operator">...</span>
+        <span class="variable">$output</span> <span class="operator">.=</span> <span class="string">"Some more output\n"</span><span class="operator">;</span>
+        <span class="variable">$output</span> <span class="operator">.=</span>  <span class="string">"\n"</span><span class="operator">;</span>
+    <span class="operator">}</span> <span class="operator">};</span>
+    <span class="operator">...</span>
+</pre>
+<p>As with <code>PERL</code> blocks, the <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">$context</a> and
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Stash.html">$stash</a> references are pre-defined and available for use
+within <code>RAWPERL</code> code.</p>
+<p>
+</p>
+<hr />
+<h1><a name="exception_handling_and_flow_control">Exception Handling and Flow Control</a></h1>
+<p>
+</p>
+<h2><a name="try___throw___catch___final">TRY / THROW / CATCH / FINAL</a></h2>
+<p>(more advanced material)</p>
+<p>The Template Toolkit supports fully functional, nested exception
+handling.  The <code>TRY</code> directive introduces an exception handling scope 
+which continues until the matching <code>END</code> directive.  Any errors that 
+occur within that block will be caught and can be handled by one
+of the <code>CATCH</code> blocks defined.</p>
+<pre>
+    [% TRY %]
+       ...blah...blah...
+       [% CALL somecode %]
+       ...etc...
+       [% INCLUDE someblock %]
+       ...and so on...
+    [% CATCH %]
+       An error occurred!
+    [% END %]</pre>
+<p>Errors are raised as exceptions (objects of the <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Exception.html">the Template::Exception manpage</a> class)
+which contain two fields: <code>type</code> and <code>info</code>. The exception <code>type</code> is used
+to indicate the kind of error that occurred. It is a simple text string which
+can contain letters, numbers, '<code>_</code>' or '<code>.</code>'. The <code>info</code> field contains an
+error message indicating what actually went wrong. Within a catch block, the
+exception object is aliased to the <code>error</code> variable. You can access the <code>type</code>
+and <code>info</code> fields directly.</p>
+<pre>
+    [% mydsn = 'dbi:MySQL:foobar' %]
+    ...
+    
+    [% TRY %]
+       [% USE DBI(mydsn) %]
+    [% CATCH %]
+       ERROR! Type: [% error.type %]
+              Info: [% error.info %]
+    [% END %]</pre>
+<p>output (assuming a non-existant database called '<code>foobar</code>'):</p>
+<pre>
+    ERROR!  Type: DBI
+            Info: Unknown database &quot;foobar&quot;</pre>
+<p>The <code>error</code> variable can also be specified by itself and will return a 
+string of the form &quot;<code>$type error - $info</code>&quot;.</p>
+<pre>
+    ...
+    [% CATCH %]
+    ERROR: [% error %]
+    [% END %]</pre>
+<p>Output:</p>
+<pre>
+    ERROR: DBI error - Unknown database &quot;foobar&quot;</pre>
+<p>Each <code>CATCH</code> block may be specified with a particular exception type
+denoting the kind of error that it should catch.  Multiple <code>CATCH</code>
+blocks can be provided to handle different types of exception that may
+be thrown in the <code>TRY</code> block.  A <code>CATCH</code> block specified without any type,
+as in the previous example, is a default handler which will catch any
+otherwise uncaught exceptions.  This can also be specified as 
+<code>[% CATCH DEFAULT %]</code>.</p>
+<pre>
+    [% TRY %]
+       [% INCLUDE myfile %]
+       [% USE DBI(mydsn) %]
+       [% CALL somecode %]
+    [% CATCH file %]
+       File Error! [% error.info %]
+    [% CATCH DBI %]
+       [% INCLUDE database/error.html %]
+    [% CATCH %]
+       [% error %]
+    [% END %]</pre>
+<p>Remember that you can specify multiple directives within a single tag,
+each delimited by '<code>;</code>'.  So the above example can be written more
+concisely as:</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">TRY</span><span class="operator">;</span>
+           <span class="variable">INCLUDE</span> <span class="variable">myfile</span><span class="operator">;</span>
+           <span class="variable">USE</span> <span class="variable">DBI</span><span class="operator">(</span><span class="variable">mydsn</span><span class="operator">);</span>
+           <span class="variable">CALL</span> <span class="variable">somecode</span><span class="operator">;</span>
+       <span class="variable">CATCH</span> <span class="variable">file</span><span class="operator">;</span>
+           <span class="string">"File Error! </span><span class="variable">$error</span><span class="string">.info"</span><span class="operator">;</span>
+       <span class="variable">CATCH</span> <span class="variable">DBI</span><span class="operator">;</span>
+           <span class="variable">INCLUDE</span> <span class="variable">database</span><span class="operator">/</span><span class="variable">error</span><span class="operator">.</span><span class="variable">html</span><span class="operator">;</span>
+       <span class="variable">CATCH</span><span class="operator">;</span>
+           <span class="variable">error</span><span class="operator">;</span>
+       <span class="keyword">END</span> 
+    <span class="variable">%]</span>
+</pre>
+<p>The <code>DBI</code> plugin throws exceptions of the <code>DBI</code> type (in case that
+wasn't already obvious).  The other specific exception caught here is
+of the <code>file</code> type.</p>
+<p>A <code>file</code> exception is automatically thrown by the Template Toolkit when it
+can't find a file, or fails to load, parse or process a file that has been
+requested by an <code>INCLUDE</code>, <code>PROCESS</code>, <code>INSERT</code> or <code>WRAPPER</code> directive. 
+If <code>myfile</code> can't be found in the example above, the <code>[% INCLUDE myfile %]</code>
+directive will raise a <code>file</code> exception which is then caught by the 
+<code>[% CATCH file %]</code> block.  The output generated would be:</p>
+<pre>
+    File Error! myfile: not found</pre>
+<p>Note that the <code>DEFAULT</code> option (disabled by default) allows you to specify a
+default file to be used any time a template file can't be found. This will
+prevent file exceptions from ever being raised when a non-existant file is
+requested (unless, of course, the <code>DEFAULT</code> file your specify doesn't exist).
+Errors encountered once the file has been found (i.e. read error, parse error)
+will be raised as file exceptions as per usual.</p>
+<p>Uncaught exceptions (i.e. if the <code>TRY</code> block doesn't have a type specific or
+default <code>CATCH</code> handler) may be caught by enclosing <code>TRY</code> blocks which can
+be nested indefinitely across multiple templates. If the error isn't caught at
+any level then processing will stop and the Template
+<em>process()</em> method will return a false value to the
+caller. The relevant <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Exception.html">the Template::Exception manpage</a> object can be retrieved by calling
+the <em>error()</em> method.</p>
+<pre>
+    [% TRY %]
+       ...
+       [% TRY %]
+          [% INCLUDE $user.header %]
+       [% CATCH file %]
+          [% INCLUDE header %]
+       [% END %]
+       ...
+    [% CATCH DBI %]
+       [% INCLUDE database/error.html %]
+    [% END %]</pre>
+<p>In this example, the inner <code>TRY</code> block is used to ensure that the first
+<code>INCLUDE</code> directive works as expected.  We're using a variable to
+provide the name of the template we want to include, <code>user.header</code>, and
+it's possible this contains the name of a non-existant template, or
+perhaps one containing invalid template directives.  If the <code>INCLUDE</code> fails
+with a <code>file</code> error then we <code>CATCH</code> it in the inner block and <code>INCLUDE</code>
+the default <code>header</code> file instead.  Any <code>DBI</code> errors that occur within
+the scope of the outer <code>TRY</code> block will be caught in the relevant <code>CATCH</code>
+block, causing the <code>database/error.html</code> template to be processed.
+Note that included templates inherit all currently defined template
+variable so these error files can quite happily access the &lt;error&gt;
+variable to retrieve information about the currently caught exception.
+For example, the <code>database/error.html</code> template might look like this:</p>
+<pre>
+    &lt;h2&gt;Database Error&lt;/h2&gt;
+    A database error has occurred: [% error.info %]</pre>
+<p>You can also specify a <code>FINAL</code> block.  This is always processed
+regardless of the outcome of the <code>TRY</code> and/or <code>CATCH</code> blocks.  If an
+exception is uncaught then the <code>FINAL</code> block is processed before jumping
+to the enclosing block or returning to the caller.</p>
+<pre>
+    [% TRY %]
+       ...
+    [% CATCH this %] 
+       ...
+    [% CATCH that %] 
+       ...
+    [% FINAL %]
+       All done!
+    [% END %]</pre>
+<p>The output from the <code>TRY</code> block is left intact up to the point where an
+exception occurs.  For example, this template:</p>
+<pre>
+    [% TRY %]
+       This gets printed 
+       [% THROW food 'carrots' %]
+       This doesn't
+    [% CATCH food %]
+       culinary delights: [% error.info %]
+    [% END %]</pre>
+<p>generates the following output:</p>
+<pre>
+    This gets printed
+    culinary delights: carrots</pre>
+<p>The <code>CLEAR</code> directive can be used in a <code>CATCH</code> or <code>FINAL</code> block to clear
+any output created in the <code>TRY</code> block.</p>
+<pre>
+    [% TRY %]
+       This gets printed 
+       [% THROW food 'carrots' %]
+       This doesn't
+    [% CATCH food %]
+       [% CLEAR %]
+       culinary delights: [% error.info %]
+    [% END %]</pre>
+<p>Output:</p>
+<pre>
+    culinary delights: carrots</pre>
+<p>Exception types are hierarchical, with each level being separated by
+the familiar dot operator.  A <code>DBI.connect</code> exception is a more
+specific kind of <code>DBI</code> error.  Similarly, an <code>example.error.barf</code> is a
+more specific kind of <code>example.error</code> type which itself is also a
+<code>example</code> error.</p>
+<p>A <code>CATCH</code> handler that specifies a general exception
+type (such as <code>DBI</code> or <code>example.error</code>) will also catch more specific
+types that have the same prefix as long as a more specific handler
+isn't defined.  Note that the order in which <code>CATCH</code> handlers are
+defined is irrelevant; a more specific handler will always catch an
+exception in preference to a more generic or default one.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">TRY</span> <span class="variable">%]</span>
+       <span class="operator">...</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">CATCH</span> <span class="variable">DBI</span> <span class="operator">;</span>
+         <span class="variable">INCLUDE</span> <span class="variable">database</span><span class="operator">/</span><span class="variable">error</span><span class="operator">.</span><span class="variable">html</span> <span class="operator">;</span>
+       <span class="variable">CATCH</span> <span class="variable">DBI</span><span class="operator">.</span><span class="keyword">connect</span> <span class="operator">;</span>
+         <span class="variable">INCLUDE</span> <span class="variable">database</span><span class="operator">/</span><span class="keyword">connect</span><span class="operator">.</span><span class="variable">html</span> <span class="operator">;</span>
+       <span class="variable">CATCH</span> <span class="operator">;</span> 
+         <span class="variable">INCLUDE</span> <span class="variable">error</span><span class="operator">.</span><span class="variable">html</span> <span class="operator">;</span>
+       <span class="keyword">END</span>
+    <span class="variable">%]</span>
+</pre>
+<p>In this example, a <code>DBI.connect</code> error has it's own handler, a more general
+<code>DBI</code> block is used for all other <code>DBI</code> or <code>DBI.*</code> errors and a default
+handler catches everything else.</p>
+<p>Exceptions can be raised in a template using the <code>THROW</code> directive.  The
+first parameter is the exception type which doesn't need to be quoted
+(but can be, it's the same as <code>INCLUDE</code>) followed by the relevant error
+message which can be any regular value such as a quoted string,
+variable, etc.</p>
+<pre>
+    [% THROW food &quot;Missing ingredients: $recipe.error&quot; %]
+    [% THROW user.login 'no user id: please login' %]
+    [% THROW $myerror.type &quot;My Error: $myerror.info&quot; %]</pre>
+<p>It's also possible to specify additional positional or named 
+parameters to the <code>THROW</code> directive if you want to pass more than 
+just a simple message back as the error info field.</p>
+<pre>
+    [% THROW food 'eggs' 'flour' msg='Missing Ingredients' %]</pre>
+<p>In this case, the error <code>info</code> field will be a hash array containing the
+named arguments and an <code>args</code> item which contains a list of the positional
+arguments.</p>
+<pre>
+    <span class="string">type</span> <span class="operator">=&gt;</span> <span class="string">'food'</span><span class="operator">,</span>
+    <span class="string">info</span> <span class="operator">=&gt;</span> <span class="operator">{</span>
+        <span class="string">msg</span>  <span class="operator">=&gt;</span> <span class="string">'Missing Ingredients'</span><span class="operator">,</span>
+        <span class="string">args</span> <span class="operator">=&gt;</span> <span class="operator">[</span><span class="string">'eggs'</span><span class="operator">,</span> <span class="string">'flour'</span><span class="operator">]</span><span class="operator">,</span>
+    <span class="operator">}</span>
+</pre>
+<p>In addition to specifying individual positional arguments as
+<code>[% error.info.args.n %]</code>, the <code>info</code> hash contains keys directly 
+pointing to the positional arguments, as a convenient shortcut.</p>
+<pre>
+    [% error.info.0 %]   # same as [% error.info.args.0 %]</pre>
+<p>Exceptions can also be thrown from Perl code which you've bound to
+template variables, or defined as a plugin or other extension.  To
+raise an exception, call <a href="../../../../lib/pods/perlfunc.html#die"><code>die()</code></a> passing a reference to a
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Exception.html">the Template::Exception manpage</a> object as the argument.  This will then be caught
+by any enclosing <code>TRY</code> blocks from where the code was called.</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template::Exception</span><span class="operator">;</span>
+    <span class="operator">...</span>
+    <span class="keyword">my</span> <span class="variable">$vars</span> <span class="operator">=</span> <span class="operator">{</span>
+        <span class="string">foo</span> <span class="operator">=&gt;</span> <span class="keyword">sub</span><span class="variable"> </span><span class="operator">{</span>
+            <span class="comment"># ... do something ...</span>
+            <span class="keyword">die</span> <span class="variable">Template::Exception</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="string">'myerr.naughty'</span><span class="operator">,</span>
+                                         <span class="string">'Bad, bad error'</span><span class="operator">);</span>
+        <span class="operator">},</span>
+    <span class="operator">}</span><span class="operator">;</span>
+</pre>
+<p>Template:</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">TRY</span> <span class="variable">%]</span>
+       <span class="operator">[</span><span class="operator">% </span><span class="variable">foo</span> <span class="variable">%]</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">CATCH</span> <span class="variable">myerr</span> <span class="operator">;</span>
+         <span class="string">"Error: </span><span class="variable">$error</span><span class="string">"</span> <span class="operator">;</span>
+       <span class="keyword">END</span>
+    <span class="variable">%]</span>
+</pre>
+<p>Output:</p>
+<pre>
+    Error: myerr.naughty error - Bad, bad error</pre>
+<p>The <code>info</code> field can also be a reference to another object or data
+structure, if required.</p>
+<pre>
+    <span class="keyword">die</span> <span class="variable">Template::Exception</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="string">'myerror'</span><span class="operator">,</span> <span class="operator">{</span> 
+        <span class="string">module</span> <span class="operator">=&gt;</span> <span class="string">'foo.pl'</span><span class="operator">,</span> 
+        <span class="string">errors</span> <span class="operator">=&gt;</span> <span class="operator">[</span> <span class="string">'bad permissions'</span><span class="operator">,</span> <span class="string">'naughty boy'</span> <span class="operator">]</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>Later, in a template:</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">TRY</span> <span class="variable">%]</span>
+       <span class="operator">...</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">CATCH</span> <span class="variable">myerror</span> <span class="variable">%]</span>
+       <span class="operator">[</span><span class="operator">% </span><span class="variable">error</span><span class="operator">.</span><span class="variable">info</span><span class="operator">.</span><span class="variable">errors</span><span class="operator">.</span><span class="variable">size</span> <span class="keyword">or</span> <span class="string">'no'</span><span class="operator">;</span>
+          <span class="variable">error</span><span class="operator">.</span><span class="variable">info</span><span class="operator">.</span><span class="variable">errors</span><span class="operator">.</span><span class="variable">size</span> <span class="operator">==</span> <span class="number">1</span> <span class="operator">?</span> <span class="string">' error'</span> <span class="operator">:</span> <span class="string">' errors'</span> <span class="variable">%]</span>
+       <span class="variable">in</span> <span class="operator">[</span><span class="operator">% </span><span class="variable">error</span><span class="operator">.</span><span class="variable">info</span><span class="operator">.</span><span class="variable">module</span> <span class="variable">%]</span><span class="operator">:</span> 
+          <span class="operator">[</span><span class="operator">% </span><span class="variable">error</span><span class="operator">.</span><span class="variable">info</span><span class="operator">.</span><span class="variable">errors</span><span class="operator">.</span><span class="keyword">join</span><span class="operator">(</span><span class="string">', '</span><span class="operator">)</span> <span class="variable">%]</span><span class="operator">.</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="keyword">END</span> <span class="variable">%]</span>
+</pre>
+<p>Generating the output:</p>
+<pre>
+       2 errors in foo.pl:
+          bad permissions, naughty boy.</pre>
+<p>You can also call <a href="../../../../lib/pods/perlfunc.html#die"><code>die()</code></a> with a single string, as is common in much 
+existing Perl code.  This will automatically be converted to an 
+exception of the '<a href="../../../../lib/pods/perlfunc.html#undef"><code>undef</code></a>' type (that's the literal string '<a href="../../../../lib/pods/perlfunc.html#undef"><code>undef</code></a>', 
+not the undefined value).  If the string isn't terminated with a 
+newline then Perl will append the familiar <code>&quot; at $file line $line&quot;</code>
+message.</p>
+<pre>
+    <span class="keyword">sub</span><span class="variable"> foo </span><span class="operator">{</span>
+        <span class="comment"># ... do something ...</span>
+        <span class="keyword">die</span> <span class="string">"I'm sorry, Dave, I can't do that\n"</span><span class="operator">;</span>
+    <span class="operator">}</span>
+</pre>
+<p>If you're writing a plugin, or some extension code that has the current
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a> in scope (you can safely skip this section if this means
+nothing to you) then you can also raise an exception by calling the context
+<a href="../../../../Template/Context#throw().html">throw()</a> method. You can pass it an
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Exception.html">the Template::Exception manpage</a> object reference, a pair of <code>($type, $info)</code>
+parameters or just an <code>$info</code> string to create an exception of '<a href="../../../../lib/pods/perlfunc.html#undef"><code>undef</code></a>' type.</p>
+<pre>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">throw</span><span class="operator">(</span><span class="variable">$e</span><span class="operator">);</span>            <span class="comment"># exception object</span>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">throw</span><span class="operator">(</span><span class="string">'Denied'</span><span class="operator">);</span>      <span class="comment"># 'undef' type</span>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">throw</span><span class="operator">(</span><span class="string">'user.passwd'</span><span class="operator">,</span> <span class="string">'Bad Password'</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="next">NEXT</a></h2>
+<p>The <code>NEXT</code> directive can be used to start the next iteration of a <code>FOREACH</code> 
+or <code>WHILE</code> loop.</p>
+<pre>
+    [% FOREACH user IN users %]
+       [% NEXT IF user.isguest %]
+       Name: [% user.name %]    Email: [% user.email %]
+    [% END %]</pre>
+<p>
+</p>
+<h2><a name="last">LAST</a></h2>
+<p>The <code>LAST</code> directive can be used to prematurely exit a <code>FOREACH</code> or <code>WHILE</code>
+loop.</p>
+<pre>
+    [% FOREACH user IN users %]
+       Name: [% user.name %]    Email: [% user.email %]
+       [% LAST IF some.condition %]
+    [% END %]</pre>
+<p><code>BREAK</code> can also be used as an alias for <code>LAST</code>.</p>
+<p>
+</p>
+<h2><a name="return">RETURN</a></h2>
+<p>The <code>RETURN</code> directive can be used to stop processing the current template
+and return to the template from which it was called, resuming processing at
+the point immediately after the <code>INCLUDE</code>, <code>PROCESS</code> or <code>WRAPPER</code>
+directive. If there is no enclosing template then the Template
+<em>process()</em> method will return to the calling code with a
+true value.</p>
+<pre>
+    Before
+    [% INCLUDE half_wit %]
+    After
+    
+    [% BLOCK half_wit %]
+    This is just half...
+    [% RETURN %]
+    ...a complete block
+    [% END %]</pre>
+<p>Output:</p>
+<pre>
+    Before
+    This is just half...
+    After</pre>
+<p>
+</p>
+<h2><a name="stop">STOP</a></h2>
+<p>The <code>STOP</code> directive can be used to indicate that the processor should stop
+gracefully without processing any more of the template document. This is a
+planned stop and the Template <em>process()</em> method will
+return a <strong>true</strong> value to the caller. This indicates that the template was
+processed successfully according to the directives within it.</p>
+<pre>
+    [% IF something.terrible.happened %]
+       [% INCLUDE fatal/error.html %]
+       [% STOP %]
+    [% END %]
+    
+    [% TRY %]
+       [% USE DBI(mydsn) %]
+       ...
+    [% CATCH DBI.connect %]
+       &lt;h1&gt;Cannot connect to the database: [% error.info %]&lt;/h1&gt;
+       &lt;p&gt;
+         We apologise for the inconvenience.
+       &lt;/p&gt;
+       [% INCLUDE footer %]
+       [% STOP %]
+    [% END %]</pre>
+<p>
+</p>
+<h2><a name="clear">CLEAR</a></h2>
+<p>The <code>CLEAR</code> directive can be used to clear the output buffer for the current
+enclosing block.   It is most commonly used to clear the output generated
+from a <code>TRY</code> block up to the point where the error occurred.</p>
+<pre>
+    [% TRY %]
+       blah blah blah            # this is normally left intact
+       [% THROW some 'error' %]  # up to the point of error
+       ...
+    [% CATCH %]
+       [% CLEAR %]               # clear the TRY output
+       [% error %]               # print error string
+    [% END %]</pre>
+<p>
+</p>
+<hr />
+<h1><a name="miscellaneous">Miscellaneous</a></h1>
+<p>
+</p>
+<h2><a name="meta">META</a></h2>
+<p>The <code>META</code> directive allows simple metadata items to be defined within a
+template. These are evaluated when the template is parsed and as such may only
+contain simple values (e.g. it's not possible to interpolate other variables
+values into <code>META</code> variables).</p>
+<pre>
+    [% META
+       title   = 'The Cat in the Hat'
+       author  = 'Dr. Seuss'
+       version = 1.23 
+    %]</pre>
+<p>The <code>template</code> variable contains a reference to the main template 
+being processed.  These metadata items may be retrieved as attributes
+of the template.</p>
+<pre>
+    &lt;h1&gt;[% template.title %]&lt;/h1&gt;
+    &lt;h2&gt;[% template.author %]&lt;/h2&gt;</pre>
+<p>The <code>name</code> and <code>modtime</code> metadata items are automatically defined for each
+template to contain its name and modification time in seconds since the epoch.</p>
+<pre>
+    [% USE date %]              # use Date plugin to format time
+    ...
+    [% template.name %] last modified
+    at [% date.format(template.modtime) %]</pre>
+<p>The <code>PRE_PROCESS</code> and <code>POST_PROCESS</code> options allow common headers and 
+footers to be added to all templates.  The <code>template</code> reference is
+correctly defined when these templates are processed, allowing headers
+and footers to reference metadata items from the main template.</p>
+<pre>
+    <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">PRE_PROCESS</span>  <span class="operator">=&gt;</span> <span class="string">'header'</span><span class="operator">,</span>
+        <span class="string">POST_PROCESS</span> <span class="operator">=&gt;</span> <span class="string">'footer'</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+    
+    <span class="variable">$template</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="string">'cat_in_hat'</span><span class="operator">);</span>
+</pre>
+<p>header:</p>
+<pre>
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;[% template.title %]&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;</pre>
+<p>cat_in_hat:</p>
+<pre>
+    [% META
+         title   = 'The Cat in the Hat'
+         author  = 'Dr. Seuss'
+         version = 1.23 
+         year    = 2000
+    %]
+    
+        The cat in the hat sat on the mat.</pre>
+<p>footer:</p>
+<pre>
+        <span class="operator">&lt;</span><span class="variable">hr</span><span class="operator">&gt;</span>
+        <span class="operator">&amp;</span><span class="variable">copy</span><span class="operator">;</span> <span class="operator">[</span><span class="operator">% </span><span class="variable">template</span><span class="operator">.</span><span class="variable">year</span> <span class="variable">%]</span> <span class="operator">[</span><span class="operator">% </span><span class="variable">template</span><span class="operator">.</span><span class="variable">author</span> <span class="variable">%]</span>
+              <span class="operator">&lt;/</span><span class="variable">body</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;/</span><span class="variable">html</span><span class="operator">&gt;</span>
+</pre>
+<p>The output generated from the above example is:</p>
+<pre>
+    <span class="operator">&lt;</span><span class="variable">html</span><span class="operator">&gt;</span>
+      <span class="operator">&lt;</span><span class="variable">head</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="variable">title</span><span class="operator">&gt;</span><span class="variable">The</span> <span class="variable">Cat</span> <span class="variable">in</span> <span class="variable">the</span> <span class="variable">Hat</span><span class="operator">&lt;/</span><span class="variable">title</span><span class="operator">&gt;</span>
+      <span class="operator">&lt;/</span><span class="variable">head</span><span class="operator">&gt;</span>
+      <span class="operator">&lt;</span><span class="variable">body</span><span class="operator">&gt;</span>
+        <span class="variable">The</span> <span class="variable">cat</span> <span class="variable">in</span> <span class="variable">the</span> <span class="variable">hat</span> <span class="variable">sat</span> <span class="variable">on</span> <span class="variable">the</span> <span class="variable">mat</span><span class="operator">.</span>
+        <span class="operator">&lt;</span><span class="variable">hr</span><span class="operator">&gt;</span>
+        <span class="operator">&amp;</span><span class="variable">copy</span><span class="operator">;</span> <span class="number">2000</span> <span class="variable">Dr</span><span class="operator">.</span> <span class="variable">Seuss</span>
+      <span class="operator">&lt;/</span><span class="variable">body</span><span class="operator">&gt;</span>
+    <span class="operator">&lt;/</span><span class="variable">html</span><span class="operator">&gt;</span>
+</pre>
+<p>
+</p>
+<h2><a name="tags">TAGS</a></h2>
+<p>The <code>TAGS</code> directive can be used to set the <code>START_TAG</code> and <code>END_TAG</code> values
+on a per-template file basis.</p>
+<pre>
+    [% TAGS &lt;+ +&gt; %]
+    
+    &lt;+ INCLUDE header +&gt;</pre>
+<p>The TAGS directive may also be used to set a named <code>TAG_STYLE</code></p>
+<pre>
+    [% TAGS html %]
+    &lt;!-- INCLUDE header --&gt;</pre>
+<p>See the <a href="../../../../Template/Manual/Config#TAGS.html">TAGS</a> and <a href="../../../../Template/Manual/Config#TAG_STYLE.html">TAG_STYLE</a> 
+configuration options for further details.</p>
+<p>
+</p>
+<h2><a name="debug">DEBUG</a></h2>
+<p>The <code>DEBUG</code> directive can be used to enable or disable directive debug
+messages within a template.  The <code>DEBUG</code> configuration option must be
+set to include <code>DEBUG_DIRS</code> for the <code>DEBUG</code> directives to have any effect.
+If <code>DEBUG_DIRS</code> is not set then the parser will automatically ignore and
+remove any <code>DEBUG</code> directives.</p>
+<p>The <code>DEBUG</code> directive can be used with an <code>on</code> or <code>off</code> parameter to
+enable or disable directive debugging messages from that point
+forward.  When enabled, the output of each directive in the generated
+output will be prefixed by a comment indicate the file, line and
+original directive text.</p>
+<pre>
+    [% DEBUG on %]
+    directive debugging is on (assuming DEBUG option is set true)
+    [% DEBUG off %]
+    directive debugging is off</pre>
+<p>The <a href="../../../../lib/pods/perlfunc.html#format"><code>format</code></a> parameter can be used to change the format of the debugging
+message.</p>
+<pre>
+    [% DEBUG format '&lt;!-- $file line $line : [% $text %] --&gt;' %]</pre>
+
+</body>
+
+</html>

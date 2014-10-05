@@ -1,0 +1,17 @@
+<font color=red>BUILD FINISHED </font>
+###################################################
+#      BUILD TST3 20130318_1632
+###################################################
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/ERP_upgrade11i_201304_20130318_163232/1_Alter_Table_383_cust.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/ERP_upgrade11i_201304_20130318_163232/1_PARTC1668_GET_SWAP_PRICE.pks
+	Start running ..
+STATUS 		: OK
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/ERP_upgrade11i_201304_20130318_163232/2_PARTC1668_GET_SWAP_PRICE.pkb
+	Start running ..
+STATUS 		: OK
+################ END OF BUILD  ####################

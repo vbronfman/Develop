@@ -1,0 +1,52 @@
+/home/oracle/ROSH/TST3/BUILD/src/ERP_upgrade11i_201304_20130318_163232/1_Alter_Table_383_cust.sql
+CONNECT STRING : APPS/APPSTST3@ERPTST3
+alter table partner_dl.Dl_Activation_Tab add  PTSERVICEHISTORYID number
+                                              *
+ERROR at line 1:
+ORA-01430: column being added already exists in table 
+
+
+alter table partner_dl.Dl_Activation_Tab add  Bundle_PERIOD number
+                                              *
+ERROR at line 1:
+ORA-01430: column being added already exists in table 
+
+
+alter table partner_dl.Dl_Activation_Tab_his add  PTSERVICEHISTORYID number
+                                                  *
+ERROR at line 1:
+ORA-01430: column being added already exists in table 
+
+
+alter table partner_dl.Dl_Activation_Tab_his add  Bundle_PERIOD number
+                                                  *
+ERROR at line 1:
+ORA-01430: column being added already exists in table 
+
+
+alter table partner.part_bill_contracts add  PTSERVICEHISTORYID number
+                                             *
+ERROR at line 1:
+ORA-01430: column being added already exists in table 
+
+
+alter table partner_dl.Partdl_financial add  PTSERVICEHISTORYID number
+                                             *
+ERROR at line 1:
+ORA-01430: column being added already exists in table 
+
+
+CREATE INDEX DL_ACTIVATION_TAB_11 ON DL_ACTIVATION_TAB
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+alter table partner.part_bill_contracts add  SCCODE   number
+                                             *
+ERROR at line 1:
+ORA-01430: column being added already exists in table 
+
+
+
+----------------------------------------------------------------

@@ -1,0 +1,738 @@
+1. Apply patch to dmake-4.1-patchlevel-1 sources
+	> cd dmake
+	> patch -p1 -N < this_file
+
+2. Build initial dmake with Borland C 5.02
+	> make.bat win95-bcc50
+   You may need to edit win95\borland\bcc50\obj.rsp to set library path.
+
+3. Set environment for rebuilding
+	> set OS=win95
+	> set OSRELEASE=borland
+	> set OSENVIRONMENT=bcc50
+
+4. Let dmake rebuild itself
+	> rd /s objects
+	> move dmake.exe dmake0.exe
+	> dmake0
+   You may need to edit win95\borland\bcc50\config.mk to set CCVER.
+
+5. To install, copy dmake.exe to somewhere on your PATH, and also
+   move the startup directory to the same location.  Customize the
+   files in the startup directory as needed.
+
+
+Gurusamy Sarathy
+gsar@umich.edu
+09-DEC-1998
+-----------------------------------8<-----------------------------------
+diff -urN dmake-4.1pl1/getinp.c dmake-4.1pl1-win32/getinp.c
+--- dmake-4.1pl1/getinp.c	Fri Sep 18 15:03:17 1998
++++ dmake-4.1pl1-win32/getinp.c	Wed Dec 09 02:19:47 1998
+@@ -84,7 +84,7 @@
+ 	 /* The last test in this if *p != '~', handles the environment
+ 	  * passing conventions used by MKS to pass arguments.  We want to
+ 	  * skip those environment entries. */
+-	 if( !Readenv || (Readenv && (strchr(p,'=') != NIL(char)) && *p!='~')){
++	 if( !Readenv || (Readenv && (strchr(p,'=') != NIL(char)) && *p!='=' && *p!='~')){
+ 	    strcpy( buf, p );
+ 
+ 	    DB_PRINT( "io", ("Returning [%s]", buf) );
+diff -urN dmake-4.1pl1/startup/startup.mk dmake-4.1pl1-win32/startup/startup.mk
+--- dmake-4.1pl1/startup/startup.mk	Wed Dec 09 01:48:28 1998
++++ dmake-4.1pl1-win32/startup/startup.mk	Thu Sep 24 00:46:40 2020
+@@ -18,13 +18,16 @@
+ 
+ # startup.mk configuration parameters, for each, set it to non-null if you wish
+ # to enable the named facility.
+-__.HAVE_RCS  !:= yes 		# yes => RCS  is installed.
++__.HAVE_RCS  !:= 		# yes => RCS  is installed.
+ __.HAVE_SCCS !:=    		# yes => SCCS is installed.
+ __.DEFAULTS  !:= yes		# yes => define default construction rules.
+ __.EXECS     !:= yes            # yes => define how to build executables.
+ 
+ # Grab key definitions from the environment
+-.IMPORT .IGNORE : OS OSRELEASE OSENVIRONMENT TMPDIR SHELL
++# OS is set by default on some Win32 OSes to a long name, so
++# we let config.mk provide the default
++#.IMPORT .IGNORE : OS OSRELEASE OSENVIRONMENT TMPDIR SHELL
++.IMPORT .IGNORE : OSRELEASE OSENVIRONMENT TMPDIR SHELL
+ 
+ # Default DMAKE configuration, if not overriden by environment
+ .INCLUDE .NOINFER $(!null,$(OS) .IGNORE) : $(INCFILENAME:d)config.mk
+@@ -61,7 +64,7 @@
+    RMTARGET      *=  $<
+ 
+ # Default recipe that is used to remove intermediate targets.
+-.REMOVE :; $(RM) $(RMFLAGS) $(RMTARGET)
++.REMOVE :; # $(RM) $(RMFLAGS) $(RMTARGET)
+ 
+ # Check and enable AUGMAKE extensions for SYSV compatibility
+ .IF $(AUGMAKE)
+diff -urN dmake-4.1pl1/unix/dcache.c dmake-4.1pl1-win32/unix/dcache.c
+--- dmake-4.1pl1/unix/dcache.c	Fri Sep 18 15:03:23 1998
++++ dmake-4.1pl1-win32/unix/dcache.c	Wed Dec 09 01:53:58 1998
+@@ -32,7 +32,7 @@
+  * is, in my opinion, a BUG! on Borland's part.
+  */
+ #if defined(__BORLANDC__) && defined(__WIN32__)
+-#undef __WIN32__
++/*#undef __WIN32__*/
+ #endif
+ 
+ #include <dirent.h>
+diff -urN dmake-4.1pl1/win95/borland/bcc50/config.mk dmake-4.1pl1-win32/win95/borland/bcc50/config.mk
+--- dmake-4.1pl1/win95/borland/bcc50/config.mk	Fri Sep 18 15:03:24 1998
++++ dmake-4.1pl1-win32/win95/borland/bcc50/config.mk	Wed Dec 09 01:53:58 1998
+@@ -1,11 +1,11 @@
+ # Definition of macros for library, and C startup code.
+ osedir    = $(osrdir)$(DIRSEPSTR)$(OSENVIRONMENT)
+ 
+-# Change the CCROOT variable to reflect the installation directory of your
++# Change the CCVER variable to reflect the installation directory of your
+ # C++ compiler.
+ .IMPORT .IGNORE : CCVER
+ 
+-CCVER   *:= c:/cc/borland/$(OSENVIRONMENT)
++CCVER   *:= c:/bc5
+ 
+ # Definitions for compiles and links
+ CSTARTUP  = $(CCVER)/lib/c0x32.obj
+diff -urN dmake-4.1pl1/win95/borland/bcc50/lib.rsp dmake-4.1pl1-win32/win95/borland/bcc50/lib.rsp
+--- dmake-4.1pl1/win95/borland/bcc50/lib.rsp	Fri Sep 18 15:03:24 1998
++++ dmake-4.1pl1-win32/win95/borland/bcc50/lib.rsp	Wed Dec 09 01:53:58 1998
+@@ -1,2 +1 @@
+-c:\cc\borland\bcc50\lib\cw32+
+-c:\cc\borland\bcc50\lib\import32
++import32.lib cw32.lib
+diff -urN dmake-4.1pl1/win95/borland/bcc50/mk.bat dmake-4.1pl1-win32/win95/borland/bcc50/mk.bat
+--- dmake-4.1pl1/win95/borland/bcc50/mk.bat	Fri Sep 18 15:03:24 1998
++++ dmake-4.1pl1-win32/win95/borland/bcc50/mk.bat	Wed Dec 09 02:17:00 1998
+@@ -86,5 +86,8 @@
+ bcc32 -c -I. -Iwin95 -Iwin95\borland -d -O -N- -w-nod -A- -w-pro -Iwin95\borland\bcc50  msdos\rmprq.c
+ copy rmprq.obj objects
+ del rmprq.obj
++bcc32 -c -I. -Iwin95 -Iwin95\borland -d -O -N- -w-nod -A- -w-pro -Iwin95\borland\bcc50  unix\dcache.c
++copy dcache.obj objects
++del dcache.obj
+ tlink32  @win95\borland\bcc50\obj.rsp,dmake.exe,NUL.MAP,@win95\borland\bcc50\lib.rsp
+ copy win95\borland\bcc50\template.mk startup\config.mk
+diff -urN dmake-4.1pl1/win95/borland/bcc50/obj.rsp dmake-4.1pl1-win32/win95/borland/bcc50/obj.rsp
+--- dmake-4.1pl1/win95/borland/bcc50/obj.rsp	Fri Sep 18 15:03:24 1998
++++ dmake-4.1pl1-win32/win95/borland/bcc50/obj.rsp	Wed Dec 09 02:05:48 1998
+@@ -1,4 +1,4 @@
+-c:\cc\borland\bcc50\lib\c0x32.obj+
++c:\bc5\lib\c0x32.obj+
+ objects\infer.obj+
+ objects\make.obj+
+ objects\stat.obj+
+@@ -21,10 +21,11 @@
+ objects\function.obj+
+ objects\dchdir.obj+
+ objects\switchar.obj+
++objects\dcache.obj+
+ objects\dstrlwr.obj+
+ objects\arlib.obj+
+ objects\dirbrk.obj+
++objects\runargv.obj+
+ objects\tempnam.obj+
+ objects\ruletab.obj+
+-objects\runargv.obj+
+ objects\rmprq.obj
+diff -urN dmake-4.1pl1/win95/borland/config.mk dmake-4.1pl1-win32/win95/borland/config.mk
+--- dmake-4.1pl1/win95/borland/config.mk	Fri Sep 18 15:03:24 1998
++++ dmake-4.1pl1-win32/win95/borland/config.mk	Wed Dec 09 01:53:58 1998
+@@ -9,10 +9,10 @@
+ osrdir := $(OS)$(DIRSEPSTR)$(OSRELEASE)
+ 
+ # OS specific sources
+-OSR_SRC  += tempnam.c ruletab.c
+-DOS_SRC += runargv.c rmprq.c
++OSR_SRC  += runargv.c tempnam.c ruletab.c
++UNIX_SRC  += rmprq.c
+ 
+-SRC += $(OSR_SRC) $(DOS_SRC)
++SRC += $(OSR_SRC) $(UNIX_SRC)
+ .SOURCE.h : $(osrdir)
+ 
+ # Local configuration modifications for CFLAGS.  Make sure your turboc.cfg
+@@ -43,7 +43,7 @@
+ .END
+ 
+ .SETDIR=$(osrdir) : $(OSR_SRC)
+-.SETDIR=msdos      : $(DOS_SRC)
++.SETDIR=unix     : $(UNIX_SRC)
+ 
+ S_s = -dmsmall
+ S_m = -dmmedium
+diff -urN dmake-4.1pl1/win95/borland/ruletab.c dmake-4.1pl1-win32/win95/borland/ruletab.c
+--- dmake-4.1pl1/win95/borland/ruletab.c	Fri Sep 18 15:03:25 1998
++++ dmake-4.1pl1-win32/win95/borland/ruletab.c	Wed Dec 09 01:53:58 1998
+@@ -32,8 +32,8 @@
+ #include <stdio.h>
+ 
+ static char *_rules[] = {
+-	"MAXLINELENGTH := 2046",
+-	"MAXPROCESSLIMIT := 4",
++	"MAXLINELENGTH := 20460",
++	"MAXPROCESSLIMIT := 16",
+ 	".IMPORT .IGNORE: ROOTDIR",
+ 	".MAKEFILES : makefile.mk makefile",
+ 	".SOURCE    : .NULL",
+diff -urN dmake-4.1pl1/win95/borland/runargv.c dmake-4.1pl1-win32/win95/borland/runargv.c
+--- dmake-4.1pl1/win95/borland/runargv.c	Wed Dec 31 19:00:00 1969
++++ dmake-4.1pl1-win32/win95/borland/runargv.c	Wed Dec 09 01:53:59 1998
+@@ -0,0 +1,289 @@
++/* RCS  $Id: runargv.c,v 1.1.1.1 1997/07/15 16:02:38 dvadura Exp $
++--
++-- SYNOPSIS
++--      Invoke a sub process.
++-- 
++-- DESCRIPTION
++-- 	Use the standard methods of executing a sub process.
++--
++-- AUTHOR
++--      Dennis Vadura, dvadura@dmake.wticorp.com
++--
++-- WWW
++--      http://dmake.wticorp.com/
++--
++-- COPYRIGHT
++--      Copyright (c) 1996,1997 by WTI Corp.  All rights reserved.
++-- 
++--      This program is NOT free software; you can redistribute it and/or
++--      modify it under the terms of the Software License Agreement Provided
++--      in the file <distribution-root>/readme/license.txt.
++--
++-- LOG
++--      Use cvs log to obtain detailed change logs.
++*/
++
++#include <windows.h>
++#include <process.h>
++#include <errno.h>
++#include <signal.h>
++#include "extern.h"
++#include "sysintf.h"
++
++extern char **environ;
++
++typedef struct prp {
++   char *prp_cmd;
++   int   prp_group;
++   int   prp_ignore;
++   int   prp_last;
++   int	 prp_shell;
++   struct prp *prp_next;
++} RCP, *RCPPTR;
++
++typedef struct pr {
++   int		pr_valid;
++   int		pr_pid;
++   CELLPTR	pr_target;
++   int		pr_ignore;
++   int		pr_last;
++   RCPPTR  	pr_recipe;
++   RCPPTR  	pr_recipe_end;
++   char        *pr_dir;
++} PR;
++
++static PR  *_procs    = NIL(PR);
++static int  _proc_cnt = 0;
++static int  _abort_flg= FALSE;
++static int  _use_i    = -1;
++static int  _do_upd   = 0;
++
++static  void	_add_child ANSI((int, CELLPTR, int, int));
++static  void	_attach_cmd ANSI((char *, int, int, CELLPTR, int, int));
++static  void    _finished_child ANSI((int, int));
++static  int     _running ANSI((CELLPTR));
++
++PUBLIC int
++runargv(target, ignore, group, last, shell, cmd)
++CELLPTR target;
++int     ignore;
++int	group;
++int	last;
++int     shell;
++char	*cmd;
++{
++   extern  int  errno;
++   extern  char *sys_errlist[];
++   int          pid;
++   char         **argv;
++
++   if( _running(target) /*&& Max_proc != 1*/ ) {
++      /* The command will be executed when the previous recipe
++       * line completes. */
++      _attach_cmd( cmd, group, ignore, target, last, shell );
++      return(1);
++   }
++
++   while( _proc_cnt == Max_proc )
++      if( Wait_for_child(FALSE, -1) == -1 )  Fatal( "Lost a child %d", errno );
++
++   argv = Pack_argv( group, shell, cmd );
++
++   pid = _spawnvpe(_P_NOWAIT, argv[0], argv, environ);
++   if (pid == -1)  {  /*  failed  */
++	   Error("%s: %s", argv[0], sys_errlist[errno]);
++	   Handle_result(-1, ignore, _abort_flg, target);
++	   return(-1);
++   } else
++	   _add_child(pid, target, ignore, last);
++
++   return(1);
++}
++
++
++PUBLIC int
++Wait_for_child( abort_flg, pid )
++int abort_flg;
++int pid;
++{
++   int wid;
++   int status;
++   int waitchild;
++
++   waitchild = (pid == -1)? FALSE : Wait_for_completion;
++
++   do {
++      if( (wid = wait(&status)) == -1 ) return(-1);
++
++      _abort_flg = abort_flg;
++      _finished_child(wid, status);
++      _abort_flg = FALSE;
++   } while( waitchild && pid != wid );
++
++   return(0);
++}
++
++
++PUBLIC void
++Clean_up_processes()
++{
++   register int i;
++
++   if( _procs != NIL(PR) ) {
++      for( i=0; i<Max_proc; i++ )
++	 if( _procs[i].pr_valid )
++	    TerminateProcess((HANDLE)_procs[i].pr_pid, 0);
++
++      while( Wait_for_child(TRUE, -1) != -1 );
++   }
++}
++
++
++static void
++_add_child( pid, target, ignore, last )
++int	pid;
++CELLPTR target;
++int	ignore;
++int     last;
++{
++   register int i;
++   register PR *pp;
++
++   if( _procs == NIL(PR) ) {
++      TALLOC( _procs, Max_proc, PR );
++   }
++
++   if( (i = _use_i) == -1 )
++      for( i=0; i<Max_proc; i++ )
++	 if( !_procs[i].pr_valid )
++	    break;
++
++   pp = _procs+i;
++
++   pp->pr_valid  = 1;
++   pp->pr_pid    = pid;
++   pp->pr_target = target;
++   pp->pr_ignore = ignore;
++   pp->pr_last   = last;
++   pp->pr_dir    = DmStrDup(Get_current_dir());
++
++   Current_target = NIL(CELL);
++
++   _proc_cnt++;
++
++   if( Wait_for_completion ) Wait_for_child( FALSE, pid );
++}
++
++
++static void
++_finished_child(pid, status)
++int	pid;
++int	status;
++{
++   register int i;
++   register PR *pp;
++   char     *dir;
++
++   for( i=0; i<Max_proc; i++ )
++      if( _procs[i].pr_valid && _procs[i].pr_pid == pid )
++	 break;
++
++   /* Some children we didn't make esp true if using /bin/sh to execute a
++    * a pipe and feed the output as a makefile into dmake. */
++   if( i == Max_proc ) return;
++   _procs[i].pr_valid = 0;
++   _proc_cnt--;
++   dir = DmStrDup(Get_current_dir());
++   Set_dir( _procs[i].pr_dir );
++
++   if( _procs[i].pr_recipe != NIL(RCP) && !_abort_flg ) {
++      RCPPTR rp = _procs[i].pr_recipe;
++
++
++      Current_target = _procs[i].pr_target;
++      Handle_result( status, _procs[i].pr_ignore, FALSE, _procs[i].pr_target );
++      Current_target = NIL(CELL);
++
++      if ( _procs[i].pr_target->ce_attr & A_ERROR ) {
++	 Unlink_temp_files( _procs[i].pr_target );
++	 _procs[i].pr_last = TRUE;
++	 goto ABORT_REMAINDER_OF_RECIPE;
++      }
++
++      _procs[i].pr_recipe = rp->prp_next;
++
++      _use_i = i;
++      runargv( _procs[i].pr_target, rp->prp_ignore, rp->prp_group,
++	       rp->prp_last, rp->prp_shell, rp->prp_cmd );
++      _use_i = -1;
++
++      FREE( rp->prp_cmd );
++      FREE( rp );
++
++      if( _proc_cnt == Max_proc ) Wait_for_child( FALSE, -1 );
++   }
++   else {
++      Unlink_temp_files( _procs[i].pr_target );
++      Handle_result(status,_procs[i].pr_ignore,_abort_flg,_procs[i].pr_target);
++
++ ABORT_REMAINDER_OF_RECIPE:
++      if( _procs[i].pr_last ) {
++	 FREE(_procs[i].pr_dir );
++
++	 if( !Doing_bang ) Update_time_stamp( _procs[i].pr_target );
++      }
++   }
++
++   Set_dir(dir);
++   FREE(dir);
++}
++
++
++static int
++_running( cp )
++CELLPTR cp;
++{
++   register int i;
++
++   if( !_procs ) return(FALSE);
++
++   for( i=0; i<Max_proc; i++ )
++      if( _procs[i].pr_valid &&
++	  _procs[i].pr_target == cp  )
++	 break;
++	 
++   return( i != Max_proc );
++}
++
++
++static void
++_attach_cmd( cmd, group, ignore, cp, last, shell )
++char    *cmd;
++int	group;
++int     ignore;
++CELLPTR cp;
++int     last;
++int     shell;
++{
++   register int i;
++   RCPPTR rp;
++
++   for( i=0; i<Max_proc; i++ )
++      if( _procs[i].pr_valid &&
++	  _procs[i].pr_target == cp  )
++	 break;
++
++   TALLOC( rp, 1, RCP );
++   rp->prp_cmd   = DmStrDup(cmd);
++   rp->prp_group = group;
++   rp->prp_ignore= ignore;
++   rp->prp_last  = last;
++   rp->prp_shell = shell;
++
++   if( _procs[i].pr_recipe == NIL(RCP) )
++      _procs[i].pr_recipe = _procs[i].pr_recipe_end = rp;
++   else {
++      _procs[i].pr_recipe_end->prp_next = rp;
++      _procs[i].pr_recipe_end = rp;
++   }
++}
+diff -urN dmake-4.1pl1/win95/borland/sysintf.h dmake-4.1pl1-win32/win95/borland/sysintf.h
+--- dmake-4.1pl1/win95/borland/sysintf.h	Fri Sep 18 15:03:25 1998
++++ dmake-4.1pl1-win32/win95/borland/sysintf.h	Wed Dec 09 01:53:58 1998
+@@ -1,4 +1,4 @@
+-/* RCS  $Id: sysintf.h,v 1.1.1.1.2.1 1997/07/15 17:41:41 dvadura Exp $
++/* RCS  $Id: sysintf.h,v 1.1.1.1.2.1 1997/07/15 17:41:43 dvadura Exp $
+ --
+ -- SYNOPSIS
+ --      Interfaces for sysintf.c
+@@ -27,7 +27,7 @@
+ #define VOID_LCACHE(l,m)
+ #define GETPID _psp
+ #define Hook_std_writes(A)
+-#define DMSTRLWR(A,B)  dstrlwr((A),(B))
++#define DMSTRLWR(A,B)
+ 
+ extern char * tempnam();
+ extern char * getcwd();
+@@ -40,7 +40,9 @@
+ ** DOS interface standard items
+ */
+ #define	chdir(p) dchdir(p)
+-#define CacheStat(A,B) really_dostat(A,&buf)
++/*#define CacheStat(A,B) really_dostat(A,&buf)*/
++#define _P_NOWAIT P_NOWAIT
++#define _spawnvpe spawnvpe
+ 
+ /*
+ ** make parameters
+@@ -48,9 +50,9 @@
+ #ifdef _POSIX_NAME_MAX
+ #undef  _POSIX_NAME_MAX
+ #endif
+-#define _POSIX_NAME_MAX 12
++#define _POSIX_NAME_MAX _MAX_FNAME
+ 
+ #ifdef _POSIX_PATH_MAX
+ #undef _POSIX_PATH_MAX
+ #endif
+-#define _POSIX_PATH_MAX 64
++#define _POSIX_PATH_MAX _MAX_PATH
+diff -urN dmake-4.1pl1/win95/config.mk dmake-4.1pl1-win32/win95/config.mk
+--- dmake-4.1pl1/win95/config.mk	Fri Sep 18 15:03:25 1998
++++ dmake-4.1pl1-win32/win95/config.mk	Wed Dec 09 01:53:58 1998
+@@ -29,6 +29,9 @@
+ # Common Win32 source files.
+ OS_SRC  += dchdir.c switchar.c
+ 
++# Imported UNIX files.
++UNIXSRC += dcache.c
++
+ # Imported MSDOS Files.
+ DOSSRC  += dstrlwr.c arlib.c dirbrk.c
+ 
+@@ -50,4 +53,5 @@
+ .END
+ 
+ .SETDIR=msdos : $(DOSSRC)
++.SETDIR=unix : $(UNIXSRC)
+ .SETDIR=$(OS) : $(ASRC) $(OS_SRC)
+diff -urN dmake-4.1pl1/win95/microsft/vpp40/runargv.c dmake-4.1pl1-win32/win95/microsft/vpp40/runargv.c
+--- dmake-4.1pl1/win95/microsft/vpp40/runargv.c	Fri Sep 18 15:03:25 1998
++++ dmake-4.1pl1-win32/win95/microsft/vpp40/runargv.c	Wed Dec 09 01:53:59 1998
+@@ -1,6 +1,4 @@
+-Blake sent me the wrong one.
+-
+-/* RCS  $Id: runargv.c,v 1.1.1.1 1997/07/15 16:02:37 dvadura Exp $
++/* RCS  $Id: runargv.c,v 1.1.1.1 1997/07/15 16:02:38 dvadura Exp $
+ --
+ -- SYNOPSIS
+ --      Invoke a sub process.
+@@ -25,6 +23,7 @@
+ --      Use cvs log to obtain detailed change logs.
+ */
+ 
++#include <windows.h>
+ #include <process.h>
+ #include <errno.h>
+ #include <signal.h>
+@@ -133,7 +132,7 @@
+    if( _procs != NIL(PR) ) {
+       for( i=0; i<Max_proc; i++ )
+ 	 if( _procs[i].pr_valid )
+-	    kill(_procs[i].pr_pid, SIGTERM);
++	    TerminateProcess((HANDLE)_procs[i].pr_pid, 0);
+ 
+       while( Wait_for_child(TRUE, -1) != -1 );
+    }
+diff -urN dmake-4.1pl1/winnt/borland/bcc50/config.mk dmake-4.1pl1-win32/winnt/borland/bcc50/config.mk
+--- dmake-4.1pl1/winnt/borland/bcc50/config.mk	Fri Sep 18 15:03:25 1998
++++ dmake-4.1pl1-win32/winnt/borland/bcc50/config.mk	Wed Dec 09 01:53:59 1998
+@@ -1,9 +1,11 @@
+ # Definition of macros for library, and C startup code.
+ osedir    = $(osrdir)$(DIRSEPSTR)$(OSENVIRONMENT)
+ 
+-# Change the CCROOT variable to reflect the installation directory of your
++# Change the CCVER variable to reflect the installation directory of your
+ # C++ compiler.
+-CCVER   *:= c:/cc/borland/$(OSENVIRONMENT)
++.IMPORT .IGNORE : CCVER
++
++CCVER   *:= c:/bc5
+ 
+ # Definitions for compiles and links
+ CSTARTUP  = $(CCVER)/lib/c0x32.obj
+diff -urN dmake-4.1pl1/winnt/borland/bcc50/lib.rsp dmake-4.1pl1-win32/winnt/borland/bcc50/lib.rsp
+--- dmake-4.1pl1/winnt/borland/bcc50/lib.rsp	Fri Sep 18 15:03:25 1998
++++ dmake-4.1pl1-win32/winnt/borland/bcc50/lib.rsp	Wed Dec 09 01:58:48 1998
+@@ -1,2 +1 @@
+-c:\cc\borland\bcc50\lib\cw32+
+-c:\cc\borland\bcc50\lib\import32
++import32.lib cw32.lib
+diff -urN dmake-4.1pl1/winnt/borland/bcc50/mk.bat dmake-4.1pl1-win32/winnt/borland/bcc50/mk.bat
+--- dmake-4.1pl1/winnt/borland/bcc50/mk.bat	Fri Sep 18 15:03:25 1998
++++ dmake-4.1pl1-win32/winnt/borland/bcc50/mk.bat	Wed Dec 09 01:53:59 1998
+@@ -77,9 +77,6 @@
+ bcc32 -c -I. -Iwin95 -Iwin95\borland -d -O -N- -w-nod -A- -w-pro -Iwin95\borland\bcc50  win95\borland\tempnam.c
+ copy tempnam.obj objects
+ del tempnam.obj
+-bcc32 -c -I. -Iwin95 -Iwin95\borland -d -O -N- -w-nod -A- -w-pro -Iwin95\borland\bcc50  win95\borland\utime.c
+-copy utime.obj objects
+-del utime.obj
+ bcc32 -c -I. -Iwin95 -Iwin95\borland -d -O -N- -w-nod -A- -w-pro -Iwin95\borland\bcc50  win95\borland\ruletab.c
+ copy ruletab.obj objects
+ del ruletab.obj
+@@ -93,3 +90,4 @@
+ copy rmprq.obj objects
+ del rmprq.obj
+ tlink32  @win95\borland\bcc50\obj.rsp,dmake.exe,NUL.MAP,@win95\borland\bcc50\lib.rsp
++copy winnt\borland\bcc50\template.mk startup\config.mk
+diff -urN dmake-4.1pl1/winnt/borland/bcc50/obj.rsp dmake-4.1pl1-win32/winnt/borland/bcc50/obj.rsp
+--- dmake-4.1pl1/winnt/borland/bcc50/obj.rsp	Fri Sep 18 15:03:25 1998
++++ dmake-4.1pl1-win32/winnt/borland/bcc50/obj.rsp	Wed Dec 09 02:02:35 1998
+@@ -1,4 +1,4 @@
+-c:\cc\borland\bcc50\lib\c0x32.obj+
++c:\bc5\lib\c0x32.obj+
+ objects\infer.obj+
+ objects\make.obj+
+ objects\stat.obj+
+@@ -27,4 +27,5 @@
+ objects\tempnam.obj+
+ objects\ruletab.obj+
+ objects\runargv.obj+
++objects\dcache.obj+
+ objects\rmprq.obj
+diff -urN dmake-4.1pl1/winnt/borland/config.mk dmake-4.1pl1-win32/winnt/borland/config.mk
+--- dmake-4.1pl1/winnt/borland/config.mk	Fri Sep 18 15:03:25 1998
++++ dmake-4.1pl1-win32/winnt/borland/config.mk	Wed Dec 09 01:53:59 1998
+@@ -10,9 +10,10 @@
+ 
+ # OS specific sources
+ OSR_SRC  += tempnam.c ruletab.c
+-DOS_SRC  += runargv.c rmprq.c
++WIN95_SRC  += runargv.c
++DOS_SRC  += rmprq.c
+ 
+-SRC += $(OSR_SRC) $(DOS_SRC)
++SRC += $(OSR_SRC) $(WIN95_SRC) $(DOS_SRC)
+ .SOURCE.h : $(osrdir)
+ 
+ # Local configuration modifications for CFLAGS.  Make sure your turboc.cfg
+@@ -43,6 +44,7 @@
+ .END
+ 
+ .SETDIR=$(osrdir) : $(OSR_SRC)
++.SETDIR=win95     : $(WIN95_SRC)
+ .SETDIR=msdos     : $(DOS_SRC)
+ 
+ S_s = -dmsmall
+diff -urN dmake-4.1pl1/winnt/borland/ruletab.c dmake-4.1pl1-win32/winnt/borland/ruletab.c
+--- dmake-4.1pl1/winnt/borland/ruletab.c	Fri Sep 18 15:03:25 1998
++++ dmake-4.1pl1-win32/winnt/borland/ruletab.c	Wed Dec 09 01:53:59 1998
+@@ -32,8 +32,8 @@
+ #include <stdio.h>
+ 
+ static char *_rules[] = {
+-	"MAXLINELENGTH := 2046",
+-	"MAXPROCESSLIMIT := 4",
++	"MAXLINELENGTH := 20460",
++	"MAXPROCESSLIMIT := 16",
+ 	".IMPORT .IGNORE: ROOTDIR",
+ 	".MAKEFILES : makefile.mk makefile",
+ 	".SOURCE    : .NULL",
+diff -urN dmake-4.1pl1/winnt/borland/sysintf.h dmake-4.1pl1-win32/winnt/borland/sysintf.h
+--- dmake-4.1pl1/winnt/borland/sysintf.h	Fri Sep 18 15:03:25 1998
++++ dmake-4.1pl1-win32/winnt/borland/sysintf.h	Wed Dec 09 01:53:59 1998
+@@ -27,7 +27,7 @@
+ #define VOID_LCACHE(l,m)
+ #define GETPID _psp
+ #define Hook_std_writes(A)
+-#define DMSTRLWR(A,B)  dstrlwr((A),(B))
++#define DMSTRLWR(A,B)
+ 
+ extern char * tempnam();
+ extern char * getcwd();
+@@ -40,7 +40,9 @@
+ ** DOS interface standard items
+ */
+ #define	chdir(p) dchdir(p)
+-#define CacheStat(A,B) really_dostat(A,&buf)
++/*#define CacheStat(A,B) really_dostat(A,&buf)*/
++#define _P_NOWAIT P_NOWAIT
++#define _spawnvpe spawnvpe
+ 
+ /*
+ ** make parameters
+@@ -48,9 +50,9 @@
+ #ifdef _POSIX_NAME_MAX
+ #undef  _POSIX_NAME_MAX
+ #endif
+-#define _POSIX_NAME_MAX 12
++#define _POSIX_NAME_MAX _MAX_FNAME
+ 
+ #ifdef _POSIX_PATH_MAX
+ #undef _POSIX_PATH_MAX
+ #endif
+-#define _POSIX_PATH_MAX 64
++#define _POSIX_PATH_MAX _MAX_PATH
+diff -urN dmake-4.1pl1/winnt/config.mk dmake-4.1pl1-win32/winnt/config.mk
+--- dmake-4.1pl1/winnt/config.mk	Fri Sep 18 15:03:25 1998
++++ dmake-4.1pl1-win32/winnt/config.mk	Wed Dec 09 01:57:43 1998
+@@ -32,6 +32,9 @@
+ # Imported Win95 files.
+ WIN95SRC += switchar.c
+ 
++# Imported UNIX files.
++UNIXSRC += dcache.c
++
+ # Imported MSDOS Files.
+ DOSSRC  += dstrlwr.c arlib.c dirbrk.c
+ 
+@@ -54,4 +57,5 @@
+ 
+ .SETDIR=msdos : $(DOSSRC)
+ .SETDIR=win95 : $(WIN95SRC)
++.SETDIR=unix : $(UNIXSRC)
+ .SETDIR=$(OS) : $(ASRC) $(OS_SRC)
+diff -urN dmake-4.1pl1/winnt/microsft/vpp40/runargv.c dmake-4.1pl1-win32/winnt/microsft/vpp40/runargv.c
+--- dmake-4.1pl1/winnt/microsft/vpp40/runargv.c	Fri Sep 18 15:03:25 1998
++++ dmake-4.1pl1-win32/winnt/microsft/vpp40/runargv.c	Wed Dec 09 01:53:59 1998
+@@ -1,5 +1,3 @@
+-Blake sent me the wrong one.
+-
+ /* RCS  $Id: runargv.c,v 1.1.1.1 1997/07/15 16:02:38 dvadura Exp $
+ --
+ -- SYNOPSIS
+@@ -25,6 +23,7 @@
+ --      Use cvs log to obtain detailed change logs.
+ */
+ 
++#include <windows.h>
+ #include <process.h>
+ #include <errno.h>
+ #include <signal.h>
+@@ -133,7 +132,7 @@
+    if( _procs != NIL(PR) ) {
+       for( i=0; i<Max_proc; i++ )
+ 	 if( _procs[i].pr_valid )
+-	    kill(_procs[i].pr_pid, SIGTERM);
++	    TerminateProcess((HANDLE)_procs[i].pr_pid, 0);
+ 
+       while( Wait_for_child(TRUE, -1) != -1 );
+    }
+End of Patch.

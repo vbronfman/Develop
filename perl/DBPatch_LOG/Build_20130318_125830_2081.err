@@ -1,0 +1,15 @@
+###################################################
+#      BUILD TST3 20130318_1258
+###################################################
+FILE 	       : /odb/app01/oracle/product/ROSH/TST3/BUILD/src/PM_Invoice_PM_Invoice_2013_20130318_125830/1_bgh_partner_bh_equipment_script_create.sql
+CONNECT STRING : BGH_PARTNER/BGH_PARTNER@BHTST3
+ERROR MESSAGE  : Original file /home/ccmngr/proj/vmit15dev02/PM_Invoice/PM_Invoice_201304/DB/bgh_partner_bh_equipment_script_create.sql not found
+----------------------------------------------------------------
+FILE 	       : /odb/app01/oracle/product/ROSH/TST3/BUILD/src/PM_provision_PM_provision_201304_20130318_125830/5_vmd_if_xml_tr69.sql
+CONNECT STRING : VMD/VMD@BSCSTST3
+ERROR MESSAGE  : Original file /users/ccmngr/proj/ponda/PM_provision/PM_provision_201304/DB/vmd_if_xml_tr69.sql not found
+----------------------------------------------------------------
+FILE 	       : /odb/app01/oracle/product/ROSH/TST3/BUILD/src/PM_Invoice_PM_Invoice__20130318_125830/11_billing_parameters_inserts_reports_bscsprod.sql
+CONNECT STRING : REPORTS/REPORTS@BSCSTST3
+ERROR MESSAGE  : Original file /home/ccmngr/proj/vmit15dev02/PM_Invoice/PM_Invoice_201304/DB/billing_parameters_inserts_reports_bscsprod.sql not found
+----------------------------------------------------------------

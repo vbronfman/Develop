@@ -1,0 +1,133 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../scineplex.css">
+<title>Template::Exception - Exception handling class module</title>
+<link rel="stylesheet" href="../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',3);</script>
+<h1><a>Template::Exception - Exception handling class module</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#methods">METHODS</a></li>
+	<ul>
+
+		<li><a href="#type__"><code>type()</code></a></li>
+		<li><a href="#info__"><code>info()</code></a></li>
+	</ul>
+
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Exception - Exception handling class module</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template::Exception</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$exception</span> <span class="operator">=</span> <span class="variable">Template::Exception</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="variable">$type</span><span class="operator">,</span> <span class="variable">$info</span><span class="operator">);</span>
+    <span class="variable">$type</span> <span class="operator">=</span> <span class="variable">$exception</span><span class="operator">-&gt;</span><span class="variable">type</span><span class="operator">;</span>
+    <span class="variable">$info</span> <span class="operator">=</span> <span class="variable">$exception</span><span class="operator">-&gt;</span><span class="variable">info</span><span class="operator">;</span>
+    <span class="operator">(</span><span class="variable">$type</span><span class="operator">,</span> <span class="variable">$info</span><span class="operator">)</span> <span class="operator">=</span> <span class="variable">$exception</span><span class="operator">-&gt;</span><span class="variable">type_info</span><span class="operator">;</span>
+    
+    <span class="keyword">print</span> <span class="variable">$exception</span><span class="operator">-&gt;</span><span class="variable">as_string</span><span class="operator">();</span>
+    
+    <span class="variable">$handler</span> <span class="operator">=</span> <span class="variable">$exception</span><span class="operator">-&gt;</span><span class="variable">select_handler</span><span class="operator">(\</span><span class="variable">@candidates</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>The <code>Template::Exception</code> module defines an object class for
+representing exceptions within the template processing life cycle.
+Exceptions can be raised by modules within the Template Toolkit, or
+can be generated and returned by user code bound to template
+variables.</p>
+<p>Exceptions can be raised in a template using the <code>THROW</code> directive,</p>
+<pre>
+    [% THROW user.login 'no user id: please login' %]</pre>
+<p>or by calling the <a href="../../../Template/Context#throw().html">throw()</a> method on the current
+<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a> object,</p>
+<pre>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">throw</span><span class="operator">(</span><span class="string">'user.passwd'</span><span class="operator">,</span> <span class="string">'Incorrect Password'</span><span class="operator">);</span>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">throw</span><span class="operator">(</span><span class="string">'Incorrect Password'</span><span class="operator">);</span>    <span class="comment"># type 'undef'</span>
+</pre>
+<p>or from Perl code by calling <a href="../../../lib/pods/perlfunc.html#die"><code>die()</code></a> with a <code>Template::Exception</code> object,</p>
+<pre>
+    <span class="keyword">die</span> <span class="operator">(</span><span class="variable">Template::Exception</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="string">'user.denied'</span><span class="operator">,</span> <span class="string">'Invalid User ID'</span><span class="operator">));</span>
+</pre>
+<p>or by simply calling <a href="../../../lib/pods/perlfunc.html#die"><code>die()</code></a> with an error string.  This is
+automagically caught and converted to an  exception of '<a href="../../../lib/pods/perlfunc.html#undef"><code>undef</code></a>'
+type (that's the literal string '<a href="../../../lib/pods/perlfunc.html#undef"><code>undef</code></a>' rather than Perl's 
+undefined value) which can then be handled in the usual way.</p>
+<pre>
+    <span class="keyword">die</span> <span class="string">"I'm sorry Dave, I can't do that"</span><span class="operator">;</span>
+</pre>
+<p>Each exception is defined by its type and a information component
+(e.g. error message).  The type can be any identifying string and may
+contain dotted components (e.g. '<code>foo</code>', '<code>foo.bar</code>', '<code>foo.bar.baz</code>').
+Exception types are considered to be hierarchical such that '<code>foo.bar</code>'
+would be a specific type of the more general '<code>foo</code>' type.</p>
+<p>
+</p>
+<hr />
+<h1><a name="methods">METHODS</a></h1>
+<p>
+</p>
+<h2><a name="type__"><code>type()</code></a></h2>
+<p>Returns the exception type.</p>
+<p>
+</p>
+<h2><a name="info__"><code>info()</code></a></h2>
+<p>Returns the exception information.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a>, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a></p>
+
+</body>
+
+</html>

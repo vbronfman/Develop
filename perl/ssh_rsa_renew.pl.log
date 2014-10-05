@@ -1,0 +1,281 @@
+
+2013-04-18 12:16:45	 ##### D:\Develop\Perl\ssh_rsa_renew.pl Started ##### 
+12:16:45	 Started
+12:16:45	 main::read_conf Parse by XML::Simple
+
+
+2013-04-18 12:17:45	 ##### D:\Develop\Perl\ssh_rsa_renew.pl Started ##### 
+12:17:45	 Started
+12:17:45	 main::read_conf Parse by XML::Simple
+
+
+2013-04-18 12:21:30	 ##### D:\Develop\Perl\ssh_rsa_renew.pl Started ##### 
+12:21:30	 Started
+12:21:30	 main::read_conf Parse by XML::Simple
+
+
+2013-04-18 12:23:44	 ##### D:\Develop\Perl\ssh_rsa_renew.pl Started ##### 
+12:23:44	 Started
+12:23:44	 main::read_conf Parse by XML::Simple
+
+
+2013-04-18 14:29:40	 ##### D:\Develop\Perl\ssh_rsa_renew.pl Started ##### 
+14:29:40	 Started
+14:29:43	 main::read_conf Parse by XML::Simple
+
+
+2013-04-18 14:30:23	 ##### D:\Develop\Perl\ssh_rsa_renew.pl Started ##### 
+14:30:23	 Started
+14:30:25	 main::read_conf Parse by XML::Simple
+
+$VAR1 = 'TEST1';
+$VAR1 = 'TEST2';
+$VAR1 = 'OSAGENT';
+$VAR1 = 'TEST3';
+$VAR1 = 'PROVISIONING';
+/ITLAB_share/itlab/provisioning.sh -statusall
+
+2013-04-18 14:33:06	 ##### D:\Develop\Perl\ssh_rsa_renew.pl Started ##### 
+14:33:06	 Started
+14:33:08	 main::read_conf Parse by XML::Simple
+
+$VAR1 = 'TEST1';
+$VAR1 = 'TEST2';
+$VAR1 = 'OSAGENT';
+$VAR1 = 'TEST3';
+$VAR1 = 'PROVISIONING';
+/ITLAB_share/itlab/provisioning.sh -statusall
+bscstst1@znbillapptst1
+bscstst3@znbillapptst3
+$VAR1 = 'IORAGENT';
+ ./bin/ioragent.sh status ${DB} 
+targys@tetra
+targys@tetra
+$VAR1 = 'CMS_Spectra';
+./bin/statusCMS -m ${ENV}
+targys2@it4tst1_old
+targys2@vmcmstst3
+targys2@tetra
+$VAR1 = 'CMS_ADAPTER';
+./cmsadapter/bin/statusCMSAdapter
+tibco55@Kermit
+tibco@it3tst3
+$VAR1 = 'BA';
+perl statusBA.pl
+oracle@it2tst1
+oracle@vmbatest3
+$VAR1 = 'CMS_BILLING';
+./bin/statusCMS -m ${ENV}
+targys@it4tst1_old
+targys@vmcmstst3
+targys@tetra
+$VAR1 = 'VANTIVE';
+vantive85_3/status_vantive.csh
+vantive@znvantst1
+vantive@znvantst3
+vantive@petra
+
+2013-04-18 14:34:03	 ##### D:\Develop\Perl\ssh_rsa_renew.pl Started ##### 
+14:34:03	 Started
+14:34:03	 main::read_conf Parse by XML::Simple
+
+$VAR1 = 'TEST1';
+$VAR1 = 'TEST2';
+$VAR1 = 'OSAGENT';
+$VAR1 = 'TEST3';
+$VAR1 = 'PROVISIONING';
+/ITLAB_share/itlab/provisioning.sh -statusall
+bscstst1@znbillapptst1
+bscstst3@znbillapptst3
+$VAR1 = 'IORAGENT';
+ ./bin/ioragent.sh status ${DB} 
+targys@tetra
+targys@tetra
+$VAR1 = 'CMS_Spectra';
+./bin/statusCMS -m ${ENV}
+targys2@it4tst1_old
+targys2@vmcmstst3
+targys2@tetra
+$VAR1 = 'CMS_ADAPTER';
+./cmsadapter/bin/statusCMSAdapter
+tibco55@Kermit
+tibco@it3tst3
+$VAR1 = 'BA';
+perl statusBA.pl
+oracle@it2tst1
+oracle@vmbatest3
+$VAR1 = 'CMS_BILLING';
+./bin/statusCMS -m ${ENV}
+targys@it4tst1_old
+targys@vmcmstst3
+targys@tetra
+$VAR1 = 'VANTIVE';
+vantive85_3/status_vantive.csh
+vantive@znvantst1
+vantive@znvantst3
+vantive@petra
+14:36:00	 Prepa
+
+2013-04-18 14:42:34	 ##### D:\Develop\Perl\ssh_rsa_renew.pl Started ##### 
+14:42:34	 Started
+14:42:36	 main::read_conf Parse by XML::Simple
+
+$VAR1 = 'TEST1';
+$VAR1 = 'TEST2';
+$VAR1 = 'OSAGENT';
+$VAR1 = 'TEST3';
+$VAR1 = 'PROVISIONING';
+/ITLAB_share/itlab/provisioning.sh -statusall
+bscstst1@znbillapptst1
+bscstst3@znbillapptst3
+$VAR1 = 'IORAGENT';
+ ./bin/ioragent.sh status ${DB} 
+targys@tetra
+targys@tetra
+$VAR1 = 'CMS_Spectra';
+./bin/statusCMS -m ${ENV}
+targys2@it4tst1_old
+targys2@vmcmstst3
+targys2@tetra
+$VAR1 = 'CMS_ADAPTER';
+./cmsadapter/bin/statusCMSAdapter
+tibco55@Kermit
+tibco@it3tst3
+$VAR1 = 'BA';
+perl statusBA.pl
+oracle@it2tst1
+oracle@vmbatest3
+$VAR1 = 'CMS_BILLING';
+./bin/statusCMS -m ${ENV}
+targys@it4tst1_old
+targys@vmcmstst3
+targys@tetra
+$VAR1 = 'VANTIVE';
+vantive85_3/status_vantive.csh
+vantive@znvantst1
+vantive@znvantst3
+vantive@petra
+14:42:38	 Prepare list of accounts
+
+2013-04-18 14:49:04	 ##### D:\Develop\Perl\ssh_rsa_renew.pl Started ##### 
+14:49:04	 Started
+14:49:07	 main::read_conf Parse by XML::Simple
+
+$VAR1 = 'TEST1';
+$VAR1 = 'TEST2';
+$VAR1 = 'OSAGENT';
+$VAR1 = 'TEST3';
+$VAR1 = 'PROVISIONING';
+/ITLAB_share/itlab/provisioning.sh -statusall
+bscstst1@znbillapptst1
+bscstst3@znbillapptst3
+$VAR1 = 'IORAGENT';
+ ./bin/ioragent.sh status ${DB} 
+targys@tetra
+targys@tetra
+$VAR1 = 'CMS_Spectra';
+./bin/statusCMS -m ${ENV}
+targys2@it4tst1_old
+targys2@vmcmstst3
+targys2@tetra
+$VAR1 = 'CMS_ADAPTER';
+./cmsadapter/bin/statusCMSAdapter
+tibco55@Kermit
+tibco@it3tst3
+$VAR1 = 'BA';
+perl statusBA.pl
+oracle@it2tst1
+oracle@vmbatest3
+$VAR1 = 'CMS_BILLING';
+./bin/statusCMS -m ${ENV}
+targys@it4tst1_old
+targys@vmcmstst3
+targys@tetra
+$VAR1 = 'VANTIVE';
+vantive85_3/status_vantive.csh
+vantive@znvantst1
+vantive@znvantst3
+vantive@petra
+14:49:07	 Prepare list of accounts
+
+2013-04-18 14:49:37	 ##### D:\Develop\Perl\ssh_rsa_renew.pl Started ##### 
+14:49:37	 Started
+14:49:39	 main::read_conf Parse by XML::Simple
+
+$VAR1 = 'TEST1';
+$VAR1 = 'TEST2';
+$VAR1 = 'OSAGENT';
+$VAR1 = 'TEST3';
+$VAR1 = 'PROVISIONING';
+/ITLAB_share/itlab/provisioning.sh -statusall
+bscstst1@znbillapptst1
+bscstst3@znbillapptst3
+$VAR1 = 'IORAGENT';
+ ./bin/ioragent.sh status ${DB} 
+targys@tetra
+targys@tetra
+$VAR1 = 'CMS_Spectra';
+./bin/statusCMS -m ${ENV}
+targys2@it4tst1_old
+targys2@vmcmstst3
+targys2@tetra
+$VAR1 = 'CMS_ADAPTER';
+./cmsadapter/bin/statusCMSAdapter
+tibco55@Kermit
+tibco@it3tst3
+$VAR1 = 'BA';
+perl statusBA.pl
+oracle@it2tst1
+oracle@vmbatest3
+$VAR1 = 'CMS_BILLING';
+./bin/statusCMS -m ${ENV}
+targys@it4tst1_old
+targys@vmcmstst3
+targys@tetra
+$VAR1 = 'VANTIVE';
+vantive85_3/status_vantive.csh
+vantive@znvantst1
+vantive@znvantst3
+vantive@petra
+14:49:39	 Prepare list of accounts
+
+2013-04-18 14:53:42	 ##### D:\Develop\Perl\ssh_rsa_renew.pl Started ##### 
+14:53:42	 Started
+14:53:44	 main::read_conf Parse by XML::Simple
+
+$VAR1 = 'TEST1';
+$VAR1 = 'TEST2';
+$VAR1 = 'OSAGENT';
+$VAR1 = 'TEST3';
+$VAR1 = 'PROVISIONING';
+/ITLAB_share/itlab/provisioning.sh -statusall
+bscstst1@znbillapptst1
+bscstst3@znbillapptst3
+$VAR1 = 'IORAGENT';
+ ./bin/ioragent.sh status ${DB} 
+targys@tetra
+targys@tetra
+$VAR1 = 'CMS_Spectra';
+./bin/statusCMS -m ${ENV}
+targys2@it4tst1_old
+targys2@vmcmstst3
+targys2@tetra
+$VAR1 = 'CMS_ADAPTER';
+./cmsadapter/bin/statusCMSAdapter
+tibco55@Kermit
+tibco@it3tst3
+$VAR1 = 'BA';
+perl statusBA.pl
+oracle@it2tst1
+oracle@vmbatest3
+$VAR1 = 'CMS_BILLING';
+./bin/statusCMS -m ${ENV}
+targys@it4tst1_old
+targys@vmcmstst3
+targys@tetra
+$VAR1 = 'VANTIVE';
+vantive85_3/status_vantive.csh
+vantive@znvantst1
+vantive@znvantst3
+vantive@petra
+14:53:44	 Prepare list of accounts

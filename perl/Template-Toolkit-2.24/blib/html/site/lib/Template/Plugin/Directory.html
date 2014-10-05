@@ -1,0 +1,256 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>Template::Plugin::Directory - Plugin for generating directory listings</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>Template::Plugin::Directory - Plugin for generating directory listings</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#authors">AUTHORS</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Plugin::Directory - Plugin for generating directory listings</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    [% USE dir = Directory(dirpath) %]
+    
+    # files returns list of regular files
+    [% FOREACH file = dir.files %]
+       [% file.name %] [% file.path %] ...
+    [% END %]
+    
+    # dirs returns list of sub-directories
+    [% FOREACH subdir = dir.dirs %]
+       [% subdir.name %] [% subdir.path %] ...
+    [% END %]
+    
+    # list returns both interleaved in order
+    [% FOREACH item = dir.list %]
+       [% IF item.isdir %]
+          Directory: [% item.name %]
+       [% ELSE %]
+          File: [% item.name %]
+       [% END %]
+    [% END %]
+    
+    # define a VIEW to display dirs/files
+    [% VIEW myview %]
+       [% BLOCK file %]
+       File: [% item.name %]
+       [% END %]
+       
+       [% BLOCK directory %]
+       Directory: [% item.name %] 
+       [% item.content(myview) | indent -%]
+       [% END %]
+    [% END %]
+    
+    # display directory content using view
+    [% myview.print(dir) %]</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This Template Toolkit plugin provides a simple interface to directory
+listings.  It is derived from the <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/File.html">the Template::Plugin::File manpage</a> module and
+uses <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/File.html">the Template::Plugin::File manpage</a> object instances to represent files within
+a directory.  Sub-directories within a directory are represented by
+further <code>Template::Plugin::Directory</code> instances.</p>
+<p>The constructor expects a directory name as an argument.</p>
+<pre>
+    [% USE dir = Directory('/tmp') %]</pre>
+<p>It then provides access to the files and sub-directories contained within 
+the directory.</p>
+<pre>
+    # regular files (not directories)
+    [% FOREACH file IN dir.files %]
+       [% file.name %]
+    [% END %]</pre>
+<pre>
+    # directories only
+    [% FOREACH file IN dir.dirs %]
+       [% file.name %]
+    [% END %]</pre>
+<pre>
+    # files and/or directories
+    [% FOREACH file IN dir.list %]
+       [% file.name %] ([% file.isdir ? 'directory' : 'file' %])
+    [% END %]</pre>
+<p>The plugin constructor will throw a <code>Directory</code> error if the specified
+path does not exist, is not a directory or fails to <a href="../../../../lib/pods/perlfunc.html#stat"><code>stat()</code></a> (see
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/File.html">the Template::Plugin::File manpage</a>).  Otherwise, it will scan the directory and
+create lists named '<code>files</code>' containing files, '<code>dirs</code>' containing
+directories and '<code>list</code>' containing both files and directories combined.
+The <code>nostat</code> option can be set to disable all file/directory checks
+and directory scanning.</p>
+<p>Each file in the directory will be represented by a
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/File.html">the Template::Plugin::File manpage</a> object instance, and each directory by another
+<code>Template::Plugin::Directory</code>.  If the <code>recurse</code> flag is set, then those
+directories will contain further nested entries, and so on.  With the
+<code>recurse</code> flag unset, as it is by default, then each is just a place
+marker for the directory and does not contain any further content
+unless its <code>scan()</code> method is explicitly called.  The <code>isdir</code> flag can
+be tested against files and/or directories, returning true if the item
+is a directory or false if it is a regular file.</p>
+<pre>
+    [% FOREACH file = dir.list %]
+       [% IF file.isdir %]
+          * Directory: [% file.name %]
+       [% ELSE %]
+          * File: [% file.name %]
+       [% END %]
+    [% END %]</pre>
+<p>This example shows how you might walk down a directory tree, displaying 
+content as you go.  With the recurse flag disabled, as is the default, 
+we need to explicitly call the <code>scan()</code> method on each directory, to force
+it to lookup files and further sub-directories contained within.</p>
+<pre>
+    [% USE dir = Directory(dirpath) %]
+    * [% dir.path %]
+    [% INCLUDE showdir %]
+    
+    [% BLOCK showdir -%]
+      [% FOREACH file = dir.list -%]
+        [% IF file.isdir -%]
+        * [% file.name %]
+          [% file.scan -%]
+          [% INCLUDE showdir dir=file FILTER indent(4) -%]
+        [% ELSE -%]
+        - [% f.name %]
+        [% END -%]
+      [% END -%]
+     [% END %]</pre>
+<p>This example is adapted (with some re-formatting for clarity) from
+a test in <em class="file">t/directry.t</em> which produces the following output:</p>
+<pre>
+    * test/dir
+        - file1
+        - file2
+        * sub_one
+            - bar
+            - foo
+        * sub_two
+            - waz.html
+            - wiz.html
+        - xyzfile</pre>
+<p>The <code>recurse</code> flag can be set (disabled by default) to cause the
+constructor to automatically recurse down into all sub-directories,
+creating a new <code>Template::Plugin::Directory</code> object for each one and 
+filling it with any further content.  In this case there is no need
+to explicitly call the <code>scan()</code> method.</p>
+<pre>
+    [% USE dir = Directory(dirpath, recurse=1) %]
+       ...
+       
+        [% IF file.isdir -%]
+        * [% file.name %]
+          [% INCLUDE showdir dir=file FILTER indent(4) -%]
+        [% ELSE -%]
+           ...</pre>
+<p>The directory plugin also provides support for views. A view can be defined as
+a <code>VIEW ... END</code> block and should contain <code>BLOCK</code> definitions for files
+('<code>file</code>') and directories ('<code>directory</code>').</p>
+<pre>
+    [% VIEW myview %]
+    [% BLOCK file %]
+       - [% item.name %]
+    [% END %]
+    
+    [% BLOCK directory %]
+       * [% item.name %]
+         [% item.content(myview) FILTER indent %]
+    [% END %]
+    [% END %]</pre>
+<p>The view <a href="../../../../lib/pods/perlfunc.html#print"><code>print()</code></a> method can then be called, passing the
+<code>Directory</code> object as an argument.</p>
+<pre>
+    [% USE dir = Directory(dirpath, recurse=1) %]
+    [% myview.print(dir) %]</pre>
+<p>When a directory is presented to a view, either as <a href="../../../../lib/pods/perlfunc.html#print"><code>[% myview.print(dir) %]</code></a>
+or <code>[% dir.present(view) %]</code>, then the <code>directory</code> <code>BLOCK</code> within the
+<code>myview</code> <code>VIEW</code> is processed. The <code>item</code> variable will be set to alias the
+<code>Directory</code> object.</p>
+<pre>
+    [% BLOCK directory %]
+       * [% item.name %]
+         [% item.content(myview) FILTER indent %]
+    [% END %]</pre>
+<p>In this example, the directory name is first printed and the content(view)
+method is then called to present each item within the directory to the view.
+Further directories will be mapped to the <code>directory</code> block, and files will be
+mapped to the <code>file</code> block.</p>
+<p>With the recurse option disabled, as it is by default, the <code>directory</code>
+block should explicitly call a <code>scan()</code> on each directory.</p>
+<pre>
+    [% VIEW myview %]
+    [% BLOCK file %]
+       - [% item.name %]
+    [% END %]
+    
+    [% BLOCK directory %]
+       * [% item.name %]
+         [% item.scan %]
+         [% item.content(myview) FILTER indent %]
+    [% END %]
+    [% END %]
+    
+    [% USE dir = Directory(dirpath) %]
+    [% myview.print(dir) %]</pre>
+<p>
+</p>
+<hr />
+<h1><a name="authors">AUTHORS</a></h1>
+<p>Michael Stevens wrote the original Directory plugin on which this is based.
+Andy Wardley split it into separate <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/File.html">File</a> and
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Directory.html">Directory</a> plugins, added some extra code and
+documentation for <code>VIEW</code> support, and made a few other minor tweaks.</p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 2000-2007 Michael Stevens, Andy Wardley.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin.html">the Template::Plugin manpage</a>, <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/File.html">the Template::Plugin::File manpage</a>, <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/View.html">the Template::View manpage</a></p>
+
+</body>
+
+</html>

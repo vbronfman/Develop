@@ -1,0 +1,681 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../scineplex.css">
+<title>Template::Context - Runtime context in which templates are processed</title>
+<link rel="stylesheet" href="../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',3);</script>
+<h1><a>Template::Context - Runtime context in which templates are processed</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#methods">METHODS</a></li>
+	<ul>
+
+		<li><a href="#new___params_"><code>new(\%params)</code></a></li>
+		<ul>
+
+			<li><a href="#variables">VARIABLES</a></li>
+			<li><a href="#blocks">BLOCKS</a></li>
+			<li><a href="#views">VIEWS</a></li>
+			<li><a href="#trim">TRIM</a></li>
+			<li><a href="#eval_perl">EVAL_PERL</a></li>
+			<li><a href="#recursion">RECURSION</a></li>
+			<li><a href="#load_templates">LOAD_TEMPLATES</a></li>
+			<li><a href="#load_plugins">LOAD_PLUGINS</a></li>
+			<li><a href="#load_filters">LOAD_FILTERS</a></li>
+			<li><a href="#stash">STASH</a></li>
+			<li><a href="#debug">DEBUG</a></li>
+		</ul>
+
+		<li><a href="#template__name_"><code>template($name)</code></a></li>
+		<li><a href="#plugin__name____args_">plugin($name, \@args)</a></li>
+		<li><a href="#filter__name____args___alias_">filter($name, \@args, $alias)</a></li>
+		<li><a href="#process__template____vars_">process($template, \%vars)</a></li>
+		<li><a href="#include__template____vars_">include($template, \%vars)</a></li>
+		<li><a href="#insert__template_"><code>insert($template)</code></a></li>
+		<li><a href="#throw__error_type___error_message____output_">throw($error_type, $error_message, \$output)</a></li>
+		<li><a href="#catch__exception____output_">catch($exception, \$output)</a></li>
+		<li><a href="#define_block__name___block_">define_block($name, $block)</a></li>
+		<li><a href="#define_filter__name____filter___is_dynamic_">define_filter($name, \&amp;filter, $is_dynamic)</a></li>
+		<li><a href="#define_vmethod__type___name___code_">define_vmethod($type, $name, $code)</a></li>
+		<li><a href="#define_view__name____params_">define_view($name, \%params)</a></li>
+		<li><a href="#define_views__views_"><code>define_views($views)</code></a></li>
+		<li><a href="#stash__"><code>stash()</code></a></li>
+		<li><a href="#localise___vars_"><code>localise(\%vars)</code></a></li>
+		<li><a href="#delocalise__"><code>delocalise()</code></a></li>
+		<li><a href="#visit___blocks_"><code>visit(\%blocks)</code></a></li>
+		<li><a href="#leave__"><code>leave()</code></a></li>
+		<li><a href="#view__"><code>view()</code></a></li>
+		<li><a href="#reset__"><a href="../../../lib/pods/perlfunc.html#reset"><code>reset()</code></a></a></li>
+		<li><a href="#debugging__flag___args_">debugging($flag, @args)</a></li>
+		<li><a href="#autoload">AUTOLOAD</a></li>
+	</ul>
+
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Context - Runtime context in which templates are processed</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template::Context</span><span class="operator">;</span>
+    
+    <span class="comment"># constructor</span>
+    <span class="variable">$context</span> <span class="operator">=</span> <span class="variable">Template::Context</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(\</span><span class="variable">%config</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$Template::Context::ERROR</span><span class="operator">;</span>
+    
+    <span class="comment"># fetch (load and compile) a template</span>
+    <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">template</span><span class="operator">(</span><span class="variable">$template_name</span><span class="operator">);</span>
+    
+    <span class="comment"># fetch (load and instantiate) a plugin object</span>
+    <span class="variable">$plugin</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">plugin</span><span class="operator">(</span><span class="variable">$name</span><span class="operator">,</span> <span class="operator">\</span><span class="variable">@args</span><span class="operator">);</span>
+    
+    <span class="comment"># fetch (return or create) a filter subroutine</span>
+    <span class="variable">$filter</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">filter</span><span class="operator">(</span><span class="variable">$name</span><span class="operator">,</span> <span class="operator">\</span><span class="variable">@args</span><span class="operator">,</span> <span class="variable">$alias</span><span class="operator">);</span>
+    
+    <span class="comment"># process/include a template, errors are thrown via die()</span>
+    <span class="variable">$output</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="variable">$template</span><span class="operator">,</span> <span class="operator">\</span><span class="variable">%vars</span><span class="operator">);</span>
+    <span class="variable">$output</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">include</span><span class="operator">(</span><span class="variable">$template</span><span class="operator">,</span> <span class="operator">\</span><span class="variable">%vars</span><span class="operator">);</span>
+    
+    <span class="comment"># raise an exception via die()</span>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">throw</span><span class="operator">(</span><span class="variable">$error_type</span><span class="operator">,</span> <span class="variable">$error_message</span><span class="operator">,</span> <span class="operator">\</span><span class="variable">$output_buffer</span><span class="operator">);</span>
+    
+    <span class="comment"># catch an exception, clean it up and fix output buffer</span>
+    <span class="variable">$exception</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">catch</span><span class="operator">(</span><span class="variable">$exception</span><span class="operator">,</span> <span class="operator">\</span><span class="variable">$output_buffer</span><span class="operator">);</span>
+    
+    <span class="comment"># save/restore the stash to effect variable localisation</span>
+    <span class="variable">$new_stash</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">localise</span><span class="operator">(\</span><span class="variable">%vars</span><span class="operator">);</span>
+    <span class="variable">$old_stash</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">delocalise</span><span class="operator">();</span>
+    
+    <span class="comment"># add new BLOCK or FILTER definitions</span>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">define_block</span><span class="operator">(</span><span class="variable">$name</span><span class="operator">,</span> <span class="variable">$block</span><span class="operator">);</span>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">define_filter</span><span class="operator">(</span><span class="variable">$name</span><span class="operator">,</span> <span class="operator">\&amp;</span><span class="variable">filtersub</span><span class="operator">,</span> <span class="variable">$is_dynamic</span><span class="operator">);</span>
+    
+    <span class="comment"># reset context, clearing any imported BLOCK definitions</span>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">reset</span><span class="operator">();</span>
+    
+    <span class="comment"># methods for accessing internal items</span>
+    <span class="variable">$stash</span>     <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">stash</span><span class="operator">();</span>
+    <span class="variable">$tflag</span>     <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">trim</span><span class="operator">();</span>
+    <span class="variable">$epflag</span>    <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">eval_perl</span><span class="operator">();</span>
+    <span class="variable">$providers</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">templates</span><span class="operator">();</span>
+    <span class="variable">$providers</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">plugins</span><span class="operator">();</span>
+    <span class="variable">$providers</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">filters</span><span class="operator">();</span>
+    <span class="operator">...</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>The <code>Template::Context</code> module defines an object class for representing
+a runtime context in which templates are processed.  It provides an
+interface to the fundamental operations of the Template Toolkit
+processing engine through which compiled templates (i.e. Perl code
+constructed from the template source) can process templates, load
+plugins and filters, raise exceptions and so on.</p>
+<p>A default <code>Template::Context</code> object is created by the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a> module.
+Any <code>Template::Context</code> options may be passed to the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a>
+<em>new()</em> constructor method and will be forwarded to the
+<code>Template::Context</code> constructor.</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">TRIM</span>      <span class="operator">=&gt;</span> <span class="number">1</span><span class="operator">,</span>
+        <span class="string">EVAL_PERL</span> <span class="operator">=&gt;</span> <span class="number">1</span><span class="operator">,</span>
+        <span class="string">BLOCKS</span>    <span class="operator">=&gt;</span> <span class="operator">{</span>
+            <span class="string">header</span> <span class="operator">=&gt;</span> <span class="string">'This is the header'</span><span class="operator">,</span>
+            <span class="string">footer</span> <span class="operator">=&gt;</span> <span class="string">'This is the footer'</span><span class="operator">,</span>
+        <span class="operator">}</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>Similarly, the <code>Template::Context</code> constructor will forward all configuration
+parameters onto other default objects (e.g. <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Provider.html">the Template::Provider manpage</a>,
+<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugins.html">the Template::Plugins manpage</a>, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Filters.html">the Template::Filters manpage</a>, etc.) that it may need to
+instantiate.</p>
+<pre>
+    <span class="variable">$context</span> <span class="operator">=</span> <span class="variable">Template::Context</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">INCLUDE_PATH</span> <span class="operator">=&gt;</span> <span class="string">'/home/abw/templates'</span><span class="operator">,</span> <span class="comment"># provider option</span>
+        <span class="string">TAG_STYLE</span>    <span class="operator">=&gt;</span> <span class="string">'html'</span><span class="operator">,</span>                <span class="comment"># parser option</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>A <code>Template::Context</code> object (or subclass) can be explicitly instantiated and
+passed to the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a> <em>new()</em> constructor method as the
+<code>CONTEXT</code> configuration item.</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">Template::Context</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$context</span>  <span class="operator">=</span> <span class="variable">Template::Context</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> <span class="string">TRIM</span> <span class="operator">=&gt;</span> <span class="number">1</span> <span class="operator">}</span><span class="operator">);</span>
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> <span class="string">CONTEXT</span> <span class="operator">=&gt;</span> <span class="variable">$context</span> <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>The <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a> module uses the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Config.html">the Template::Config manpage</a>
+<a href="../../../Template/Config#context().html">context()</a> factory method to create a default
+context object when required. The <code>$Template::Config::CONTEXT</code> package
+variable may be set to specify an alternate context module. This will be
+loaded automatically and its <em>new()</em> constructor method called by the
+<a href="../../../Template/Config#context().html">context()</a> factory method when a default context
+object is required.</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template</span><span class="operator">;</span>
+    
+    <span class="variable">$Template::Config::CONTEXT</span> <span class="operator">=</span> <span class="string">'MyOrg::Template::Context'</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">EVAL_PERL</span>   <span class="operator">=&gt;</span> <span class="number">1</span><span class="operator">,</span>
+        <span class="string">EXTRA_MAGIC</span> <span class="operator">=&gt;</span> <span class="string">'red hot'</span><span class="operator">,</span>  <span class="comment"># your extra config items</span>
+        <span class="operator">...</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="methods">METHODS</a></h1>
+<p>
+</p>
+<h2><a name="new___params_"><code>new(\%params)</code></a></h2>
+<p>The <code>new()</code> constructor method is called to instantiate a
+<code>Template::Context</code> object. Configuration parameters may be specified as a
+HASH reference or as a list of <code>name =&gt; value</code> pairs.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$context</span> <span class="operator">=</span> <span class="variable">Template::Context</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">INCLUDE_PATH</span> <span class="operator">=&gt;</span> <span class="string">'header'</span><span class="operator">,</span>
+        <span class="string">POST_PROCESS</span> <span class="operator">=&gt;</span> <span class="string">'footer'</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+    
+    <span class="keyword">my</span> <span class="variable">$context</span> <span class="operator">=</span> <span class="variable">Template::Context</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span> <span class="string">EVAL_PERL</span> <span class="operator">=&gt;</span> <span class="number">1</span> <span class="operator">);</span>
+</pre>
+<p>The <code>new()</code> method returns a <code>Template::Context</code> object or <a href="../../../lib/pods/perlfunc.html#undef"><code>undef</code></a> on
+error. In the latter case, a relevant error message can be retrieved by the
+<a href="../../../Template/Base#error().html">error()</a> class method or directly from the
+<code>$Template::Context::ERROR</code> package variable.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$context</span> <span class="operator">=</span> <span class="variable">Template::Context</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(\</span><span class="variable">%config</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">Template::Context</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">();</span>
+    
+    <span class="keyword">my</span> <span class="variable">$context</span> <span class="operator">=</span> <span class="variable">Template::Context</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(\</span><span class="variable">%config</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$Template::Context::ERROR</span><span class="operator">;</span>
+</pre>
+<p>The following configuration items may be specified.  Please see 
+<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Manual/Config.html">the Template::Manual::Config manpage</a> for further details.</p>
+<p>
+</p>
+<h3><a name="variables">VARIABLES</a></h3>
+<p>The <a href="../../../Template/Manual/Config#VARIABLES.html">VARIABLES</a> option can be used to
+specify a hash array of template variables.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$context</span> <span class="operator">=</span> <span class="variable">Template::Context</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">VARIABLES</span> <span class="operator">=&gt;</span> <span class="operator">{</span>
+            <span class="string">title</span>   <span class="operator">=&gt;</span> <span class="string">'A Demo Page'</span><span class="operator">,</span>
+            <span class="string">author</span>  <span class="operator">=&gt;</span> <span class="string">'Joe Random Hacker'</span><span class="operator">,</span>
+            <span class="string">version</span> <span class="operator">=&gt;</span> <span class="number">3.14</span><span class="operator">,</span>
+        <span class="operator">}</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">;</span>
+</pre>
+<p>
+</p>
+<h3><a name="blocks">BLOCKS</a></h3>
+<p>The <a href="../../../Template/Manual/Config#BLOCKS.html">BLOCKS</a> option can be used to pre-define
+a default set of template blocks.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$context</span> <span class="operator">=</span> <span class="variable">Template::Context</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">BLOCKS</span> <span class="operator">=&gt;</span> <span class="operator">{</span>
+            <span class="string">header</span>  <span class="operator">=&gt;</span> <span class="string">'The Header.  [% title %]'</span><span class="operator">,</span>
+            <span class="string">footer</span>  <span class="operator">=&gt;</span> <span class="keyword">sub</span><span class="variable"> </span><span class="operator">{</span> <span class="keyword">return</span> <span class="variable">$some_output_text</span> <span class="operator">},</span>
+            <span class="string">another</span> <span class="operator">=&gt;</span> <span class="variable">Template::Document</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> <span class="operator">...</span> <span class="operator">}</span><span class="operator">),</span>
+        <span class="operator">}</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h3><a name="views">VIEWS</a></h3>
+<p>The <a href="../../../Template/Manual/Config#VIEWS.html">VIEWS</a> option can be used to pre-define 
+one or more <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/View.html">the Template::View manpage</a> objects.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$context</span> <span class="operator">=</span> <span class="variable">Template::Context</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">VIEWS</span> <span class="operator">=&gt;</span> <span class="operator">[</span>
+            <span class="string">bottom</span> <span class="operator">=&gt;</span> <span class="operator">{</span> <span class="string">prefix</span> <span class="operator">=&gt;</span> <span class="string">'bottom/'</span> <span class="operator">}</span><span class="operator">,</span>
+            <span class="string">middle</span> <span class="operator">=&gt;</span> <span class="operator">{</span> <span class="string">prefix</span> <span class="operator">=&gt;</span> <span class="string">'middle/'</span><span class="operator">,</span> <span class="string">base</span> <span class="operator">=&gt;</span> <span class="string">'bottom'</span> <span class="operator">}</span><span class="operator">,</span>
+            <span class="string">top</span>    <span class="operator">=&gt;</span> <span class="operator">{</span> <span class="string">prefix</span> <span class="operator">=&gt;</span> <span class="string">'top/'</span><span class="operator">,</span>    <span class="string">base</span> <span class="operator">=&gt;</span> <span class="string">'middle'</span> <span class="operator">}</span><span class="operator">,</span>
+        <span class="operator">]</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h3><a name="trim">TRIM</a></h3>
+<p>The <a href="../../../Template/Manual/Config#TRIM.html">TRIM</a> option can be set to have any
+leading and trailing whitespace automatically removed from the output of all
+template files and <code>BLOCK</code>s.</p>
+<p>example:</p>
+<pre>
+    [% BLOCK foo %]
+    
+    Line 1 of foo
+    
+    [% END %]
+    
+    before 
+    [% INCLUDE foo %]
+    after</pre>
+<p>output:</p>
+<pre>
+    before
+    Line 1 of foo
+    after</pre>
+<p>
+</p>
+<h3><a name="eval_perl">EVAL_PERL</a></h3>
+<p>The <a href="../../../Template/Manual/Config#EVAL_PERL.html">EVAL_PERL</a> is used to indicate if
+<code>PERL</code> and/or <code>RAWPERL</code> blocks should be evaluated. It is disabled by
+default.</p>
+<p>
+</p>
+<h3><a name="recursion">RECURSION</a></h3>
+<p>The <a href="../../../Template/Manual/Config#RECURSION.html">RECURSION</a> can be set to 
+allow templates to recursively process themselves, either directly
+(e.g. template <code>foo</code> calls <code>INCLUDE foo</code>) or indirectly (e.g. 
+<code>foo</code> calls <code>INCLUDE bar</code> which calls <code>INCLUDE foo</code>).</p>
+<p>
+</p>
+<h3><a name="load_templates">LOAD_TEMPLATES</a></h3>
+<p>The <a href="../../../Template/Manual/Config#LOAD_TEMPLATES.html">LOAD_TEMPLATES</a> option can be
+used to provide a reference to a list of <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Provider.html">the Template::Provider manpage</a> objects or
+sub-classes thereof which will take responsibility for loading and compiling
+templates.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$context</span> <span class="operator">=</span> <span class="variable">Template::Context</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">LOAD_TEMPLATES</span> <span class="operator">=&gt;</span> <span class="operator">[</span>
+            <span class="variable">MyOrg::Template::Provider</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> <span class="operator">...</span> <span class="operator">}</span><span class="operator">),</span>
+            <span class="variable">Template::Provider</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> <span class="operator">...</span> <span class="operator">}</span><span class="operator">),</span>
+        <span class="operator">]</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h3><a name="load_plugins">LOAD_PLUGINS</a></h3>
+<p>The <a href="../../../Template/Manual/Config#LOAD_PLUGINS.html">LOAD_PLUGINS</a> options can be used
+to specify a list of provider objects responsible for loading and
+instantiating template plugin objects.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$context</span> <span class="operator">=</span> <span class="variable">Template::Context</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">LOAD_PLUGINS</span> <span class="operator">=&gt;</span> <span class="operator">[</span>
+            <span class="variable">MyOrg::Template::Plugins</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> <span class="operator">...</span> <span class="operator">}</span><span class="operator">),</span>
+            <span class="variable">Template::Plugins</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> <span class="operator">...</span> <span class="operator">}</span><span class="operator">),</span>
+        <span class="operator">]</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h3><a name="load_filters">LOAD_FILTERS</a></h3>
+<p>The <a href="../../../Template/Manual/Config#LOAD_FILTERS.html">LOAD_FILTERS</a> option can be used
+to specify a list of provider objects for returning and/or creating filter
+subroutines.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$context</span> <span class="operator">=</span> <span class="variable">Template::Context</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">LOAD_FILTERS</span> <span class="operator">=&gt;</span> <span class="operator">[</span>
+            <span class="variable">MyTemplate::Filters</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(),</span>
+            <span class="variable">Template::Filters</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(),</span>
+        <span class="operator">]</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h3><a name="stash">STASH</a></h3>
+<p>The <a href="../../../Template/Manual/Config#STASH.html">STASH</a> option can be used to 
+specify a <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Stash.html">the Template::Stash manpage</a> object or sub-class which will take
+responsibility for managing template variables.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$stash</span> <span class="operator">=</span> <span class="variable">MyOrg::Template::Stash</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> <span class="operator">...</span> <span class="operator">}</span><span class="operator">);</span>
+    <span class="keyword">my</span> <span class="variable">$context</span> <span class="operator">=</span> <span class="variable">Template::Context</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">STASH</span> <span class="operator">=&gt;</span> <span class="variable">$stash</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h3><a name="debug">DEBUG</a></h3>
+<p>The <a href="../../../Template/Manual/Config#DEBUG.html">DEBUG</a> option can be used to enable
+various debugging features of the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a> module.</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template::Constants</span> <span class="string">qw( :debug )</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">DEBUG</span> <span class="operator">=&gt;</span> <span class="variable">DEBUG_CONTEXT</span> <span class="operator">|</span> <span class="variable">DEBUG_DIRS</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="template__name_"><code>template($name)</code></a></h2>
+<p>Returns a compiled template by querying each of the <em>LOAD_TEMPLATES</em> providers
+(instances of <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Provider.html">the Template::Provider manpage</a>, or sub-class) in turn.</p>
+<pre>
+    <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">template</span><span class="operator">(</span><span class="string">'header'</span><span class="operator">);</span>
+</pre>
+<p>On error, a <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Exception.html">the Template::Exception manpage</a> object of type '<code>file</code>' is thrown via
+<a href="../../../lib/pods/perlfunc.html#die"><code>die()</code></a>.  This can be caught by enclosing the call to <code>template()</code> in an
+<a href="../../../lib/pods/perlfunc.html#eval"><code>eval</code></a> block and examining <a href="../../../lib/pods/perlvar.html#__"><code>$@</code></a>.</p>
+<pre>
+    <span class="keyword">eval</span> <span class="operator">{</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">template</span><span class="operator">(</span><span class="string">'header'</span><span class="operator">)</span> <span class="operator">};</span>
+    <span class="keyword">if</span> <span class="operator">(</span><span class="variable">$@</span><span class="operator">)</span> <span class="operator">{</span>
+        <span class="keyword">print</span> <span class="string">"failed to fetch template: $@\n"</span><span class="operator">;</span>
+    <span class="operator">}</span>
+</pre>
+<p>
+</p>
+<h2><a name="plugin__name____args_">plugin($name, \@args)</a></h2>
+<p>Instantiates a plugin object by querying each of the <em>LOAD_PLUGINS</em>
+providers. The default <em>LOAD_PLUGINS</em> provider is a <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugins.html">the Template::Plugins manpage</a>
+object which attempts to load plugin modules, according the various
+configuration items such as <a href="../../../Template/Plugins#PLUGIN_BASE.html">PLUGIN_BASE</a>,
+<a href="../../../Template/Plugins#LOAD_PERL.html">LOAD_PERL</a>, etc., and then instantiate an object
+via <a href="../../../Template/Plugin#new().html">new()</a>. A reference to a list of constructor
+arguments may be passed as the second parameter. These are forwarded to the
+plugin constructor.</p>
+<p>Returns a reference to a plugin (which is generally an object, but
+doesn't have to be).  Errors are thrown as <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Exception.html">the Template::Exception manpage</a> objects
+with the type set to '<code>plugin</code>'.</p>
+<pre>
+    <span class="variable">$plugin</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">plugin</span><span class="operator">(</span><span class="string">'DBI'</span><span class="operator">,</span> <span class="string">'dbi:msql:mydbname'</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="filter__name____args___alias_">filter($name, \@args, $alias)</a></h2>
+<p>Instantiates a filter subroutine by querying the <em>LOAD_FILTERS</em> providers.
+The default <em>LOAD_FILTERS</em> provider is a <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Filters.html">the Template::Filters manpage</a> object.</p>
+<p>Additional arguments may be passed by list reference along with an optional
+alias under which the filter will be cached for subsequent use. The filter is
+cached under its own <code>$name</code> if <code>$alias</code> is undefined. Subsequent calls to
+<code>filter($name)</code> will return the cached entry, if defined. Specifying arguments
+bypasses the caching mechanism and always creates a new filter. Errors are
+thrown as <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Exception.html">the Template::Exception manpage</a> objects with the type set to '<code>filter</code>'.</p>
+<pre>
+    <span class="comment"># static filter (no args)</span>
+    <span class="variable">$filter</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">filter</span><span class="operator">(</span><span class="string">'html'</span><span class="operator">);</span>
+    
+    <span class="comment"># dynamic filter (args) aliased to 'padright'</span>
+    <span class="variable">$filter</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">filter</span><span class="operator">(</span><span class="string">'format'</span><span class="operator">,</span> <span class="string">'%60s'</span><span class="operator">,</span> <span class="string">'padright'</span><span class="operator">);</span>
+    
+    <span class="comment"># retrieve previous filter via 'padright' alias</span>
+    <span class="variable">$filter</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">filter</span><span class="operator">(</span><span class="string">'padright'</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="process__template____vars_">process($template, \%vars)</a></h2>
+<p>Processes a template named or referenced by the first parameter and returns
+the output generated.  An optional reference to a hash array may be passed
+as the second parameter, containing variable definitions which will be set
+before the template is processed.  The template is processed in the current
+context, with no localisation of variables performed.   Errors are thrown
+as <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Exception.html">the Template::Exception manpage</a> objects via <a href="../../../lib/pods/perlfunc.html#die"><code>die()</code></a>.</p>
+<pre>
+    <span class="variable">$output</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="string">'header'</span><span class="operator">,</span> <span class="operator">{</span> <span class="string">title</span> <span class="operator">=&gt;</span> <span class="string">'Hello World'</span> <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="include__template____vars_">include($template, \%vars)</a></h2>
+<p>Similar to <em>process()</em>, but using localised variables.  Changes made to
+any variables will only persist until the <code>include()</code> method completes.</p>
+<pre>
+    <span class="variable">$output</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">include</span><span class="operator">(</span><span class="string">'header'</span><span class="operator">,</span> <span class="operator">{</span> <span class="string">title</span> <span class="operator">=&gt;</span> <span class="string">'Hello World'</span> <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="insert__template_"><code>insert($template)</code></a></h2>
+<p>This method returns the source content of a template file without performing
+any evaluation.  It is used to implement the <code>INSERT</code> directive.</p>
+<p>
+</p>
+<h2><a name="throw__error_type___error_message____output_">throw($error_type, $error_message, \$output)</a></h2>
+<p>Raises an exception in the form of a <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Exception.html">the Template::Exception manpage</a> object by calling
+<a href="../../../lib/pods/perlfunc.html#die"><code>die()</code></a>. This method may be passed a reference to an existing
+<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Exception.html">the Template::Exception manpage</a> object; a single value containing an error message
+which is used to instantiate a <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Exception.html">the Template::Exception manpage</a> of type '<a href="../../../lib/pods/perlfunc.html#undef"><code>undef</code></a>'; or a
+pair of values representing the exception <code>type</code> and <code>info</code> from which a
+<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Exception.html">the Template::Exception manpage</a> object is instantiated. e.g.</p>
+<pre>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">throw</span><span class="operator">(</span><span class="variable">$exception</span><span class="operator">);</span>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">throw</span><span class="operator">(</span><span class="string">"I'm sorry Dave, I can't do that"</span><span class="operator">);</span>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">throw</span><span class="operator">(</span><span class="string">'denied'</span><span class="operator">,</span> <span class="string">"I'm sorry Dave, I can't do that"</span><span class="operator">);</span>
+</pre>
+<p>The optional third parameter may be a reference to the current output
+buffer.  This is then stored in the exception object when created,
+allowing the catcher to examine and use the output up to the point at
+which the exception was raised.</p>
+<pre>
+    <span class="variable">$output</span> <span class="operator">.=</span> <span class="string">'blah blah blah'</span><span class="operator">;</span>
+    <span class="variable">$output</span> <span class="operator">.=</span> <span class="string">'more rhubarb'</span><span class="operator">;</span>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">throw</span><span class="operator">(</span><span class="string">'yack'</span><span class="operator">,</span> <span class="string">'Too much yacking'</span><span class="operator">,</span> <span class="operator">\</span><span class="variable">$output</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="catch__exception____output_">catch($exception, \$output)</a></h2>
+<p>Catches an exception thrown, either as a reference to a <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Exception.html">the Template::Exception manpage</a>
+object or some other value. In the latter case, the error string is promoted
+to a <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Exception.html">the Template::Exception manpage</a> object of '<a href="../../../lib/pods/perlfunc.html#undef"><code>undef</code></a>' type. This method also
+accepts a reference to the current output buffer which is passed to the
+<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Exception.html">the Template::Exception manpage</a> constructor, or is appended to the output buffer stored
+in an existing <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Exception.html">the Template::Exception manpage</a> object, if unique (i.e. not the same
+reference). By this process, the correct state of the output buffer can be
+reconstructed for simple or nested throws.</p>
+<p>
+</p>
+<h2><a name="define_block__name___block_">define_block($name, $block)</a></h2>
+<p>Adds a new block definition to the internal <em>BLOCKS</em> cache.  The first 
+argument should contain the name of the block and the second a reference
+to a <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Document.html">the Template::Document manpage</a> object or template sub-routine, or template text
+which is automatically compiled into a template sub-routine.</p>
+<p>Returns a true value (the sub-routine or <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Document.html">the Template::Document manpage</a> reference) on
+success or undef on failure. The relevant error message can be retrieved by
+calling the <a href="../../../Template/Base#error().html">error()</a> method.</p>
+<p>
+</p>
+<h2><a name="define_filter__name____filter___is_dynamic_">define_filter($name, \&amp;filter, $is_dynamic)</a></h2>
+<p>Adds a new filter definition by calling the
+<a href="../../../Template/Filters#store().html">store()</a> method on each of the <em>LOAD_FILTERS</em>
+providers until accepted (in the usual case, this is accepted straight away by
+the one and only <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Filters.html">the Template::Filters manpage</a> provider). The first argument should
+contain the name of the filter and the second a reference to a filter
+subroutine. The optional third argument can be set to any true value to
+indicate that the subroutine is a dynamic filter factory.</p>
+<p>Returns a true value or throws a '<code>filter</code>' exception on error.</p>
+<p>
+</p>
+<h2><a name="define_vmethod__type___name___code_">define_vmethod($type, $name, $code)</a></h2>
+<p>This method is a wrapper around the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Stash.html">the Template::Stash manpage</a> 
+<a href="../../../Template/Stash#define_vmethod().html">define_vmethod()</a> method.  It can be used
+to define new virtual methods.</p>
+<pre>
+    <span class="comment"># define a new scalar (item) virtual method</span>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">define_vmethod</span><span class="operator">(</span>
+        <span class="string">item</span> <span class="operator">=&gt;</span> <span class="string">ucfirst</span> <span class="operator">=&gt;</span> <span class="keyword">sub</span><span class="variable"> </span><span class="operator">{</span>
+            <span class="keyword">my</span> <span class="variable">$text</span> <span class="operator">=</span> <span class="keyword">shift</span><span class="operator">;</span>
+            <span class="keyword">return</span> <span class="keyword">ucfirst</span> <span class="variable">$text</span><span class="operator">;</span>
+        <span class="operator">}</span>
+    <span class="operator">)</span>
+</pre>
+<p>
+</p>
+<h2><a name="define_view__name____params_">define_view($name, \%params)</a></h2>
+<p>This method allows you to define a named <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/View.html">view</a>.</p>
+<pre>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">define_view</span><span class="operator">(</span> 
+        <span class="string">my_view</span> <span class="operator">=&gt;</span> <span class="operator">{</span> 
+            <span class="string">prefix</span> <span class="operator">=&gt;</span> <span class="string">'my_templates/'</span> 
+        <span class="operator">}</span> 
+    <span class="operator">);</span>
+</pre>
+<p>The view is then accessible as a template variable.</p>
+<pre>
+    [% my_view.print(some_data) %]</pre>
+<p>
+</p>
+<h2><a name="define_views__views_"><code>define_views($views)</code></a></h2>
+<p>This method allows you to define multiple named <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/View.html">views</a>.
+A reference to a hash array or list reference should be passed as an argument.</p>
+<pre>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">define_view</span><span class="operator">(</span><span class="operator">{</span>     <span class="comment"># hash reference</span>
+        <span class="string">my_view_one</span> <span class="operator">=&gt;</span> <span class="operator">{</span> 
+            <span class="string">prefix</span> <span class="operator">=&gt;</span> <span class="string">'my_templates_one/'</span> 
+        <span class="operator">}</span><span class="operator">,</span>
+        <span class="string">my_view_two</span> <span class="operator">=&gt;</span> <span class="operator">{</span> 
+            <span class="string">prefix</span> <span class="operator">=&gt;</span> <span class="string">'my_templates_two/'</span> 
+        <span class="operator">}</span> 
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>If you're defining multiple views of which one or more are based on other 
+views in the same definition then you should pass them as a list reference.
+This ensures that they get created in the right order (Perl does not preserve
+the order of items defined in a hash reference so you can't guarantee that
+your base class view will be defined before your subclass view).</p>
+<pre>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">define_view</span><span class="operator">(</span><span class="operator">[</span>     <span class="comment"># list referenence</span>
+        <span class="string">my_view_one</span> <span class="operator">=&gt;</span> <span class="operator">{</span>
+            <span class="string">prefix</span> <span class="operator">=&gt;</span> <span class="string">'my_templates_one/'</span> 
+        <span class="operator">}</span><span class="operator">,</span>
+        <span class="string">my_view_two</span> <span class="operator">=&gt;</span> <span class="operator">{</span> 
+            <span class="string">prefix</span> <span class="operator">=&gt;</span> <span class="string">'my_templates_two/'</span> <span class="operator">,</span>
+            <span class="string">base</span>   <span class="operator">=&gt;</span> <span class="string">'my_view_one'</span><span class="operator">,</span>
+        <span class="operator">}</span> 
+    <span class="operator">]</span><span class="operator">);</span>
+</pre>
+<p>The views are then accessible as template variables.</p>
+<pre>
+    [% my_view_one.print(some_data) %]
+    [% my_view_two.print(some_data) %]</pre>
+<p>See also the <em>VIEWS</em> option.</p>
+<p>
+</p>
+<h2><a name="stash__"><code>stash()</code></a></h2>
+<p>This method returns the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Stash.html">the Template::Stash manpage</a> object used internally to manage
+template variables.</p>
+<p>
+</p>
+<h2><a name="localise___vars_"><code>localise(\%vars)</code></a></h2>
+<p>Clones the stash to create a context with localised variables.  Returns a 
+reference to the newly cloned stash object which is also stored
+internally.</p>
+<pre>
+    <span class="variable">$stash</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">localise</span><span class="operator">();</span>
+</pre>
+<p>
+</p>
+<h2><a name="delocalise__"><code>delocalise()</code></a></h2>
+<p>Restore the stash to its state prior to localisation.</p>
+<pre>
+    <span class="variable">$stash</span> <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">delocalise</span><span class="operator">();</span>
+</pre>
+<p>
+</p>
+<h2><a name="visit___blocks_"><code>visit(\%blocks)</code></a></h2>
+<p>This method is called by <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Document.html">the Template::Document manpage</a> objects immediately before
+they process their content.  It is called to register any local <code>BLOCK</code>
+definitions with the context object so that they may be subsequently
+delivered on request.</p>
+<p>
+</p>
+<h2><a name="leave__"><code>leave()</code></a></h2>
+<p>Compliment to the <em>visit()</em> method. Called by <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Document.html">the Template::Document manpage</a> objects
+immediately after they process their content.</p>
+<p>
+</p>
+<h2><a name="view__"><code>view()</code></a></h2>
+<p>This method creates a <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/View.html">the Template::View manpage</a> object bound to the context.</p>
+<p>
+</p>
+<h2><a name="reset__"><a href="../../../lib/pods/perlfunc.html#reset"><code>reset()</code></a></a></h2>
+<p>Clears the local <em>BLOCKS</em> cache of any <code>BLOCK</code> definitions.  Any initial set of
+<em>BLOCKS</em> specified as a configuration item to the constructor will be reinstated.</p>
+<p>
+</p>
+<h2><a name="debugging__flag___args_">debugging($flag, @args)</a></h2>
+<p>This method is used to control debugging output.  It is used to implement
+the <a href="../../../Template/Manual/Directives#DEBUG.html">DEBUG</a> directive.</p>
+<p>The first argument can be <code>on</code> or <code>off</code> to enable or disable debugging
+respectively.  The numerical values <code>0</code> and <code>1</code> can also be used if you
+prefer.</p>
+<pre>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">debugging</span><span class="operator">(</span><span class="string">'on'</span><span class="operator">);</span>
+</pre>
+<p>Alternately, the first argument can be <a href="../../../lib/pods/perlfunc.html#format"><code>format</code></a> to define a new debug message
+format.  The second argument should be the format string which can contain
+any of the <code>$file</code>, <code>$line</code> or <code>$text</code> symbols to indicate where the 
+relevant values should be inserted.</p>
+<pre>
+    <span class="comment"># note single quotes to prevent interpolated of variables</span>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">debugging</span><span class="operator">(</span> <span class="string">format</span> <span class="operator">=&gt;</span> <span class="string">'## $file line $line: $text'</span> <span class="operator">);</span>
+</pre>
+<p>The final use of this method is to generate debugging messages themselves.
+The first argument should be <code>msg</code>, followed by a reference to a hash array
+of value to insert into the debugging format string.</p>
+<pre>
+    <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">debugging</span><span class="operator">(</span> 
+        <span class="string">msg</span> <span class="operator">=&gt;</span> <span class="operator">{</span>
+            <span class="string">line</span> <span class="operator">=&gt;</span> <span class="number">20</span><span class="operator">,</span>
+            <span class="string">file</span> <span class="operator">=&gt;</span> <span class="string">'example.tt'</span><span class="operator">,</span>
+            <span class="string">text</span> <span class="operator">=&gt;</span> <span class="string">'Trampoline! Trampoline!'</span><span class="operator">,</span>
+        <span class="operator">}</span>
+    <span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="autoload">AUTOLOAD</a></h2>
+<p>An <code>AUTOLOAD</code> method provides access to context configuration items.</p>
+<pre>
+    <span class="variable">$stash</span>     <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">stash</span><span class="operator">();</span>
+    <span class="variable">$tflag</span>     <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">trim</span><span class="operator">();</span>
+    <span class="variable">$epflag</span>    <span class="operator">=</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">eval_perl</span><span class="operator">();</span>
+    <span class="operator">...</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2012 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a>, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Document.html">the Template::Document manpage</a>, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Exception.html">the Template::Exception manpage</a>,
+<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Filters.html">the Template::Filters manpage</a>, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugins.html">the Template::Plugins manpage</a>, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Provider.html">the Template::Provider manpage</a>,
+<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Service.html">the Template::Service manpage</a>, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Stash.html">the Template::Stash manpage</a></p>
+
+</body>
+
+</html>

@@ -1,0 +1,310 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>No::Worries::Proc - process handling without worries</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>No::Worries::Proc - process handling without worries</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#functions">FUNCTIONS</a></li>
+	<li><a href="#process_structure">PROCESS STRUCTURE</a></li>
+	<li><a href="#file_descriptor_redirection">FILE DESCRIPTOR REDIRECTION</a></li>
+	<li><a href="#kill_specification">KILL SPECIFICATION</a></li>
+	<li><a href="#global_variables">GLOBAL VARIABLES</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>No::Worries::Proc - process handling without worries</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+  <span class="keyword">use</span> <span class="variable">No::Worries::Proc</span> <span class="string">qw(proc_run proc_create proc_monitor proc_detach)</span><span class="operator">;</span>
+</pre>
+<pre>
+  <span class="comment"># simple interface to execute a command</span>
+  <span class="variable">$status</span> <span class="operator">=</span> <span class="variable">proc_run</span><span class="operator">(</span><span class="string">command</span> <span class="operator">=&gt;</span> <span class="operator">[</span> <span class="string">"foo"</span><span class="operator">,</span> <span class="string">"-x"</span><span class="operator">,</span> <span class="number">7</span> <span class="operator">]</span><span class="operator">);</span>
+  <span class="keyword">printf</span><span class="operator">(</span><span class="string">"foo exited with %d\n"</span><span class="operator">,</span> <span class="variable">$status</span><span class="operator">);</span>
+</pre>
+<pre>
+  <span class="comment"># idem but with output redirection and more information</span>
+  <span class="variable">%proc</span> <span class="operator">=</span> <span class="variable">proc_run</span><span class="operator">(</span><span class="string">command</span> <span class="operator">=&gt;</span> <span class="operator">[</span> <span class="string">qw(uname -a)</span> <span class="operator">]</span><span class="operator">,</span> <span class="string">stdout</span> <span class="operator">=&gt;</span> <span class="operator">\</span><span class="variable">$output</span><span class="operator">);</span>
+  <span class="keyword">printf</span><span class="operator">(</span><span class="string">"process %d output is %s\n"</span><span class="operator">,</span> <span class="variable">$proc</span><span class="operator">-&gt;</span><span class="operator">{</span><span class="string">pid</span><span class="operator">}</span><span class="operator">,</span> <span class="variable">$output</span><span class="operator">);</span>
+</pre>
+<pre>
+  <span class="comment"># start two process and wait for them to finish</span>
+  <span class="variable">$p1</span> <span class="operator">=</span> <span class="variable">proc_create</span><span class="operator">(</span>
+      <span class="string">command</span> <span class="operator">=&gt;</span> <span class="operator">\</span><span class="variable">@cmd1</span><span class="operator">,</span>
+      <span class="string">timeout</span> <span class="operator">=&gt;</span> <span class="number">5</span><span class="operator">,</span>           <span class="comment"># to be killed if still running after 5s</span>
+      <span class="string">stderr</span>  <span class="operator">=&gt;</span> <span class="string">"/dev/null"</span><span class="operator">,</span> <span class="comment"># discard stderr</span>
+  <span class="operator">);</span>
+  <span class="variable">$p2</span> <span class="operator">=</span> <span class="variable">proc_create</span><span class="operator">(</span>
+      <span class="string">command</span> <span class="operator">=&gt;</span> <span class="operator">\</span><span class="variable">@cmd2</span><span class="operator">,</span>
+      <span class="string">stdout</span>  <span class="operator">=&gt;</span> <span class="operator">\</span><span class="variable">$output</span><span class="operator">,</span>    <span class="comment"># get stdout+stderr in $output</span>
+      <span class="string">stderr</span>  <span class="operator">=&gt;</span> <span class="string">""</span><span class="operator">,</span>          <span class="comment"># merge stderr with stdout</span>
+  <span class="operator">);</span>
+  <span class="variable">proc_monitor</span><span class="operator">(</span><span class="operator">[</span> <span class="variable">$p1</span><span class="operator">,</span> <span class="variable">$p2</span> <span class="operator">]</span><span class="operator">,</span> <span class="string">timeout</span> <span class="operator">=&gt;</span> <span class="number">10</span><span class="operator">);</span>
+  <span class="keyword">printf</span><span class="operator">(</span><span class="string">"%d finished\n"</span><span class="operator">,</span> <span class="variable">$p1</span><span class="operator">-&gt;</span><span class="operator">{</span><span class="string">pid</span><span class="operator">}</span><span class="operator">)</span> <span class="keyword">if</span> <span class="variable">$p1</span><span class="operator">-&gt;</span><span class="operator">{</span><span class="string">stop</span><span class="operator">}</span><span class="operator">;</span>
+  <span class="keyword">printf</span><span class="operator">(</span><span class="string">"%d finished\n"</span><span class="operator">,</span> <span class="variable">$p2</span><span class="operator">-&gt;</span><span class="operator">{</span><span class="string">pid</span><span class="operator">}</span><span class="operator">)</span> <span class="keyword">if</span> <span class="variable">$p2</span><span class="operator">-&gt;</span><span class="operator">{</span><span class="string">stop</span><span class="operator">}</span><span class="operator">;</span>
+</pre>
+<pre>
+  <span class="comment"># detach ourself to run as a daemon</span>
+  <span class="variable">proc_detach</span><span class="operator">(</span><span class="string">callback</span> <span class="operator">=&gt;</span> <span class="keyword">sub</span><span class="variable"> </span><span class="operator">{</span> <span class="keyword">print</span><span class="operator">(</span><span class="string">"started with pid </span><span class="variable">$_</span><span class="string">[0]\n"</span><span class="operator">)});</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This module eases process handling by providing high level functions
+to start, monitor and stop processes. All the functions <a href="../../../../lib/pods/perlfunc.html#die"><code>die()</code></a> on error.</p>
+<p>It also provides the $No::Worries::Proc::Transient variable that
+indicates, after a <a href="../../../../lib/pods/perlfunc.html#fork"><code>fork()</code></a>, which process is transient and is about to
+<a href="../../../../lib/pods/perlfunc.html#exec"><code>exec()</code></a> or <a href="../../../../lib/pods/perlfunc.html#exit"><code>exit()</code></a>.  This is useful for instance in an END block:</p>
+<pre>
+  <span class="keyword">END</span> <span class="operator">{</span>
+      <span class="comment"># remove our pid file unless we are transient</span>
+      <span class="variable">pf_unset</span><span class="operator">(</span><span class="variable">$pidfile</span><span class="operator">)</span> <span class="keyword">unless</span> <span class="variable">$No::Worries::Proc::Transient</span><span class="operator">;</span>
+  <span class="operator">}</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="functions">FUNCTIONS</a></h1>
+<p>This module provides the following functions (none of them being
+exported by default):</p>
+<dl>
+<dt><strong><a name="proc_output" class="item">proc_output(COMMAND...)</a></strong></dt>
+
+<dd>
+<p>execute the given command, capture its output (stdout only), check its
+exit code (report an error if it is not zero) and return the captured
+output; this is similar to Perl's <code>qx()</code> operator but bypassing the
+shell and always checking the exit code</p>
+</dd>
+<dt><strong><a name="proc_create" class="item">proc_create(OPTIONS)</a></strong></dt>
+
+<dd>
+<p>create a new process that will execute the given command and return a
+hash reference representing this process (see the <a href="#process_structure">PROCESS STRUCTURE</a> sections for more information), to be given to
+<a href="#proc_monitor"><code>proc_monitor()</code></a> or <a href="#proc_terminate"><code>proc_terminate()</code></a> afterwards; supported options:</p>
+<ul>
+<li><strong><a name="command_the_command_to_execute_it_must_be_an_array_reference" class="item"><code>command</code>: the command to execute, it must be an array reference</a></strong>
+
+</li>
+<li><strong><a name="cwd_the_current_working_directory_of_the_new_process" class="item"><code>cwd</code>: the current working directory of the new process</a></strong>
+
+</li>
+<li><strong><a name="run" class="item"><code>timeout</code>: the maximum number of seconds that the process is
+allowed to take to run (can be fractional); after this, it may be
+killed by <a href="#proc_monitor"><code>proc_monitor()</code></a></a></strong>
+
+</li>
+<li><strong><a name="kill_how_to_gently_kill_the_process_see_below" class="item"><a href="../../../../lib/pods/perlfunc.html#kill"><code>kill</code></a>: how to &quot;gently&quot; kill the process, see below</a></strong>
+
+</li>
+<li><strong><a name="stdin_what_to_do_with_stdin_see_below" class="item"><code>stdin</code>: what to do with stdin, see below</a></strong>
+
+</li>
+<li><strong><a name="stdout_what_to_do_with_stdout_see_below" class="item"><code>stdout</code>: what to do with stdout, see below</a></strong>
+
+</li>
+<li><strong><a name="stderr_what_to_do_with_stderr_see_below" class="item"><code>stderr</code>: what to do with stderr, see below</a></strong>
+
+</li>
+</ul>
+</dd>
+<dt><strong><a name="proc_terminate" class="item">proc_terminate(PROC[, OPTIONS])</a></strong></dt>
+
+<dd>
+<p>terminate the given process (PROC can be either a process structure or
+simply a process id) by sending signals and waiting for the process to
+finish; supported options:</p>
+<ul>
+<li><strong><a name="kill_how_to_gently_kill_the_process_see_below2" class="item"><a href="../../../../lib/pods/perlfunc.html#kill"><code>kill</code></a>: how to &quot;gently&quot; kill the process, see below</a></strong>
+
+</li>
+</ul>
+</dd>
+<dt><strong><a name="proc_monitor" class="item">proc_monitor(PROCS[, OPTIONS])</a></strong></dt>
+
+<dd>
+<p>monitor the given process(es) (as created by proc_create()); PROCS can
+be either a single process or a reference to a list of processes;
+supported options:</p>
+<ul>
+<li><strong><code>timeout</code>: the maximum number of seconds that <code>proc_monitor()</code>
+should take, can be fractional</strong>
+
+</li>
+<li><strong><a name="operations" class="item"><code>bufsize</code>: the buffer size to use for I/O operations (default: 8192)</a></strong>
+
+</li>
+<li><strong><code>deaths</code>: the minimum number of process deaths that
+<code>proc_monitor()</code> will wait for before returning</strong>
+
+</li>
+</ul>
+</dd>
+<dt><strong><a name="proc_run" class="item">proc_run(OPTIONS)</a></strong></dt>
+
+<dd>
+<p>execute the given process (i.e. create and monitor it until
+termination) and return its status (i.e. $?) in scalar context or the
+whole process structure in list context; supported options: the ones
+of <a href="#proc_create"><code>proc_create()</code></a></p>
+</dd>
+<dt><strong><a name="proc_detach" class="item">proc_detach([OPTIONS])</a></strong></dt>
+
+<dd>
+<p>detach the current process so that it becomes a daemon running in the
+background (this implies forking and re-opening std*); supported
+options:</p>
+<ul>
+<li><strong><a name="callback_code_reference_that_will_be_executed_by_the_parent_process_just_before_exiting_and_will_be_given_the_child_pid" class="item"><code>callback</code>: code reference that will be executed by the
+parent process just before exiting and will be given the child pid</a></strong>
+
+</li>
+</ul>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="process_structure">PROCESS STRUCTURE</a></h1>
+<p>The process structure (hash) used in this module has the following
+fields:</p>
+<ul>
+<li><strong><a name="command_the_command_being_executed_as_an_array_reference" class="item"><code>command</code>: the command being executed, as an array reference</a></strong>
+
+</li>
+<li><strong><a name="pid_the_process_id" class="item"><code>pid</code>: the process id</a></strong>
+
+</li>
+<li><strong><a name="start_the_start_time_in_fractional_seconds" class="item"><code>start</code>: the start time, in fractional seconds</a></strong>
+
+</li>
+<li><strong><a name="stop_the_stop_time_in_fractional_seconds" class="item"><code>stop</code>: the stop time, in fractional seconds</a></strong>
+
+</li>
+<li><strong><a name="status" class="item"><code>status</code>: the status (i.e. $?)</a></strong>
+
+</li>
+<li><strong><a name="timeout_true_if_the_process_has_been_killed_because_of_timeout" class="item"><code>timeout</code>: true if the process has been killed because of timeout</a></strong>
+
+</li>
+</ul>
+<p>
+</p>
+<hr />
+<h1><a name="file_descriptor_redirection">FILE DESCRIPTOR REDIRECTION</a></h1>
+<p>When using the <code>stdin</code> option of <a href="#proc_create"><code>proc_create()</code></a>, the value can be:</p>
+<ul>
+<li><strong><a name="a_string_input_will_be_read_from_the_given_file_name" class="item">a string: input will be read from the given file name</a></strong>
+
+</li>
+<li><strong><a name="a_scalar_reference_input_will_be_the_scalar_itself" class="item">a scalar reference: input will be the scalar itself</a></strong>
+
+</li>
+</ul>
+<p>When using the <code>stdout</code> and <code>stderr</code> options of <a href="#proc_create"><code>proc_create()</code></a>, the
+value can be:</p>
+<ul>
+<li><strong><a name="a_string_output_will_be_written_to_the_given_file_name" class="item">a string: output will be written to the given file name</a></strong>
+
+</li>
+<li><strong><a name="a_scalar_reference_output_will_be_stored_in_the_scalar" class="item">a scalar reference: output will be stored in the scalar</a></strong>
+
+</li>
+<li><strong><a name="a_code_reference_each_time_new_output_is_available_the_code_will_be_called_with_two_parameters_the_process_structure_and_the_new_output" class="item">a code reference: each time new output is available, the code
+will be called with two parameters: the process structure and the new
+output</a></strong>
+
+</li>
+</ul>
+<p>In addition, <code>stderr</code> can also be given an empty string that means
+that stderr should be merged with stdout.</p>
+<p>
+</p>
+<hr />
+<h1><a name="kill_specification">KILL SPECIFICATION</a></h1>
+<p>Both <a href="#proc_create"><code>proc_create()</code></a> and <a href="#proc_terminate"><code>proc_terminate()</code></a> can be given a <a href="../../../../lib/pods/perlfunc.html#kill"><code>kill</code></a> option
+that specifies how the process should be killed.</p>
+<p>The specification is a string containing a space separated list of
+<em>signal</em>/<em>grace</em> couples, meaning: send the given signal and wait a
+bit for the process to finish.</p>
+<p>If not specified, the default is <code>TERM/1 INT/1 QUIT/1</code>, meaning:</p>
+<ul>
+<li><strong><a name="send_sigterm_and_wait_up_to_1_second_for_the_process_to_finish" class="item">send SIGTERM and wait up to 1 second for the process to finish</a></strong>
+
+</li>
+<li><strong><a name="if_the_process_is_still_alive_send_sigint_and_wait_up_to_1_second" class="item">if the process is still alive, send SIGINT and wait up to 1 second</a></strong>
+
+</li>
+<li><strong><a name="if_the_process_is_still_alive_send_sigquit_and_wait_up_to_1_second" class="item">if the process is still alive, send SIGQUIT and wait up to 1 second</a></strong>
+
+</li>
+<li><strong><a name="sigkill" class="item">if the process is still alive, send SIGKILL (implicit)</a></strong>
+
+</li>
+</ul>
+<p>
+</p>
+<hr />
+<h1><a name="global_variables">GLOBAL VARIABLES</a></h1>
+<p>This module uses the following global variables (none of them being
+exported):</p>
+<dl>
+<dt><strong><a name="_transient" class="item">$Transient</a></strong></dt>
+
+<dd>
+<p>true if the process is about to <a href="../../../../lib/pods/perlfunc.html#exec"><code>exec()</code></a> or <a href="../../../../lib/pods/perlfunc.html#exit"><code>exit()</code></a>, there is usually no
+need to perform any cleanup (e.g. in an END block) for this kind of
+process</p>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries.html">the No::Worries manpage</a>.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Lionel Cons <a href="http://cern.ch/lionel.cons">http://cern.ch/lionel.cons</a></p>
+<p>Copyright CERN 2012</p>
+
+</body>
+
+</html>

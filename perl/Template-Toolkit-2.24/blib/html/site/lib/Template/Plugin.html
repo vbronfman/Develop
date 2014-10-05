@@ -1,0 +1,271 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../scineplex.css">
+<title>Template::Plugin - Base class for Template Toolkit plugins</title>
+<link rel="stylesheet" href="../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',3);</script>
+<h1><a>Template::Plugin - Base class for Template Toolkit plugins</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#methods">METHODS</a></li>
+	<ul>
+
+		<li><a href="#load__context_"><code>load($context)</code></a></li>
+		<li><a href="#new__context___params_">new($context, @params)</a></li>
+		<li><a href="#error__error_"><code>error($error)</code></a></li>
+	</ul>
+
+	<li><a href="#deeper_magic">DEEPER MAGIC</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Plugin - Base class for Template Toolkit plugins</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    <span class="keyword">package</span> <span class="variable">MyOrg::Template::Plugin::MyPlugin</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">base</span> <span class="string">qw( Template::Plugin )</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">Template::Plugin</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">MyModule</span><span class="operator">;</span>
+    
+    <span class="keyword">sub</span><span class="variable"> new </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="variable">$class</span>   <span class="operator">=</span> <span class="keyword">shift</span><span class="operator">;</span>
+        <span class="keyword">my</span> <span class="variable">$context</span> <span class="operator">=</span> <span class="keyword">shift</span><span class="operator">;</span>
+        <span class="keyword">bless</span> <span class="operator">{</span>
+            <span class="operator">...</span>
+        <span class="operator">}</span><span class="operator">,</span> <span class="variable">$class</span><span class="operator">;</span>
+    <span class="operator">}</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>A &quot;plugin&quot; for the Template Toolkit is simply a Perl module which 
+exists in a known package location (e.g. <code>Template::Plugin::*</code>) and 
+conforms to a regular standard, allowing it to be loaded and used 
+automatically.</p>
+<p>The <code>Template::Plugin</code> module defines a base class from which other 
+plugin modules can be derived.  A plugin does not have to be derived
+from Template::Plugin but should at least conform to its object-oriented
+interface.</p>
+<p>It is recommended that you create plugins in your own package namespace
+to avoid conflict with toolkit plugins.  e.g.</p>
+<pre>
+    <span class="keyword">package</span> <span class="variable">MyOrg::Template::Plugin::FooBar</span><span class="operator">;</span>
+</pre>
+<p>Use the <a href="../../../Template/Manual/Config#PLUGIN_BASE.html">PLUGIN_BASE</a> option to specify
+the namespace that you use. e.g.</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template</span><span class="operator">;</span>
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> 
+        <span class="string">PLUGIN_BASE</span> <span class="operator">=&gt;</span> <span class="string">'MyOrg::Template::Plugin'</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="methods">METHODS</a></h1>
+<p>The following methods form the basic interface between the Template
+Toolkit and plugin modules.</p>
+<p>
+</p>
+<h2><a name="load__context_"><code>load($context)</code></a></h2>
+<p>This method is called by the Template Toolkit when the plugin module
+is first loaded.  It is called as a package method and thus implicitly
+receives the package name as the first parameter.  A reference to the
+<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a> object loading the plugin is also passed.  The
+default behaviour for the <code>load()</code> method is to simply return the class
+name.  The calling context then uses this class name to call the <code>new()</code>
+package method.</p>
+<pre>
+    <span class="keyword">package</span> <span class="variable">MyPlugin</span><span class="operator">;</span>
+    
+    <span class="keyword">sub</span><span class="variable"> load </span><span class="operator">{</span>               <span class="comment"># called as MyPlugin-&gt;load($context)</span>
+        <span class="keyword">my</span> <span class="operator">(</span><span class="variable">$class</span><span class="operator">,</span> <span class="variable">$context</span><span class="operator">)</span> <span class="operator">=</span> <span class="variable">@_</span><span class="operator">;</span>
+        <span class="keyword">return</span> <span class="variable">$class</span><span class="operator">;</span>       <span class="comment"># returns 'MyPlugin'</span>
+    <span class="operator">}</span>
+</pre>
+<p>
+</p>
+<h2><a name="new__context___params_">new($context, @params)</a></h2>
+<p>This method is called to instantiate a new plugin object for the <code>USE</code>
+directive. It is called as a package method against the class name returned by
+<em>load()</em>. A reference to the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a> object creating the plugin
+is passed, along with any additional parameters specified in the <code>USE</code>
+directive.</p>
+<pre>
+    <span class="keyword">sub</span><span class="variable"> new </span><span class="operator">{</span>                <span class="comment"># called as MyPlugin-&gt;new($context)</span>
+        <span class="keyword">my</span> <span class="operator">(</span><span class="variable">$class</span><span class="operator">,</span> <span class="variable">$context</span><span class="operator">,</span> <span class="variable">@params</span><span class="operator">)</span> <span class="operator">=</span> <span class="variable">@_</span><span class="operator">;</span>
+        <span class="keyword">bless</span> <span class="operator">{</span>
+            <span class="string">_CONTEXT</span> <span class="operator">=&gt;</span> <span class="variable">$context</span><span class="operator">,</span>
+        <span class="operator">}</span><span class="operator">,</span> <span class="variable">$class</span><span class="operator">;</span>           <span class="comment"># returns blessed MyPlugin object</span>
+    <span class="operator">}</span>
+</pre>
+<p>
+</p>
+<h2><a name="error__error_"><code>error($error)</code></a></h2>
+<p>This method, inherited from the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Base.html">the Template::Base manpage</a> module, is used for 
+reporting and returning errors.   It can be called as a package method
+to set/return the <code>$ERROR</code> package variable, or as an object method to 
+set/return the object <code>_ERROR</code> member.  When called with an argument, it
+sets the relevant variable and returns <a href="../../../lib/pods/perlfunc.html#undef"><code>undef.</code></a>  When called without an
+argument, it returns the value of the variable.</p>
+<pre>
+    <span class="keyword">package</span> <span class="variable">MyPlugin</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">base</span> <span class="string">'Template::Plugin'</span><span class="operator">;</span>
+    
+    <span class="keyword">sub</span><span class="variable"> new </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="operator">(</span><span class="variable">$class</span><span class="operator">,</span> <span class="variable">$context</span><span class="operator">,</span> <span class="variable">$dsn</span><span class="operator">)</span> <span class="operator">=</span> <span class="variable">@_</span><span class="operator">;</span>
+        
+        <span class="keyword">return</span> <span class="variable">$class</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(</span><span class="string">'No data source specified'</span><span class="operator">)</span>
+            <span class="keyword">unless</span> <span class="variable">$dsn</span><span class="operator">;</span>
+        
+        <span class="keyword">bless</span> <span class="operator">{</span>
+            <span class="string">_DSN</span> <span class="operator">=&gt;</span> <span class="variable">$dsn</span><span class="operator">,</span>
+        <span class="operator">}</span><span class="operator">,</span> <span class="variable">$class</span><span class="operator">;</span>
+    <span class="operator">}</span>
+</pre>
+<pre>
+    <span class="keyword">package</span> <span class="variable">main</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$something</span> <span class="operator">=</span> <span class="variable">MyPlugin</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">()</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">MyPlugin</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+        
+    <span class="variable">$something</span><span class="operator">-&gt;</span><span class="variable">do_something</span><span class="operator">()</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$something</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="deeper_magic">DEEPER MAGIC</a></h1>
+<p>The <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a> object that handles the loading and use of plugins
+calls the <em>new()</em> and <em>error()</em> methods against the package name returned by
+the <em>load()</em> method. In pseudo-code terms looks something like this:</p>
+<pre>
+    <span class="variable">$class</span>  <span class="operator">=</span> <span class="variable">MyPlugin</span><span class="operator">-&gt;</span><span class="variable">load</span><span class="operator">(</span><span class="variable">$context</span><span class="operator">);</span>       <span class="comment"># returns 'MyPlugin'</span>
+    
+    <span class="variable">$object</span> <span class="operator">=</span> <span class="variable">$class</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="variable">$context</span><span class="operator">,</span> <span class="variable">@params</span><span class="operator">)</span>  <span class="comment"># MyPlugin-&gt;new(...)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$class</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">();</span>               <span class="comment"># MyPlugin-&gt;error()</span>
+</pre>
+<p>The <em>load()</em> method may alterately return a blessed reference to an
+object instance.  In this case, <em>new()</em> and <em>error()</em> are then called as
+<em>object</em> methods against that prototype instance.</p>
+<pre>
+    <span class="keyword">package</span> <span class="variable">YourPlugin</span><span class="operator">;</span>
+    
+    <span class="keyword">sub</span><span class="variable"> load </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="operator">(</span><span class="variable">$class</span><span class="operator">,</span> <span class="variable">$context</span><span class="operator">)</span> <span class="operator">=</span> <span class="variable">@_</span><span class="operator">;</span>
+        <span class="keyword">bless</span> <span class="operator">{</span>
+            <span class="string">_CONTEXT</span> <span class="operator">=&gt;</span> <span class="variable">$context</span><span class="operator">,</span>
+        <span class="operator">}</span><span class="operator">,</span> <span class="variable">$class</span><span class="operator">;</span>
+    <span class="operator">}</span>
+    
+    <span class="keyword">sub</span><span class="variable"> new </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="operator">(</span><span class="variable">$self</span><span class="operator">,</span> <span class="variable">$context</span><span class="operator">,</span> <span class="variable">@params</span><span class="operator">)</span> <span class="operator">=</span> <span class="variable">@_</span><span class="operator">;</span>
+        <span class="keyword">return</span> <span class="variable">$self</span><span class="operator">;</span>
+    <span class="operator">}</span>
+</pre>
+<p>In this example, we have implemented a 'Singleton' plugin.  One object 
+gets created when <em>load()</em> is called and this simply returns itself for
+each call to <em>new().</em></p>
+<p>Another implementation might require individual objects to be created
+for every call to <em>new(),</em> but with each object sharing a reference to
+some other object to maintain cached data, database handles, etc.
+This pseudo-code example demonstrates the principle.</p>
+<pre>
+    <span class="keyword">package</span> <span class="variable">MyServer</span><span class="operator">;</span>
+    
+    <span class="keyword">sub</span><span class="variable"> load </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="operator">(</span><span class="variable">$class</span><span class="operator">,</span> <span class="variable">$context</span><span class="operator">)</span> <span class="operator">=</span> <span class="variable">@_</span><span class="operator">;</span>
+        <span class="keyword">bless</span> <span class="operator">{</span>
+            <span class="string">_CONTEXT</span> <span class="operator">=&gt;</span> <span class="variable">$context</span><span class="operator">,</span>
+            <span class="string">_CACHE</span>   <span class="operator">=&gt;</span> <span class="operator">{</span> <span class="operator">}</span><span class="operator">,</span>
+        <span class="operator">}</span><span class="operator">,</span> <span class="variable">$class</span><span class="operator">;</span>
+    <span class="operator">}</span>
+    
+    <span class="keyword">sub</span><span class="variable"> new </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="operator">(</span><span class="variable">$self</span><span class="operator">,</span> <span class="variable">$context</span><span class="operator">,</span> <span class="variable">@params</span><span class="operator">)</span> <span class="operator">=</span> <span class="variable">@_</span><span class="operator">;</span>
+        <span class="variable">MyClient</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="variable">$self</span><span class="operator">,</span> <span class="variable">@params</span><span class="operator">);</span>
+    <span class="operator">}</span>
+    
+    <span class="keyword">sub</span><span class="variable"> add_to_cache   </span><span class="operator">{</span> <span class="operator">...</span> <span class="operator">}</span>
+    
+    <span class="keyword">sub</span><span class="variable"> get_from_cache </span><span class="operator">{</span> <span class="operator">...</span> <span class="operator">}</span>
+</pre>
+<pre>
+    <span class="keyword">package</span> <span class="variable">MyClient</span><span class="operator">;</span>
+    
+    <span class="keyword">sub</span><span class="variable"> new </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="operator">(</span><span class="variable">$class</span><span class="operator">,</span> <span class="variable">$server</span><span class="operator">,</span> <span class="variable">$blah</span><span class="operator">)</span> <span class="operator">=</span> <span class="variable">@_</span><span class="operator">;</span>
+        <span class="keyword">bless</span> <span class="operator">{</span>
+            <span class="string">_SERVER</span> <span class="operator">=&gt;</span> <span class="variable">$server</span><span class="operator">,</span>
+            <span class="string">_BLAH</span>   <span class="operator">=&gt;</span> <span class="variable">$blah</span><span class="operator">,</span>
+        <span class="operator">}</span><span class="operator">,</span> <span class="variable">$class</span><span class="operator">;</span>
+    <span class="operator">}</span>
+    
+    <span class="keyword">sub</span><span class="variable"> get </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="variable">$self</span> <span class="operator">=</span> <span class="keyword">shift</span><span class="operator">;</span>
+        <span class="variable">$self</span><span class="operator">-&gt;</span><span class="operator">{</span> <span class="variable">_SERVER</span> <span class="operator">}</span><span class="operator">-&gt;</span><span class="variable">get_from_cache</span><span class="operator">(</span><span class="variable">@_</span><span class="operator">);</span>
+    <span class="operator">}</span>
+    
+    <span class="keyword">sub</span><span class="variable"> put </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="variable">$self</span> <span class="operator">=</span> <span class="keyword">shift</span><span class="operator">;</span>
+        <span class="variable">$self</span><span class="operator">-&gt;</span><span class="operator">{</span> <span class="variable">_SERVER</span> <span class="operator">}</span><span class="operator">-&gt;</span><span class="variable">add_to_cache</span><span class="operator">(</span><span class="variable">@_</span><span class="operator">);</span>
+    <span class="operator">}</span>
+</pre>
+<p>When the plugin is loaded, a <code>MyServer</code> instance is created. The <em>new()</em>
+method is called against this object which instantiates and returns a <code>MyClient</code>
+object, primed to communicate with the creating <code>MyServer</code>.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a>, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugins.html">the Template::Plugins manpage</a>, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a></p>
+
+</body>
+
+</html>

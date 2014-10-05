@@ -1,0 +1,172 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>No::Worries::File - file handling without worries</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>No::Worries::File - file handling without worries</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#functions">FUNCTIONS</a></li>
+	<li><a href="#options">OPTIONS</a></li>
+	<li><a href="#global_variables">GLOBAL VARIABLES</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>No::Worries::File - file handling without worries</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+  <span class="keyword">use</span> <span class="variable">No::Worries::File</span> <span class="string">qw(file_read file_write)</span><span class="operator">;</span>
+</pre>
+<pre>
+  <span class="comment"># read a file</span>
+  <span class="variable">$data</span> <span class="operator">=</span> <span class="variable">file_read</span><span class="operator">(</span><span class="variable">$path</span><span class="operator">);</span>
+</pre>
+<pre>
+  <span class="comment"># idem but with data returned by reference</span>
+  <span class="variable">file_read</span><span class="operator">(</span><span class="variable">$path</span><span class="operator">,</span> <span class="string">data</span> <span class="operator">=&gt;</span> <span class="operator">\</span><span class="variable">$data</span><span class="operator">);</span>
+</pre>
+<pre>
+  <span class="comment"># write a file</span>
+  <span class="variable">file_write</span><span class="operator">(</span><span class="variable">$path</span><span class="operator">,</span> <span class="variable">$data</span> <span class="operator">=&gt;</span> <span class="string">"hello world"</span><span class="operator">);</span>
+</pre>
+<pre>
+  <span class="comment"># idem but with data passed by reference</span>
+  <span class="variable">file_write</span><span class="operator">(</span><span class="variable">$path</span><span class="operator">,</span> <span class="variable">$data</span> <span class="operator">=&gt;</span> <span class="operator">\</span><span class="string">"hello world"</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This module eases file handling by providing convenient wrappers
+around standard file functions. All the functions <a href="../../../../lib/pods/perlfunc.html#die"><code>die()</code></a> on error.</p>
+<p>
+</p>
+<hr />
+<h1><a name="functions">FUNCTIONS</a></h1>
+<p>This module provides the following functions (none of them being
+exported by default):</p>
+<dl>
+<dt><strong><a name="file_read" class="item">file_read(PATH[, OPTIONS])</a></strong></dt>
+
+<dd>
+<p>read the file at the given path and return its contents; supported
+options:</p>
+<ul>
+<li><strong><a name="use" class="item"><a href="#binmode"><code>binmode</code></a>: binary mode to use (see below)</a></strong>
+
+</li>
+<li><strong><a name="bufsize_buffer_size_to_use_for_i_o_operations" class="item"><code>bufsize</code>: buffer size to use for I/O operations</a></strong>
+
+</li>
+<li><strong><a name="reference" class="item"><code>data</code>: return the file contents via this scalar reference or
+code reference (see below)</a></strong>
+
+</li>
+</ul>
+</dd>
+<dt><strong><a name="file_write" class="item">file_write(PATH[, OPTIONS])</a></strong></dt>
+
+<dd>
+<p>write the given contents to the file at the given path; supported
+options:</p>
+<ul>
+<li><strong><a href="#binmode"><code>binmode</code></a>: binary mode to use (see below)</strong>
+
+</li>
+<li><strong><a name="bufsize_buffer_size_to_use_for_i_o_operations2" class="item"><code>bufsize</code>: buffer size to use for I/O operations</a></strong>
+
+</li>
+<li><strong><code>data</code>: provide the file contents via this scalar, scalar
+reference or code reference (see below)</strong>
+
+</li>
+</ul>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="options">OPTIONS</a></h1>
+<p>All the functions support a <a href="#binmode"><code>binmode</code></a> option specifying how the file
+should be accessed:</p>
+<ul>
+<li><strong><a name="binmode" class="item"><code>binary</code>: binmode(FH) will be used to treat the file as binary</a></strong>
+
+</li>
+<li><strong><a href="../../../../lib/pods/perlrun.html#utf8"><code>utf8</code></a>: binmode(FH, &quot;:encoding(utf8)&quot;) will be used to select
+UTF-8 encoding</strong>
+
+</li>
+<li><strong>otherwise: <code>binmode()</code> will not be used (this is the default)</strong>
+
+</li>
+</ul>
+<p><a href="#file_read"><code>file_read()</code></a> can be given a code reference via the <code>data</code> option.
+Each time data is read via <a href="../../../../lib/pods/perlfunc.html#sysread"><code>sysread()</code></a>, the subroutine will be called
+with the read data. At the end of the file, the subroutine will be
+called with an empty string.</p>
+<p><a href="#file_write"><code>file_write()</code></a> can be given a code reference via the <code>data</code> option. It
+should return data in a way similar to <a href="../../../../lib/pods/perlfunc.html#sysread"><code>sysread()</code></a>, returning an empty
+string to indicate the end of the data to write to the file.</p>
+<p>
+</p>
+<hr />
+<h1><a name="global_variables">GLOBAL VARIABLES</a></h1>
+<p>This module uses the following global variables (none of them being
+exported):</p>
+<dl>
+<dt><strong><a name="_defaultbufsize" class="item">$DefaultBufSize</a></strong></dt>
+
+<dd>
+<p>default buffer size to use for I/O operations if not specified via the
+<code>bufsize</code> option (default: 1MB)</p>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries.html">the No::Worries manpage</a>.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Lionel Cons <a href="http://cern.ch/lionel.cons">http://cern.ch/lionel.cons</a></p>
+<p>Copyright CERN 2012</p>
+
+</body>
+
+</html>

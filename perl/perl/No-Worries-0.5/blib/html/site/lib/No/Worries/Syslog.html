@@ -1,0 +1,198 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>No::Worries::Syslog - syslog handling without worries</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>No::Worries::Syslog - syslog handling without worries</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#functions">FUNCTIONS</a></li>
+	<li><a href="#global_variables">GLOBAL VARIABLES</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>No::Worries::Syslog - syslog handling without worries</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+  <span class="keyword">use</span> <span class="variable">No::Worries::Syslog</span> <span class="string">qw(syslog_open syslog_close syslog_info)</span><span class="operator">;</span>
+</pre>
+<pre>
+  <span class="comment"># setup/open syslog</span>
+  <span class="variable">syslog_open</span><span class="operator">(</span><span class="string">ident</span> <span class="operator">=&gt;</span> <span class="string">"progname"</span><span class="operator">,</span> <span class="string">facility</span> <span class="operator">=&gt;</span> <span class="string">"daemon"</span><span class="operator">);</span>
+</pre>
+<pre>
+  <span class="comment"># report an informational message</span>
+  <span class="variable">syslog_info</span><span class="operator">(</span><span class="string">"foo is %s"</span><span class="operator">,</span> <span class="variable">$foo</span><span class="operator">);</span>
+</pre>
+<pre>
+  <span class="comment"># close syslog</span>
+  <span class="variable">syslog_close</span><span class="operator">();</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This module eases syslog handling by providing convenient wrappers
+around standard syslog functions.</p>
+<p>The functions provide a thin layer on top of <a href="../../../../Sys/Syslog.html">the Sys::Syslog manpage</a> to make it
+easier and safer to use. All the functions <a href="../../../../lib/pods/perlfunc.html#die"><code>die()</code></a> on error and the
+strings passed to syslog will always be sanitized.</p>
+<p>
+</p>
+<hr />
+<h1><a name="functions">FUNCTIONS</a></h1>
+<p>This module provides the following functions (none of them being
+exported by default):</p>
+<dl>
+<dt><strong><a name="syslog_open" class="item">syslog_open([OPTIONS])</a></strong></dt>
+
+<dd>
+<p>open a &quot;connection&quot; to syslog using <a href="../../../../Sys/Syslog.html">the Sys::Syslog manpage</a>'s <a href="#openlog"><code>openlog()</code></a>;
+supported options</p>
+<ul>
+<li><strong><a name="openlog" class="item"><code>facility</code>: corresponding to openlog()'s eponymous argument</a></strong>
+
+</li>
+<li><strong><code>ident</code>: corresponding to openlog()'s eponymous argument</strong>
+
+</li>
+<li><strong><code>option</code>: corresponding to openlog()'s eponymous argument</strong>
+
+</li>
+</ul>
+</dd>
+<dt><strong><a name="syslog_close" class="item"><code>syslog_close()</code></a></strong></dt>
+
+<dd>
+<p>close a &quot;connection&quot; to syslog using <a href="../../../../Sys/Syslog.html">the Sys::Syslog manpage</a>'s <code>closelog()</code></p>
+</dd>
+<dt><strong><a name="syslog_sanitize" class="item">syslog_sanitize(STRING)</a></strong></dt>
+
+<dd>
+<p>sanitize the given string so that it can safely be given to syslog():
+UTF-8 encode wide characters, trim trailing spaces, replace tabs by
+spaces, URI escape non-printable characters and truncate if too long</p>
+</dd>
+<dt><strong><a name="syslog_debug" class="item">syslog_debug(MESSAGE)</a></strong></dt>
+
+<dd>
+<p>report a sanitized debugging message to syslog
+(with LOG_DEBUG priority and <code>[DEBUG]</code> prefix)</p>
+</dd>
+<dt><strong>syslog_debug(FORMAT, ARGUMENTS...)</strong></dt>
+
+<dd>
+<p>idem but with sprintf()-like API</p>
+</dd>
+<dt><strong><a name="syslog_info" class="item">syslog_info(MESSAGE)</a></strong></dt>
+
+<dd>
+<p>report a sanitized informational message to syslog
+(with LOG_INFO priority and <code>[INFO]</code> prefix)</p>
+</dd>
+<dt><strong>syslog_info(FORMAT, ARGUMENTS...)</strong></dt>
+
+<dd>
+<p>idem but with sprintf()-like API</p>
+</dd>
+<dt><strong><a name="syslog_warning" class="item">syslog_warning(MESSAGE)</a></strong></dt>
+
+<dd>
+<p>report a sanitized warning message to syslog
+(with LOG_WARNING priority and <code>[WARNING]</code> prefix)</p>
+</dd>
+<dt><strong>syslog_warning(FORMAT, ARGUMENTS...)</strong></dt>
+
+<dd>
+<p>idem but with sprintf()-like API</p>
+</dd>
+<dt><strong><a name="syslog_error" class="item">syslog_error(MESSAGE)</a></strong></dt>
+
+<dd>
+<p>report a sanitized error message to syslog
+(with LOG_ERR priority and <code>[ERROR]</code> prefix)</p>
+</dd>
+<dt><strong>syslog_error(FORMAT, ARGUMENTS...)</strong></dt>
+
+<dd>
+<p>idem but with sprintf()-like API</p>
+</dd>
+<dt><strong><a name="log2syslog" class="item">log2syslog(INFO)</a></strong></dt>
+
+<dd>
+<p><a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries/Log.html">the No::Worries::Log manpage</a> handler to send information to syslog; this is not
+exported and must be called explicitly</p>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="global_variables">GLOBAL VARIABLES</a></h1>
+<p>This module uses the following global variables (none of them being
+exported):</p>
+<dl>
+<dt><strong><a name="_maximumlength" class="item">$MaximumLength</a></strong></dt>
+
+<dd>
+<p>maximum length of a message given to syslog (default: 1000)</p>
+</dd>
+<dt><strong><a name="_splitlines" class="item">$SplitLines</a></strong></dt>
+
+<dd>
+<p>true if multi-line messages should be logged as separate syslog
+messages (default: true)</p>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries.html">the No::Worries manpage</a>,
+<a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries/Die.html">the No::Worries::Die manpage</a>,
+<a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries/Log.html">the No::Worries::Log manpage</a>,
+<a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries/Warn.html">the No::Worries::Warn manpage</a>,
+<a href="../../../../Sys/Syslog.html">the Sys::Syslog manpage</a>,
+<a href="../../../../lib/URI/Escape.html">the URI::Escape manpage</a>.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Lionel Cons <a href="http://cern.ch/lionel.cons">http://cern.ch/lionel.cons</a></p>
+<p>Copyright CERN 2012</p>
+
+</body>
+
+</html>

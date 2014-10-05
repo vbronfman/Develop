@@ -1,0 +1,22 @@
+/home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/1_insert_aru_charge_type.sql
+CONNECT STRING : REPORTS/REPORTS@BSCSTST3
+insert into ARU_CHARGE_TYPE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.CHARGE_TYPE_PK) violated 
+
+
+insert into ARU_CHARGE_TYPE
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ASHRAIT.CHARGE_TYPE_PK) violated 
+
+
+
+Commit complete.
+
+
+Commit complete.
+
+
+----------------------------------------------------------------

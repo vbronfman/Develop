@@ -1,0 +1,902 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../displayToc.js"></script>
+<script language="JavaScript" src="../../tocParas.js"></script>
+<script language="JavaScript" src="../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../scineplex.css">
+<title>Template - Front-end module to the Template Toolkit</title>
+<link rel="stylesheet" href="../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',2);</script>
+<h1><a>Template - Front-end module to the Template Toolkit</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#methods">METHODS</a></li>
+	<ul>
+
+		<li><a href="#new___config_"><code>new(\%config)</code></a></li>
+		<li><a href="#process__template____vars___output___options_">process($template, \%vars, $output, %options)</a></li>
+		<li><a href="#error__"><code>error()</code></a></li>
+		<li><a href="#service__"><code>service()</code></a></li>
+		<li><a href="#context__"><code>context()</code></a></li>
+		<li><a href="#template__name_"><code>template($name)</code></a></li>
+	</ul>
+
+	<li><a href="#configuration_summary">CONFIGURATION SUMMARY</a></li>
+	<ul>
+
+		<li><a href="#template_style_and_parsing_options">Template Style and Parsing Options</a></li>
+		<ul>
+
+			<li><a href="#start_tag__end_tag">START_TAG, END_TAG</a></li>
+			<li><a href="#tag_style">TAG_STYLE</a></li>
+			<li><a href="#pre_chomp__post_chomp">PRE_CHOMP, POST_CHOMP</a></li>
+			<li><a href="#trim">TRIM</a></li>
+			<li><a href="#interpolate">INTERPOLATE</a></li>
+			<li><a href="#anycase">ANYCASE</a></li>
+		</ul>
+
+		<li><a href="#template_files_and_blocks">Template Files and Blocks</a></li>
+		<ul>
+
+			<li><a href="#include_path">INCLUDE_PATH</a></li>
+			<li><a href="#delimiter">DELIMITER</a></li>
+			<li><a href="#absolute">ABSOLUTE</a></li>
+			<li><a href="#relative">RELATIVE</a></li>
+			<li><a href="#default">DEFAULT</a></li>
+			<li><a href="#blocks">BLOCKS</a></li>
+			<li><a href="#auto_reset">AUTO_RESET</a></li>
+			<li><a href="#recursion">RECURSION</a></li>
+		</ul>
+
+		<li><a href="#template_variables">Template Variables</a></li>
+		<ul>
+
+			<li><a href="#variables">VARIABLES</a></li>
+		</ul>
+
+		<li><a href="#runtime_processing_options">Runtime Processing Options</a></li>
+		<ul>
+
+			<li><a href="#eval_perl">EVAL_PERL</a></li>
+			<li><a href="#pre_process__post_process">PRE_PROCESS, POST_PROCESS</a></li>
+			<li><a href="#process">PROCESS</a></li>
+			<li><a href="#error">ERROR</a></li>
+			<li><a href="#output">OUTPUT</a></li>
+			<li><a href="#output_path">OUTPUT_PATH</a></li>
+			<li><a href="#debug">DEBUG</a></li>
+		</ul>
+
+		<li><a href="#caching_and_compiling_options">Caching and Compiling Options</a></li>
+		<ul>
+
+			<li><a href="#cache_size">CACHE_SIZE</a></li>
+			<li><a href="#compile_ext">COMPILE_EXT</a></li>
+			<li><a href="#compile_dir">COMPILE_DIR</a></li>
+		</ul>
+
+		<li><a href="#plugins_and_filters">Plugins and Filters</a></li>
+		<ul>
+
+			<li><a href="#plugins">PLUGINS</a></li>
+			<li><a href="#plugin_base">PLUGIN_BASE</a></li>
+			<li><a href="#load_perl">LOAD_PERL</a></li>
+			<li><a href="#filters">FILTERS</a></li>
+		</ul>
+
+		<li><a href="#customisation_and_extension">Customisation and Extension</a></li>
+		<ul>
+
+			<li><a href="#load_templates">LOAD_TEMPLATES</a></li>
+			<li><a href="#load_plugins">LOAD_PLUGINS</a></li>
+			<li><a href="#load_filters">LOAD_FILTERS</a></li>
+			<li><a href="#tolerant">TOLERANT</a></li>
+			<li><a href="#service">SERVICE</a></li>
+			<li><a href="#context">CONTEXT</a></li>
+			<li><a href="#stash">STASH</a></li>
+			<li><a href="#parser">PARSER</a></li>
+			<li><a href="#grammar">GRAMMAR</a></li>
+		</ul>
+
+	</ul>
+
+	<li><a href="#directive_summary">DIRECTIVE SUMMARY</a></li>
+	<ul>
+
+		<li><a href="#get">GET</a></li>
+		<li><a href="#call">CALL</a></li>
+		<li><a href="#set">SET</a></li>
+		<li><a href="#default">DEFAULT</a></li>
+		<li><a href="#insert">INSERT</a></li>
+		<li><a href="#process">PROCESS</a></li>
+		<li><a href="#include">INCLUDE</a></li>
+		<li><a href="#wrapper">WRAPPER</a></li>
+		<li><a href="#block">BLOCK</a></li>
+		<li><a href="#foreach">FOREACH</a></li>
+		<li><a href="#while">WHILE</a></li>
+		<li><a href="#if___unless___elsif___else">IF / UNLESS / ELSIF / ELSE</a></li>
+		<li><a href="#switch___case">SWITCH / CASE</a></li>
+		<li><a href="#macro">MACRO</a></li>
+		<li><a href="#filter">FILTER</a></li>
+		<li><a href="#use">USE</a></li>
+		<li><a href="#perl___rawperl">PERL / RAWPERL</a></li>
+		<li><a href="#try___throw___catch___final">TRY / THROW / CATCH / FINAL</a></li>
+		<li><a href="#next">NEXT</a></li>
+		<li><a href="#last">LAST</a></li>
+		<li><a href="#return">RETURN</a></li>
+		<li><a href="#stop">STOP</a></li>
+		<li><a href="#tags">TAGS</a></li>
+		<li><a href="#comments">COMMENTS</a></li>
+	</ul>
+
+	<li><a href="#source_code_repository">SOURCE CODE REPOSITORY</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#version">VERSION</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template - Front-end module to the Template Toolkit</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="comment"># some useful options (see below for full list)</span>
+    <span class="keyword">my</span> <span class="variable">$config</span> <span class="operator">=</span> <span class="operator">{</span>
+        <span class="string">INCLUDE_PATH</span> <span class="operator">=&gt;</span> <span class="string">'/search/path'</span><span class="operator">,</span>  <span class="comment"># or list ref</span>
+        <span class="string">INTERPOLATE</span>  <span class="operator">=&gt;</span> <span class="number">1</span><span class="operator">,</span>               <span class="comment"># expand "$var" in plain text</span>
+        <span class="string">POST_CHOMP</span>   <span class="operator">=&gt;</span> <span class="number">1</span><span class="operator">,</span>               <span class="comment"># cleanup whitespace</span>
+        <span class="string">PRE_PROCESS</span>  <span class="operator">=&gt;</span> <span class="string">'header'</span><span class="operator">,</span>        <span class="comment"># prefix each template</span>
+        <span class="string">EVAL_PERL</span>    <span class="operator">=&gt;</span> <span class="number">1</span><span class="operator">,</span>               <span class="comment"># evaluate Perl code blocks</span>
+    <span class="operator">}</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="comment"># create Template object</span>
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="variable">$config</span><span class="operator">);</span>
+</pre>
+<pre>
+    <span class="comment"># define template variables for replacement</span>
+    <span class="keyword">my</span> <span class="variable">$vars</span> <span class="operator">=</span> <span class="operator">{</span>
+        <span class="string">var1</span>  <span class="operator">=&gt;</span> <span class="variable">$value</span><span class="operator">,</span>
+        <span class="string">var2</span>  <span class="operator">=&gt;</span> <span class="operator">\</span><span class="variable">%hash</span><span class="operator">,</span>
+        <span class="string">var3</span>  <span class="operator">=&gt;</span> <span class="operator">\</span><span class="variable">@list</span><span class="operator">,</span>
+        <span class="string">var4</span>  <span class="operator">=&gt;</span> <span class="operator">\&amp;</span><span class="variable">code</span><span class="operator">,</span>
+        <span class="string">var5</span>  <span class="operator">=&gt;</span> <span class="variable">$object</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="comment"># specify input filename, or file handle, text reference, etc.</span>
+    <span class="keyword">my</span> <span class="variable">$input</span> <span class="operator">=</span> <span class="string">'myfile.html'</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="comment"># process input template, substituting variables</span>
+    <span class="variable">$template</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="variable">$input</span><span class="operator">,</span> <span class="variable">$vars</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$template</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">();</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This documentation describes the Template module which is the direct
+Perl interface into the Template Toolkit.  It covers the use of the
+module and gives a brief summary of configuration options and template
+directives.  Please see <a href="../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Manual.html">the Template::Manual manpage</a> for the complete reference
+manual which goes into much greater depth about the features and use
+of the Template Toolkit.  The <a href="../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Tutorial.html">the Template::Tutorial manpage</a> is also available
+as an introductory guide to using the Template Toolkit.</p>
+<p>
+</p>
+<hr />
+<h1><a name="methods">METHODS</a></h1>
+<p>
+</p>
+<h2><a name="new___config_"><code>new(\%config)</code></a></h2>
+<p>The <code>new()</code> constructor method (implemented by the
+<a href="../../Template/Base#new().html">Template::Base</a> base class) instantiates a new
+<code>Template</code> object. A reference to a hash array of configuration items may be
+passed as a parameter.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$tt</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">INCLUDE_PATH</span> <span class="operator">=&gt;</span> <span class="string">'/usr/local/templates'</span><span class="operator">,</span>
+        <span class="string">EVAL_PERL</span>    <span class="operator">=&gt;</span> <span class="number">1</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">)</span> <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$Template::ERROR</span><span class="operator">,</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<p>A reference to a new <code>Template</code> object is returned, or undef on error. In the
+latter case, the error message can be retrieved by calling <em>error()</em> as a
+class method or by examining the <code>$Template::ERROR</code> package variable
+directly.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$tt</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(\</span><span class="variable">%config</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$tt</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(\</span><span class="variable">%config</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$Template::ERROR</span><span class="operator">,</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<p>For convenience, configuration items may also be specified as a list
+of items instead of a hash array reference.  These are automatically
+folded into a hash array by the constructor.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$tt</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="string">INCLUDE_PATH</span> <span class="operator">=&gt;</span> <span class="string">'/tmp'</span><span class="operator">,</span> <span class="string">POST_CHOMP</span> <span class="operator">=&gt;</span> <span class="number">1</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$Template::ERROR</span><span class="operator">,</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<p>
+</p>
+<h2><a name="process__template____vars___output___options_">process($template, \%vars, $output, %options)</a></h2>
+<p>The <code>process()</code> method is called to process a template. The first parameter
+indicates the input template as one of: a filename relative to
+<code>INCLUDE_PATH</code>, if defined; a reference to a text string containing the
+template text; or a file handle reference (e.g. <code>IO::Handle</code> or sub-class) or
+<code>GLOB</code> (e.g. <code>\*STDIN</code>), from which the template can be read. A reference to
+a hash array may be passed as the second parameter, containing definitions of
+template variables.</p>
+<pre>
+    <span class="comment"># filename</span>
+    <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="string">'welcome.tt2'</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="comment"># text reference</span>
+    <span class="variable">$text</span> <span class="operator">=</span> <span class="string">"[% INCLUDE header %]\nHello world!\n[% INCLUDE footer %]"</span><span class="operator">;</span>
+    <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(\</span><span class="variable">$text</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="comment"># file handle (GLOB)</span>
+    <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(\</span><span class="variable">*DATA</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<pre>
+    __END__
+    [% INCLUDE header %]
+    This is a template defined in the __END__ section which is
+    accessible via the DATA &quot;file handle&quot;.
+    [% INCLUDE footer %]</pre>
+<p>By default, the processed template output is printed to <code>STDOUT</code>. The
+<code>process()</code> method then returns <code>1</code> to indicate success. A third parameter
+may be passed to the <code>process()</code> method to specify a different output location.
+This value may be one of: a plain string indicating a filename which will be
+opened (relative to <code>OUTPUT_PATH</code>, if defined) and the output written to; a file
+GLOB opened ready for output; a reference to a scalar (e.g. a text string) to
+which output/error is appended; a reference to a subroutine which is called,
+passing the output as a parameter; or any object reference which implements a
+<a href="../../lib/pods/perlfunc.html#print"><code>print()</code></a> method (e.g. <code>IO::Handle</code>, <code>Apache::Request</code>, etc.) which will be called,
+passing the generated output as a parameter.</p>
+<p>Examples:</p>
+<pre>
+    <span class="comment"># output filename</span>
+    <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="string">'welcome.tt2'</span><span class="operator">,</span> <span class="variable">$vars</span><span class="operator">,</span> <span class="string">'welcome.html'</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="comment"># reference to output subroutine</span>
+    <span class="keyword">sub</span><span class="variable"> myout </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="variable">$output</span> <span class="operator">=</span> <span class="keyword">shift</span><span class="operator">;</span>
+        <span class="operator">...</span>
+    <span class="operator">}</span>
+    <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="string">'welcome.tt2'</span><span class="operator">,</span> <span class="variable">$vars</span><span class="operator">,</span> <span class="operator">\&amp;</span><span class="variable">myout</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="comment"># reference to output text string</span>
+    <span class="keyword">my</span> <span class="variable">$output</span> <span class="operator">=</span> <span class="string">''</span><span class="operator">;</span>
+    <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="string">'welcome.tt2'</span><span class="operator">,</span> <span class="variable">$vars</span><span class="operator">,</span> <span class="operator">\</span><span class="variable">$output</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="keyword">print</span> <span class="string">"output: </span><span class="variable">$output</span><span class="string">\n"</span><span class="operator">;</span>
+</pre>
+<p>In an Apache/mod_perl handler:</p>
+<pre>
+    <span class="keyword">sub</span><span class="variable"> handler </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="variable">$req</span> <span class="operator">=</span> <span class="keyword">shift</span><span class="operator">;</span>
+</pre>
+<pre>
+        <span class="comment"># ...your code here...</span>
+</pre>
+<pre>
+        <span class="comment"># direct output to Apache::Request via $req-&gt;print($output)</span>
+        <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="variable">$file</span><span class="operator">,</span> <span class="variable">$vars</span><span class="operator">,</span> <span class="variable">$req</span><span class="operator">)</span> <span class="operator">||</span> <span class="keyword">do</span> <span class="operator">{</span>
+            <span class="variable">$req</span><span class="operator">-&gt;</span><span class="variable">log_reason</span><span class="operator">(</span><span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">());</span>
+            <span class="keyword">return</span> <span class="variable">SERVER_ERROR</span><span class="operator">;</span>
+        <span class="operator">};</span>
+        <span class="keyword">return</span> <span class="variable">OK</span><span class="operator">;</span>
+            <span class="operator">}</span>
+</pre>
+<p>After the optional third output argument can come an optional
+reference to a hash or a list of <code>(name, value)</code> pairs providing further
+options for the output.  The only option currently supported is
+<a href="../../lib/pods/perlfunc.html#binmode"><code>binmode</code></a> which, when set to any true value will ensure that files
+created (but not any existing file handles passed) will be set to
+binary mode.</p>
+<pre>
+    <span class="comment"># either: hash reference of options</span>
+    <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="variable">$infile</span><span class="operator">,</span> <span class="variable">$vars</span><span class="operator">,</span> <span class="variable">$outfile</span><span class="operator">,</span> <span class="operator">{</span> <span class="string">binmode</span> <span class="operator">=&gt;</span> <span class="number">1</span> <span class="operator">}</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="comment"># or: list of name, value pairs</span>
+    <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="variable">$infile</span><span class="operator">,</span> <span class="variable">$vars</span><span class="operator">,</span> <span class="variable">$outfile</span><span class="operator">,</span> <span class="string">binmode</span> <span class="operator">=&gt;</span> <span class="number">1</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<p>Alternately, the <a href="../../lib/pods/perlfunc.html#binmode"><code>binmode</code></a> argument can specify a particular IO layer such
+as <a href="../../lib/pods/perlrun.html#utf8"><code>:utf8</code></a>.</p>
+<pre>
+    <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="variable">$infile</span><span class="operator">,</span> <span class="variable">$vars</span><span class="operator">,</span> <span class="variable">$outfile</span><span class="operator">,</span> <span class="string">binmode</span> <span class="operator">=&gt;</span> <span class="string">':utf8'</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<p>The <code>OUTPUT</code> configuration item can be used to specify a default output
+location other than <code>\*STDOUT</code>.  The <code>OUTPUT_PATH</code> specifies a directory
+which should be prefixed to all output locations specified as filenames.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$tt</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">OUTPUT</span>      <span class="operator">=&gt;</span> <span class="keyword">sub</span><span class="variable"> </span><span class="operator">{</span> <span class="operator">...</span> <span class="operator">},</span>       <span class="comment"># default</span>
+        <span class="string">OUTPUT_PATH</span> <span class="operator">=&gt;</span> <span class="string">'/tmp'</span><span class="operator">,</span>
+    <span class="operator">...</span>
+    <span class="operator">}</span><span class="operator">)</span> <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="comment"># use default OUTPUT (sub is called)</span>
+    <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="string">'welcome.tt2'</span><span class="operator">,</span> <span class="variable">$vars</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="comment"># write file to '/tmp/welcome.html'</span>
+    <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="string">'welcome.tt2'</span><span class="operator">,</span> <span class="variable">$vars</span><span class="operator">,</span> <span class="string">'welcome.html'</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<p>The <code>process()</code> method returns <code>1</code> on success or <a href="../../lib/pods/perlfunc.html#undef"><code>undef</code></a> on error. The
+error message generated in the latter case can be retrieved by calling the
+<em>error()</em> method. See also <a href="#configuration_summary">CONFIGURATION SUMMARY</a> which describes how error
+handling may be further customised.</p>
+<p>
+</p>
+<h2><a name="error__"><code>error()</code></a></h2>
+<p>When called as a class method, it returns the value of the <code>$ERROR</code> package
+variable.  Thus, the following are equivalent.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$tt</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">()</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$tt</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">()</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$Template::ERROR</span><span class="operator">,</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<p>When called as an object method, it returns the value of the internal
+<code>_ERROR</code> variable, as set by an error condition in a previous call to
+<code>process()</code>.</p>
+<pre>
+    <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="string">'welcome.tt2'</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<p>Errors are represented in the Template Toolkit by objects of the
+<a href="../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Exception.html">the Template::Exception manpage</a> class. If the <em>process()</em> method returns a false value
+then the <code>error()</code> method can be called to return an object of this class.
+The <a href="../../Template/Exception#type().html">type()</a> and
+<a href="../../Template/Exception#info().html">info()</a> methods can called on the object to
+retrieve the error type and information string, respectively. The
+<a href="../../Template/Exception#as_string().html">as_string()</a>
+method can be called to return a string of the form <code>$type - $info</code>. This
+method is also overloaded onto the stringification operator allowing the
+object reference itself to be printed to return the formatted error string.</p>
+<pre>
+    <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="string">'somefile'</span><span class="operator">)</span> <span class="operator">||</span> <span class="keyword">do</span> <span class="operator">{</span>
+        <span class="keyword">my</span> <span class="variable">$error</span> <span class="operator">=</span> <span class="variable">$tt</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">();</span>
+        <span class="keyword">print</span> <span class="string">"error type: "</span><span class="operator">,</span> <span class="variable">$error</span><span class="operator">-&gt;</span><span class="variable">type</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+        <span class="keyword">print</span> <span class="string">"error info: "</span><span class="operator">,</span> <span class="variable">$error</span><span class="operator">-&gt;</span><span class="variable">info</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+        <span class="keyword">print</span> <span class="variable">$error</span><span class="operator">,</span> <span class="string">"\n"</span><span class="operator">;</span>
+    <span class="operator">};</span>
+</pre>
+<p>
+</p>
+<h2><a name="service__"><code>service()</code></a></h2>
+<p>The <code>Template</code> module delegates most of the effort of processing templates
+to an underlying <a href="../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Service.html">the Template::Service manpage</a> object.  This method returns a reference
+to that object.</p>
+<p>
+</p>
+<h2><a name="context__"><code>context()</code></a></h2>
+<p>The <a href="../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Service.html">the Template::Service manpage</a> module uses a core <a href="../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a> object for
+runtime processing of templates.  This method returns a reference to
+that object and is equivalent to <code>$template-&gt;service-&gt;context()</code>.</p>
+<p>
+</p>
+<h2><a name="template__name_"><code>template($name)</code></a></h2>
+<p>This method is a simple wrapper around the <a href="../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a> method of the
+same name.  It returns a compiled template for the source provided as an
+argument.</p>
+<p>
+</p>
+<hr />
+<h1><a name="configuration_summary">CONFIGURATION SUMMARY</a></h1>
+<p>The following list gives a short summary of each Template Toolkit
+configuration option.  See <a href="../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Manual/Config.html">the Template::Manual::Config manpage</a> for full details.</p>
+<p>
+</p>
+<h2><a name="template_style_and_parsing_options">Template Style and Parsing Options</a></h2>
+<p>
+</p>
+<h3><a name="start_tag__end_tag">START_TAG, END_TAG</a></h3>
+<p>Define tokens that indicate start and end of directives
+(default: '<code>[%</code>' and '<code>%]</code>').</p>
+<p>
+</p>
+<h3><a name="tag_style">TAG_STYLE</a></h3>
+<p>Set <code>START_TAG</code> and <code>END_TAG</code> according to a pre-defined style (default:
+'<code>template</code>', as above).</p>
+<p>
+</p>
+<h3><a name="pre_chomp__post_chomp">PRE_CHOMP, POST_CHOMP</a></h3>
+<p>Removes whitespace before/after directives (default: 0/0).</p>
+<p>
+</p>
+<h3><a name="trim">TRIM</a></h3>
+<p>Remove leading and trailing whitespace from template output (default: 0).</p>
+<p>
+</p>
+<h3><a name="interpolate">INTERPOLATE</a></h3>
+<p>Interpolate variables embedded like <code>$this</code> or <code>${this}</code> (default: 0).</p>
+<p>
+</p>
+<h3><a name="anycase">ANYCASE</a></h3>
+<p>Allow directive keywords in lower case (default: 0 - UPPER only).</p>
+<p>
+</p>
+<h2><a name="template_files_and_blocks">Template Files and Blocks</a></h2>
+<p>
+</p>
+<h3><a name="include_path">INCLUDE_PATH</a></h3>
+<p>One or more directories to search for templates.</p>
+<p>
+</p>
+<h3><a name="delimiter">DELIMITER</a></h3>
+<p>Delimiter for separating paths in <code>INCLUDE_PATH</code> (default: '<code>:</code>').</p>
+<p>
+</p>
+<h3><a name="absolute">ABSOLUTE</a></h3>
+<p>Allow absolute file names, e.g. <code>/foo/bar.html</code> (default: 0).</p>
+<p>
+</p>
+<h3><a name="relative">RELATIVE</a></h3>
+<p>Allow relative filenames, e.g. <code>../foo/bar.html</code> (default: 0).</p>
+<p>
+</p>
+<h3><a name="default">DEFAULT</a></h3>
+<p>Default template to use when another not found.</p>
+<p>
+</p>
+<h3><a name="blocks">BLOCKS</a></h3>
+<p>Hash array pre-defining template blocks.</p>
+<p>
+</p>
+<h3><a name="auto_reset">AUTO_RESET</a></h3>
+<p>Enabled by default causing <code>BLOCK</code> definitions to be reset each time a
+template is processed.  Disable to allow <code>BLOCK</code> definitions to persist.</p>
+<p>
+</p>
+<h3><a name="recursion">RECURSION</a></h3>
+<p>Flag to permit recursion into templates (default: 0).</p>
+<p>
+</p>
+<h2><a name="template_variables">Template Variables</a></h2>
+<p>
+</p>
+<h3><a name="variables">VARIABLES</a></h3>
+<p>Hash array of variables and values to pre-define in the stash.</p>
+<p>
+</p>
+<h2><a name="runtime_processing_options">Runtime Processing Options</a></h2>
+<p>
+</p>
+<h3><a name="eval_perl">EVAL_PERL</a></h3>
+<p>Flag to indicate if <code>PERL</code>/<code>RAWPERL</code> blocks should be processed (default: 0).</p>
+<p>
+</p>
+<h3><a name="pre_process__post_process">PRE_PROCESS, POST_PROCESS</a></h3>
+<p>Name of template(s) to process before/after main template.</p>
+<p>
+</p>
+<h3><a name="process">PROCESS</a></h3>
+<p>Name of template(s) to process instead of main template.</p>
+<p>
+</p>
+<h3><a name="error">ERROR</a></h3>
+<p>Name of error template or reference to hash array mapping error types to
+templates.</p>
+<p>
+</p>
+<h3><a name="output">OUTPUT</a></h3>
+<p>Default output location or handler.</p>
+<p>
+</p>
+<h3><a name="output_path">OUTPUT_PATH</a></h3>
+<p>Directory into which output files can be written.</p>
+<p>
+</p>
+<h3><a name="debug">DEBUG</a></h3>
+<p>Enable debugging messages.</p>
+<p>
+</p>
+<h2><a name="caching_and_compiling_options">Caching and Compiling Options</a></h2>
+<p>
+</p>
+<h3><a name="cache_size">CACHE_SIZE</a></h3>
+<p>Maximum number of compiled templates to cache in memory (default:
+undef - cache all)</p>
+<p>
+</p>
+<h3><a name="compile_ext">COMPILE_EXT</a></h3>
+<p>Filename extension for compiled template files (default: undef - don't
+compile).</p>
+<p>
+</p>
+<h3><a name="compile_dir">COMPILE_DIR</a></h3>
+<p>Root of directory in which compiled template files should be written
+(default: undef - don't compile).</p>
+<p>
+</p>
+<h2><a name="plugins_and_filters">Plugins and Filters</a></h2>
+<p>
+</p>
+<h3><a name="plugins">PLUGINS</a></h3>
+<p>Reference to a hash array mapping plugin names to Perl packages.</p>
+<p>
+</p>
+<h3><a name="plugin_base">PLUGIN_BASE</a></h3>
+<p>One or more base classes under which plugins may be found.</p>
+<p>
+</p>
+<h3><a name="load_perl">LOAD_PERL</a></h3>
+<p>Flag to indicate regular Perl modules should be loaded if a named plugin
+can't be found  (default: 0).</p>
+<p>
+</p>
+<h3><a name="filters">FILTERS</a></h3>
+<p>Hash array mapping filter names to filter subroutines or factories.</p>
+<p>
+</p>
+<h2><a name="customisation_and_extension">Customisation and Extension</a></h2>
+<p>
+</p>
+<h3><a name="load_templates">LOAD_TEMPLATES</a></h3>
+<p>List of template providers.</p>
+<p>
+</p>
+<h3><a name="load_plugins">LOAD_PLUGINS</a></h3>
+<p>List of plugin providers.</p>
+<p>
+</p>
+<h3><a name="load_filters">LOAD_FILTERS</a></h3>
+<p>List of filter providers.</p>
+<p>
+</p>
+<h3><a name="tolerant">TOLERANT</a></h3>
+<p>Set providers to tolerate errors as declinations (default: 0).</p>
+<p>
+</p>
+<h3><a name="service">SERVICE</a></h3>
+<p>Reference to a custom service object (default: <a href="../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Service.html">the Template::Service manpage</a>).</p>
+<p>
+</p>
+<h3><a name="context">CONTEXT</a></h3>
+<p>Reference to a custom context object (default: <a href="../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a>).</p>
+<p>
+</p>
+<h3><a name="stash">STASH</a></h3>
+<p>Reference to a custom stash object (default: <a href="../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Stash.html">the Template::Stash manpage</a>).</p>
+<p>
+</p>
+<h3><a name="parser">PARSER</a></h3>
+<p>Reference to a custom parser object (default: <a href="../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Parser.html">the Template::Parser manpage</a>).</p>
+<p>
+</p>
+<h3><a name="grammar">GRAMMAR</a></h3>
+<p>Reference to a custom grammar object (default: <a href="../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Grammar.html">the Template::Grammar manpage</a>).</p>
+<p>
+</p>
+<hr />
+<h1><a name="directive_summary">DIRECTIVE SUMMARY</a></h1>
+<p>The following list gives a short summary of each Template Toolkit directive.
+See <a href="../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Manual/Directives.html">the Template::Manual::Directives manpage</a> for full details.</p>
+<p>
+</p>
+<h2><a name="get">GET</a></h2>
+<p>Evaluate and print a variable or value.</p>
+<pre>
+    [%   GET variable %]    # 'GET' keyword is optional
+    [%       variable %]
+    [%       hash.key %]
+    [%         list.n %]
+    [%     code(args) %]
+    [% obj.meth(args) %]
+    [%  &quot;value: $var&quot; %]</pre>
+<p>
+</p>
+<h2><a name="call">CALL</a></h2>
+<p>As per <em>GET</em> but without printing result (e.g. call code)</p>
+<pre>
+    [%  CALL variable %]</pre>
+<p>
+</p>
+<h2><a name="set">SET</a></h2>
+<p>Assign a values to variables.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">SET</span> <span class="variable">variable</span> <span class="operator">=</span> <span class="variable">value</span> <span class="variable">%]</span>    <span class="comment"># 'SET' also optional</span>
+    <span class="operator">[</span><span class="operator">% </span>    <span class="variable">variable</span> <span class="operator">=</span> <span class="variable">other_variable</span>
+           <span class="variable">variable</span> <span class="operator">=</span> <span class="string">'literal text @ $100'</span>
+           <span class="variable">variable</span> <span class="operator">=</span> <span class="string">"interpolated text: </span><span class="variable">$var</span><span class="string">"</span>
+           <span class="variable">list</span>     <span class="operator">=</span> <span class="operator">[</span> <span class="variable">val</span><span class="operator">,</span> <span class="variable">val</span><span class="operator">,</span> <span class="variable">val</span><span class="operator">,</span> <span class="variable">val</span><span class="operator">,</span> <span class="operator">...</span> <span class="operator">]</span>
+           <span class="variable">list</span>     <span class="operator">=</span> <span class="operator">[</span> <span class="variable">val</span><span class="operator">..</span><span class="variable">val</span> <span class="operator">]</span>
+           <span class="variable">hash</span>     <span class="operator">=</span> <span class="operator">{</span> <span class="string">var</span> <span class="operator">=&gt;</span> <span class="variable">val</span><span class="operator">,</span> <span class="string">var</span> <span class="operator">=&gt;</span> <span class="variable">val</span><span class="operator">,</span> <span class="operator">...</span> <span class="operator">}</span>
+    <span class="variable">%]</span>
+</pre>
+<p>
+</p>
+<h2><a name="default">DEFAULT</a></h2>
+<p>Like <em>SET</em>, but variables are only set if currently unset (i.e. have no
+true value).</p>
+<pre>
+    [% DEFAULT variable = value %]</pre>
+<p>
+</p>
+<h2><a name="insert">INSERT</a></h2>
+<p>Insert a file without any processing performed on the contents.</p>
+<pre>
+    [% INSERT legalese.txt %]</pre>
+<p>
+</p>
+<h2><a name="process">PROCESS</a></h2>
+<p>Process another template file or block and insert the generated output.
+Any template <em>BLOCK</em>s or variables defined or updated in the <code>PROCESS</code>ed
+template will thereafter be defined in the calling template.</p>
+<pre>
+    [% PROCESS template %]
+    [% PROCESS template  var = val, ... %]</pre>
+<p>
+</p>
+<h2><a name="include">INCLUDE</a></h2>
+<p>Similar to <code>PROCESS</code>, but using a local copy of the current variables.
+Any template <code>BLOCK</code>s or variables defined in the <code>INCLUDE</code>d template
+remain local to it.</p>
+<pre>
+    [% INCLUDE template %]
+    [% INCLUDE template  var = val, ... %]</pre>
+<p>
+</p>
+<h2><a name="wrapper">WRAPPER</a></h2>
+<p>The content between the <code>WRAPPER</code> and correspondng <code>END</code> directives is first
+evaluated, with the output generated being stored in the <code>content</code> variable.
+The named template is then process as per <code>INCLUDE</code>.</p>
+<pre>
+    [% WRAPPER layout %]
+       Some template markup [% blah %]...
+    [% END %]</pre>
+<p>A simple <em class="file">layout</em> template might look something like this:</p>
+<pre>
+    Your header here...
+    [% content %]
+    Your footer here...</pre>
+<p>
+</p>
+<h2><a name="block">BLOCK</a></h2>
+<p>Define a named template block for <em>INCLUDE</em>, <em>PROCESS</em> and <em>WRAPPER</em>
+to use.</p>
+<pre>
+    [% BLOCK hello %]
+       Hello World
+    [% END %]</pre>
+<pre>
+    [% INCLUDE hello %]</pre>
+<p>
+</p>
+<h2><a name="foreach">FOREACH</a></h2>
+<p>Repeat the enclosed <code>FOREACH</code> ... <code>END</code> block for each value in the list.</p>
+<pre>
+    [% FOREACH variable IN [ val, val, val ] %]    # either
+    [% FOREACH variable IN list %]                 # or
+       The variable is set to [% variable %]
+    [% END %]</pre>
+<p>
+</p>
+<h2><a name="while">WHILE</a></h2>
+<p>The block enclosed between <code>WHILE</code> and <code>END</code> block is processed while
+the specified condition is true.</p>
+<pre>
+    [% WHILE condition %]
+       content
+    [% END %]</pre>
+<p>
+</p>
+<h2><a name="if___unless___elsif___else">IF / UNLESS / ELSIF / ELSE</a></h2>
+<p>The enclosed block is processed if the condition is true / false.</p>
+<pre>
+    [% IF condition %]
+       content
+    [% ELSIF condition %]
+     content
+    [% ELSE %]
+     content
+    [% END %]</pre>
+<pre>
+    [% UNLESS condition %]
+       content
+    [% # ELSIF/ELSE as per IF, above %]
+       content
+    [% END %]</pre>
+<p>
+</p>
+<h2><a name="switch___case">SWITCH / CASE</a></h2>
+<p>Multi-way switch/case statement.</p>
+<pre>
+    [% SWITCH variable %]
+    [%   CASE val1 %]
+           content
+    [%   CASE [ val2, val3 ] %]
+           content
+    [%   CASE %]         # or [% CASE DEFAULT %]
+           content
+    [% END %]</pre>
+<p>
+</p>
+<h2><a name="macro">MACRO</a></h2>
+<p>Define a named macro.</p>
+<pre>
+    [% MACRO name &lt;directive&gt; %]
+    [% MACRO name(arg1, arg2) &lt;directive&gt; %]
+    ...
+    [% name %]
+    [% name(val1, val2) %]</pre>
+<p>
+</p>
+<h2><a name="filter">FILTER</a></h2>
+<p>Process enclosed <code>FILTER</code> ... <code>END</code> block then pipe through a filter.</p>
+<pre>
+    [% FILTER name %]                       # either
+    [% FILTER name( params ) %]             # or
+    [% FILTER alias = name( params ) %]     # or
+       content
+    [% END %]</pre>
+<p>
+</p>
+<h2><a name="use">USE</a></h2>
+<p>Load a plugin module (see <code>Template::&lt;Manual::Plugins</code>), or any regular Perl
+module when the <code>LOAD_PERL</code> option is set.</p>
+<pre>
+    [% USE name %]                      # either
+    [% USE name( params ) %]            # or
+    [% USE var = name( params ) %]      # or
+    ...
+    [% name.method %]
+    [% var.method %]</pre>
+<p>
+</p>
+<h2><a name="perl___rawperl">PERL / RAWPERL</a></h2>
+<p>Evaluate enclosed blocks as Perl code (requires the <code>EVAL_PERL</code> option to be
+set).</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">PERL</span> <span class="variable">%]</span>
+     <span class="comment"># perl code goes here</span>
+     <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">set</span><span class="operator">(</span><span class="string">'foo'</span><span class="operator">,</span> <span class="number">10</span><span class="operator">);</span>
+     <span class="keyword">print</span> <span class="string">"set 'foo' to "</span><span class="operator">,</span> <span class="variable">$stash</span><span class="operator">-&gt;</span><span class="variable">get</span><span class="operator">(</span><span class="string">'foo'</span><span class="operator">),</span> <span class="string">"\n"</span><span class="operator">;</span>
+     <span class="keyword">print</span> <span class="variable">$context</span><span class="operator">-&gt;</span><span class="variable">include</span><span class="operator">(</span><span class="string">'footer'</span><span class="operator">,</span> <span class="operator">{</span> <span class="string">var</span> <span class="operator">=&gt;</span> <span class="variable">$val</span> <span class="operator">}</span><span class="operator">);</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="keyword">END</span> <span class="variable">%]</span>
+</pre>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">RAWPERL</span> <span class="variable">%]</span>
+       <span class="comment"># raw perl code goes here, no magic but fast.</span>
+       <span class="variable">$output</span> <span class="operator">.=</span> <span class="string">'some output'</span><span class="operator">;</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="keyword">END</span> <span class="variable">%]</span>
+</pre>
+<p>
+</p>
+<h2><a name="try___throw___catch___final">TRY / THROW / CATCH / FINAL</a></h2>
+<p>Exception handling.</p>
+<pre>
+    [% TRY %]
+     content
+       [% THROW type info %]
+    [% CATCH type %]
+     catch content
+       [% error.type %] [% error.info %]
+    [% CATCH %] # or [% CATCH DEFAULT %]
+     content
+    [% FINAL %]
+       this block is always processed
+    [% END %]</pre>
+<p>
+</p>
+<h2><a name="next">NEXT</a></h2>
+<p>Jump straight to the next item in a <code>FOREACH</code> or <code>WHILE</code> loop.</p>
+<pre>
+    [% NEXT %]</pre>
+<p>
+</p>
+<h2><a name="last">LAST</a></h2>
+<p>Break out of <code>FOREACH</code> or <code>WHILE</code> loop.</p>
+<pre>
+    [% LAST %]</pre>
+<p>
+</p>
+<h2><a name="return">RETURN</a></h2>
+<p>Stop processing current template and return to including templates.</p>
+<pre>
+    [% RETURN %]</pre>
+<p>
+</p>
+<h2><a name="stop">STOP</a></h2>
+<p>Stop processing all templates and return to caller.</p>
+<pre>
+    [% STOP %]</pre>
+<p>
+</p>
+<h2><a name="tags">TAGS</a></h2>
+<p>Define new tag style or characters (default: <code>[%</code> <code>%]</code>).</p>
+<pre>
+    [% TAGS html %]
+    [% TAGS &lt;!-- --&gt; %]</pre>
+<p>
+</p>
+<h2><a name="comments">COMMENTS</a></h2>
+<p>Ignored and deleted.</p>
+<pre>
+    [% # this is a comment to the end of line
+       foo = 'bar'
+    %]</pre>
+<pre>
+    [%# placing the '#' immediately inside the directive
+        tag comments out the entire directive
+    %]</pre>
+<p>
+</p>
+<hr />
+<h1><a name="source_code_repository">SOURCE CODE REPOSITORY</a></h1>
+<p>The source code for the Template Toolkit is held in a public git repository
+on Github: <a href="https://github.com/abw/Template2">https://github.com/abw/Template2</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="version">VERSION</a></h1>
+<p>Template Toolkit version 2.23, released January 2012.</p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2012 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+
+</body>
+
+</html>

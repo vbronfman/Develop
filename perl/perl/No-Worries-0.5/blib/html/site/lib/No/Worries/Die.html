@@ -1,0 +1,163 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>No::Worries::Die - error handling without worries</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>No::Worries::Die - error handling without worries</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#functions">FUNCTIONS</a></li>
+	<li><a href="#global_variables">GLOBAL VARIABLES</a></li>
+	<li><a href="#environment_variables">ENVIRONMENT VARIABLES</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>No::Worries::Die - error handling without worries</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+  <span class="keyword">use</span> <span class="variable">No::Worries::Die</span> <span class="string">qw(dief handler)</span><span class="operator">;</span>
+</pre>
+<pre>
+  <span class="keyword">open</span><span class="operator">(</span><span class="variable">$fh</span><span class="operator">,</span> <span class="string">"&lt;"</span><span class="operator">,</span> <span class="variable">$path</span><span class="operator">)</span> <span class="keyword">or</span> <span class="variable">dief</span><span class="operator">(</span><span class="string">"cannot open(%s): %s"</span><span class="operator">,</span> <span class="variable">$path</span><span class="operator">,</span> <span class="variable">$!</span><span class="operator">);</span>
+  <span class="operator">...</span> <span class="keyword">not</span> <span class="variable">reached</span> <span class="variable">in</span> <span class="variable">case</span> <span class="variable">of</span> <span class="variable">failure</span> <span class="operator">...</span>
+</pre>
+<pre>
+  $ ./myprog
+  myprog: cannot open(foo): No such file or directory</pre>
+<pre>
+  $ NO_WORRIES=confess ./myprog
+  myprog: cannot open(foo): No such file or directory at myprog line 16
+        main::test() called at ./myprog line 19</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This module eases error handling by providing a convenient wrapper
+around <a href="../../../../lib/pods/perlfunc.html#die"><code>die()</code></a> with sprintf()-like API. <a href="#dief"><code>dief()</code></a> is to <a href="../../../../lib/pods/perlfunc.html#die"><code>die()</code></a> what <a href="../../../../lib/pods/perlfunc.html#printf"><code>printf()</code></a>
+is to <a href="../../../../lib/pods/perlfunc.html#print"><code>print()</code></a> with, in addition, the trimming of leading and trailing
+spaces.</p>
+<p>It also provides a handler for <a href="../../../../lib/pods/perlfunc.html#die"><code>die()</code></a> that prepends a prefix
+($No::Worries::Die::Prefix) to all errors. It also uses the NO_WORRIES
+environment variable to find out if <a href="../../../../lib/Carp.html">the Carp manpage</a>'s <a href="#croak"><code>croak()</code></a> or <a href="#confess"><code>confess()</code></a>
+should be used instead of <a href="../../../../lib/pods/perlfunc.html#die"><code>die()</code></a>. Finally, the wrapper can be told to
+also log errors to syslog (see $No::Worries::Die::Syslog).</p>
+<p>This handler can be installed simply by importing it:</p>
+<pre>
+  <span class="keyword">use</span> <span class="variable">No::Worries::Die</span> <span class="string">qw(dief handler)</span><span class="operator">;</span>
+</pre>
+<p>Alternatively, it can be installed &quot;manually&quot;:</p>
+<pre>
+  <span class="keyword">use</span> <span class="variable">No::Worries::Die</span> <span class="string">qw(dief)</span><span class="operator">;</span>
+  <span class="variable">$SIG</span><span class="operator">{</span><span class="string">__DIE__</span><span class="operator">}</span> <span class="operator">=</span> <span class="operator">\&amp;</span><span class="variable">No::Worries::Die::handler</span><span class="operator">;</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="functions">FUNCTIONS</a></h1>
+<p>This module provides the following functions (none of them being
+exported by default):</p>
+<dl>
+<dt><strong><a name="dief" class="item">dief(MESSAGE)</a></strong></dt>
+
+<dd>
+<p>report an error described by the given MESSAGE</p>
+</dd>
+<dt><strong>dief(FORMAT, ARGUMENTS...)</strong></dt>
+
+<dd>
+<p>idem but with sprintf()-like API</p>
+</dd>
+<dt><strong><a name="handler" class="item">handler(MESSAGE)</a></strong></dt>
+
+<dd>
+<p>$SIG{__DIE__} compatible error handler (this function cannot be imported)</p>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="global_variables">GLOBAL VARIABLES</a></h1>
+<p>This module uses the following global variables (none of them being
+exported):</p>
+<dl>
+<dt><strong><a name="_prefix" class="item">$Prefix</a></strong></dt>
+
+<dd>
+<p>prefix to prepend to all errors (default: the program name)</p>
+</dd>
+<dt><strong><a name="_syslog" class="item">$Syslog</a></strong></dt>
+
+<dd>
+<p>true if errors should also be sent to syslog using
+<a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries/Syslog.html">the No::Worries::Syslog manpage</a>'s <code>syslog_error()</code> (default: false)</p>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="environment_variables">ENVIRONMENT VARIABLES</a></h1>
+<p>This module uses the <code>NO_WORRIES</code> environment variable to find out
+how errors will be reported. Supported values are:</p>
+<dl>
+<dt><strong><a name="croak" class="item"><code>croak</code></a></strong></dt>
+
+<dd>
+<p><a href="../../../../lib/Carp.html">the Carp manpage</a>'s <a href="#croak"><code>croak()</code></a> will be used instead of <a href="../../../../lib/pods/perlfunc.html#die"><code>die()</code></a></p>
+</dd>
+<dt><strong><a name="confess" class="item"><code>confess</code></a></strong></dt>
+
+<dd>
+<p><a href="../../../../lib/Carp.html">the Carp manpage</a>'s <a href="#confess"><code>confess()</code></a> will be used instead of <a href="../../../../lib/pods/perlfunc.html#die"><code>die()</code></a></p>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../../lib/Carp.html">the Carp manpage</a>,
+<a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries.html">the No::Worries manpage</a>,
+<a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries/Syslog.html">the No::Worries::Syslog manpage</a>,
+<a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries/Warn.html">the No::Worries::Warn manpage</a>.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Lionel Cons <a href="http://cern.ch/lionel.cons">http://cern.ch/lionel.cons</a></p>
+<p>Copyright CERN 2012</p>
+
+</body>
+
+</html>

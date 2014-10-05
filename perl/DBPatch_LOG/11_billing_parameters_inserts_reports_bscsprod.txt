@@ -1,0 +1,4 @@
+/odb/app01/oracle/product/ROSH/TST3/BUILD/src/PM_Invoice_PM_Invoice__20130318_125830/11_billing_parameters_inserts_reports_bscsprod.sql
+CONNECT STRING : REPORTS/REPORTS@BSCSTST3
+ERROR MESSAGE  : Original file /home/ccmngr/proj/vmit15dev02/PM_Invoice/PM_Invoice_201304/DB/billing_parameters_inserts_reports_bscsprod.sql not found
+----------------------------------------------------------------

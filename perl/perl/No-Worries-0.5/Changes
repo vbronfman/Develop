@@ -1,0 +1,21 @@
+Revision history for No-Worries:
+
+0.5	Wed Jul 25 2012
+	* Added No::Worries::DN to ease Distinguished Names handling.
+
+0.4	Tue Jul  3 2012
+	* Added thread support to No::Worries::Log.
+	* No::Worries::PidFile's pf_unset() now accepts a non-existing path.
+
+0.3	Mon May 14 2012
+	* Portability fixes for process and pid file handling.
+	* Better handle processes dying before all their output could be read.
+
+0.2	Mon Apr 30 2012
+	* Improved documentation, portability and symbol export control.
+	* Improved No::Worries::Log's handlers.
+	* Added No::Worries::Proc's $Transient variable.
+	* First version released in CPAN.
+
+0.1	Wed Apr 25 2012
+	* First version released.

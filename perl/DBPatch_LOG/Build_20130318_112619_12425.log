@@ -1,0 +1,25 @@
+<font color=red>BUILD FINISHED </font>
+###################################################
+#      BUILD TST3 20130318_1126
+###################################################
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_provision_PM_provision_201304_20130318_112619/2_cs_manage_acs_provisioning.sql
+	Start running ..
+STATUS 		: OK
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_provision_PM_provision_201304_20130318_112619/2_Handle_Acs_spec.sql
+	Start running ..
+STATUS 		: OK
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_provision_PM_provision_201304_20130318_112619/3_Handle_Acs_body.sql
+	Start running ..
+STATUS 		: OK
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_provision_PM_provision_201304_20130318_112619/5_catalog_to_acs_update.sql
+	Start running ..
+STATUS 		: OK
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_provision_PM_provision_201304_20130318_112619/5_vmd_if_xml_tr69.sql
+	Start running ..
+STATUS 		: ERROR
+################ END OF BUILD  ####################

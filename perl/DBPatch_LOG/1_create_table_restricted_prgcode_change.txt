@@ -1,0 +1,34 @@
+/home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/1_create_table_restricted_prgcode_change.sql
+CONNECT STRING : REPORTS/REPORTS@BSCSTST3
+CREATE  TABLE RESTRICTED_PRGCODE_CHANGE(PRGCODE_FROM varchar2(10) NOT NULL,
+              *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+CREATE PUBLIC SYNONYM RESTRICTED_PRGCODE_CHANGE FOR RESTRICTED_PRGCODE_CHANGE
+                      *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+Grant succeeded.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+Commit complete.
+
+
+----------------------------------------------------------------

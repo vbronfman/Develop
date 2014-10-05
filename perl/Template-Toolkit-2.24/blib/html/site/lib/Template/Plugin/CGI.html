@@ -1,0 +1,122 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>Template::Plugin::CGI - Interface to the CGI module</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>Template::Plugin::CGI - Interface to the CGI module</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#methods">METHODS</a></li>
+	<ul>
+
+		<li><a href="#params__"><code>params()</code></a></li>
+	</ul>
+
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Plugin::CGI - Interface to the CGI module</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    [% USE CGI %]
+    [% CGI.param('parameter') %]
+    
+    [% USE things = CGI %]
+    [% things.param('name') %]
+    
+    # see CGI docs for other methods provided by the CGI object</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This is a very simple Template Toolkit Plugin interface to the <code>CGI</code> module.
+A <code>CGI</code> object will be instantiated via the following directive:</p>
+<pre>
+    [% USE CGI %]</pre>
+<p><code>CGI</code> methods may then be called as follows:</p>
+<pre>
+    [% CGI.header %]
+    [% CGI.param('parameter') %]</pre>
+<p>An alias can be used to provide an alternate name by which the object should
+be identified.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">USE</span> <span class="variable">mycgi</span> <span class="operator">=</span> <span class="variable">CGI</span> <span class="variable">%]</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">mycgi</span><span class="operator">.</span><span class="variable">start_form</span> <span class="variable">%]</span>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">mycgi</span><span class="operator">.</span><span class="variable">popup_menu</span><span class="operator">(</span><span class="operator">{</span> <span class="string">Name</span>   <span class="operator">=&gt;</span> <span class="string">'Color'</span>
+                          <span class="string">Values</span> <span class="operator">=&gt;</span> <span class="operator">[</span> <span class="string">'Green'</span> <span class="string">'Black'</span> <span class="string">'Brown'</span> <span class="operator">]</span> <span class="operator">}</span><span class="operator">)</span> <span class="variable">%]</span>
+</pre>
+<p>Parenthesised parameters to the <code>USE</code> directive will be passed to the plugin 
+constructor:</p>
+<pre>
+    [% USE cgiprm = CGI('uid=abw&amp;name=Andy+Wardley') %]
+    [% cgiprm.param('uid') %]</pre>
+<p>
+</p>
+<hr />
+<h1><a name="methods">METHODS</a></h1>
+<p>In addition to all the methods supported by the <code>CGI</code> module, this
+plugin defines the following.</p>
+<p>
+</p>
+<h2><a name="params__"><code>params()</code></a></h2>
+<p>This method returns a reference to a hash of all the <code>CGI</code> parameters.
+Any parameters that have multiple values will be returned as lists.</p>
+<pre>
+    [% USE CGI('user=abw&amp;item=foo&amp;item=bar') %]
+    [% CGI.params.user %]            # abw
+    [% CGI.params.item.join(', ') %] # foo, bar</pre>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin.html">the Template::Plugin manpage</a>, <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/CGI.html">the CGI manpage</a></p>
+
+</body>
+
+</html>

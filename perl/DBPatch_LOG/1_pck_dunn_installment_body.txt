@@ -1,0 +1,10 @@
+/home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/1_pck_dunn_installment_body.sql
+CONNECT STRING : REPORTS/REPORTS@BSCSTST3
+
+Warning: Package Body created with compilation errors.
+
+
+----------------------------------------------------------------
+
+
+Package PCK_DUNN_INSTALLMENT compilation errors:

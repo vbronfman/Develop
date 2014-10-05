@@ -1,0 +1,31 @@
+This is DMAKE version 4.1 compiled for Win32 using Borland C 5.02.
+
+For information on how to use DMAKE, see DMAKE.TXT.
+
+DMAKE needs a set of startup files that are located in a subdirectory
+called `startup' where DMAKE.EXE lives.  So, to install it, just
+copy DMAKE.EXE and the startup subdirectory to some location on
+your path.
+
+You can change the default platform in the startup\config.mk file
+(the defaults are set up for Borland C++, v5.x).  If you change the
+defaults, you'll need to make sure the subdirectories you name in
+startup\config.mk are populated with setup files (you can use the
+current hierarchy as a model).
+
+The default startup configuration can also be overridden by setting
+`OSRELEASE' and `OSENVIRONMENT' in your environment (see the notes under
+`readme').  Note that the startup files don't read the `OS' environment
+variable, despite what the notes in the `readme' directory say.  In
+other words, you can only set `OS' from the startup\config.mk file.
+
+You can get the sources for dmake 4.1(patchlevel 1) from
+http://dmake.wticorp.com/.  The file dmake-4.1pl1-win32.patch contains
+notes on the changes I had to make to get it to build.
+
+
+Enjoy!
+
+Gurusamy Sarathy
+gsar@umich.edu
+09-DEC-1998

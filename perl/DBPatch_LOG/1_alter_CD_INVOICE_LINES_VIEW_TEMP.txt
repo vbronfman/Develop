@@ -1,0 +1,16 @@
+/home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/1_alter_CD_INVOICE_LINES_VIEW_TEMP.sql
+CONNECT STRING : BGH_PARTNER/BGH_PARTNER@BHTST3
+    add (RPE_PACK_ID INTEGER,
+         *
+ERROR at line 2:
+ORA-01430: column being added already exists in table 
+
+
+    add (RPE_PACK_ID INTEGER,
+         *
+ERROR at line 2:
+ORA-01430: column being added already exists in table 
+
+
+
+----------------------------------------------------------------

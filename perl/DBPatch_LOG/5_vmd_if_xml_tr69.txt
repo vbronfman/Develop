@@ -1,0 +1,4 @@
+/odb/app01/oracle/product/ROSH/TST3/BUILD/src/PM_provision_PM_provision_201304_20130318_125830/5_vmd_if_xml_tr69.sql
+CONNECT STRING : VMD/VMD@BSCSTST3
+ERROR MESSAGE  : Original file /users/ccmngr/proj/ponda/PM_provision/PM_provision_201304/DB/vmd_if_xml_tr69.sql not found
+----------------------------------------------------------------

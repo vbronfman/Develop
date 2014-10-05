@@ -1,0 +1,24 @@
+
+2013-04-23 15:16:34 	##### D:\Develop\Perl\DBPatch_LOG\DBPatch_log.pl Started ##### 
+15:16:44	 Started
+15:16:44	 main::read_conf Parse by XML::Simple
+
+15:16:46	 DEBUG  DB to connect REPORTS/REPORTS@BSCSTST3; package name PCK_DUNN_INSTALLMENT 
+15:16:47	 Formating email message...
+
+15:16:47	 DEBUG file=1_insert_aru_charge_type.txt
+15:16:47	 DEBUG file=1_pck_dunn_installment_body.txt
+15:16:47	 DEBUG file=1_alter_CD_INVOICE_LINES_VIEW_TEMP.txt
+15:16:47	 DEBUG file=1_create_table_restricted_prgcode_change.txt
+15:16:47	 DEBUG file=1_create_SHIYUCH_CONTRACTS_REQUESTS.txt
+15:16:47	 DEBUG file=6_GC_DEACTIVATE_CONT_BILL_SPEC.txt
+15:16:47	 DEBUG file=6_GC_MASS_DEACT_CONT_BILLING_SPEC.txt
+15:16:47	 DEBUG file=7_billing_param_1710_ins.txt
+15:16:47	 DEBUG file=10_INSERT_DEPOSIT_VANTIVE_CASE.txt
+15:16:48	 Sending email message...
+15:16:48	 Sending email message...
+15:16:49	 Sending email message...
+15:16:49	 Sending email message...
+15:16:49	 Sending email message...
+15:16:49	 Finished
+2013-04-23 15:16:49	 ##### D:\Develop\Perl\DBPatch_LOG\DBPatch_log.pl Finished ###### 

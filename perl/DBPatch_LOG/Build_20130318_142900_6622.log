@@ -1,0 +1,21 @@
+<font color=red>BUILD FINISHED </font>
+###################################################
+#      BUILD TEST1 20130318_1429
+###################################################
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TEST1/BUILD/src/PM_Invoice_PM_Invoice_201304_20130318_142900/1_INVREP_Cont_Panel_DETAILS_create.sql
+	Start running ..
+STATUS 		: OK
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TEST1/BUILD/src/PM_Invoice_PM_Invoice_201304_20130318_142900/1_INVREP_EQUIPMENT_DETAILS_cre.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TEST1/BUILD/src/PM_Invoice_PM_Invoice_201304_20130318_142900/1_INVREP_Cont_Operators_DETAILS_create.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TEST1/BUILD/src/PM_Invoice_PM_Invoice_201304_20130318_142900/5_rep_gen_bm_equipment_script_vw.sql
+	Start running ..
+STATUS 		: ERROR
+################ END OF BUILD  ####################

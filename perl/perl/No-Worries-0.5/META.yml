@@ -1,0 +1,37 @@
+--- #YAML:1.0
+name:               No-Worries
+version:            0.5
+abstract:           coding without worries
+author:
+    - Lionel Cons <lionel.cons@cern.ch>
+license:            perl
+distribution_type:  module
+configure_requires:
+    ExtUtils::MakeMaker:  0
+build_requires:
+    ExtUtils::MakeMaker:  0
+requires:
+    Carp:              0
+    Config:            0
+    Encode:            0
+    Fcntl:             0
+    File::Temp:        0
+    Getopt::Long:      0
+    HTTP::Date:        0
+    IO::Handle:        0
+    IO::Select:        0
+    Params::Validate:  0
+    POSIX:             0
+    Sys::Hostname:     0
+    Sys::Syslog:       0
+    Test::More:        0
+    Time::HiRes:       0
+    URI::Escape:       0
+no_index:
+    directory:
+        - t
+        - inc
+generated_by:       ExtUtils::MakeMaker version 6.55_02
+meta-spec:
+    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
+    version:  1.4

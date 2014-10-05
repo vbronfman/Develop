@@ -1,0 +1,186 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../scineplex.css">
+<title>Template::Config - Factory module for instantiating other TT2 modules</title>
+<link rel="stylesheet" href="../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',3);</script>
+<h1><a>Template::Config - Factory module for instantiating other TT2 modules</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#public_methods">PUBLIC METHODS</a></li>
+	<ul>
+
+		<li><a href="#load__module_"><code>load($module)</code></a></li>
+		<li><a href="#preload__"><code>preload()</code></a></li>
+		<li><a href="#parser___config_"><code>parser(\%config)</code></a></li>
+		<li><a href="#provider___config_"><code>provider(\%config)</code></a></li>
+		<li><a href="#plugins___config_"><code>plugins(\%config)</code></a></li>
+		<li><a href="#filters___config_"><code>filters(\%config)</code></a></li>
+		<li><a href="#stash___vars_"><code>stash(\%vars)</code></a></li>
+		<li><a href="#context___config_"><code>context(\%config)</code></a></li>
+		<li><a href="#service___config_"><code>service(\%config)</code></a></li>
+		<li><a href="#iterator___config_"><code>iterator(\%config)</code></a></li>
+		<li><a href="#constants___config_"><code>constants(\%config)</code></a></li>
+		<li><a href="#instdir__dir_"><code>instdir($dir)</code></a></li>
+	</ul>
+
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Config - Factory module for instantiating other TT2 modules</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template::Config</span><span class="operator">;</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This module implements various methods for loading and instantiating
+other modules that comprise the Template Toolkit.  It provides a consistent
+way to create toolkit components and allows custom modules to be used in 
+place of the regular ones.</p>
+<p>Package variables such as <code>$STASH</code>, <code>$SERVICE</code>, <code>$CONTEXT</code>, etc., contain
+the default module/package name for each component (<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Stash.html">the Template::Stash manpage</a>,
+<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Service.html">the Template::Service manpage</a> and <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a>, respectively) and are used by
+the various factory methods (<em>stash()</em>, <em>service()</em> and <em>context()</em>) to
+load the appropriate module. Changing these package variables will cause
+subsequent calls to the relevant factory method to load and instantiate an
+object from the new class.</p>
+<p>
+</p>
+<hr />
+<h1><a name="public_methods">PUBLIC METHODS</a></h1>
+<p>
+</p>
+<h2><a name="load__module_"><code>load($module)</code></a></h2>
+<p>Load a module using Perl's <a href="../../../lib/pods/perlfunc.html#require">require()</a>. Any occurences of '<code>::</code>' in the module
+name are be converted to '<code>/</code>', and '<code>.pm</code>' is appended. Returns 1 on success or
+undef on error.  Use <code>$class-&gt;error()</code> to examine the error string.</p>
+<p>
+</p>
+<h2><a name="preload__"><code>preload()</code></a></h2>
+<p>This method preloads all the other <code>Template::*</code> modules that are likely to
+be used. It is called automatically by the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a> module when running
+under mod_perl (<code>$ENV{MOD_PERL}</code> is set).</p>
+<p>
+</p>
+<h2><a name="parser___config_"><code>parser(\%config)</code></a></h2>
+<p>Instantiate a new parser object of the class whose name is denoted by
+the package variable <code>$PARSER</code> (default: <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Parser.html">the Template::Parser manpage</a>).  Returns
+a reference to a newly instantiated parser object or undef on error.</p>
+<p>
+</p>
+<h2><a name="provider___config_"><code>provider(\%config)</code></a></h2>
+<p>Instantiate a new template provider object (default: <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Provider.html">the Template::Provider manpage</a>).
+Returns an object reference or undef on error, as above.</p>
+<p>
+</p>
+<h2><a name="plugins___config_"><code>plugins(\%config)</code></a></h2>
+<p>Instantiate a new plugins provider object (default: <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugins.html">the Template::Plugins manpage</a>).
+Returns an object reference or undef on error, as above.</p>
+<p>
+</p>
+<h2><a name="filters___config_"><code>filters(\%config)</code></a></h2>
+<p>Instantiate a new filter provider object (default: <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Filters.html">the Template::Filters manpage</a>).
+Returns an object reference or undef on error, as above.</p>
+<p>
+</p>
+<h2><a name="stash___vars_"><code>stash(\%vars)</code></a></h2>
+<p>Instantiate a new stash object (<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Stash.html">the Template::Stash manpage</a> or <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Stash/XS.html">the Template::Stash::XS manpage</a>
+depending on the default set at installation time) using the contents of the
+optional hash array passed by parameter as initial variable definitions.
+Returns an object reference or undef on error, as above.</p>
+<p>
+</p>
+<h2><a name="context___config_"><code>context(\%config)</code></a></h2>
+<p>Instantiate a new template context object (default: <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a>).
+Returns an object reference or undef on error, as above.</p>
+<p>
+</p>
+<h2><a name="service___config_"><code>service(\%config)</code></a></h2>
+<p>Instantiate a new template service object (default: <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Service.html">the Template::Service manpage</a>).
+Returns an object reference or undef on error, as above.</p>
+<p>
+</p>
+<h2><a name="iterator___config_"><code>iterator(\%config)</code></a></h2>
+<p>Instantiate a new template iterator object (default: <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Iterator.html">the Template::Iterator manpage</a>).
+Returns an object reference or undef on error, as above.</p>
+<p>
+</p>
+<h2><a name="constants___config_"><code>constants(\%config)</code></a></h2>
+<p>Instantiate a new namespace handler for compile time constant folding
+(default: <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Namespace/Constants.html">the Template::Namespace::Constants manpage</a>). Returns an object reference or
+undef on error, as above.</p>
+<p>
+</p>
+<h2><a name="instdir__dir_"><code>instdir($dir)</code></a></h2>
+<p>Returns the root directory of the Template Toolkit installation under
+which optional components are installed.  Any relative directory specified
+as an argument will be appended to the returned directory.</p>
+<pre>
+    <span class="comment"># e.g. returns '/usr/local/tt2'</span>
+    <span class="keyword">my</span> <span class="variable">$ttroot</span> <span class="operator">=</span> <span class="variable">Template::Config</span><span class="operator">-&gt;</span><span class="variable">instdir</span><span class="operator">()</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="string">"</span><span class="variable">$Template</span><span class="string">::Config::ERROR\n"</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="comment"># e.g. returns '/usr/local/tt2/templates'</span>
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template::Config</span><span class="operator">-&gt;</span><span class="variable">instdir</span><span class="operator">(</span><span class="string">'templates'</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="string">"</span><span class="variable">$Template</span><span class="string">::Config::ERROR\n"</span><span class="operator">;</span>
+</pre>
+<p>Returns <a href="../../../lib/pods/perlfunc.html#undef"><code>undef</code></a> and sets <code>$Template::Config::ERROR</code> appropriately if the 
+optional components of the Template Toolkit have not been installed.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a></p>
+
+</body>
+
+</html>

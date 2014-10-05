@@ -1,0 +1,132 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>Template::Stash::XS - High-speed variable stash written in C</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>Template::Stash::XS - High-speed variable stash written in C</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#bugs">BUGS</a></li>
+	<li><a href="#authors">AUTHORS</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Stash::XS - High-speed variable stash written in C</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">Template::Stash::XS</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$stash</span> <span class="operator">=</span> <span class="variable">Template::Stash::XS</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(\</span><span class="variable">%vars</span><span class="operator">);</span>
+    <span class="keyword">my</span> <span class="variable">$tt2</span>   <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> <span class="string">STASH</span> <span class="operator">=&gt;</span> <span class="variable">$stash</span> <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>The Template:Stash::XS module is an implementation of the
+Template::Stash written in C.  The &quot;XS&quot; in the name refers to Perl's
+XS extension system for interfacing Perl to C code.  It works just
+like the regular Perl implementation of Template::Stash but runs about
+twice as fast.</p>
+<p>The easiest way to use the XS stash is to configure the Template
+Toolkit to use it by default.  You can do this at installation time
+(when you run <code>perl Makefile.PL</code>) by answering 'y' to the questions:</p>
+<pre>
+    Do you want to build the XS Stash module?      y
+    Do you want to use the XS Stash by default?    y</pre>
+<p>See the <em class="file">INSTALL</em> file distributed with the Template Toolkit for further
+details on installation.</p>
+<p>If you don't elect to use the XS stash by default then you should use
+the <code>STASH</code> configuration item when you create a new Template object.
+This should reference an XS stash object that you have created
+manually.</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">Template::Stash::XS</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$stash</span> <span class="operator">=</span> <span class="variable">Template::Stash::XS</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(\</span><span class="variable">%vars</span><span class="operator">);</span>
+    <span class="keyword">my</span> <span class="variable">$tt2</span>   <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> <span class="string">STASH</span> <span class="operator">=&gt;</span> <span class="variable">$stash</span> <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>Alternately, you can set the <code>$Template::Config::STASH</code> package
+variable like so:</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">Template::Config</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="variable">$Template::Config::STASH</span> <span class="operator">=</span> <span class="string">'Template::Stash::XS'</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$tt2</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">();</span>
+</pre>
+<p>The XS stash will then be automatically used.</p>
+<p>If you want to use the XS stash by default and don't want to
+re-install the Template Toolkit, then you can manually modify the
+<code>Template/Config.pm</code> module near line 42 to read:</p>
+<pre>
+    <span class="variable">$STASH</span> <span class="operator">=</span> <span class="string">'Template::Stash::XS'</span><span class="operator">;</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="bugs">BUGS</a></h1>
+<p>Please report bugs to the Template Toolkit mailing list
+<a href="mailto:templates@template-toolkit.org">templates@template-toolkit.org</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="authors">AUTHORS</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>Doug Steinwand &lt;<a href="mailto:dsteinwand@citysearch.com">dsteinwand@citysearch.com</a>&gt;</p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2012 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Stash.html">the Template::Stash manpage</a></p>
+
+</body>
+
+</html>

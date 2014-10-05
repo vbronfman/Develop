@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monitor>
+
+<products>
+<!-- osagent ioragent cms_billing cms_spectra cms_adapter provisioning -->
+<product id="1" name="OSAGENT" state="disabled">
+   <environment env="TST1" state="disabled"> 
+    <account>targys@it4tst1_old</account>
+    <account>targys2@it4tst1_old</account>
+    <user></user>
+    </environment>
+   <environment env="TST3" state="disabled"> 
+    <account>targys@vmcmstst3</account>
+    <account>targys2@vmcmstst3</account>
+    <user></user>
+    </environment>
+   <environment env="Train1" state="disabled"> 
+    <account>targys@tetra</account>
+    <account>targys2@tetra</account>
+    <user></user>
+    </environment>
+   
+<environment env="Train2" state="disabled"> 
+    <account>targys@tetra</account>
+    <account>targys2@tetra</account>
+    <user></user>
+    </environment>
+   <cmd command="status">./bin/osagent.sh status</cmd>
+</product>
+
+<product id="2" name="IORAGENT">
+<!--  undef    -->
+    <environment env="TST1" state="disabled"> 
+    <account>targys@znbilldbdev01</account>
+    <user></user>
+    </environment>
+   <environment env="TST3" state="disabled"> 
+    <account>targys@vmcmstst3</account>
+    <user></user>
+    </environment>
+   <environment env="Train1" state="disabled"> 
+    <account>targys@tetra</account>
+    <user></user>
+    </environment>
+   
+<environment env="Train2" state="disabled"> 
+    <account>targys@tetra</account>
+    <user></user>
+    </environment>
+   <cmd command="status">./bin/ioragent.sh status bscs$ENV </cmd>
+
+</product>
+
+<product id="3" name="CMS_BILLING">
+    <!--  undef    -->
+    
+    <environment env="TST1" state="disabled"> 
+    <account>targys@it4tst1_old</account>
+    <user></user>
+    </environment>
+   <environment env="TST3" state="disabled"> 
+    <account>targys@vmcmstst3</account>
+    <user></user>
+    </environment>
+   <environment env="Train1" > 
+    <account>targys@tetra</account>
+    <user></user>
+    </environment>
+   
+<environment env="Train2" state="disabled"> 
+    <account>targys@tetra</account>
+    <user></user>
+    </environment>
+   <cmd command="status">./bin/statusCMS -m ${ENV}</cmd>
+</product>
+
+<product id="4" name="CMS_Spectra">
+    <!--  undef    -->
+    <environment env="TST1" state="disabled" > 
+    <account>targys2@it4tst1_old</account>
+    <user></user>
+    </environment>
+   <environment env="TST3" state="disabled"> 
+    <account>targys2@vmcmstst3</account>
+    <user></user>
+    </environment>
+   <environment env="Train1" state="disabled"> 
+    <account>targys2@tetra</account>
+    <user></user>
+    </environment>
+   
+<environment env="Train2" state="disabled"> 
+    <account>targys2@tetra</account>
+    <user></user>
+    </environment>
+   <cmd command="status">./bin/statusCMS -m ${ENV}</cmd>
+
+</product>
+
+<product id="5" name="CMS_ADAPTER">
+<!--  undef    -->
+
+    <environment env="TST1" state="disabled"> 
+        <account>tibco55@Kermit</account>
+    </environment>
+   <environment env="TST3" state="disabled"> 
+        <account>tibco@it3tst3</account>
+    </environment>
+
+   <environment env="Train1" state="disabled"> 
+    <account>tibco54@IFBLTRN1</account>
+    <user></user>
+   </environment>
+    
+    <environment env="Train2" state="disabled"> 
+    <account>tibco54@IFBLTRN2</account>
+    <user></user>
+    </environment>
+   
+   <cmd command="status">./cmsadapter/bin/statusCMSAdapter</cmd>
+    
+</product>
+
+
+<product id="6" name="PROVISIONING" state="disabled">
+   <!--  undef  @tetra petra --> 
+    <environment env="TST1" state="enabled"> 
+    <account>bscstst1@znbillapptst1</account>
+    <user></user>
+    </environment>
+   <environment env="TST3" state="enabled"> 
+    <account>bscstst3@znbillapptst3</account>
+    <user></user>
+    </environment>
+   <environment env="Train1" state="disabled"> 
+    <account>undef</account>
+    <user></user>
+    </environment>
+   
+<environment env="Train2" state="disabled"> 
+    <account>undef</account>
+    <user></user>
+    </environment>
+   <cmd command="status">/ITLAB_share/itlab/provisioning.sh -statusall</cmd>
+
+</product>
+
+<product id="7" name="TEST1" state="enabled">
+   <!--  undef  @tetra petra --> 
+    <environment env="TEST_ENV1" state="enabled"> 
+    <account>ccmngr@ponda</account>
+    <user></user>
+    </environment>
+    <environment env="TEST_ENV2" state="enabled"> 
+    <account>ccmngr@ponda</account>
+    <user></user>
+    </environment>
+       <cmd command="status" timeout="139"> Develop/Monitor/test_failure $DB $ENV{COMPUTERNAME}</cmd>
+</product>
+
+<product id="7" name="TEST2" state="enabled">
+   <!--  undef  @tetra petra --> 
+    <environment env="TEST_ENV1" state="enabled"> 
+    <account>ccmngr@ponda</account>
+    <user></user>
+    </environment>
+    <environment env="TEST_ENV2" state="enabled"> 
+    <account>ccmngr@ponda</account>
+    <user></user>
+    </environment>
+       <cmd command="status"> Develop/Monitor/test_failure $ENV{COMPUTERNAME} $RET </cmd>
+</product>
+
+<product id="7" name="TEST3" state="enabled">
+   <!--  undef  @tetra petra --> 
+    <environment env="TEST_ENV1" state="enabled"> 
+    <account>ccmngr@ponda</account>
+    <user></user>
+    </environment>
+    <environment env="TEST_ENV2" state="enabled"> 
+    <account>ccmngr@ponda</account>
+    <user></user>
+    </environment>
+       <cmd command="status"> Develop/Monitor/test_failure </cmd>
+</product>
+
+</products>
+
+<mail>
+<sendto>
+    <recipient>vlad.bronfman@orange.co.il</recipient>
+        <recipient>vlad.bronfman@orange.co.il</recipient>
+
+    <recipient>vlad.bronfman@orange.co.il</recipient>
+
+    <recipient>111Shay.Rozenbaum@orange.co.il</recipient>
+</sendto>
+<sender>""</sender>
+<!--Template-->
+<out_html>monitor_mail.html</out_html>
+<input_template>mail_template.tt</input_template>
+<!-- send_notificataion -->
+<subject_file>./templates/subject</subject_file>
+</mail>
+
+</monitor>

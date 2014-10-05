@@ -1,0 +1,243 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../scineplex.css">
+<title>Template::Parser - LALR parser for compiling template documents</title>
+<link rel="stylesheet" href="../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',3);</script>
+<h1><a>Template::Parser - LALR parser for compiling template documents</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#public_methods">PUBLIC METHODS</a></li>
+	<ul>
+
+		<li><a href="#new___params_"><code>new(\%params)</code></a></li>
+		<li><a href="#parse__text_"><code>parse($text)</code></a></li>
+	</ul>
+
+	<li><a href="#configuration_options">CONFIGURATION OPTIONS</a></li>
+	<ul>
+
+		<li><a href="#start_tag__end_tag">START_TAG, END_TAG</a></li>
+		<li><a href="#tag_style">TAG_STYLE</a></li>
+		<li><a href="#pre_chomp__post_chomp">PRE_CHOMP, POST_CHOMP</a></li>
+		<li><a href="#interpolate">INTERPOLATE</a></li>
+		<li><a href="#anycase">ANYCASE</a></li>
+		<li><a href="#grammar">GRAMMAR</a></li>
+		<li><a href="#debug">DEBUG</a></li>
+	</ul>
+
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Parser - <code>LALR(1)</code> parser for compiling template documents</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template::Parser</span><span class="operator">;</span>
+    
+    <span class="variable">$parser</span>   <span class="operator">=</span> <span class="variable">Template::Parser</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(\</span><span class="variable">%config</span><span class="operator">);</span>
+    <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">$parser</span><span class="operator">-&gt;</span><span class="variable">parse</span><span class="operator">(</span><span class="variable">$text</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$parser</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>The <code>Template::Parser</code> module implements a <code>LALR(1)</code> parser and associated
+methods for parsing template documents into Perl code.</p>
+<p>
+</p>
+<hr />
+<h1><a name="public_methods">PUBLIC METHODS</a></h1>
+<p>
+</p>
+<h2><a name="new___params_"><code>new(\%params)</code></a></h2>
+<p>The <code>new()</code> constructor creates and returns a reference to a new 
+<code>Template::Parser</code> object.</p>
+<p>A reference to a hash may be supplied as a parameter to provide configuration values.  
+See <a href="#configuration_options">CONFIGURATION OPTIONS</a> below for a summary of these options and 
+<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Manual/Config.html">the Template::Manual::Config manpage</a> for full details.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$parser</span> <span class="operator">=</span> <span class="variable">Template::Parser</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">START_TAG</span> <span class="operator">=&gt;</span> <span class="keyword">quotemeta</span><span class="operator">(</span><span class="string">'&lt;+'</span><span class="operator">),</span>
+        <span class="string">END_TAG</span>   <span class="operator">=&gt;</span> <span class="keyword">quotemeta</span><span class="operator">(</span><span class="string">'+&gt;'</span><span class="operator">),</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="parse__text_"><code>parse($text)</code></a></h2>
+<p>The <code>parse()</code> method parses the text passed in the first parameter and
+returns a reference to a hash array of data defining the compiled
+representation of the template text, suitable for passing to the
+<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Document.html">the Template::Document manpage</a> <a href="../../../Template/Document#new().html">new()</a> constructor method. On
+error, undef is returned.</p>
+<pre>
+    <span class="variable">$data</span> <span class="operator">=</span> <span class="variable">$parser</span><span class="operator">-&gt;</span><span class="variable">parse</span><span class="operator">(</span><span class="variable">$text</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$parser</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">();</span>
+</pre>
+<p>The <code>$data</code> hash reference returned contains a <code>BLOCK</code> item containing the
+compiled Perl code for the template, a <code>DEFBLOCKS</code> item containing a
+reference to a hash array of sub-template <code>BLOCK</code>s defined within in the
+template, and a <code>METADATA</code> item containing a reference to a hash array
+of metadata values defined in <code>META</code> tags.</p>
+<p>
+</p>
+<hr />
+<h1><a name="configuration_options">CONFIGURATION OPTIONS</a></h1>
+<p>The <code>Template::Parser</code> module accepts the following configuration 
+options.  Please see <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Manual/Config.html">the Template::Manual::Config manpage</a> for futher details
+on each option.</p>
+<p>
+</p>
+<h2><a name="start_tag__end_tag">START_TAG, END_TAG</a></h2>
+<p>The <a href="../../../Template/Manual/Config#START_TAG_END_TAG.html">START_TAG</a> and
+<a href="../../../Template/Manual/Config#START_TAG_END_TAG.html">END_TAG</a> options are used to
+specify character sequences or regular expressions that mark the start and end
+of a template directive.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$parser</span> <span class="operator">=</span> <span class="variable">Template::Parser</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> 
+        <span class="string">START_TAG</span> <span class="operator">=&gt;</span> <span class="keyword">quotemeta</span><span class="operator">(</span><span class="string">'&lt;+'</span><span class="operator">),</span>
+        <span class="string">END_TAG</span>   <span class="operator">=&gt;</span> <span class="keyword">quotemeta</span><span class="operator">(</span><span class="string">'+&gt;'</span><span class="operator">),</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="tag_style">TAG_STYLE</a></h2>
+<p>The <a href="../../../Template/Manual/Config#TAG_STYLE.html">TAG_STYLE</a> option can be used to set
+both <em>START_TAG</em> and <em>END_TAG</em> according to pre-defined tag styles.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$parser</span> <span class="operator">=</span> <span class="variable">Template::Parser</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> 
+        <span class="string">TAG_STYLE</span> <span class="operator">=&gt;</span> <span class="string">'star'</span><span class="operator">,</span>     <span class="comment"># [* ... *]</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="pre_chomp__post_chomp">PRE_CHOMP, POST_CHOMP</a></h2>
+<p>The <a href="../../../Template/Manual/Config#PRE_CHOMP_POST_CHOMP.html">PRE_CHOMP</a> and
+<a href="../../../Template/Manual/Config#PRE_CHOMP_POST_CHOMP.html">POST_CHOMP</a> can be set to remove
+any whitespace before or after a directive tag, respectively.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$parser</span> <span class="operator">=</span> <span class="variable">Template::Parser</span><span class="operator">-</span><span class="variable">E</span><span class="operator">&lt;</span><span class="keyword">gt</span><span class="operator">&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">PRE_CHOMP</span>  <span class="operator">=&gt;</span> <span class="number">1</span><span class="operator">,</span>
+        <span class="string">POST_CHOMP</span> <span class="operator">=&gt;</span> <span class="number">1</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="interpolate">INTERPOLATE</a></h2>
+<p>The <a href="../../../Template/Manual/Config#INTERPOLATE.html">INTERPOLATE</a> flag can be set
+to allow variables to be embedded in plain text blocks.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$parser</span> <span class="operator">=</span> <span class="variable">Template::Parser</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> 
+        <span class="string">INTERPOLATE</span> <span class="operator">=&gt;</span> <span class="number">1</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>Variables should be prefixed by a <code>$</code> to identify them, using curly braces
+to explicitly scope the variable name where necessary.</p>
+<pre>
+    <span class="variable">Hello</span> <span class="variable">$</span><span class="operator">{</span><span class="string">name</span><span class="operator">}</span><span class="operator">,</span>
+    
+    <span class="variable">The</span> <span class="variable">day</span> <span class="variable">today</span> <span class="variable">is</span> <span class="variable">$</span><span class="operator">{</span><span class="variable">day</span><span class="operator">.</span><span class="variable">today</span><span class="operator">}</span><span class="operator">.</span>
+</pre>
+<p>
+</p>
+<h2><a name="anycase">ANYCASE</a></h2>
+<p>The <a href="../../../Template/Manual/Config#ANYCASE.html">ANYCASE</a> option can be set
+to allow directive keywords to be specified in any case.</p>
+<pre>
+    # with ANYCASE set to 1
+    [% INCLUDE foobar %]    # OK
+    [% include foobar %]    # OK
+    [% include = 10   %]    # ERROR, 'include' is a reserved word</pre>
+<p>
+</p>
+<h2><a name="grammar">GRAMMAR</a></h2>
+<p>The <a href="../../../Template/Manual/Config#GRAMMAR.html">GRAMMAR</a> configuration item can be used
+to specify an alternate grammar for the parser. This allows a modified or
+entirely new template language to be constructed and used by the Template
+Toolkit.</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">MyOrg::Template::Grammar</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$parser</span> <span class="operator">=</span> <span class="variable">Template::Parser</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> 
+        <span class="variable">GRAMMAR</span> <span class="operator">=</span> <span class="variable">MyOrg::Template::Grammar</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">();</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>By default, an instance of the default <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Grammar.html">the Template::Grammar manpage</a> will be
+created and used automatically if a <code>GRAMMAR</code> item isn't specified.</p>
+<p>
+</p>
+<h2><a name="debug">DEBUG</a></h2>
+<p>The <a href="../../../Template/Manual/Config#DEBUG.html">DEBUG</a> option can be used to enable
+various debugging features of the <code>Template::Parser</code> module.</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template::Constants</span> <span class="string">qw( :debug )</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">DEBUG</span> <span class="operator">=&gt;</span> <span class="variable">DEBUG_PARSER</span> <span class="operator">|</span> <span class="variable">DEBUG_DIRS</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>The main parsing loop of the <code>Template::Parser</code> module was derived from a
+standalone parser generated by version 0.16 of the <code>Parse::Yapp</code> module. The
+following copyright notice appears in the <code>Parse::Yapp</code> documentation.</p>
+<pre>
+    The Parse::Yapp module and its related modules and shell
+    scripts are copyright (c) 1998 Francois Desarmenien,
+    France. All rights reserved.
+    
+    You may use and distribute them under the terms of either
+    the GNU General Public License or the Artistic License, as
+    specified in the Perl README file.</pre>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a>, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Grammar.html">the Template::Grammar manpage</a>, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Directive.html">the Template::Directive manpage</a></p>
+
+</body>
+
+</html>

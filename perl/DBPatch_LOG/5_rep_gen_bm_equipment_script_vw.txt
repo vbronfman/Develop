@@ -1,0 +1,22 @@
+/home/oracle/ROSH/TEST1/BUILD/src/PM_Invoice_PM_Invoice_201304_20130318_142900/5_rep_gen_bm_equipment_script_vw.sql
+CONNECT STRING : REP_GEN/REP_GEN@B4UTST1
+create or replace view occ_fees_data_equipment_vw as
+                       *
+ERROR at line 1:
+ORA-01031: insufficient privileges 
+
+
+create or replace view occ_fees_data_ramash_vw  as
+                       *
+ERROR at line 1:
+ORA-01031: insufficient privileges 
+
+
+)
+*
+ERROR at line 259:
+ORA-00933: SQL command not properly ended 
+
+
+
+----------------------------------------------------------------

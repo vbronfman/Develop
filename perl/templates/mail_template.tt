@@ -1,0 +1,48 @@
+
+   <h1>IT-Lab Test Environments Monitor</h1>
+
+<table border=1 width="80%">
+<tr><th colspan="3" style="background-color: #07A133; color: #ffffff;">TEST environment Monitor </th></tr>
+  <tr style="background-color: #07A133; color: #ffffff;">
+    <th>Environment ID</th>
+    <th>Product</th> 
+    <th>Status</th>
+</tr>
+
+[%  FOREACH job IN var3 %]
+
+[% SWITCH job.status %]
+    [%   CASE '0' %]
+        <tr align="center" style=" color:black; background-color: #85A366">
+           [% status = 'UP' %]
+    [%   CASE '1' %]
+        <tr align="center" style=" color:black; background-color: red">
+       [% status = 'DOWN' %]
+    [%   CASE '3' %]
+        <tr align="center" style=" color:black; background-color: yellow">
+       [% status = 'WARNING' %]
+    [%   CASE '4' %]
+        <tr align="center" style=" color:black; background-color: yellow">
+       [% status = 'COMMAND IS TIMED OUT' %]
+    [%   CASE %]                        # default
+        <tr align="center" style=" color:black; background-color:#A9A9A9 ">
+        [% status = 'UNDEFINED' %] 
+      
+[% END %]
+  
+    <td>[% job.env %] </td>
+    <td>[% job.prod %]</td>
+    <td>[% status %]</td>    
+    </tr>
+[% END %]
+
+</table>
+
+LEGEND:
+UP - product is up
+DOWN - product is down
+WARNING - validated partly
+COMMAND IS TIMED OUT - validation failed by time out
+UNDEFINED - validation failed cause unknown reason
+
+[% INCLUDE mail_footer.html %]

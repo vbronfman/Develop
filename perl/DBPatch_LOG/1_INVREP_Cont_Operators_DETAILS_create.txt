@@ -1,0 +1,417 @@
+/home/oracle/ROSH/TEST1/BUILD/src/PM_Invoice_PM_Invoice_201304_20130318_142900/1_INVREP_Cont_Operators_DETAILS_create.sql
+CONNECT STRING : REP_GEN/REP_GEN@B4UTST1
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0042: unknown command ")" - rest of line ignored.
+SP2-0734: unknown command beginning "PARTITION ..." - rest of line ignored.
+PARTITION SP1201_BC01_1,
+*
+ERROR at line 2:
+ORA-00928: missing SELECT keyword 
+
+
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0734: unknown command beginning "rated_len_..." - rest of line ignored.
+SP2-0734: unknown command beginning "charged_du..." - rest of line ignored.
+SP2-0734: unknown command beginning "air_charge..." - rest of line ignored.
+SP2-0734: unknown command beginning "land_charg..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SP2-0042: unknown command ")" - rest of line ignored.
+SP2-0734: unknown command beginning "PARTITION ..." - rest of line ignored.
+SP2-0734: unknown command beginning "SUBPARTITI..." - rest of line ignored.
+partition P1201_BC01 values less than (TO_DATE(' 2012-01-01 23:59:59', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+*
+ERROR at line 2:
+ORA-00928: missing SELECT keyword 
+
+
+
+----------------------------------------------------------------

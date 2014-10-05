@@ -1,0 +1,364 @@
+#!/usr/bin/perl
+
+#############################################
+# <script name> - Monitor the status of Product line
+# and send notification
+#
+# Developed by <developer> at <date>
+# Comments:
+# Dependencies:
+#
+#############################################
+
+use Partner::Init;
+use File::Basename;
+use File::Copy;
+use Data::Dumper;
+use XML::Simple;
+
+do "send_notification.pl";
+
+use sigtrap 'handler', \&sig_handler, 'normal-signals';
+
+$TIMEOUT=60; #in sec
+@descendents=();
+
+local $SIG{ALRM} = sub{ kill(9, @descendents); on_exit}; #
+#commented for debug only
+alarm $TIMEOUT;
+#select $|=1;
+
+#######################################
+# Global variables
+#######################################
+$LOG="${0}.log";
+$DEBUG=0;
+
+%DEFINITIONS={};
+
+@TO_RUN ;
+
+package Job;
+
+sub new {
+    my $self = {
+        _env     => undef,
+        _prod    => undef,
+        _account => undef,
+        _db => undef,
+        _cmd     => undef,
+        _status  => undef
+    };
+    #bless $self, 'Job';
+    return bless $self; #name of package received as first parameter hided 
+    #return $self;
+}
+
+
+package main;
+#######################################
+# functions
+#######################################
+
+#######################################
+# sig_handler() - catch INT signal
+#  
+#sigtrap - Perl pragma to enable simple signal handling
+#use sigtrap 'handler' => \&my_handler, 'normal-signals';
+#######################################
+sub sig_handler
+{
+    print STDERR "INT signal received!!!\n";
+    die "\n caught $SIG{INT}",@_,"\n";
+    #exit;
+}
+
+#######################################
+# run_cmd() - <description>
+#
+#######################################
+sub run_cmd($$){
+    my($account,$cmd)=@_;
+$RET=0;
+$FUNCNAME=(caller(0))[3];
+print "Inside $FUNCNAME $account,$cmd\n";
+#$cmd =~ s/(\$\w+)/$1/gee;
+
+#excecute command
+$ret=system("ssh",$account,$cmd) or warn "system ssh,$account,$cmd failed: $?";
+print "ret=$ret, ?=$? ret>>8= ", $?>>8;
+return $ret>>8;
+}
+
+
+#######################################
+# on_exit() - called after signal
+#
+#######################################
+sub on_exit{
+$RET=0;
+$FUNCNAME=(caller(0))[3];
+
+writelog "$FUNCNAME called on signal, $0 terminated";
+
+#in temporary way!!! should  elaborate
+#send_notification($main::CONF_FILE, "$0 terminated by timeout");
+
+die "Terminated\n\n";
+}
+
+
+#######################################
+# func() - <description>
+#
+#######################################
+sub func(){
+$RET=0;
+$FUNCNAME=(caller(0))[3];
+#excecute command    
+
+$RET=$?;
+
+    if ($RET ne 0){
+        writelog "$FUNCNAME FAILURE $RET"
+        }
+    else {
+        writelog "$FUNCNAME SUCCESS"
+    }
+
+return $RET;
+}
+
+
+#######################################
+# read_conf() - read in configuration by XML::Simple
+#my $simple = XML::Simple->new( ); # initialize the object 
+#
+#######################################
+sub read_conf($){
+$RET=0;
+$FUNCNAME=(caller(0))[3];
+#excecute command    
+my($FILENAME)=@_;
+
+print "$FUNCNAME Parse by XML::Simple\n";
+#my $xs = XML::Simple->new(options);
+my $conf = XML::Simple->new( ); # initialize the object
+#my $tree = $conf->XMLin( $FILENAME, ForceArray => [ 'products','product','environment' ] ); # read, store document
+my $tree = $conf->XMLin( $FILENAME); # read, store document
+
+#print Dumper($tree);
+
+foreach $prod (  keys %{$tree->{products}->{product}} ) 
+{
+    print Dumper $prod;
+    next if($tree->{products}->{product}->{$prod}->{state} eq "disabled");
+
+    foreach $key ( $tree->{products}->{product}->{$prod}){
+               
+        $ref=$key->{environment}; #must be defined as global in next version
+        
+        print $key->{cmd}->{content}, "\n";
+                
+        foreach $ENV (@$ref){
+            next if ($ENV->{state} eq "disabled");
+            my $job=Job->new;
+            $job->{_prod}=$prod;
+            if((ref $ENV->{account}) eq "ARRAY"){ #there is case of more than one account per product 
+                print $ENV->{account}->[0], "\n";
+                print $ENV->{account}->[1], "\n";
+                
+                $job->{_account}=$ENV->{account}->[0];
+            }
+            else{
+                print $ENV->{account}, "\n";
+                $job->{_account}=$ENV->{account}
+            }
+            $job->{_env}=$ENV->{env};
+            $job->{_db}=$ENV->{db};
+            
+            local $DB=$ENV->{db}; #value to replace for in string from config file
+            local $ENV=$ENV->{env};
+     
+            chomp '"'.$key->{cmd}->{content}.'"';
+            $job->{_cmd}=eval('"'.$key->{cmd}->{content}.'"'); #replace and assign the value
+            
+            push @TO_RUN, \$job;
+        }       
+    }
+}
+
+print Dumper (@TO_RUN);
+@TO_RUN=sort {print;
+              ${$a}->{_env} cmp ${$b}->{_env}} @TO_RUN;
+
+print Dumper (@TO_RUN);
+return $RET;
+}
+
+#######################################
+# usage() - print usage
+#
+#######################################
+sub usage
+{
+    $str=<<END;
+$0 - simple sw products monitor. By ssh initiates and collects responses of scripts of monitoring at target hosts.
+
+Usage:
+ $0 <configuration file>
+ where
+    configuration file - XML file defines products to check, working environments per product
+                        credentials and command to run at remote host.
+ 
+For ex.
+ $0 monitor_conf.xml
+
+END
+
+    Partner::Init::usage ($str);
+}
+
+#######################################
+# run_cmd_multi() - print usage
+#
+#######################################
+sub run_cmd_multi
+{
+    my ($account,$cmd)=@_;
+    $pid=fork ;
+    die "Cann't fork: $!" unless defined $pid;
+
+    unless ($pid){  #descendent
+        #exec @_;
+        #system @_;
+        $ret=system("ssh",$account,$cmd) or warn "system ssh,$account,$cmd failed: $?";
+print "ret=$ret, ?=$? ret>>8= ", $?>>8;
+return $ret>>8;
+    }
+    
+    #parent
+    print "Parent $pid launched";
+    push @descendents,$pid;
+    
+}
+
+#######################################
+# send_notification () - <description>
+#
+#######################################
+sub send_notification{
+    my($FILENAME,@text)=@_;
+$RET=0;
+$FUNCNAME=(caller(0))[3];
+
+$template_file="./templates/new2.html";
+$subject_file="./templates/subject";
+my $conf = XML::Simple->new( ); # initialize the object
+my $tree = $conf->XMLin( $FILENAME);
+ 
+print "$FUNCNAME ", @text;
+#excecute command
+$ref=$tree->{mail}->{sendto}->{recipient};
+
+send_mail($template_file, $subject_file ,join(',', @$ref),@text);
+
+}
+
+#######################################
+# main
+#######################################
+
+main::usage($str) unless @ARGV;
+
+my($CONF_FILE)=@ARGV;
+
+initlog ($LOG);
+
+writelog ("Started");
+
+writelog (DEBUG,"debug message");
+
+read_conf($CONF_FILE);
+
+
+##for debug only
+#foreach  $i (1..5){
+#run_cmd_multi "notepad.exe"
+#}
+#while(1){;}
+##end of for debug only
+
+
+
+### run tests and create mail ######
+
+push @mail_body,"\<table border=\"1\"\> ";
+
+$STR=<<END;
+<tr><th colspan="4" style="background-color: #07A133; color: #ffffff;">TEST environment Monitor </th></tr>
+END
+
+
+push @mail_body,$STR;
+
+foreach $job (@TO_RUN){
+
+run_cmd_multi ($$job->{_account}, $$job->{_cmd});
+}       
+       exit;
+#end of debug only       
+       
+       
+foreach $job (@TO_RUN){
+    
+    unless(run_cmd ($$job->{_account}, $$job->{_cmd})){
+        $$job->{_status}="UP";
+                $STR=<<END;
+        <tbody align="center" style=" color:black; background-color:green">
+        <tr>
+<td> $$job->{_env} </td>
+<td> $$job->{_prod} </td>
+<td> $$job->{_account}  </td>
+<td> $$job->{_status} </td>
+</tr>
+</tbody>
+END
+        
+    }
+    else
+    {
+        $$job->{_status}="DOWN";
+        $STR=<<END;
+        <tbody align="center" style=" color:black; background-color:yellow">
+            <tr>
+                <td> $$job->{_env} </td>
+                <td> $$job->{_prod} </td>
+                <td> $$job->{_account}  </td>
+                <td> $$job->{_status} </td>
+            </tr>
+        </tbody>
+END
+    }
+    
+    push @mail_body,$STR;
+    
+}
+
+push @mail_body,"</table>";
+
+$STR=<<END;
+<br>
+<br>IT-Lab Team
+END
+
+push @mail_body,$STR;
+### end of create mail ######
+
+send_notification($CONF_FILE, @mail_body);
+
+writelog ("Finished");
+
+closelog;
+exit $RET;
+

@@ -1,0 +1,33 @@
+<ROOT>
+        <NAME>DB Patch Log </NAME>
+        <BODY>
+                <TABLE>
+                        <HEADER_ROW>
+                                <HEADER nowrap="nowrap" font-weight="600">File</HEADER>
+                                <HEADER nowrap="nowrap" font-weight="600">Status</HEADER>
+                                
+                        </HEADER_ROW>
+
+[% FOREACH key IN var2.keys %]
+ <ROW>
+ 
+   [% SWITCH var2.$key %]
+   [%   CASE 'OK' %]
+        <DATA nowrap="nowrap" text-align="right" background-color="green">
+           
+    [%   CASE 'ERROR' %]
+        <DATA nowrap="nowrap" text-align="right" background-color="red">
+	[% END %]
+   * [% key %] </DATA>
+   <DATA nowrap="nowrap">[% var2.$key %]
+
+
+ </ROW>
+[% END %]
+
+
+                </TABLE>
+        </BODY>
+        <STATUS>Info</STATUS>
+        <ICON>Amc_MU_Default.gif</ICON>
+</ROOT>

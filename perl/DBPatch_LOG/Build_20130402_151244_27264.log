@@ -1,0 +1,17 @@
+<font color=red>BUILD FINISHED </font>
+###################################################
+#      BUILD TST3 20130402_1512
+###################################################
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BRIT_PM_BRIT_201303_20130402_151244/1_View---v_product_catalog_inf_joins.sql
+	Start running ..
+STATUS 		: OK
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BRIT_PM_BRIT_201303_20130402_151244/2_View---V_CONTRACT_ACTIVATED_PRODUCTS.sql
+	Start running ..
+STATUS 		: OK
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BRIT_PM_BRIT_201303_20130402_151244/3_View---V_CAP_FOR_VAS_PRODUCTS.sql
+	Start running ..
+STATUS 		: OK
+################ END OF BUILD  ####################

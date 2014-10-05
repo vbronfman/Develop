@@ -1,0 +1,334 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../scineplex.css">
+<title>Template::View - customised view of a template processing context</title>
+<link rel="stylesheet" href="../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',3);</script>
+<h1><a>Template::View - customised view of a template processing context</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#methods">METHODS</a></li>
+	<ul>
+
+		<li><a href="#new__context____config_">new($context, \%config)</a></li>
+		<li><a href="#print___obj1___obj2________config_">print( $obj1, $obj2, ... \%config)</a></li>
+		<li><a href="#view___template____vars____config___">view( $template, \%vars, \%config );</a></li>
+	</ul>
+
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::View - customised view of a template processing context</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    # define a view
+    [% VIEW view
+            # some standard args
+            prefix        =&gt; 'my_', 
+            suffix        =&gt; '.tt2',
+            notfound      =&gt; 'no_such_file'
+            ...</pre>
+<pre>
+            <span class="comment"># any other data</span>
+            <span class="string">title</span>         <span class="operator">=&gt;</span> <span class="string">'My View title'</span>
+            <span class="string">other_item</span>    <span class="operator">=&gt;</span> <span class="string">'Joe Random Data'</span>
+            <span class="operator">...</span>
+                <span class="variable">%]</span>
+                   <span class="comment"># add new data definitions, via 'my' self reference</span>
+                   <span class="operator">[</span><span class="operator">% </span><span class="keyword">my</span><span class="operator">.</span><span class="variable">author</span> <span class="operator">=</span> <span class="string">"</span><span class="variable">$abw</span><span class="string">.name &lt;</span><span class="variable">$abw</span><span class="string">.email&gt;"</span> <span class="variable">%]</span>
+                   <span class="operator">[</span><span class="operator">% </span><span class="keyword">my</span><span class="operator">.</span><span class="variable">copy</span>   <span class="operator">=</span> <span class="string">"&amp;copy; Copyright 2000 </span><span class="variable">$my</span><span class="string">.author"</span> <span class="variable">%]</span>
+</pre>
+<pre>
+       # define a local block
+       [% BLOCK header %]
+       This is the header block, title: [% title or my.title %]
+       [% END %]</pre>
+<pre>
+    [% END %]</pre>
+<pre>
+    # access data items for view
+    [% view.title %]
+    [% view.other_item %]</pre>
+<pre>
+    # access blocks directly ('include_naked' option, set by default)
+    [% view.header %]
+    [% view.header(title =&gt; 'New Title') %]</pre>
+<pre>
+    # non-local templates have prefix/suffix attached
+    [% view.footer %]           # =&gt; [% INCLUDE my_footer.tt2 %]</pre>
+<pre>
+    # more verbose form of block access
+    [% view.include( 'header', title =&gt; 'The Header Title' ) %]
+    [% view.include_header( title =&gt; 'The Header Title' ) %]</pre>
+<pre>
+    # very short form of above ('include_naked' option, set by default)
+    [% view.header( title =&gt; 'The Header Title' ) %]</pre>
+<pre>
+    # non-local templates have prefix/suffix attached
+    [% view.footer %]           # =&gt; [% INCLUDE my_footer.tt2 %]</pre>
+<pre>
+    # fallback on the 'notfound' template ('my_no_such_file.tt2')
+    # if template not found 
+    [% view.include('missing') %]
+    [% view.include_missing %]
+    [% view.missing %]</pre>
+<pre>
+    # print() includes a template relevant to argument type
+    [% view.print(&quot;some text&quot;) %]     # type=TEXT, template='text'</pre>
+<pre>
+    [% BLOCK my_text.tt2 %]           # 'text' with prefix/suffix
+       Text: [% item %]
+    [% END %]</pre>
+<pre>
+    # now print() a hash ref, mapped to 'hash' template
+    [% view.print(some_hash_ref) %]   # type=HASH, template='hash'</pre>
+<pre>
+    [% BLOCK my_hash.tt2 %]           # 'hash' with prefix/suffix
+       hash keys: [% item.keys.sort.join(', ')
+    [% END %]</pre>
+<pre>
+    # now print() a list ref, mapped to 'list' template
+    [% view.print(my_list_ref) %]     # type=ARRAY, template='list'</pre>
+<pre>
+    [% BLOCK my_list.tt2 %]           # 'list' with prefix/suffix
+       list: [% item.join(', ') %]
+    [% END %]</pre>
+<pre>
+    # print() maps 'My::Object' to 'My_Object'
+    [% view.print(myobj) %]</pre>
+<pre>
+    [% BLOCK my_My_Object.tt2 %]
+       [% item.this %], [% item.that %]
+    [% END %]</pre>
+<pre>
+    # update mapping table
+    [% view.map.ARRAY = 'my_list_template' %]
+    [% view.map.TEXT  = 'my_text_block'    %]</pre>
+<pre>
+    # change prefix, suffix, item name, etc.
+    [% view.prefix = 'your_' %]
+    [% view.default = 'anyobj' %]
+    ...</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>TODO</p>
+<p>
+</p>
+<hr />
+<h1><a name="methods">METHODS</a></h1>
+<p>
+</p>
+<h2><a name="new__context____config_">new($context, \%config)</a></h2>
+<p>Creates a new Template::View presenting a custom view of the specified 
+$context object.</p>
+<p>A reference to a hash array of configuration options may be passed as the 
+second argument.</p>
+<dl>
+<dt><strong><a name="prefix" class="item">prefix</a></strong></dt>
+
+<dd>
+<p>Prefix added to all template names.</p>
+<pre>
+    [% USE view(prefix =&gt; 'my_') %]
+    [% view.view('foo', a =&gt; 20) %]     # =&gt; my_foo</pre>
+</dd>
+<dt><strong><a name="suffix" class="item">suffix</a></strong></dt>
+
+<dd>
+<p>Suffix added to all template names.</p>
+<pre>
+    [% USE view(suffix =&gt; '.tt2') %]
+    [% view.view('foo', a =&gt; 20) %]     # =&gt; foo.tt2</pre>
+</dd>
+<dt><strong><a name="map" class="item">map</a></strong></dt>
+
+<dd>
+<p>Hash array mapping reference types to template names.  The <a href="../../../lib/pods/perlfunc.html#print"><code>print()</code></a> 
+method uses this to determine which template to use to present any
+particular item.  The TEXT, HASH and ARRAY items default to 'test', 
+'hash' and 'list' appropriately.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">USE</span> <span class="variable">view</span><span class="operator">(</span><span class="string">map</span> <span class="operator">=&gt;</span> <span class="operator">{</span> <span class="string">ARRAY</span>   <span class="operator">=&gt;</span> <span class="string">'my_list'</span><span class="operator">,</span> 
+                         <span class="string">HASH</span>    <span class="operator">=&gt;</span> <span class="string">'your_hash'</span><span class="operator">,</span>
+                         <span class="variable">My::Foo</span> <span class="operator">=&gt;</span> <span class="string">'my_foo'</span><span class="operator">,</span> <span class="operator">}</span> <span class="operator">)</span> <span class="variable">%]</span>
+</pre>
+<pre>
+    [% view.print(some_text) %]         # =&gt; text
+    [% view.print(a_list) %]            # =&gt; my_list
+    [% view.print(a_hash) %]            # =&gt; your_hash
+    [% view.print(a_foo) %]             # =&gt; my_foo</pre>
+<pre>
+    [% BLOCK text %]
+       Text: [% item %]
+    [% END %]</pre>
+<pre>
+    [% BLOCK my_list %]
+       list: [% item.join(', ') %]
+    [% END %]</pre>
+<pre>
+    [% BLOCK your_hash %]
+       hash keys: [% item.keys.sort.join(', ')
+    [% END %]</pre>
+<pre>
+    [% BLOCK my_foo %] 
+       Foo: [% item.this %], [% item.that %]
+    [% END %]</pre>
+</dd>
+<dt><strong><a name="method" class="item">method</a></strong></dt>
+
+<dd>
+<p>Name of a method which objects passed to <a href="../../../lib/pods/perlfunc.html#print"><code>print()</code></a> may provide for presenting
+themselves to the view.  If a specific map entry can't be found for an 
+object reference and it supports the method (default: 'present') then 
+the method will be called, passing the view as an argument.  The object 
+can then make callbacks against the view to present itself.</p>
+<pre>
+    <span class="keyword">package</span> <span class="variable">Foo</span><span class="operator">;</span>
+</pre>
+<pre>
+    <span class="keyword">sub</span><span class="variable"> present </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="operator">(</span><span class="variable">$self</span><span class="operator">,</span> <span class="variable">$view</span><span class="operator">)</span> <span class="operator">=</span> <span class="variable">@_</span><span class="operator">;</span>
+        <span class="keyword">return</span> <span class="string">"a regular view of a Foo\n"</span><span class="operator">;</span>
+    <span class="operator">}</span>
+</pre>
+<pre>
+    <span class="keyword">sub</span><span class="variable"> debug </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="operator">(</span><span class="variable">$self</span><span class="operator">,</span> <span class="variable">$view</span><span class="operator">)</span> <span class="operator">=</span> <span class="variable">@_</span><span class="operator">;</span>
+        <span class="keyword">return</span> <span class="string">"a debug view of a Foo\n"</span><span class="operator">;</span>
+    <span class="operator">}</span>
+</pre>
+<p>In a template:</p>
+<pre>
+    [% USE view %]
+    [% view.print(my_foo_object) %]     # a regular view of a Foo</pre>
+<pre>
+    [% USE view(method =&gt; 'debug') %]
+    [% view.print(my_foo_object) %]     # a debug view of a Foo</pre>
+</dd>
+<dt><strong><a name="default" class="item">default</a></strong></dt>
+
+<dd>
+<p>Default template to use if no specific map entry is found for an item.</p>
+<pre>
+    [% USE view(default =&gt; 'my_object') %]</pre>
+<pre>
+    [% view.print(objref) %]            # =&gt; my_object</pre>
+<p>If no map entry or default is provided then the view will attempt to 
+construct a template name from the object class, substituting any 
+sequence of non-word characters to single underscores, e.g.</p>
+<pre>
+    # 'fubar' is an object of class Foo::Bar
+    [% view.print(fubar) %]             # =&gt; Foo_Bar</pre>
+<p>Any current prefix and suffix will be added to both the default template 
+name and any name constructed from the object class.</p>
+</dd>
+<dt><strong><a name="notfound" class="item">notfound</a></strong></dt>
+
+<dd>
+<p>Fallback template to use if any other isn't found.</p>
+</dd>
+<dt><strong><a name="item" class="item">item</a></strong></dt>
+
+<dd>
+<p>Name of the template variable to which the <a href="../../../lib/pods/perlfunc.html#print"><code>print()</code></a> method assigns the current
+item.  Defaults to 'item'.</p>
+<pre>
+    [% USE view %]
+    [% BLOCK list %] 
+       [% item.join(', ') %] 
+    [% END %]
+    [% view.print(a_list) %]</pre>
+<pre>
+    [% USE view(item =&gt; 'thing') %]
+    [% BLOCK list %] 
+       [% thing.join(', ') %] 
+    [% END %]
+    [% view.print(a_list) %]</pre>
+</dd>
+<dt><strong><a name="view_prefix" class="item">view_prefix</a></strong></dt>
+
+<dd>
+<p>Prefix of methods which should be mapped to <code>view()</code> by AUTOLOAD.  Defaults
+to 'view_'.</p>
+<pre>
+    [% USE view %]
+    [% view.view_header() %]                    # =&gt; view('header')</pre>
+<pre>
+    [% USE view(view_prefix =&gt; 'show_me_the_' %]
+    [% view.show_me_the_header() %]             # =&gt; view('header')</pre>
+</dd>
+<dt><strong><a name="view_naked" class="item">view_naked</a></strong></dt>
+
+<dd>
+<p>Flag to indcate if any attempt should be made to map method names to 
+template names where they don't match the view_prefix.  Defaults to 0.</p>
+<pre>
+    [% USE view(view_naked =&gt; 1) %]</pre>
+<pre>
+    [% view.header() %]                 # =&gt; view('header')</pre>
+</dd>
+</dl>
+<p>
+</p>
+<h2><a name="print___obj1___obj2________config_">print( $obj1, $obj2, ... \%config)</a></h2>
+<p>TODO</p>
+<p>
+</p>
+<h2><a name="view___template____vars____config___">view( $template, \%vars, \%config );</a></h2>
+<p>TODO</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 2000-2007 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin.html">the Template::Plugin manpage</a></p>
+
+</body>
+
+</html>

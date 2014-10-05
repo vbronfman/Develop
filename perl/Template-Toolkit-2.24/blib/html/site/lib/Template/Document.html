@@ -1,0 +1,267 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../scineplex.css">
+<title>Template::Document - Compiled template document object</title>
+<link rel="stylesheet" href="../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',3);</script>
+<h1><a>Template::Document - Compiled template document object</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#methods">METHODS</a></li>
+	<ul>
+
+		<li><a href="#new___config_"><code>new(\%config)</code></a></li>
+		<li><a href="#process__context_"><code>process($context)</code></a></li>
+		<li><a href="#block__"><code>block()</code></a></li>
+		<li><a href="#blocks__"><code>blocks()</code></a></li>
+		<li><a href="#variables__"><code>variables()</code></a></li>
+		<li><a href="#autoload">AUTOLOAD</a></li>
+	</ul>
+
+	<li><a href="#class_methods">CLASS METHODS</a></li>
+	<ul>
+
+		<li><a href="#as_perl__content_"><code>as_perl($content)</code></a></li>
+		<li><a href="#write_perl_file___config_"><code>write_perl_file(\%config)</code></a></li>
+	</ul>
+
+	<li><a href="#internal_functions">INTERNAL FUNCTIONS</a></li>
+	<ul>
+
+		<li><a href="#catch_warnings__"><code>catch_warnings()</code></a></li>
+		<li><a href="#is_utf8__">is_utf8()</a></li>
+	</ul>
+
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Document - Compiled template document object</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template::Document</span><span class="operator">;</span>
+    
+    <span class="variable">$doc</span> <span class="operator">=</span> <span class="variable">Template::Document</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">BLOCK</span> <span class="operator">=&gt;</span> <span class="keyword">sub</span><span class="variable"> </span><span class="operator">{</span> <span class="comment"># some perl code; return $some_text },</span>
+        <span class="string">DEFBLOCKS</span> <span class="operator">=&gt;</span> <span class="operator">{</span>
+            <span class="string">header</span> <span class="operator">=&gt;</span> <span class="keyword">sub</span><span class="variable"> </span><span class="operator">{</span> <span class="comment"># more perl code; return $some_text },</span>
+            <span class="string">footer</span> <span class="operator">=&gt;</span> <span class="keyword">sub</span><span class="variable"> </span><span class="operator">{</span> <span class="comment"># blah blah blah; return $some_text },</span>
+        <span class="operator">},</span>
+        <span class="string">METADATA</span> <span class="operator">=&gt;</span> <span class="operator">{</span>
+            <span class="string">author</span>  <span class="operator">=&gt;</span> <span class="string">'Andy Wardley'</span><span class="operator">,</span>
+            <span class="string">version</span> <span class="operator">=&gt;</span> <span class="number">3.14</span><span class="operator">,</span>
+        <span class="operator">}</span>
+    <span class="operator">})</span> <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$Template::Document::ERROR</span><span class="operator">;</span>
+    
+    <span class="keyword">print</span> <span class="variable">$doc</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="variable">$context</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This module defines an object class whose instances represent compiled
+template documents.  The <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Parser.html">the Template::Parser manpage</a> module creates a
+<code>Template::Document</code> instance to encapsulate a template as it is compiled
+into Perl code.</p>
+<p>The constructor method, <em>new()</em>, expects a reference to a hash array
+containing the <code>BLOCK</code>, <code>DEFBLOCKS</code> and <code>METADATA</code> items.</p>
+<p>The <code>BLOCK</code> item should contain a reference to a Perl subroutine or a textual
+representation of Perl code, as generated by the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Parser.html">the Template::Parser manpage</a> module.
+This is then evaluated into a subroutine reference using <a href="../../../lib/pods/perlfunc.html#eval"><code>eval()</code></a>.</p>
+<p>The <code>DEFLOCKS</code> item should reference a hash array containing further named
+<code>BLOCK</code>s which may be defined in the template. The keys represent <code>BLOCK</code>
+names and the values should be subroutine references or text strings of Perl
+code as per the main <code>BLOCK</code> item.</p>
+<p>The <code>METADATA</code> item should reference a hash array of metadata items relevant
+to the document.</p>
+<p>The <em>process()</em> method can then be called on the instantiated
+<code>Template::Document</code> object, passing a reference to a <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a>
+object as the first parameter. This will install any locally defined blocks
+(<code>DEFBLOCKS</code>) in the <code>BLOCKS</code> cache in the context (via a call to
+<a href="../../../Template/Context#visit().html">visit()</a>) so that they may be subsequently
+resolved by the context. The main <code>BLOCK</code> subroutine is then executed,
+passing the context reference on as a parameter. The text returned from the
+template subroutine is then returned by the <em>process()</em> method, after calling
+the context <a href="../../../Template/Context#leave().html">leave()</a> method to permit cleanup and
+de-registration of named <code>BLOCKS</code> previously installed.</p>
+<p>An <code>AUTOLOAD</code> method provides access to the <code>METADATA</code> items for the
+document. The <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Service.html">the Template::Service manpage</a> module installs a reference to the main
+<code>Template::Document</code> object in the stash as the <code>template</code> variable. This allows
+metadata items to be accessed from within templates, including <code>PRE_PROCESS</code>
+templates.</p>
+<p>header:</p>
+<pre>
+    &lt;html&gt;
+    &lt;head&gt;
+    &lt;title&gt;[% template.title %]
+    &lt;/head&gt;
+    ...</pre>
+<p><code>Template::Document</code> objects are usually created by the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Parser.html">the Template::Parser manpage</a>
+but can be manually instantiated or sub-classed to provide custom
+template components.</p>
+<p>
+</p>
+<hr />
+<h1><a name="methods">METHODS</a></h1>
+<p>
+</p>
+<h2><a name="new___config_"><code>new(\%config)</code></a></h2>
+<p>Constructor method which accept a reference to a hash array containing the
+structure as shown in this example:</p>
+<pre>
+    <span class="variable">$doc</span> <span class="operator">=</span> <span class="variable">Template::Document</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">BLOCK</span> <span class="operator">=&gt;</span> <span class="keyword">sub</span><span class="variable"> </span><span class="operator">{</span> <span class="comment"># some perl code; return $some_text },</span>
+        <span class="string">DEFBLOCKS</span> <span class="operator">=&gt;</span> <span class="operator">{</span>
+            <span class="string">header</span> <span class="operator">=&gt;</span> <span class="keyword">sub</span><span class="variable"> </span><span class="operator">{</span> <span class="comment"># more perl code; return $some_text },</span>
+            <span class="string">footer</span> <span class="operator">=&gt;</span> <span class="keyword">sub</span><span class="variable"> </span><span class="operator">{</span> <span class="comment"># blah blah blah; return $some_text },</span>
+        <span class="operator">},</span>
+        <span class="string">METADATA</span> <span class="operator">=&gt;</span> <span class="operator">{</span>
+            <span class="string">author</span>  <span class="operator">=&gt;</span> <span class="string">'Andy Wardley'</span><span class="operator">,</span>
+            <span class="string">version</span> <span class="operator">=&gt;</span> <span class="number">3.14</span><span class="operator">,</span>
+        <span class="operator">}</span>
+    <span class="operator">})</span> <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$Template::Document::ERROR</span><span class="operator">;</span>
+</pre>
+<p><code>BLOCK</code> and <code>DEFBLOCKS</code> items may be expressed as references to Perl subroutines
+or as text strings containing Perl subroutine definitions, as is generated
+by the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Parser.html">the Template::Parser manpage</a> module.  These are evaluated into subroutine references
+using <a href="../../../lib/pods/perlfunc.html#eval"><code>eval()</code></a>.</p>
+<p>Returns a new <code>Template::Document</code> object or <a href="../../../lib/pods/perlfunc.html#undef"><code>undef</code></a> on error. The
+<a href="../../../Template/Base#error().html">error()</a> class method can be called, or the <code>$ERROR</code>
+package variable inspected to retrieve the relevant error message.</p>
+<p>
+</p>
+<h2><a name="process__context_"><code>process($context)</code></a></h2>
+<p>Main processing routine for the compiled template document. A reference to a
+<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a> object should be passed as the first parameter. The
+method installs any locally defined blocks via a call to the context
+<a href="../../../Template/Context#visit().html">visit()</a> method, processes its own template,
+(passing the context reference as a parameter) and then calls
+<a href="../../../Template/Context#leave().html">leave()</a> in the context to allow cleanup.</p>
+<pre>
+    <span class="keyword">print</span> <span class="variable">$doc</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="variable">$context</span><span class="operator">);</span>
+</pre>
+<p>Returns a text string representing the generated output for the template.
+Errors are thrown via <a href="../../../lib/pods/perlfunc.html#die"><code>die()</code></a>.</p>
+<p>
+</p>
+<h2><a name="block__"><code>block()</code></a></h2>
+<p>Returns a reference to the main <code>BLOCK</code> subroutine.</p>
+<p>
+</p>
+<h2><a name="blocks__"><code>blocks()</code></a></h2>
+<p>Returns a reference to the hash array of named <code>DEFBLOCKS</code> subroutines.</p>
+<p>
+</p>
+<h2><a name="variables__"><code>variables()</code></a></h2>
+<p>Returns a reference to a hash of variables used in the template.  
+This requires the <a href="../../../Template/Manual/Config#TRACE_VARS.html">TRACE_VARS</a> 
+option to be enabled.</p>
+<p>
+</p>
+<h2><a name="autoload">AUTOLOAD</a></h2>
+<p>An autoload method returns <code>METADATA</code> items.</p>
+<pre>
+    <span class="keyword">print</span> <span class="variable">$doc</span><span class="operator">-&gt;</span><span class="variable">author</span><span class="operator">();</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="class_methods">CLASS METHODS</a></h1>
+<p>These methods are used internally.</p>
+<p>
+</p>
+<h2><a name="as_perl__content_"><code>as_perl($content)</code></a></h2>
+<p>This method generate a Perl representation of the template.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$perl</span> <span class="operator">=</span> <span class="variable">Template::Document</span><span class="operator">-&gt;</span><span class="variable">as_perl</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">BLOCK</span>     <span class="operator">=&gt;</span> <span class="variable">$main_block</span><span class="operator">,</span>
+        <span class="string">DEFBLOCKS</span> <span class="operator">=&gt;</span> <span class="operator">{</span>
+            <span class="string">foo</span>   <span class="operator">=&gt;</span> <span class="variable">$foo_block</span><span class="operator">,</span>
+            <span class="string">bar</span>   <span class="operator">=&gt;</span> <span class="variable">$bar_block</span><span class="operator">,</span>
+        <span class="operator">}</span><span class="operator">,</span>
+        <span class="string">METADATA</span>  <span class="operator">=&gt;</span> <span class="operator">{</span>
+            <span class="string">name</span>  <span class="operator">=&gt;</span> <span class="string">'my_template'</span><span class="operator">,</span>
+        <span class="operator">}</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="write_perl_file___config_"><code>write_perl_file(\%config)</code></a></h2>
+<p>This method is used to write compiled Perl templates to disk.  If the
+<code>COMPILE_EXT</code> option (to indicate a file extension for saving compiled
+templates) then the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Parser.html">the Template::Parser manpage</a> module calls this subroutine before
+calling the <em>new()</em> constructor.  At this stage, the parser has a
+representation of the template as text strings containing Perl code.  We can
+write that to a file, enclosed in a small wrapper which will allow us to
+susequently <a href="../../../lib/pods/perlfunc.html#require"><code>require()</code></a> the file and have Perl parse and compile it into a
+<code>Template::Document</code>.  Thus we have persistence of compiled templates.</p>
+<p>
+</p>
+<hr />
+<h1><a name="internal_functions">INTERNAL FUNCTIONS</a></h1>
+<p>
+</p>
+<h2><a name="catch_warnings__"><code>catch_warnings()</code></a></h2>
+<p>This is a simple handler used to catch any errors that arise when the
+compiled Perl template is first evaluated (that is, evaluated by Perl to
+create a template subroutine at compile, rather than the template being
+processed at runtime).</p>
+<p>
+</p>
+<h2><a name="is_utf8__">is_utf8()</a></h2>
+<p>This is mapped to <code>utf8::is_utf8</code> for versions of Perl that have it (&gt; 5.008)
+or to <code>Encode::is_utf8</code> for Perl 5.008.  Earlier versions of Perl are not 
+supported.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2012 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a>, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Parser.html">the Template::Parser manpage</a></p>
+
+</body>
+
+</html>

@@ -1,0 +1,373 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../scineplex.css">
+<title>Template::Test - Module for automating TT2 test scripts</title>
+<link rel="stylesheet" href="../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',3);</script>
+<h1><a>Template::Test - Module for automating TT2 test scripts</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#package_subroutines">PACKAGE SUBROUTINES</a></li>
+	<ul>
+
+		<li><a href="#text_expect__"><code>text_expect()</code></a></li>
+		<li><a href="#ntests__"><code>ntests()</code></a></li>
+		<li><a href="#ok__test_"><code>ok($test)</code></a></li>
+		<li><a href="#not_ok__test_"><code>not_ok($test)</code></a></li>
+		<li><a href="#callsign__"><code>callsign()</code></a></li>
+		<li><a href="#banner__"><code>banner()</code></a></li>
+	</ul>
+
+	<li><a href="#package_variables">PACKAGE VARIABLES</a></li>
+	<ul>
+
+		<li><a href="#_debug">$DEBUG</a></li>
+		<li><a href="#_preserve">$PRESERVE</a></li>
+	</ul>
+
+	<li><a href="#history">HISTORY</a></li>
+	<li><a href="#bugs___known_features">BUGS / KNOWN &quot;FEATURES&quot;</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Test - Module for automating TT2 test scripts</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template::Test</span><span class="operator">;</span>
+       
+    <span class="variable">$Template::Test::DEBUG</span> <span class="operator">=</span> <span class="number">0</span><span class="operator">;</span>   <span class="comment"># set this true to see each test running</span>
+    <span class="variable">$Template::Test::EXTRA</span> <span class="operator">=</span> <span class="number">2</span><span class="operator">;</span>   <span class="comment"># 2 extra tests follow test_expect()...</span>
+    
+    <span class="comment"># ok() can be called any number of times before test_expect</span>
+    <span class="variable">ok</span><span class="operator">(</span> <span class="variable">$true_or_false</span> <span class="operator">)</span>
+    
+    <span class="comment"># test_expect() splits $input into individual tests, processes each </span>
+    <span class="comment"># and compares generated output against expected output</span>
+    <span class="variable">test_expect</span><span class="operator">(</span><span class="variable">$input</span><span class="operator">,</span> <span class="variable">$template</span><span class="operator">,</span> <span class="operator">\</span><span class="variable">%replace</span> <span class="operator">);</span>
+    
+    <span class="comment"># $input is text or filehandle (e.g. DATA section after __END__)</span>
+    <span class="variable">test_expect</span><span class="operator">(</span> <span class="variable">$text</span> <span class="operator">);</span>
+    <span class="variable">test_expect</span><span class="operator">(</span> <span class="operator">\</span><span class="variable">*DATA</span> <span class="operator">);</span>
+    
+    <span class="comment"># $template is a Template object or configuration hash</span>
+    <span class="keyword">my</span> <span class="variable">$template_cfg</span> <span class="operator">=</span> <span class="operator">{</span> <span class="operator">...</span> <span class="operator">}</span><span class="operator">;</span>
+    <span class="variable">test_expect</span><span class="operator">(</span> <span class="variable">$input</span><span class="operator">,</span> <span class="variable">$template_cfg</span> <span class="operator">);</span>
+    <span class="keyword">my</span> <span class="variable">$template_obj</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="variable">$template_cfg</span><span class="operator">);</span>
+    <span class="variable">test_expect</span><span class="operator">(</span> <span class="variable">$input</span><span class="operator">,</span> <span class="variable">$template_obj</span> <span class="operator">);</span>
+    
+    <span class="comment"># $replace is a hash reference of template variables</span>
+    <span class="keyword">my</span> <span class="variable">$replace</span> <span class="operator">=</span> <span class="operator">{</span>
+        <span class="string">a</span> <span class="operator">=&gt;</span> <span class="string">'alpha'</span><span class="operator">,</span>
+        <span class="string">b</span> <span class="operator">=&gt;</span> <span class="string">'bravo'</span>
+    <span class="operator">}</span><span class="operator">;</span>
+    <span class="variable">test_expect</span><span class="operator">(</span> <span class="variable">$input</span><span class="operator">,</span> <span class="variable">$template</span><span class="operator">,</span> <span class="variable">$replace</span> <span class="operator">);</span>
+    
+    <span class="comment"># ok() called after test_expect should be declared in $EXTRA (2)</span>
+    <span class="variable">ok</span><span class="operator">(</span> <span class="variable">$true_or_false</span> <span class="operator">)</span>   
+    <span class="variable">ok</span><span class="operator">(</span> <span class="variable">$true_or_false</span> <span class="operator">)</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>The <code>Template::Test</code> module defines the <em>test_expect()</em> and other related
+subroutines which can be used to automate test scripts for the
+Template Toolkit.  See the numerous tests in the <em class="file">t</em> sub-directory of
+the distribution for examples of use.</p>
+<p>
+</p>
+<hr />
+<h1><a name="package_subroutines">PACKAGE SUBROUTINES</a></h1>
+<p>
+</p>
+<h2><a name="text_expect__"><code>text_expect()</code></a></h2>
+<p>The <code>test_expect()</code> subroutine splits an input document into a number
+of separate tests, processes each one using the Template Toolkit and
+then compares the generated output against an expected output, also
+specified in the input document.  It generates the familiar 
+<code>ok</code>/<code>not ok</code> output compatible with <code>Test::Harness</code>.</p>
+<p>The test input should be specified as a text string or a reference to
+a filehandle (e.g. <code>GLOB</code> or <code>IO::Handle</code>) from which it can be read.  In 
+particular, this allows the test input to be placed after the <code>__END__</code>
+marker and read via the <code>DATA</code> filehandle.</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template::Test</span><span class="operator">;</span>
+    
+    <span class="variable">test_expect</span><span class="operator">(\</span><span class="variable">*DATA</span><span class="operator">);</span>
+    
+    <span class="comment">__END__
+    # this is the first test (this is a comment)
+    -- test --
+    blah blah blah [% foo %]
+    -- expect --
+    blah blah blah value_of_foo
+    
+    # here's the second test (no surprise, so is this)
+    -- test --
+    more blah blah [% bar %]
+    -- expect --
+    more blah blah value_of_bar
+    </span>
+</pre>
+<p>Blank lines between test sections are generally ignored.  Any line starting
+with <code>#</code> is treated as a comment and is ignored.</p>
+<p>The second and third parameters to <code>test_expect()</code> are optional.  The second
+may be either a reference to a Template object which should be used to 
+process the template fragments, or a reference to a hash array containing
+configuration values which should be used to instantiate a new Template
+object.</p>
+<pre>
+    <span class="comment"># pass reference to config hash</span>
+    <span class="keyword">my</span> <span class="variable">$config</span> <span class="operator">=</span> <span class="operator">{</span>
+        <span class="string">INCLUDE_PATH</span> <span class="operator">=&gt;</span> <span class="string">'/here/there:/every/where'</span><span class="operator">,</span>
+        <span class="string">POST_CHOMP</span>   <span class="operator">=&gt;</span> <span class="number">1</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">;</span>
+    <span class="variable">test_expect</span><span class="operator">(\</span><span class="variable">*DATA</span><span class="operator">,</span> <span class="variable">$config</span><span class="operator">);</span>
+    
+    <span class="comment"># or create Template object explicitly</span>
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="variable">$config</span><span class="operator">);</span>
+    <span class="variable">test_expect</span><span class="operator">(\</span><span class="variable">*DATA</span><span class="operator">,</span> <span class="variable">$template</span><span class="operator">);</span>
+</pre>
+<p>The third parameter may be used to reference a hash array of template
+variable which should be defined when processing the tests.  This is
+passed to the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a> <em>process()</em> method.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$replace</span> <span class="operator">=</span> <span class="operator">{</span>
+        <span class="string">a</span> <span class="operator">=&gt;</span> <span class="string">'alpha'</span><span class="operator">,</span>
+        <span class="string">b</span> <span class="operator">=&gt;</span> <span class="string">'bravo'</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">;</span>
+    
+    <span class="variable">test_expect</span><span class="operator">(\</span><span class="variable">*DATA</span><span class="operator">,</span> <span class="variable">$config</span><span class="operator">,</span> <span class="variable">$replace</span><span class="operator">);</span>
+</pre>
+<p>The second parameter may be left undefined to specify a default <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a>
+configuration.</p>
+<pre>
+    <span class="variable">test_expect</span><span class="operator">(\</span><span class="variable">*DATA</span><span class="operator">,</span> <span class="keyword">undef</span><span class="operator">,</span> <span class="variable">$replace</span><span class="operator">);</span>
+</pre>
+<p>For testing the output of different <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a> configurations, a
+reference to a list of named <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a> objects also may be passed as
+the second parameter.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$tt1</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> <span class="operator">...</span> <span class="operator">}</span><span class="operator">);</span>
+    <span class="keyword">my</span> <span class="variable">$tt2</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> <span class="operator">...</span> <span class="operator">}</span><span class="operator">);</span>
+    <span class="keyword">my</span> <span class="variable">@tts</span> <span class="operator">=</span> <span class="operator">[</span> <span class="string">one</span> <span class="operator">=&gt;</span> <span class="variable">$tt1</span><span class="operator">,</span> <span class="string">two</span> <span class="operator">=&gt;</span> <span class="variable">$tt1</span> <span class="operator">]</span><span class="operator">;</span>
+</pre>
+<p>The first object in the list is used by default.  Other objects may be 
+switched in with a '<code>-- use $name --</code>' marker.  This should immediately 
+follow a '<code>-- test --</code>' line.  That object will then be used for the rest 
+of the test, or until a different object is selected.</p>
+<pre>
+    -- test --
+    -- use one --
+    [% blah %]
+    -- expect --
+    blah, blah
+    
+    -- test --
+    still using one...
+    -- expect --
+    ...
+    
+    -- test --
+    -- use two --
+    [% blah %]
+    -- expect --
+    blah, blah, more blah</pre>
+<p>The <code>test_expect()</code> sub counts the number of tests, and then calls <em>ntests()</em> 
+to generate the familiar &quot;<code>1..$ntests\n</code>&quot; test harness line.  Each 
+test defined generates two test numbers.  The first indicates 
+that the input was processed without error, and the second that the 
+output matches that expected.</p>
+<p>Additional test may be run before <code>test_expect()</code> by calling <em>ok()</em>. These
+test results are cached until <em>ntests()</em> is called and the final number of
+tests can be calculated. Then, the &quot;<code>1..$ntests</code>&quot; line is output, along with
+&quot;<code>ok $n</code>&quot; / &quot;<code>not ok $n</code>&quot; lines for each of the cached test result.
+Subsequent calls to <em>ok()</em> then generate an output line immediately.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$something</span> <span class="operator">=</span> <span class="variable">SomeObject</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">();</span>
+    <span class="variable">ok</span><span class="operator">(</span> <span class="variable">$something</span> <span class="operator">);</span>
+    
+    <span class="keyword">my</span> <span class="variable">$other</span> <span class="operator">=</span> <span class="variable">AnotherThing</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">();</span>
+    <span class="variable">ok</span><span class="operator">(</span> <span class="variable">$other</span> <span class="operator">);</span>
+    
+    <span class="variable">test_expect</span><span class="operator">(\</span><span class="variable">*DATA</span><span class="operator">);</span>
+</pre>
+<p>If any tests are to follow after <code>test_expect()</code> is called then these 
+should be pre-declared by setting the <code>$EXTRA</code> package variable.  This
+value (default: <code>0</code>) is added to the grand total calculated by <em>ntests()</em>.
+The results of the additional tests are also registered by calling <em>ok()</em>.</p>
+<pre>
+    <span class="variable">$Template::Test::EXTRA</span> <span class="operator">=</span> <span class="number">2</span><span class="operator">;</span>
+    
+    <span class="comment"># can call ok() any number of times before test_expect()</span>
+    <span class="variable">ok</span><span class="operator">(</span> <span class="variable">$did_that_work</span> <span class="operator">);</span>             
+    <span class="variable">ok</span><span class="operator">(</span> <span class="variable">$make_sure</span> <span class="operator">);</span>
+    <span class="variable">ok</span><span class="operator">(</span> <span class="variable">$dead_certain</span> <span class="operator">);</span> 
+    
+    <span class="comment"># &lt;some&gt; number of tests...</span>
+    <span class="variable">test_expect</span><span class="operator">(\</span><span class="variable">*DATA</span><span class="operator">,</span> <span class="variable">$config</span><span class="operator">,</span> <span class="variable">$replace</span><span class="operator">);</span>
+    
+    <span class="comment"># here's those $EXTRA tests</span>
+    <span class="variable">ok</span><span class="operator">(</span> <span class="keyword">defined</span> <span class="variable">$some_result</span> <span class="operator">&amp;&amp;</span> <span class="keyword">ref</span> <span class="variable">$some_result</span> <span class="keyword">eq</span> <span class="string">'ARRAY'</span> <span class="operator">);</span>
+    <span class="variable">ok</span><span class="operator">(</span> <span class="variable">$some_result</span><span class="operator">-&gt;</span><span class="operator">[</span><span class="number">0</span><span class="operator">]</span> <span class="keyword">eq</span> <span class="string">'some expected value'</span> <span class="operator">);</span>
+</pre>
+<p>If you don't want to call <code>test_expect()</code> at all then you can call
+<code>ntests($n)</code> to declare the number of tests and generate the test 
+header line.  After that, simply call <em>ok()</em> for each test passing 
+a true or false values to indicate that the test passed or failed.</p>
+<pre>
+    <span class="variable">ntests</span><span class="operator">(</span><span class="number">2</span><span class="operator">);</span>
+    <span class="variable">ok</span><span class="operator">(</span><span class="number">1</span><span class="operator">);</span>
+    <span class="variable">ok</span><span class="operator">(</span><span class="number">0</span><span class="operator">);</span>
+</pre>
+<p>If you're really lazy, you can just call <em>ok()</em> and not bother declaring
+the number of tests at all.  All tests results will be cached until the
+end of the script and then printed in one go before the program exits.</p>
+<pre>
+    <span class="variable">ok</span><span class="operator">(</span> <span class="variable">$x</span> <span class="operator">);</span>
+    <span class="variable">ok</span><span class="operator">(</span> <span class="variable">$y</span> <span class="operator">);</span>
+</pre>
+<p>You can identify only a specific part of the input file for testing
+using the '<code>-- start --</code>' and '<code>-- stop --</code>' markers.  Anything before the 
+first '<code>-- start --</code>' is ignored, along with anything after the next 
+'<code>-- stop --</code>' marker.</p>
+<pre>
+    -- test --
+    this is test 1 (not performed)
+    -- expect --
+    this is test 1 (not performed)
+    
+    -- start --
+    
+    -- test --
+    this is test 2
+    -- expect --
+    this is test 2
+        
+    -- stop --
+    
+    ...</pre>
+<p>
+</p>
+<h2><a name="ntests__"><code>ntests()</code></a></h2>
+<p>Subroutine used to specify how many tests you're expecting to run.</p>
+<p>
+</p>
+<h2><a name="ok__test_"><code>ok($test)</code></a></h2>
+<p>Generates an &quot;<code>ok $n</code>&quot; or &quot;<code>not ok $n</code>&quot; message if <code>$test</code> is true or false.</p>
+<p>
+</p>
+<h2><a name="not_ok__test_"><code>not_ok($test)</code></a></h2>
+<p>The logical inverse of <em>ok()</em>. Prints an &quot;<code>ok $n</code>&quot; message is <code>$test</code> is
+<em>false</em> and vice-versa.</p>
+<p>
+</p>
+<h2><a name="callsign__"><code>callsign()</code></a></h2>
+<p>For historical reasons and general utility, the module also defines a
+<code>callsign()</code> subroutine which returns a hash mapping the letters <a href="../../../lib/pods/perlrun.html#a"><code>a</code></a>
+to <code>z</code> to their phonetic alphabet equivalent (e.g. radio callsigns). 
+This is used by many of the test scripts as a known source of variable values.</p>
+<pre>
+    <span class="variable">test_expect</span><span class="operator">(\</span><span class="variable">*DATA</span><span class="operator">,</span> <span class="variable">$config</span><span class="operator">,</span> <span class="variable">callsign</span><span class="operator">());</span>
+</pre>
+<p>
+</p>
+<h2><a name="banner__"><code>banner()</code></a></h2>
+<p>This subroutine prints a simple banner including any text passed as parameters.
+The <code>$DEBUG</code> variable must be set for it to generate any output.</p>
+<pre>
+    <span class="variable">banner</span><span class="operator">(</span><span class="string">'Testing something-or-other'</span><span class="operator">);</span>
+</pre>
+<p>example output:</p>
+<pre>
+    <span class="comment">#------------------------------------------------------------</span>
+    <span class="comment"># Testing something-or-other (27 tests completed)</span>
+    <span class="comment">#------------------------------------------------------------</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="package_variables">PACKAGE VARIABLES</a></h1>
+<p>
+</p>
+<h2><a name="_debug">$DEBUG</a></h2>
+<p>The $DEBUG package variable can be set to enable debugging mode.</p>
+<p>
+</p>
+<h2><a name="_preserve">$PRESERVE</a></h2>
+<p>The $PRESERVE package variable can be set to stop the <code>test_expect()</code>
+from converting newlines in the output and expected output into
+the literal strings '\n'.</p>
+<p>
+</p>
+<hr />
+<h1><a name="history">HISTORY</a></h1>
+<p>This module started its butt-ugly life as the <code>t/texpect.pl</code> script.  It
+was cleaned up to became the <code>Template::Test</code> module some time around
+version 0.29.  It underwent further cosmetic surgery for version 2.00
+but still retains some remarkable rear-end resemblances.</p>
+<p>Since then the <code>Test::More</code> and related modules have appeared on CPAN
+making this module mostly, but not entirely, redundant.</p>
+<p>
+</p>
+<hr />
+<h1><a name="bugs___known_features">BUGS / KNOWN &quot;FEATURES&quot;</a></h1>
+<p>Imports all methods by default.  This is generally a Bad Thing, but
+this module is only used in test scripts (i.e. at build time) so a) we
+don't really care and b) it saves typing.</p>
+<p>The line splitter may be a bit dumb, especially if it sees lines like
+<code>-- this --</code> that aren't supposed to be special markers.  So don't do that.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a></p>
+
+</body>
+
+</html>

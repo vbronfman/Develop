@@ -1,0 +1,53 @@
+<font color=red>BUILD FINISHED </font>
+###################################################
+#      BUILD TST3 20130205_1056
+###################################################
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/1_insert_aru_charge_type.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/1_pck_dunn_installment_body.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/1_alter_CD_INVOICE_LINES_VIEW_TEMP.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/1_create_table_restricted_prgcode_change.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/1_create_SHIYUCH_CONTRACTS_REQUESTS.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/2_SHIYUCH_CONTRACTS_PKG.sql
+	Start running ..
+STATUS 		: OK
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/3_GC_GET_CONT_CATEGORY_BILL.sql
+	Start running ..
+STATUS 		: OK
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/5_GC_COPY_CDL_INV_DETAIL_body.sql
+	Start running ..
+STATUS 		: OK
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/6_GC_DEACTIVATE_CONT_BILL_SPEC.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/6_GC_MASS_DEACT_CONT_BILLING_SPEC.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/7_billing_param_1710_ins.sql
+	Start running ..
+STATUS 		: ERROR
+------------------------------------------
+FILE 	     : /home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/10_INSERT_DEPOSIT_VANTIVE_CASE.sql
+	Start running ..
+STATUS 		: ERROR
+################ END OF BUILD  ####################

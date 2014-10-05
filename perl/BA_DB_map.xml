@@ -1,0 +1,68 @@
+<!-- BA DB map -->
+
+<environments>
+
+<env name="TST1">
+<db name="BLNCPROD">
+        <testdb BLNCTST1> [
+                     "",
+                    {rpe=>"sysadm"}, #in case the password is differ
+                    {guh=>"sysadm"}, #in case the password is differ
+                    ],
+                    
+    #    BLNCPROD => "BLNCTST1",
+        BSCS_REP => "BSCSTST1",
+        BSCSPROD => ["BSCSTST1",
+                    {INSTALMENTS=>"instal"},
+                    {VMD=>SYSADM},
+                    {RPE=>SYSADM},
+                    {SPECTRA=>"SPECTRAPRD"}
+                    ],
+        STAT => ["STATTST1",
+                 {info_invoice=>"heshbonit"},
+                 {BGH_PARTNER=>"bgh"}
+                 ],
+        BH => "BHTST1",
+        RTXPROD => ["RTXTST1",
+                    {sysadm=>"UNKNOWN"}
+                    ],
+        VANTIVE => [
+                    "VANTST1",
+                    {swb=>"qtip"} #in case the password is differ
+                    ],
+        SIEBPROD => [
+                    "SIEBTST1",
+                    {SIEBEL=>"espre01"} #in case the password is differ
+                    ],
+
+        IFBLPRD => "IFTST1",
+    );
+</env>
+    #aka TrainC    
+    %TRAIN3=(
+        BSCS_REP => "BSTRAIN3",
+        BSCSPROD => "BSTRAIN3",
+        VANTIVE => "VANTRAN3",
+        BLNCPROD => "BLNCTRN3",
+        IFBLPRD  => "GENTRN",
+    );
+#aka TrainB   
+    %TRAIN2=(
+        BSCS_REP => "BSTRAIN2",
+        BSCSPROD => "BSTRAIN2",
+        VANTIVE => "VANTRAN2",
+        BLNCPROD => "BLNCTRN2",
+        IFBLPRD  => "GENTRN", 
+    );
+    
+    %TST3=(
+        BLNCPROD => "BLNCTST3",
+        BSCS_REP => "BSCSTST3",
+        BSCSPROD => "BSCSTST3",
+        STAT => "STATTST3",
+        BH => "BHTST3",
+        RTXPROD => "RTXTST3",
+        VANTIVE => "VANTST3",
+        IFBLPRD => "IFTST3",
+    );
+</environments>

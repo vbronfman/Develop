@@ -1,0 +1,269 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>Template::Plugin::Image - Plugin access to image sizes</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>Template::Plugin::Image - Plugin access to image sizes</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#catching_errors">CATCHING ERRORS</a></li>
+	<li><a href="#using_image__info">USING Image::Info</a></li>
+	<ul>
+
+		<li><a href="#file_media_type">file_media_type</a></li>
+		<li><a href="#file_ext">file_ext</a></li>
+		<li><a href="#color_type">color_type</a></li>
+		<li><a href="#resolution">resolution</a></li>
+		<li><a href="#samplesperpixel">SamplesPerPixel</a></li>
+		<li><a href="#bitspersample">BitsPerSample</a></li>
+		<li><a href="#comment">Comment</a></li>
+		<li><a href="#interlace">Interlace</a></li>
+		<li><a href="#compression">Compression</a></li>
+		<li><a href="#gamma">Gamma</a></li>
+	</ul>
+
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Plugin::Image - Plugin access to image sizes</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    [% USE Image(filename) %]
+    [% Image.width %]
+    [% Image.height %]
+    [% Image.size.join(', ') %]
+    [% Image.attr %]
+    [% Image.tag %]</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This plugin provides an interface to the <a href="../../../../Image/Info.html">the Image::Info manpage</a> or <a href="../../../../Image/Size.html">the Image::Size manpage</a>
+modules for determining the size of image files.</p>
+<p>You can specify the plugin name as either '<code>Image</code>' or '<code>image</code>'.  The
+plugin object created will then have the same name.  The file name of
+the image should be specified as a positional or named argument.</p>
+<pre>
+    [% # all these are valid, take your pick %]
+    [% USE Image('foo.gif') %]
+    [% USE image('bar.gif') %]
+    [% USE Image 'ping.gif' %]
+    [% USE image(name='baz.gif') %]
+    [% USE Image name='pong.gif' %]</pre>
+<p>A <code>root</code> parameter can be used to specify the location of the image file:</p>
+<pre>
+    [% USE Image(root='/path/to/root', name='images/home.png') %]
+    # image path: /path/to/root/images/home.png
+    # img src: images/home.png</pre>
+<p>In cases where the image path and image url do not match up, specify the
+file name directly:</p>
+<pre>
+    [% USE Image(file='/path/to/home.png', name='/images/home.png') %]</pre>
+<p>The <code>alt</code> parameter can be used to specify an alternate name for the
+image, for use in constructing an XHTML element (see the <code>tag()</code> method
+below).</p>
+<pre>
+    [% USE Image('home.png', alt=&quot;Home&quot;) %]</pre>
+<p>You can also provide an alternate name for an <code>Image</code> plugin object.</p>
+<pre>
+    [% USE img1 = image 'foo.gif' %]
+    [% USE img2 = image 'bar.gif' %]</pre>
+<p>The <code>name</code> method returns the image file name.</p>
+<pre>
+    [% img1.name %]     # foo.gif</pre>
+<p>The <code>width</code> and <code>height</code> methods return the width and height of the
+image, respectively.  The <a href="../../../../lib/pods/perlfunc.html#size"><code>size</code></a> method returns a reference to a 2
+element list containing the width and height.</p>
+<pre>
+    [% USE image 'foo.gif' %]
+    width: [% image.width %]
+    height: [% image.height %]
+    size: [% image.size.join(', ') %]</pre>
+<p>The <code>modtime</code> method returns the modification time of the file in question,
+suitable for use with the <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Date.html">Date</a> plugin, for example:</p>
+<pre>
+    [% USE image 'foo.gif' %]
+    [% USE date %]
+    [% date.format(image.modtime, &quot;%B, %e %Y&quot;) %]</pre>
+<p>The <code>attr</code> method returns the height and width as HTML/XML attributes.</p>
+<pre>
+    [% USE image 'foo.gif' %]
+    [% image.attr %]</pre>
+<p>Typical output:</p>
+<pre>
+    width=&quot;60&quot; height=&quot;20&quot;</pre>
+<p>The <code>tag</code> method returns a complete XHTML tag referencing the image.</p>
+<pre>
+    [% USE image 'foo.gif' %]
+    [% image.tag %]</pre>
+<p>Typical output:</p>
+<pre>
+    &lt;img src=&quot;foo.gif&quot; width=&quot;60&quot; height=&quot;20&quot; alt=&quot;&quot; /&gt;</pre>
+<p>You can provide any additional attributes that should be added to the 
+XHTML tag.</p>
+<pre>
+    [% USE image 'foo.gif' %]
+    [% image.tag(class=&quot;logo&quot; alt=&quot;Logo&quot;) %]</pre>
+<p>Typical output:</p>
+<pre>
+    &lt;img src=&quot;foo.gif&quot; width=&quot;60&quot; height=&quot;20&quot; alt=&quot;Logo&quot; class=&quot;logo&quot; /&gt;</pre>
+<p>Note that the <code>alt</code> attribute is mandatory in a strict XHTML <code>img</code>
+element (even if it's empty) so it is always added even if you don't
+explicitly provide a value for it.  You can do so as an argument to 
+the <code>tag</code> method, as shown in the previous example, or as an argument</p>
+<pre>
+    [% USE image('foo.gif', alt='Logo') %]</pre>
+<p>
+</p>
+<hr />
+<h1><a name="catching_errors">CATCHING ERRORS</a></h1>
+<p>If the image file cannot be found then the above methods will throw an
+<code>Image</code> error.  You can enclose calls to these methods in a
+<code>TRY...CATCH</code> block to catch any potential errors.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">TRY</span><span class="operator">;</span>
+         <span class="variable">image</span><span class="operator">.</span><span class="variable">width</span><span class="operator">;</span>
+       <span class="variable">CATCH</span><span class="operator">;</span>
+         <span class="variable">error</span><span class="operator">;</span>      <span class="comment"># print error</span>
+       <span class="keyword">END</span>
+    <span class="variable">%]</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="using_image__info">USING Image::Info</a></h1>
+<p>At run time, the plugin tries to load <a href="../../../../Image/Info.html">the Image::Info manpage</a> in preference to
+<a href="../../../../Image/Size.html">the Image::Size manpage</a>. If <a href="../../../../Image/Info.html">the Image::Info manpage</a> is found, then some additional methods are
+available, in addition to <a href="../../../../lib/pods/perlfunc.html#size"><code>size</code></a>, <code>width</code>, <code>height</code>, <code>attr</code>, and <code>tag</code>.
+These additional methods are named after the elements that <a href="../../../../Image/Info.html">the Image::Info manpage</a>
+retrieves from the image itself. The types of methods available depend on the
+type of image (see <a href="../../../../Image/Info.html">the Image::Info manpage</a> for more details). These additional methods
+will always include the following:</p>
+<p>
+</p>
+<h2><a name="file_media_type">file_media_type</a></h2>
+<p>This is the MIME type that is appropriate for the given file format.
+The corresponding value is a string like: &quot;<code>image/png</code>&quot; or &quot;<code>image/jpeg</code>&quot;.</p>
+<p>
+</p>
+<h2><a name="file_ext">file_ext</a></h2>
+<p>The is the suggested file name extention for a file of the given
+file format.  The value is a 3 letter, lowercase string like
+&quot;<code>png</code>&quot;, &quot;<code>jpg</code>&quot;.</p>
+<p>
+</p>
+<h2><a name="color_type">color_type</a></h2>
+<p>The value is a short string describing what kind of values the pixels
+encode.  The value can be one of the following:</p>
+<pre>
+    Gray
+    GrayA
+    RGB
+    RGBA
+    CMYK
+    YCbCr
+    CIELab</pre>
+<p>These names can also be prefixed by &quot;<code>Indexed-</code>&quot; if the image is
+composed of indexes into a palette.  Of these, only &quot;<code>Indexed-RGB</code>&quot; is
+likely to occur.</p>
+<p>(It is similar to the TIFF field PhotometricInterpretation, but this
+name was found to be too long, so we used the PNG inpired term
+instead.)</p>
+<p>
+</p>
+<h2><a name="resolution">resolution</a></h2>
+<p>The value of this field normally gives the physical size of the image
+on screen or paper. When the unit specifier is missing then this field
+denotes the squareness of pixels in the image.</p>
+<p>The syntax of this field is:</p>
+<pre>
+   &lt;res&gt; &lt;unit&gt;
+   &lt;xres&gt; &quot;/&quot; &lt;yres&gt; &lt;unit&gt;
+   &lt;xres&gt; &quot;/&quot; &lt;yres&gt;</pre>
+<p>The <code>&lt;res&gt;</code>, <code>&lt;xres&gt;</code> and <code>&lt;yres&gt;</code> fields are
+numbers.  The <code>&lt;unit&gt;</code> is a string like <code>dpi</code>, <code>dpm</code> or
+<code>dpcm</code> (denoting &quot;dots per inch/cm/meter).</p>
+<p>
+</p>
+<h2><a name="samplesperpixel">SamplesPerPixel</a></h2>
+<p>This says how many channels there are in the image.  For some image
+formats this number might be higher than the number implied from the
+<code>color_type</code>.</p>
+<p>
+</p>
+<h2><a name="bitspersample">BitsPerSample</a></h2>
+<p>This says how many bits are used to encode each of samples.  The value
+is a reference to an array containing numbers. The number of elements
+in the array should be the same as <code>SamplesPerPixel</code>.</p>
+<p>
+</p>
+<h2><a name="comment">Comment</a></h2>
+<p>Textual comments found in the file.  The value is a reference to an
+array if there are multiple comments found.</p>
+<p>
+</p>
+<h2><a name="interlace">Interlace</a></h2>
+<p>If the image is interlaced, then this returns the interlace type.</p>
+<p>
+</p>
+<h2><a name="compression">Compression</a></h2>
+<p>This returns the name of the compression algorithm is used.</p>
+<p>
+</p>
+<h2><a name="gamma">Gamma</a></h2>
+<p>A number indicating the gamma curve of the image (e.g. 2.2)</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin.html">the Template::Plugin manpage</a>, <a href="../../../../Image/Info.html">the Image::Info manpage</a></p>
+
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>-->
+
+<!--
+        Monitor application configuration file
+In order to add environment:
+- copy any <environment> section of a same product
+- update connection properties
+- verify at a monitored  host   availability of command/script specified in <command>
+
+-->
+<monitor>
+
+<products>
+
+<product id="11" name="BA" state="disabled">
+
+        <environment env="TST1" state="enabled"> 
+            <account>oracle@it2tst1</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>oracle@vmbatest3</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainB" state="enabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="TrainC" state="disabled"> 
+            <account>oracle@baclass</account>
+            <user></user>
+        </environment>
+
+        <environment env="Dev2" state="enabled"> 
+            <account>oracle@vmit9dev02</account>
+            <user></user>
+        </environment>
+
+        <cmd command="status" timeout="0">
+            perl statusBA.pl
+        </cmd>
+
+    </product>
+
+
+
+<product id="11" name="PapiAdapter" state="enabled">
+
+        <environment env="TST1" state="enabled"> 
+            <account>targys@it4tst1_old</account>
+            <account>targys2@it4tst1_old</account>
+            <user></user>
+        </environment>
+
+        <environment env="TST3" state="enabled"> 
+            <account>targys@vmcmstst3_rh5</account>
+            <account>targys2@vmcmstst3_rh5</account>
+            <account>targys12313@vmcmstst3_rh5</account>
+
+            <user></user>
+        </environment>
+
+
+        <cmd command="status" timeout="0">
+            papiadapter/bin/checkLoadAdapter
+        </cmd>
+
+
+</product>
+
+    </products>
+
+    <mail>
+    <sendto>
+
+        <recipient>_Shay.Rozenbaum@orange.co.il</recipient>
+        <recipient>_gilad.malachi@orange.co.il</recipient>
+        <recipient>vlad.bronfman@orange.co.il</recipient>
+        <recipient>_slavik.bikov@orange.co.il</recipient>
+        <recipient>_keren.asulin@orange.co.il</recipient>
+    </sendto>
+    <sender>""</sender>
+
+    <!--Template-->
+    <template_dir>./templates</template_dir>
+    <out_html>monitor_mail.html</out_html>
+    <input_template>monitor_mail_template.tt</input_template>
+
+    <!-- send_notificataion -->
+    <subject_file>./templates/subject</subject_file>
+    </mail>
+
+</monitor>

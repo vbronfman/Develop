@@ -1,0 +1,246 @@
+#TST1  SYSADM bscsdoc outfile.dat Customer_Administration_CABA_22_05_2012 Customer_Administration_CRM_BA_22_05_2012 creditscreen_22052012 RM_22052012 Provisioning_2012_05_22 core_billing_22052012 core_billing_24052012 OCCFU_24052012 occfu_22052012 BRIT_22_05_2012 ERP_28052012 Mailcom_280512 Finance_360_22/05/2012 Finance_22052012 CORE_RATING_22_05_2012
+
+######## Label Customer_Administration_CABA_22_05_2012 ########
+reports/reports@BSCSTST1 procedure_del_access_rights.sql UNKNOWN
+reports/reports@BSCSTST1 procedure_add_access_rights.sql UNKNOWN
+reports/reports@BHTST1 RM_BH_PROGRAM_PKG.sql UNKNOWN
+reports/reports@BSCSTST1 GC_GET_SLOW_INFO_BILLING_spec.sql UNKNOWN
+reports/reports@BSCSTST1 GC_GET_SLOW_INFO_BILLING_body.sql UNKNOWN
+######## Label Customer_Administration_CRM_BA_22_05_2012 ########
+REPORTS/REPORTS@BSCSTST1 Alter_TAKEOVER_HISTORY_add_CAP_VALUE.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 Alter_table_UPG_CONTRACT_UPGRADE_cap_limmited_code.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 Alter_table_CNG_CONTR_ACTIVATION_cap_limmited_code.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 pkg_upg_contr_spec.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 pkg_upg_contr_body.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 GC_UPGRADE_CONTRACT_BILL_spec.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 GC_UPGRADE_CONTRACT_BILL_body.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 db_changes_yair_05_2012.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 Pck_Print_Form_Handle_Spec.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 Pck_Print_Form_Handle_Body.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 CUST_ACTIONS_SPEC.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 CUST_ACTIONS_BODY.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 Gc_Remove_Imei_Bill_spec.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 Gc_Remove_Imei_Bill_body.sql UNKNOWN
+######## Label creditscreen_22052012 ########
+recal/recal@BSCSTST1 mc_script.sql UNKNOWN
+RECAL/RECAL@RTXTST1 Vhd_2326236_rtxprod.sql UNKNOWN
+recal/recal@BSCSTST1 Vhd_2326236.sql UNKNOWN
+RECAL/RECAL@RTXTST1 PREPARE_UDRS.sql UNKNOWN
+RECAL/RECAL@RTXTST1 PREPARE_UDRS_FAMILY.sql UNKNOWN
+recal/recal@BSCSTST1 CHARGEAPI_spec.sql UNKNOWN
+recal/recal@BSCSTST1 CHARGEAPI_body.sql UNKNOWN
+recal/recal@BSCSTST1 RECALCULATION_body_new.sql UNKNOWN
+######## Label RM_22052012 ########
+REPORTS/REPORTS@BSCSTST1 1908.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 1909.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 1910.sql UNKNOWN
+######## Label Provisioning_2012_05_22 ########
+VMD/VMD@BSCSTST1 vmd_commands_I_market_0.sql UNKNOWN
+VMD/VMD@BSCSTST1 service_type__u_market_0.sql UNKNOWN
+VMD/VMD@BSCSTST1 vmd_commands_D0_Z.sql UNKNOWN
+VMD/VMD@BSCSTST1 vmd_commands_D0_X.sql UNKNOWN
+VMD/VMD@BSCSTST1 vmd_commands_D0_R.sql UNKNOWN
+VMD/VMD@BSCSTST1 vmd_commands_D0_E.sql UNKNOWN
+VMD/VMD@BSCSTST1 vmd_commands_D0_l.sql UNKNOWN
+VMD/VMD@BSCSTST1 vmd_commands_D0_C.sql UNKNOWN
+VMD/VMD@BSCSTST1 service_number_KF_Z.sql UNKNOWN
+VMD/VMD@BSCSTST1 service_number_KF_X.sql UNKNOWN
+VMD/VMD@BSCSTST1 service_number_KF_R.sql UNKNOWN
+VMD/VMD@BSCSTST1 service_number_KF_E.sql UNKNOWN
+VMD/VMD@BSCSTST1 GC_NETWORK_DATA_BILLING.sql UNKNOWN
+SYSADM/SYSADM@BSCSTST1 before_status_update.sql UNKNOWN
+reports/reports@BSCSTST1 alter_4662.sql UNKNOWN
+######## Label core_billing_22052012 ########
+reports/reports@BSCSTST1 create_reports_bscsprod.sql UNKNOWN
+reports/reports@BSCSTST1 reports_bscsprod.sql UNKNOWN
+reports/reports@BSCSTST1 CONTRACT_PARAM_DATA_TMP.sql UNKNOWN
+reports/reports@BSCSTST1 GC_GET_CONT_ENTITIES_BILLING_NEW.sql UNKNOWN
+SYSADM/SYSADM@RTXTST1 UDR_REP.sql UNKNOWN
+INFO_BF/INFO_BF@BHTST1 UDR_REP_INFO_BF_BH.sql UNKNOWN
+bgh_partner/bgh_partner@BHTST1 GC_GET_INV_GPRS_PACKS.sql UNKNOWN
+######## Label core_billing_24052012 ########
+reports/reports@BSCSTST1 alter_table_macha.sql UNKNOWN
+reports/reports@BSCSTST1 GC_CONFIRM_UNBILLED_DATA_BILL_spec.sql UNKNOWN
+reports/reports@BSCSTST1 GC_CONFIRM_UNBILLED_DATA_BILL_body.sql UNKNOWN
+reports/reports@BSCSTST1 GC_GET_CONT_PACKS_BILLING_spec.sql UNKNOWN
+reports/reports@BSCSTST1 GC_GET_CONT_PACKS_BILLING_body.sql UNKNOWN
+reports/reports@BSCSTST1 GET_UNBILLED_ACCESS_PCK_spec.sql UNKNOWN
+reports/reports@BSCSTST1 GET_UNBILLED_ACCESS_PCK_body.sql UNKNOWN
+reports/reports@BSCSTST1 GET_UNBILLED_OCC_PCK_body.sql UNKNOWN
+reports/reports@BSCSTST1 GET_UNBILLED_PROMOTION_PCK_body.sql UNKNOWN
+unbilled/unbilled@RTXTST1 GET_UNBILLED_USAGE_PCK_spec.sql UNKNOWN
+unbilled/unbilled@RTXTST1 GET_UNBILLED_USAGE_PCK_body.sql UNKNOWN
+rpe/rpe@BLNCTST1 GC_GET_RPE_ACCOUNT_DATA_spec.sql UNKNOWN
+rpe/rpe@BLNCTST1 GC_GET_RPE_ACCOUNT_DATA_body.sql UNKNOWN
+######## Label OCCFU_24052012 ########
+reports/reports@BSCSTST1 Of_21_Package_SPEC_OccFu_partner.sql UNKNOWN
+reports/reports@BSCSTST1 Of_21_Package_Body_OccFu_partner.sql UNKNOWN
+reports/reports@BSCSTST1 Gc_Occfu_Balance_Billing_body.sql UNKNOWN
+######## Label occfu_22052012 ########
+reports/reports@BSCSTST1 alter_table_360b.sql UNKNOWN
+reports/reports@BSCSTST1 alter_tables_Del_immdiate.sql UNKNOWN
+reports/reports@BSCSTST1 Aof_12_package_SPEC_Auto_Occfu_V2.sql UNKNOWN
+reports/reports@BSCSTST1 Aof_12_package_body_Auto_Occfu_V2.sql UNKNOWN
+reports/reports@BHTST1 Get_Ramash_Invoice_Line_Pkg_Spec.sql UNKNOWN
+reports/reports@BHTST1 Get_Ramash_Invoice_Line_Pkg_Body.sql UNKNOWN
+reports/reports@BHTST1 GC_GET_RAMASH_INV_LINE_BILL_SPEC.sql UNKNOWN
+reports/reports@BHTST1 GC_GET_RAMASH_INV_LINE_BILL_BODY.sql UNKNOWN
+reports/reports@BSCSTST1 Get_Ramash_Detail_Pkg_Spec.sql UNKNOWN
+reports/reports@BSCSTST1 Get_Ramash_Detail_Pkg_Body.sql UNKNOWN
+reports/reports@BSCSTST1 GC_GET_CO_RAMASH_DETAILS_BILL_SPEC.sql UNKNOWN
+reports/reports@BSCSTST1 GC_GET_CO_RAMASH_DETAILS_BILL_BODY.sql UNKNOWN
+reports/reports@BSCSTST1 Mof_05_package_Mass_OccFu_SPEC.sql UNKNOWN
+reports/reports@BSCSTST1 Mof_05_package_Mass_OccFu_BODY.sql UNKNOWN
+######## Label BRIT_22_05_2012 ########
+SWB/SWB@VANTST1 SW_CUSTOMER_BRIT.sql UNKNOWN
+sysadm/sysadm@BSCSTST1 PARAMETER_VALUE_BRIT.sql UNKNOWN
+######## Label ERP_28052012 ########
+#ERROR!!! No files matched ERP_28052012.
+ ######## Label Mailcom_280512 ########
+#ERROR!!! No files matched Mailcom_280512.
+ ######## Label Finance_360_22/05/2012 ########
+reports/reports@BSCSTST1 GC_GET_EQUIP_OCC_BILLING_body.sql UNKNOWN
+######## Label Finance_22052012 ########
+BGH_PARTNER/BGH_PARTNER@BHTST1 GC_COPY_CDL_INV_DATA_budy.sql UNKNOWN
+BGH_PARTNER/BGH_PARTNER@BHTST1 GC_COPY_CDL_INV_DETAIL_budy.sql UNKNOWN
+reports/reports@BSCSTST1 cd_unbilled_to_billed.sql UNKNOWN
+reports/reports@BSCSTST1 CD_SET_CREDIT_LINK_SPEC.sql UNKNOWN
+reports/reports@BSCSTST1 CD_SET_CREDIT_LINK_BODY.sql UNKNOWN
+reports/reports@BSCSTST1 gc_set_cdl_billing_body.sql UNKNOWN
+reports/reports@BSCSTST1 hasava_UOM_cd_credit_debit_link.sql UNKNOWN
+BGH_PARTNER/BGH_PARTNER@BHTST1 GC_GET_CONT_LIST_INV_BILLING_spec.sql UNKNOWN
+BGH_PARTNER/BGH_PARTNER@BHTST1 GC_GET_CONT_LIST_INV_BILLING_body.sql UNKNOWN
+instalments/instalments@BSCSTST1 ERP_EQUIP_OCC_body.sql UNKNOWN
+instalments/instalments@BSCSTST1 CONVERT_FEES_DATA_TASK_1077824.SQL UNKNOWN
+reports/reports@BSCSTST1 COMMISSION_APPLY.sql UNKNOWN
+reports/reports@BSCSTST1 F_CLEAN_REMARK.sql UNKNOWN
+reports/reports@BSCSTST1 F_CLEAN_REMARK_permitions.sql UNKNOWN
+NEW_DUNN/NEW_DUNN@BSCSTST1 p_do_drop_revive_occ.sql UNKNOWN
+NEW_DUNN/NEW_DUNN@BSCSTST1 p_do_drop_revive_occ_permitions.sql UNKNOWN
+NEW_DUNN/NEW_DUNN@BSCSTST1 p_change_bc.sql UNKNOWN
+NEW_DUNN/NEW_DUNN@BSCSTST1 PERFORM_BODY.sql UNKNOWN
+ASHRAIT/ASHRAIT@BSCSTST1 GC_PAYMENT_DEBT_BILLING_pkb.sql UNKNOWN
+reports/reports@BSCSTST1 CS_GET_INFO_BDI_wr.sql UNKNOWN
+######## Label CORE_RATING_22_05_2012 ########
+######## Label Customer_Administration_CABA_22_05_2012 ########
+reports/reports@BSCSTST1 procedure_del_access_rights.sql UNKNOWN
+reports/reports@BSCSTST1 procedure_add_access_rights.sql UNKNOWN
+reports/reports@BHTST1 RM_BH_PROGRAM_PKG.sql UNKNOWN
+reports/reports@BSCSTST1 GC_GET_SLOW_INFO_BILLING_spec.sql UNKNOWN
+reports/reports@BSCSTST1 GC_GET_SLOW_INFO_BILLING_body.sql UNKNOWN
+######## Label Customer_Administration_CRM_BA_22_05_2012 ########
+REPORTS/REPORTS@BSCSTST1 Alter_TAKEOVER_HISTORY_add_CAP_VALUE.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 Alter_table_UPG_CONTRACT_UPGRADE_cap_limmited_code.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 Alter_table_CNG_CONTR_ACTIVATION_cap_limmited_code.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 pkg_upg_contr_spec.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 pkg_upg_contr_body.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 GC_UPGRADE_CONTRACT_BILL_spec.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 GC_UPGRADE_CONTRACT_BILL_body.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 db_changes_yair_05_2012.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 Pck_Print_Form_Handle_Spec.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 Pck_Print_Form_Handle_Body.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 CUST_ACTIONS_SPEC.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 CUST_ACTIONS_BODY.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 Gc_Remove_Imei_Bill_spec.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 Gc_Remove_Imei_Bill_body.sql UNKNOWN
+######## Label creditscreen_22052012 ########
+recal/recal@BSCSTST1 mc_script.sql UNKNOWN
+RECAL/RECAL@RTXTST1 Vhd_2326236_rtxprod.sql UNKNOWN
+recal/recal@BSCSTST1 Vhd_2326236.sql UNKNOWN
+RECAL/RECAL@RTXTST1 PREPARE_UDRS.sql UNKNOWN
+RECAL/RECAL@RTXTST1 PREPARE_UDRS_FAMILY.sql UNKNOWN
+recal/recal@BSCSTST1 CHARGEAPI_spec.sql UNKNOWN
+recal/recal@BSCSTST1 CHARGEAPI_body.sql UNKNOWN
+recal/recal@BSCSTST1 RECALCULATION_body_new.sql UNKNOWN
+######## Label RM_22052012 ########
+REPORTS/REPORTS@BSCSTST1 1908.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 1909.sql UNKNOWN
+REPORTS/REPORTS@BSCSTST1 1910.sql UNKNOWN
+######## Label Provisioning_2012_05_22 ########
+VMD/VMD@BSCSTST1 vmd_commands_I_market_0.sql UNKNOWN
+VMD/VMD@BSCSTST1 service_type__u_market_0.sql UNKNOWN
+VMD/VMD@BSCSTST1 vmd_commands_D0_Z.sql UNKNOWN
+VMD/VMD@BSCSTST1 vmd_commands_D0_X.sql UNKNOWN
+VMD/VMD@BSCSTST1 vmd_commands_D0_R.sql UNKNOWN
+VMD/VMD@BSCSTST1 vmd_commands_D0_E.sql UNKNOWN
+VMD/VMD@BSCSTST1 vmd_commands_D0_l.sql UNKNOWN
+VMD/VMD@BSCSTST1 vmd_commands_D0_C.sql UNKNOWN
+VMD/VMD@BSCSTST1 service_number_KF_Z.sql UNKNOWN
+VMD/VMD@BSCSTST1 service_number_KF_X.sql UNKNOWN
+VMD/VMD@BSCSTST1 service_number_KF_R.sql UNKNOWN
+VMD/VMD@BSCSTST1 service_number_KF_E.sql UNKNOWN
+VMD/VMD@BSCSTST1 GC_NETWORK_DATA_BILLING.sql UNKNOWN
+SYSADM/SYSADM@BSCSTST1 before_status_update.sql UNKNOWN
+reports/reports@BSCSTST1 alter_4662.sql UNKNOWN
+######## Label core_billing_22052012 ########
+reports/reports@BSCSTST1 create_reports_bscsprod.sql UNKNOWN
+reports/reports@BSCSTST1 reports_bscsprod.sql UNKNOWN
+reports/reports@BSCSTST1 CONTRACT_PARAM_DATA_TMP.sql UNKNOWN
+reports/reports@BSCSTST1 GC_GET_CONT_ENTITIES_BILLING_NEW.sql UNKNOWN
+SYSADM/SYSADM@RTXTST1 UDR_REP.sql UNKNOWN
+INFO_BF/INFO_BF@BHTST1 UDR_REP_INFO_BF_BH.sql UNKNOWN
+bgh_partner/bgh_partner@BHTST1 GC_GET_INV_GPRS_PACKS.sql UNKNOWN
+######## Label core_billing_24052012 ########
+reports/reports@BSCSTST1 alter_table_macha.sql UNKNOWN
+reports/reports@BSCSTST1 GC_CONFIRM_UNBILLED_DATA_BILL_spec.sql UNKNOWN
+reports/reports@BSCSTST1 GC_CONFIRM_UNBILLED_DATA_BILL_body.sql UNKNOWN
+reports/reports@BSCSTST1 GC_GET_CONT_PACKS_BILLING_spec.sql UNKNOWN
+reports/reports@BSCSTST1 GC_GET_CONT_PACKS_BILLING_body.sql UNKNOWN
+reports/reports@BSCSTST1 GET_UNBILLED_ACCESS_PCK_spec.sql UNKNOWN
+reports/reports@BSCSTST1 GET_UNBILLED_ACCESS_PCK_body.sql UNKNOWN
+reports/reports@BSCSTST1 GET_UNBILLED_OCC_PCK_body.sql UNKNOWN
+reports/reports@BSCSTST1 GET_UNBILLED_PROMOTION_PCK_body.sql UNKNOWN
+unbilled/unbilled@RTXTST1 GET_UNBILLED_USAGE_PCK_spec.sql UNKNOWN
+unbilled/unbilled@RTXTST1 GET_UNBILLED_USAGE_PCK_body.sql UNKNOWN
+rpe/rpe@BLNCTST1 GC_GET_RPE_ACCOUNT_DATA_spec.sql UNKNOWN
+rpe/rpe@BLNCTST1 GC_GET_RPE_ACCOUNT_DATA_body.sql UNKNOWN
+######## Label OCCFU_24052012 ########
+reports/reports@BSCSTST1 Of_21_Package_SPEC_OccFu_partner.sql UNKNOWN
+reports/reports@BSCSTST1 Of_21_Package_Body_OccFu_partner.sql UNKNOWN
+reports/reports@BSCSTST1 Gc_Occfu_Balance_Billing_body.sql UNKNOWN
+######## Label occfu_22052012 ########
+reports/reports@BSCSTST1 alter_table_360b.sql UNKNOWN
+reports/reports@BSCSTST1 alter_tables_Del_immdiate.sql UNKNOWN
+reports/reports@BSCSTST1 Aof_12_package_SPEC_Auto_Occfu_V2.sql UNKNOWN
+reports/reports@BSCSTST1 Aof_12_package_body_Auto_Occfu_V2.sql UNKNOWN
+reports/reports@BHTST1 Get_Ramash_Invoice_Line_Pkg_Spec.sql UNKNOWN
+reports/reports@BHTST1 Get_Ramash_Invoice_Line_Pkg_Body.sql UNKNOWN
+reports/reports@BHTST1 GC_GET_RAMASH_INV_LINE_BILL_SPEC.sql UNKNOWN
+reports/reports@BHTST1 GC_GET_RAMASH_INV_LINE_BILL_BODY.sql UNKNOWN
+reports/reports@BSCSTST1 Get_Ramash_Detail_Pkg_Spec.sql UNKNOWN
+reports/reports@BSCSTST1 Get_Ramash_Detail_Pkg_Body.sql UNKNOWN
+reports/reports@BSCSTST1 GC_GET_CO_RAMASH_DETAILS_BILL_SPEC.sql UNKNOWN
+reports/reports@BSCSTST1 GC_GET_CO_RAMASH_DETAILS_BILL_BODY.sql UNKNOWN
+reports/reports@BSCSTST1 Mof_05_package_Mass_OccFu_SPEC.sql UNKNOWN
+reports/reports@BSCSTST1 Mof_05_package_Mass_OccFu_BODY.sql UNKNOWN
+######## Label BRIT_22_05_2012 ########
+SWB/SWB@VANTST1 SW_CUSTOMER_BRIT.sql UNKNOWN
+sysadm/sysadm@BSCSTST1 PARAMETER_VALUE_BRIT.sql UNKNOWN
+######## Label ERP_28052012 ########
+#ERROR!!! No files matched ERP_28052012.
+ ######## Label Mailcom_280512 ########
+#ERROR!!! No files matched Mailcom_280512.
+ ######## Label Finance_360_22/05/2012 ########
+reports/reports@BSCSTST1 GC_GET_EQUIP_OCC_BILLING_body.sql UNKNOWN
+######## Label Finance_22052012 ########
+BGH_PARTNER/BGH_PARTNER@BHTST1 GC_COPY_CDL_INV_DATA_budy.sql UNKNOWN
+BGH_PARTNER/BGH_PARTNER@BHTST1 GC_COPY_CDL_INV_DETAIL_budy.sql UNKNOWN
+reports/reports@BSCSTST1 cd_unbilled_to_billed.sql UNKNOWN
+reports/reports@BSCSTST1 CD_SET_CREDIT_LINK_SPEC.sql UNKNOWN
+reports/reports@BSCSTST1 CD_SET_CREDIT_LINK_BODY.sql UNKNOWN
+reports/reports@BSCSTST1 gc_set_cdl_billing_body.sql UNKNOWN
+reports/reports@BSCSTST1 hasava_UOM_cd_credit_debit_link.sql UNKNOWN
+BGH_PARTNER/BGH_PARTNER@BHTST1 GC_GET_CONT_LIST_INV_BILLING_spec.sql UNKNOWN
+BGH_PARTNER/BGH_PARTNER@BHTST1 GC_GET_CONT_LIST_INV_BILLING_body.sql UNKNOWN
+instalments/instalments@BSCSTST1 ERP_EQUIP_OCC_body.sql UNKNOWN
+instalments/instalments@BSCSTST1 CONVERT_FEES_DATA_TASK_1077824.SQL UNKNOWN
+reports/reports@BSCSTST1 COMMISSION_APPLY.sql UNKNOWN
+reports/reports@BSCSTST1 F_CLEAN_REMARK.sql UNKNOWN
+reports/reports@BSCSTST1 F_CLEAN_REMARK_permitions.sql UNKNOWN
+NEW_DUNN/NEW_DUNN@BSCSTST1 p_do_drop_revive_occ.sql UNKNOWN
+NEW_DUNN/NEW_DUNN@BSCSTST1 p_do_drop_revive_occ_permitions.sql UNKNOWN
+NEW_DUNN/NEW_DUNN@BSCSTST1 p_change_bc.sql UNKNOWN
+NEW_DUNN/NEW_DUNN@BSCSTST1 PERFORM_BODY.sql UNKNOWN
+ASHRAIT/ASHRAIT@BSCSTST1 GC_PAYMENT_DEBT_BILLING_pkb.sql UNKNOWN
+reports/reports@BSCSTST1 CS_GET_INFO_BDI_wr.sql UNKNOWN
+######## Label CORE_RATING_22_05_2012 ########

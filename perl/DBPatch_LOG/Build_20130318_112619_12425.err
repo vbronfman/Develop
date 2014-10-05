@@ -1,0 +1,43 @@
+###################################################
+#      BUILD TST3 20130318_1126
+###################################################
+FILE 	       : /home/oracle/ROSH/TST3/BUILD/src/PM_provision_PM_provision_201304_20130318_112619/5_vmd_if_xml_tr69.sql
+CONNECT STRING : VMD/VMD@BSCSTST3
+INSERT INTO VMD_IF_XML ( PRODUCT_ID, ACTION, SNCODE, SRVCODE, IF_SERVICE, XML, TIMEOUT,
+*
+ERROR at line 2:
+ORA-00933: SQL command not properly ended 
+
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+Commit complete.
+
+
+----------------------------------------------------------------

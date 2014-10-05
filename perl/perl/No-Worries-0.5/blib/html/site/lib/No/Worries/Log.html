@@ -1,0 +1,446 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>No::Worries::Log - logging without worries</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>No::Worries::Log - logging without worries</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#attributes">ATTRIBUTES</a></li>
+	<li><a href="#filter">FILTER</a></li>
+	<li><a href="#handler">HANDLER</a></li>
+	<li><a href="#functions">FUNCTIONS</a></li>
+	<li><a href="#usage">USAGE</a></li>
+	<li><a href="#global_variables">GLOBAL VARIABLES</a></li>
+	<li><a href="#environment_variables">ENVIRONMENT VARIABLES</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>No::Worries::Log - logging without worries</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+  <span class="keyword">use</span> <span class="variable">No::Worries::Log</span> <span class="string">qw(*)</span><span class="operator">;</span>
+</pre>
+<pre>
+  <span class="comment"># log an information level message with sprintf()-like syntax</span>
+  <span class="variable">log_info</span><span class="operator">(</span><span class="string">"accepted connection from %s:%d"</span><span class="operator">,</span> <span class="variable">inet_ntoa</span><span class="operator">(</span><span class="variable">$addr</span><span class="operator">),</span> <span class="variable">$port</span><span class="operator">);</span>
+</pre>
+<pre>
+  <span class="comment"># log expensive debugging information only if needed</span>
+  <span class="keyword">if</span> <span class="operator">(</span><span class="variable">log_wants_debug</span><span class="operator">())</span> <span class="operator">{</span>
+      <span class="variable">$string</span> <span class="operator">=</span> <span class="operator">...</span> <span class="variable">whatever</span> <span class="operator">...</span>
+      <span class="variable">log_debug</span><span class="operator">(</span><span class="variable">$string</span><span class="operator">,</span> <span class="operator">{</span> <span class="string">component</span> <span class="operator">=&gt;</span> <span class="string">"webui"</span> <span class="operator">}</span><span class="operator">);</span>
+  <span class="operator">}</span>
+</pre>
+<pre>
+  <span class="comment"># log a low-level trace: this is cheap and can be added in many places</span>
+  <span class="keyword">sub</span><span class="variable"> foo </span><span class="operator">()</span> <span class="operator">{</span>
+      <span class="variable">log_trace</span><span class="operator">();</span>
+      <span class="operator">...</span> <span class="variable">code</span><span class="operator">...</span>
+  <span class="operator">}</span>
+</pre>
+<pre>
+  <span class="comment"># specify the filter to use: debug messages from web* components</span>
+  <span class="variable">log_filter</span><span class="operator">(&lt;&lt;</span><span class="default">EOT</span><span class="operator">);</span><span class="string">
+      debug component=~^web
+  </span><span class="default">EOT</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This module eases information logging by providing convenient
+functions to log and filter information. All the functions <a href="../../../../lib/pods/perlfunc.html#die"><code>die()</code></a> on
+error.</p>
+<p>It provides five main functions to submit information to be logged:</p>
+<ul>
+<li><strong><a name="log_error" class="item">log_error(ARGUMENTS): for error information</a></strong>
+
+</li>
+<li><strong><a name="log_warning" class="item">log_warning(ARGUMENTS): for warning information</a></strong>
+
+</li>
+<li><strong><a name="log_info" class="item">log_info(ARGUMENTS): for (normal) information</a></strong>
+
+</li>
+<li><strong><a name="log_debug" class="item">log_debug(ARGUMENTS): for debugging information</a></strong>
+
+</li>
+<li><strong><a name="log_trace" class="item">log_trace(): for a low level trace</a></strong>
+
+</li>
+</ul>
+<p>The supplied information is structured and can contain extra
+attributes (key/value pairs) like in the SYNOPSIS example.</p>
+<p>If the information passes through the filter, it is given to the
+handler for logging.</p>
+<p>
+</p>
+<hr />
+<h1><a name="attributes">ATTRIBUTES</a></h1>
+<p>An information &quot;object&quot; always contains the following attributes:</p>
+<ul>
+<li><strong><a name="level_the_information_level_as_error_warning_info_debug_or_trace" class="item"><code>level</code>: the information level as <code>error</code>, <code>warning</code>, <code>info</code>,
+<code>debug</code> or <code>trace</code></a></strong>
+
+</li>
+<li><strong><a name="time_unix_time_indicating_when_the_information_got_submitted" class="item"><a href="../../../../lib/pods/perlfunc.html#time"><code>time</code></a>: Unix time indicating when the information got submitted</a></strong>
+
+</li>
+<li><strong><a name="caller_the_name_of_the_caller_s_subroutine_or_main" class="item"><a href="../../../../lib/pods/perlfunc.html#caller"><code>caller</code></a>: the name of the caller's subroutine or <code>main</code></a></strong>
+
+</li>
+<li><strong><a name="file_the_file_path" class="item"><code>file</code>: the file path</a></strong>
+
+</li>
+<li><strong><a name="line_the_line_number" class="item"><code>line</code>: the line number</a></strong>
+
+</li>
+<li><strong><a name="program_the_program_name_as_known_by_the_no_worries_module" class="item"><code>program</code>: the program name, as known by the No::Worries module</a></strong>
+
+</li>
+<li><strong><a name="host_the_host_name_see_no_worries_log_hostname" class="item"><code>host</code>: the host name, see $No::Worries::Log::HostName</a></strong>
+
+</li>
+<li><strong><a name="pid_the_process_identifier" class="item"><code>pid</code>: the process identifier</a></strong>
+
+</li>
+<li><strong><a name="identifier" class="item"><code>tid</code>: the thread identifier (in case threads are used)</a></strong>
+
+</li>
+<li><strong><a name="message_the_formatted_message_string" class="item"><code>message</code>: the formatted message string</a></strong>
+
+</li>
+</ul>
+<p>In addition, extra attributes can be given when calling <a href="#log_error"><code>log_error()</code></a>,
+<a href="#log_warning"><code>log_warning()</code></a>, <a href="#log_info"><code>log_info()</code></a> or <a href="#log_debug"><code>log_debug()</code></a>.</p>
+<p>These attributes are mainly used for filtering (see next section) but
+can also be used for formatting.</p>
+<p>
+</p>
+<hr />
+<h1><a name="filter">FILTER</a></h1>
+<p>The filter defines which information should be logged (i.e. given to
+the handler) or not. It can be controlled via the <a href="#log_filter"><code>log_filter()</code></a> and
+<a href="#log_configure"><code>log_configure()</code></a> functions.</p>
+<p>The filter is described via a multi-line string. Each line is made of
+one or more space separated expressions that must be all true. A
+filter matches if any of its lines matches. Empty lines and comments
+are allowed for readability.</p>
+<p>A filter expression can be either <code>error</code>, <code>warning</code>, <code>info</code>,
+<code>debug</code> or <code>trace</code> (meaning that the level must match it) or of the
+form <em>{attr}{op}{value}</em> where <em>{attr}</em> is the attribute name,
+<em>{op}</em> is the operation (either <code>=~</code>, <code>!~</code>, <code>==</code>, <code>!=</code>, <code>&lt;</code>,
+<code>&lt;=</code>, <code>&gt;</code> or <code>&gt;=</code>) and <em>value</em> is the value to use for
+the test (either an integer, a string or a regular expression).</p>
+<p>If the value is not an integer, it will be treated like the contents
+of a double quoted string or a regular expression, so escape sequences
+will be honored. For parsing reasons (expressions are space
+separated), the value cannot contain space characters. If you need
+some, they have to be escaped like in the examples below.</p>
+<p>Here are commented examples:</p>
+<pre>
+  # comments start with a 'hash' sign
+  # all info level
+  info</pre>
+<pre>
+  # debug level with messages matching &quot;permission denied&quot;
+  # (expressions are space separated so the space must be escaped)
+  debug message=~permission\x20denied</pre>
+<pre>
+  # debug level from any subroutine in Foo::Bar on host &quot;venus&quot;
+  debug caller=~^Foo::Bar:: host==venus</pre>
+<pre>
+  # trace level at the end of the file foo.pm
+  trace file=/full/path/foo.pm line&gt;999</pre>
+<p>Note: user-supplied attributes can also be used in filters. If they
+are not defined, the match will fail. For instance:</p>
+<pre>
+  <span class="comment"># we want to see only debug messages with a low karma</span>
+  <span class="variable">log_filter</span><span class="operator">(</span><span class="string">"debug karma&lt;=42"</span><span class="operator">);</span>
+  <span class="comment"># the following will be logged</span>
+  <span class="variable">log_debug</span><span class="operator">(</span><span class="string">"yes"</span><span class="operator">,</span> <span class="operator">{</span> <span class="string">karma</span> <span class="operator">=&gt;</span> <span class="number">7</span> <span class="operator">}</span><span class="operator">);</span>
+  <span class="comment"># the following will not be logged</span>
+  <span class="variable">log_debug</span><span class="operator">(</span><span class="string">"no"</span><span class="operator">,</span> <span class="operator">{</span> <span class="string">karma</span> <span class="operator">=&gt;</span> <span class="number">1999</span> <span class="operator">}</span><span class="operator">);</span>
+  <span class="variable">log_debug</span><span class="operator">(</span><span class="string">"no"</span><span class="operator">);</span>
+</pre>
+<p>You can also use an alternative syntax with explicit <code>or</code> and
+<code>and</code>. This is very convenient to fit the filter in a single line
+(for instance when given on the command line). For instance:</p>
+<pre>
+  # multi-line style filter
+  info
+  debug caller==main</pre>
+<p>is equivalent to:</p>
+<pre>
+  info or debug and caller==main</pre>
+<p>
+</p>
+<hr />
+<h1><a name="handler">HANDLER</a></h1>
+<p>If the information successfully passes through the filter it is given
+to the handler, i.e. the code reference stored in
+$No::Worries::Log::Handler.</p>
+<p>The default handler prints compact yet user friendly output to STDOUT
+(<code>info</code> level) or STDERR (otherwise).</p>
+<p>The <a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries/Syslog.html">the No::Worries::Syslog manpage</a> module contains a similar handler to log
+information to syslog.</p>
+<p>Here is how to change the variable to a handler that dumps all the
+information attributes to STDERR:</p>
+<pre>
+  <span class="variable">$No::Worries::Log::Handler</span> <span class="operator">=</span> <span class="operator">\&amp;</span><span class="variable">No::Worries::Log::log2dump</span><span class="operator">;</span>
+</pre>
+<p>The same can be achived at module loading time by using for instance:</p>
+<pre>
+  <span class="keyword">use</span> <span class="variable">No::Worries::Log</span> <span class="string">qw(* log2dump)</span><span class="operator">;</span>
+</pre>
+<p>You can put your own code in $No::Worries::Log::Handler. It will be
+called with a single argument: the structured information as a hash
+reference. This can be useful for ad-hoc filtering or to do something
+else that logging to STDOUT/STDERR or syslog.</p>
+<p>
+</p>
+<hr />
+<h1><a name="functions">FUNCTIONS</a></h1>
+<p>This module provides the following functions (none of them being
+exported by default):</p>
+<dl>
+<dt><strong><a name="log_filter" class="item">log_filter(FILTER)</a></strong></dt>
+
+<dd>
+<p>use the given filter (string) to configure what should gets logged or not</p>
+</dd>
+<dt><strong><a name="log_configure" class="item">log_configure(PATH)</a></strong></dt>
+
+<dd>
+<p>use the given path (file) to configure what should gets logged or not;
+this reads the file if needed (i.e. if it changed since last time) and
+calls <a href="#log_filter"><code>log_filter()</code></a></p>
+</dd>
+<dt><strong><a name="log_wants_error" class="item"><code>log_wants_error()</code></a></strong></dt>
+
+<dd>
+<p>return true if the current filter may pass error level information</p>
+</dd>
+<dt><strong><a name="log_wants_warning" class="item"><code>log_wants_warning()</code></a></strong></dt>
+
+<dd>
+<p>return true if the current filter may pass warning level information</p>
+</dd>
+<dt><strong><a name="log_wants_info" class="item"><code>log_wants_info()</code></a></strong></dt>
+
+<dd>
+<p>return true if the current filter may pass info level information</p>
+</dd>
+<dt><strong><a name="log_wants_debug" class="item"><code>log_wants_debug()</code></a></strong></dt>
+
+<dd>
+<p>return true if the current filter may pass debug level information</p>
+</dd>
+<dt><strong><a name="log_wants_trace" class="item"><code>log_wants_trace()</code></a></strong></dt>
+
+<dd>
+<p>return true if the current filter may pass trace level information</p>
+</dd>
+<dt><strong>log_error(ARGUMENTS)</strong></dt>
+
+<dd>
+<p>give an error level information to the module to get logged if the
+current filter lets it pass; see below for its ARGUMENTS</p>
+</dd>
+<dt><strong>log_warning(ARGUMENTS)</strong></dt>
+
+<dd>
+<p>give a warning level information to the module to get logged if the
+current filter lets it pass; see below for its ARGUMENTS</p>
+</dd>
+<dt><strong>log_info(ARGUMENTS)</strong></dt>
+
+<dd>
+<p>give an info level information to the module to get logged if the
+current filter lets it pass; see below for its ARGUMENTS</p>
+</dd>
+<dt><strong>log_debug(ARGUMENTS)</strong></dt>
+
+<dd>
+<p>give a debug level information to the module to get logged if the
+current filter lets it pass; see below for its ARGUMENTS</p>
+</dd>
+<dt><strong><code>log_trace()</code></strong></dt>
+
+<dd>
+<p>give a trace level information to the module to get logged if the
+current filter lets it pass; the trace information contains the name
+of the caller subroutine, the file path and the line number</p>
+</dd>
+<dt><strong><a name="log2std" class="item">log2std(INFO)</a></strong></dt>
+
+<dd>
+<p>handler for $No::Worries::Log::Handler to send information to
+STDOUT/STDERR in a compact yet user friendly way; this is not exported
+and must be called explicitly</p>
+</dd>
+<dt><strong><a name="log2dump" class="item">log2dump(INFO)</a></strong></dt>
+
+<dd>
+<p>handler for $No::Worries::Log::Handler that dumps all the information
+attributes to STDERR; this is not exported and must be called
+explicitly</p>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="usage">USAGE</a></h1>
+<p><a href="#log_error"><code>log_error()</code></a>, <a href="#log_warning"><code>log_warning()</code></a>, <a href="#log_info"><code>log_info()</code></a> and <a href="#log_debug"><code>log_debug()</code></a> can be called
+in different ways:</p>
+<ul>
+<li><strong><a name="log_xxx" class="item">log_xxx(): no arguments, same as giving an empty string</a></strong>
+
+</li>
+<li><strong>log_xxx(&quot;string&quot;): the message will be the given string</strong>
+
+</li>
+<li><strong>log_xxx(&quot;format&quot;, @args): the message will be the result of <a href="../../../../lib/pods/perlfunc.html#sprintf"><code>sprintf()</code></a></strong>
+
+</li>
+<li><strong>log_xxx(\&amp;code): the message will be the return value of the code</strong>
+
+</li>
+<li><strong>log_xxx(\&amp;code, @args): idem but also supplying arguments to give</strong>
+
+</li>
+</ul>
+<p>In addition, in all cases, an optional last argument containing
+user-supplied attributes can be given as a hash reference. For
+instance:</p>
+<pre>
+  <span class="variable">log_info</span><span class="operator">(</span><span class="string">"foo is %s"</span><span class="operator">,</span> <span class="variable">$foo</span><span class="operator">,</span> <span class="operator">{</span> <span class="string">component</span> <span class="operator">=&gt;</span> <span class="string">"webui"</span> <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>Note that the following:</p>
+<pre>
+  <span class="variable">log_debug</span><span class="operator">(\&amp;</span><span class="variable">dump_hash</span><span class="operator">,</span> <span class="operator">\</span><span class="variable">%big_hash</span><span class="operator">);</span>
+</pre>
+<p>will treat the last argument as being the attributes hash. If this is
+not what you want, you should supply an empty attributes hash so that
+\%big_hash gets interpreted as an argument to give to dump_hash():</p>
+<pre>
+  <span class="variable">log_debug</span><span class="operator">(\&amp;</span><span class="variable">dump_hash</span><span class="operator">,</span> <span class="operator">\</span><span class="variable">%big_hash</span><span class="operator">,</span> <span class="operator">{}</span><span class="operator">);</span>
+</pre>
+<p>With the <a href="../../../../lib/pods/perlfunc.html#sprintf"><code>sprintf()</code></a> style usage, you can supply string references as
+arguments. They will be replaced by the corresponding attributes. For
+instance:</p>
+<pre>
+  <span class="variable">log_debug</span><span class="operator">(</span><span class="string">"unexpected data: %s [line %d]"</span><span class="operator">,</span> <span class="variable">$data</span><span class="operator">,</span> <span class="operator">\</span><span class="string">"line"</span><span class="operator">);</span>
+</pre>
+<p>The usages with a code reference are useful for expensive operations
+that you want to perform only when you are pretty sure that the
+information will be logged. The code reference will be called only
+after an initial filtering. For instance:</p>
+<pre>
+  <span class="comment"># expensive code to return a message to maybe log</span>
+  <span class="keyword">sub</span><span class="variable"> dump_state </span><span class="operator">(</span>$<span class="operator">)</span> <span class="operator">{</span>
+      <span class="keyword">my</span><span class="operator">(</span><span class="variable">$data</span><span class="operator">)</span> <span class="operator">=</span> <span class="variable">@_</span><span class="operator">;</span>
+      <span class="operator">...</span> <span class="variable">heavy</span> <span class="variable">work</span> <span class="operator">...</span>
+      <span class="keyword">return</span><span class="operator">(...</span> <span class="variable">something</span> <span class="operator">...);</span>
+  <span class="operator">}</span>
+  <span class="comment"># subroutine that may want to dump its state</span>
+  <span class="keyword">sub</span><span class="variable"> foo </span><span class="operator">()</span> <span class="operator">{</span>
+      <span class="operator">...</span> <span class="variable">some</span> <span class="variable">code</span> <span class="operator">...</span>
+      <span class="variable">log_debug</span><span class="operator">(\&amp;</span><span class="variable">dump_state</span><span class="operator">,</span> <span class="variable">$some_data</span><span class="operator">);</span>
+      <span class="operator">...</span> <span class="variable">some</span> <span class="variable">code</span> <span class="operator">...</span>
+  <span class="operator">}</span>
+  <span class="comment"># filter that only cares about debug information from main::bar</span>
+  <span class="variable">log_filter</span><span class="operator">(</span><span class="string">"debug caller==main::bar"</span><span class="operator">);</span>
+  <span class="comment"># the following will not call dump_state()</span>
+  <span class="variable">foo</span><span class="operator">();</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="global_variables">GLOBAL VARIABLES</a></h1>
+<p>This module uses the following global variables (none of them being
+exported):</p>
+<dl>
+<dt><strong><a name="_hostname" class="item">$HostName</a></strong></dt>
+
+<dd>
+<p>the name of the host (this will be put in the <code>host</code> attribute), the
+default is derived from <a href="../../../../lib/Sys/Hostname.html">the Sys::Hostname manpage</a>'s <code>hostname()</code></p>
+</dd>
+<dt><strong><a name="_handler" class="item">$Handler</a></strong></dt>
+
+<dd>
+<p>the subroutine (code reference) to call for every information that
+successfully passes through the filter, the default is normally
+\&amp;No::Worries::Log::log2std() (see below)</p>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="environment_variables">ENVIRONMENT VARIABLES</a></h1>
+<p>This module uses the <code>NO_WORRIES</code> environment variable to find out
+which handler to use by default. Supported values are:</p>
+<dl>
+<dt><strong><code>log2std</code></strong></dt>
+
+<dd>
+<p>use No::Worries::Log::log2std() (this is the default anyway)</p>
+</dd>
+<dt><strong><code>log2dump</code></strong></dt>
+
+<dd>
+<p>use No::Worries::Log::log2dump()</p>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries.html">the No::Worries manpage</a>,
+<a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries/Syslog.html">the No::Worries::Syslog manpage</a>,
+<a href="../../../../lib/Sys/Hostname.html">the Sys::Hostname manpage</a>.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Lionel Cons <a href="http://cern.ch/lionel.cons">http://cern.ch/lionel.cons</a></p>
+<p>Copyright CERN 2012</p>
+
+</body>
+
+</html>

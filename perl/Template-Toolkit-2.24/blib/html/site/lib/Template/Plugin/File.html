@@ -1,0 +1,298 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>Template::Plugin::File - Plugin providing information about files</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>Template::Plugin::File - Plugin providing information about files</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#methods">METHODS</a></li>
+	<ul>
+
+		<li><a href="#path">path</a></li>
+		<li><a href="#name">name</a></li>
+		<li><a href="#dir">dir</a></li>
+		<li><a href="#ext">ext</a></li>
+		<li><a href="#home">home</a></li>
+		<li><a href="#root">root</a></li>
+		<li><a href="#abs">abs</a></li>
+		<li><a href="#rel_path_">rel(path)</a></li>
+	</ul>
+
+	<li><a href="#examples">EXAMPLES</a></li>
+	<li><a href="#authors">AUTHORS</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Plugin::File - Plugin providing information about files</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    [% USE File(filepath) %]
+    [% File.path %]         # full path
+    [% File.name %]         # filename
+    [% File.dir %]          # directory</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This plugin provides an abstraction of a file.  It can be used to 
+fetch details about files from the file system, or to represent abstract
+files (e.g. when creating an index page) that may or may not exist on 
+a file system.</p>
+<p>A file name or path should be specified as a constructor argument.  e.g.</p>
+<pre>
+    [% USE File('foo.html') %]
+    [% USE File('foo/bar/baz.html') %]
+    [% USE File('/foo/bar/baz.html') %]</pre>
+<p>The file should exist on the current file system (unless <code>nostat</code>
+option set, see below) as an absolute file when specified with as
+leading '<code>/</code>' as per '<code>/foo/bar/baz.html</code>', or otherwise as one relative
+to the current working directory.  The constructor performs a <a href="../../../../lib/pods/perlfunc.html#stat"><code>stat()</code></a>
+on the file and makes the 13 elements returned available as the plugin
+items:</p>
+<pre>
+    dev ino mode nlink uid gid rdev size 
+    atime mtime ctime blksize blocks</pre>
+<p>e.g.</p>
+<pre>
+    [% USE File('/foo/bar/baz.html') %]
+    
+    [% File.mtime %]
+    [% File.mode %]
+    ...</pre>
+<p>In addition, the <code>user</code> and <code>group</code> items are set to contain the user
+and group names as returned by calls to <a href="../../../../lib/pods/perlfunc.html#getpwuid"><code>getpwuid()</code></a> and <a href="../../../../lib/pods/perlfunc.html#getgrgid"><code>getgrgid()</code></a> for
+the file <code>uid</code> and <code>gid</code> elements, respectively.  On Win32 platforms
+on which <a href="../../../../lib/pods/perlfunc.html#getpwuid"><code>getpwuid()</code></a> and <code>getgrid()</code> are not available, these values are
+undefined.</p>
+<pre>
+    [% USE File('/tmp/foo.html') %]
+    [% File.uid %]      # e.g. 500
+    [% File.user %]     # e.g. abw</pre>
+<p>This user/group lookup can be disabled by setting the <code>noid</code> option.</p>
+<pre>
+    [% USE File('/tmp/foo.html', noid=1) %]
+    [% File.uid %]      # e.g. 500
+    [% File.user %]     # nothing</pre>
+<p>The <code>isdir</code> flag will be set if the file is a directory.</p>
+<pre>
+    [% USE File('/tmp') %]
+    [% File.isdir %]    # 1</pre>
+<p>If the <a href="../../../../lib/pods/perlfunc.html#stat"><code>stat()</code></a> on the file fails (e.g. file doesn't exists, bad
+permission, etc) then the constructor will throw a <code>File</code> exception.
+This can be caught within a <code>TRY...CATCH</code> block.</p>
+<pre>
+    [% TRY %]
+       [% USE File('/tmp/myfile') %]
+       File exists!
+    [% CATCH File %]
+       File error: [% error.info %]
+    [% END %]</pre>
+<p>Note the capitalisation of the exception type, '<code>File</code>', to indicate an
+error thrown by the <code>File</code> plugin, to distinguish it from a regular
+<code>file</code> exception thrown by the Template Toolkit.</p>
+<p>Note that the <code>File</code> plugin can also be referenced by the lower case
+name '<code>file</code>'.  However, exceptions are always thrown of the <code>File</code>
+type, regardless of the capitalisation of the plugin named used.</p>
+<pre>
+    [% USE file('foo.html') %]
+    [% file.mtime %]</pre>
+<p>As with any other Template Toolkit plugin, an alternate name can be 
+specified for the object created.</p>
+<pre>
+    [% USE foo = file('foo.html') %]
+    [% foo.mtime %]</pre>
+<p>The <code>nostat</code> option can be specified to prevent the plugin constructor
+from performing a <a href="../../../../lib/pods/perlfunc.html#stat"><code>stat()</code></a> on the file specified.  In this case, the
+file does not have to exist in the file system, no attempt will be made
+to verify that it does, and no error will be thrown if it doesn't.
+The entries for the items usually returned by <a href="../../../../lib/pods/perlfunc.html#stat"><code>stat()</code></a> will be set 
+empty.</p>
+<pre>
+    [% USE file('/some/where/over/the/rainbow.html', nostat=1) 
+    [% file.mtime %]     # nothing</pre>
+<p>
+</p>
+<hr />
+<h1><a name="methods">METHODS</a></h1>
+<p>All <code>File</code> plugins, regardless of the <code>nostat</code> option, have set a number
+of items relating to the original path specified.</p>
+<p>
+</p>
+<h2><a name="path">path</a></h2>
+<p>The full, original file path specified to the constructor.</p>
+<pre>
+    [% USE file('/foo/bar.html') %]
+    [% file.path %]     # /foo/bar.html</pre>
+<p>
+</p>
+<h2><a name="name">name</a></h2>
+<p>The name of the file without any leading directories.</p>
+<pre>
+    [% USE file('/foo/bar.html') %]
+    [% file.name %]     # bar.html</pre>
+<p>
+</p>
+<h2><a name="dir">dir</a></h2>
+<p>The directory element of the path with the filename removed.</p>
+<pre>
+    [% USE file('/foo/bar.html') %]
+    [% file.name %]     # /foo</pre>
+<p>
+</p>
+<h2><a name="ext">ext</a></h2>
+<p>The file extension, if any, appearing at the end of the path following 
+a '<code>.</code>' (not included in the extension).</p>
+<pre>
+    [% USE file('/foo/bar.html') %]
+    [% file.ext %]      # html</pre>
+<p>
+</p>
+<h2><a name="home">home</a></h2>
+<p>This contains a string of the form '<code>../..</code>' to represent the upward path
+from a file to its root directory.</p>
+<pre>
+    [% USE file('bar.html') %]
+    [% file.home %]     # nothing
+    
+    [% USE file('foo/bar.html') %]
+    [% file.home %]     # ..
+    
+    [% USE file('foo/bar/baz.html') %]
+    [% file.home %]     # ../..</pre>
+<p>
+</p>
+<h2><a name="root">root</a></h2>
+<p>The <code>root</code> item can be specified as a constructor argument, indicating
+a root directory in which the named file resides.  This is otherwise
+set empty.</p>
+<pre>
+    [% USE file('foo/bar.html', root='/tmp') %]
+    [% file.root %]     # /tmp</pre>
+<p>
+</p>
+<h2><a name="abs">abs</a></h2>
+<p>This returns the absolute file path by constructing a path from the 
+<code>root</code> and <code>path</code> options.</p>
+<pre>
+    [% USE file('foo/bar.html', root='/tmp') %]
+    [% file.path %]     # foo/bar.html
+    [% file.root %]     # /tmp
+    [% file.abs %]      # /tmp/foo/bar.html</pre>
+<p>
+</p>
+<h2><a name="rel_path_">rel(path)</a></h2>
+<p>This returns a relative path from the current file to another path specified
+as an argument.  It is constructed by appending the path to the '<code>home</code>' 
+item.</p>
+<pre>
+    [% USE file('foo/bar/baz.html') %]
+    [% file.rel('wiz/waz.html') %]      # ../../wiz/waz.html</pre>
+<p>
+</p>
+<hr />
+<h1><a name="examples">EXAMPLES</a></h1>
+<pre>
+    [% USE file('/foo/bar/baz.html') %]
+    
+    [% file.path  %]      # /foo/bar/baz.html
+    [% file.dir   %]      # /foo/bar
+    [% file.name  %]      # baz.html
+    [% file.home  %]      # ../..
+    [% file.root  %]      # ''
+    [% file.abs   %]      # /foo/bar/baz.html
+    [% file.ext   %]      # html
+    [% file.mtime %]      # 987654321
+    [% file.atime %]      # 987654321
+    [% file.uid   %]      # 500
+    [% file.user  %]      # abw</pre>
+<pre>
+    [% USE file('foo.html') %]
+    
+    [% file.path %]           # foo.html
+    [% file.dir  %]       # ''
+    [% file.name %]           # foo.html
+    [% file.root %]       # ''
+    [% file.home %]       # ''
+    [% file.abs  %]       # foo.html</pre>
+<pre>
+    [% USE file('foo/bar/baz.html') %]
+    
+    [% file.path %]           # foo/bar/baz.html
+    [% file.dir  %]       # foo/bar
+    [% file.name %]           # baz.html
+    [% file.root %]       # ''
+    [% file.home %]       # ../..
+    [% file.abs  %]       # foo/bar/baz.html</pre>
+<pre>
+    [% USE file('foo/bar/baz.html', root='/tmp') %]
+    
+    [% file.path %]           # foo/bar/baz.html
+    [% file.dir  %]       # foo/bar
+    [% file.name %]           # baz.html
+    [% file.root %]       # /tmp
+    [% file.home %]       # ../..
+    [% file.abs  %]       # /tmp/foo/bar/baz.html</pre>
+<pre>
+    # calculate other file paths relative to this file and its root
+    [% USE file('foo/bar/baz.html', root =&gt; '/tmp/tt2') %]
+    
+    [% file.path('baz/qux.html') %]         # ../../baz/qux.html
+    [% file.dir('wiz/woz.html')  %]     # ../../wiz/woz.html</pre>
+<p>
+</p>
+<hr />
+<h1><a name="authors">AUTHORS</a></h1>
+<p>Michael Stevens wrote the original <code>Directory</code> plugin on which this is based.
+Andy Wardley split it into separate <code>File</code> and <code>Directory</code> plugins, added
+some extra code and documentation for <code>VIEW</code> support, and made a few other
+minor tweaks.</p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright 2000-2007 Michael Stevens, Andy Wardley.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin.html">the Template::Plugin manpage</a>, <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/Directory.html">the Template::Plugin::Directory manpage</a>, <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/View.html">the Template::View manpage</a></p>
+
+</body>
+
+</html>

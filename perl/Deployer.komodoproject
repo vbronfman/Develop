@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Komodo Project File - DO NOT EDIT -->
+<project id="925d612c-ef88-4589-9481-5a9ff47cddf2" kpf_version="5" name="Deployer.komodoproject">
+<file id="85478da4-4f01-4c4e-9046-ec54af8f71d2" idref="925d612c-ef88-4589-9481-5a9ff47cddf2" name="getconf.pl" url="getconf.pl">
+</file>
+<livefolder id="9863a443-49de-4eee-bcc8-0d5ff1d1d3de" idref="925d612c-ef88-4589-9481-5a9ff47cddf2" name="Partner" url="Partner">
+</livefolder>
+</project>

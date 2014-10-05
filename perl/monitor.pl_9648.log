@@ -1,0 +1,198 @@
+
+2013-07-10 10:56:40 	##### D:\Develop\Perl\monitor.pl Started ##### 
+10:56:40	 Started
+10:56:40	 main::read_conf Parse by XML::Simple
+
+$VAR1 = 'PapiAdapter';
+
+            papiadapter/bin/checkLoadAdapter
+        
+targys@it4tst1_old
+targys2@it4tst1_old
+targys@vmcmstst3_rh5
+targys2@vmcmstst3_rh5
+cmsbldev2@vmit12dev02
+$VAR1 = 'rihec';
+
+            . ~/.profile;ps -ef| grep -v grep | grep -i rihec
+        
+rattst3@znbillapptst3
+ratdev2@znit10dev02
+ratdev3@znit10dev03
+$VAR1 = 'RDH_PRIH';
+
+            . ~/.profile;ps -ef| grep -v grep | grep -i RDH_PRIH
+        
+rattst3@znbillapptst3
+ratdev2@znit10dev02
+ratdev3@znit10dev03
+$VAR1 = 'iwcacheds';
+vantive85_3/status_vantive.csh iwcacheds
+vantive@znvantst1
+vantive@znvantst3
+vantive@petra
+vantive@znit10dev02
+vantive@znit10dev03
+$VAR1 = 'TEST2';
+$VAR1 = 'OSAGENT';
+$VAR1 = 'prih';
+
+            . ~/.profile;ps -ef| grep -v grep | grep  prih
+        
+rattst3@znbillapptst3
+ratdev2@znit10dev02
+ratdev3@znit10dev03
+$VAR1 = 'FIH';
+
+            . ~/.profile;ps -ef| grep -v grep | grep -i FIH
+        
+rattst3@znbillapptst3
+ratdev2@znit10dev02
+ratdev3@znit10dev03
+$VAR1 = 'OC4J_BI_Forms';
+
+            perl statusBA.pl OC4J_BI_Forms
+        
+oracle@it2tst1
+oracle@vmbatest3
+oracle@baclass
+oracle@vmit9dev02
+$VAR1 = 'UDRSYNC';
+
+            . ~/.profile;ps -ef| grep -v grep | grep -i UDRSYNC
+        
+rattst3@znbillapptst3
+ratdev2@znit10dev02
+ratdev3@znit10dev03
+$VAR1 = 'RPE';
+
+            . ~/.profile;ps -ef| grep -v grep | grep -i RPE
+        
+rattst3@znbillapptst3
+ratdev2@znit10dev02
+ratdev3@znit10dev03
+$VAR1 = 'HTTP_Server';
+
+            perl statusBA.pl HTTP_Server
+        
+oracle@it2tst1
+oracle@vmbatest3
+oracle@baclass
+oracle@vmit9dev02
+$VAR1 = 'CMS_ADAPTER';
+./cmsadapter/bin/statusCMSAdapter
+tibco55@Kermit
+tibco@it3tst3
+$VAR1 = 'RVSH';
+
+            . ~/.profile;ps -ef| grep -v grep | grep -i RVSH
+        
+rattst3@znbillapptst3
+ratdev2@znit10dev02
+ratdev3@znit10dev03
+$VAR1 = 'CMS_BILLING';
+./bin/statusCMS -m bill 4
+targys2@it4tst1_old
+targys2@vmcmstst3_rh5
+targys@tetra
+$VAR1 = 'DATA';
+
+            . ~/.profile;ps -ef| grep -v grep | grep  DATA
+        
+rattst3@znbillapptst3
+ratdev2@znit10dev02
+ratdev3@znit10dev03
+$VAR1 = 'vanserv';
+$VAR1 = 'GUHEC';
+
+            . ~/.profile;ps -ef| grep -v grep | grep -i GUHEC
+        
+rattst3@znbillapptst3
+ratdev2@znit10dev02
+ratdev3@znit10dev03
+$VAR1 = 'home';
+
+            perl statusBA.pl home 
+        
+oracle@it2tst1
+oracle@vmbatest3
+oracle@baclass
+oracle@vmit9dev02
+$VAR1 = 'GMD';
+/ITLAB_share/itlab/provisioning.sh -statusgmd
+bscstst1@znbillapptst1
+bscstst3@znbillapptst3
+bscsdev2@znit10dev02
+bscsdev3@znit10dev03
+$VAR1 = 'FUH';
+
+            . ~/.profile;ps -ef| grep -v grep | grep -i FUH
+        
+rattst3@znbillapptst3
+ratdev2@znit10dev02
+ratdev3@znit10dev03
+$VAR1 = 'iwalarmds';
+vantive85_3/status_vantive.csh iwalarmds
+vantive@znvantst1
+vantive@znvantst3
+vantive@znit10dev02
+vantive@znit10dev03
+$VAR1 = 'TEST1';
+$VAR1 = 'DIH';
+
+            . ~/.profile;ps -ef| grep -v grep | grep -i DIH
+        
+rattst3@znbillapptst3
+ratdev2@znit10dev02
+ratdev3@znit10dev03
+$VAR1 = 'VMD';
+/ITLAB_share/itlab/provisioning.sh -statusvmd
+bscstst1@znbillapptst1
+bscstst3@znbillapptst3
+bscsdev2@znit10dev02
+bscsdev3@znit10dev03
+$VAR1 = 'RDH_RIH';
+
+            . ~/.profile;ps -ef| grep -v grep | grep -i RDH_RIH
+        
+rattst3@znbillapptst3
+ratdev2@znit10dev02
+ratdev3@znit10dev03
+$VAR1 = 'TEST3';
+$VAR1 = 'IORAGENT';
+ ./bin/ioragent.sh status ${DB} 
+targys@vmcmstst3
+targys@tetra
+$VAR1 = 'CMS_Spectra';
+./bin/statusCMS -m spectra 4
+targys2@it4tst1_old
+targys2@vmcmstst3_rh5
+targys2@tetra
+$VAR1 = 'RIH';
+
+            . ~/.profile;ps -ef| grep -v grep | grep -i RIH
+        
+rattst3@znbillapptst3
+ratdev2@znit10dev02
+ratdev3@znit10dev03
+$VAR1 = 'RLH';
+
+            . ~/.profile;ps -ef| grep -v grep | grep -i RLH
+        
+rattst3@znbillapptst3
+ratdev2@znit10dev02
+ratdev3@znit10dev03
+$VAR1 = 'ReportsServer';
+
+            perl statusBA.pl ReportsServer
+        
+oracle@it2tst1
+oracle@vmbatest3
+oracle@baclass
+oracle@vmit9dev02
+$VAR1 = 'CONDACT';
+/ITLAB_share/itlab/provisioning.sh -statuscondact
+bscstst1@znbillapptst1
+bscstst3@znbillapptst3
+bscsdev2@znit10dev02
+bscsdev3@znit10dev03

@@ -1,0 +1,732 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>Template::Tutorial::Web - Generating Web Content Using the Template Toolkit</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>Template::Tutorial::Web - Generating Web Content Using the Template Toolkit</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#overview">Overview</a></li>
+	<li><a href="#introduction">Introduction</a></li>
+	<li><a href="#generating_static_web_content">Generating Static Web Content</a></li>
+	<ul>
+
+		<li><a href="#using_tpage">Using tpage</a></li>
+		<li><a href="#using_ttree">Using ttree</a></li>
+	</ul>
+
+	<li><a href="#dynamic_content_generation_via_cgi_script">Dynamic Content Generation Via CGI Script</a></li>
+	<li><a href="#dynamic_content_generation_via_apache_mod_perl_handler">Dynamic Content Generation Via Apache/Mod_Perl Handler</a></li>
+	<li><a href="#using_plugins_to_extend_functionality">Using Plugins to Extend Functionality</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Tutorial::Web - Generating Web Content Using the Template Toolkit</p>
+<p>
+</p>
+<hr />
+<h1><a name="overview">Overview</a></h1>
+<p>This tutorial document provides a introduction to the Template Toolkit and
+demonstrates some of the typical ways it may be used for generating web
+content. It covers the generation of static pages from templates using the
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Tools/tpage.html">tpage</a> and <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Tools/ttree.html">ttree</a> scripts
+and then goes on to show dynamic content generation using CGI scripts and
+Apache/mod_perl handlers.</p>
+<p>Various features of the Template Toolkit are introduced and described briefly
+and explained by use of example. For further information, see <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a>,
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Manual.html">the Template::Manual manpage</a> and the various sections within it. e.g</p>
+<pre>
+    <a href="../../../../lib/pods/perldoc.html">perldoc</a> Template                    # Template.pm module usage
+    <a href="../../../../lib/pods/perldoc.html">perldoc</a> Template::Manual            # index to manual
+    <a href="../../../../lib/pods/perldoc.html">perldoc</a> Template::Manual::Config    # e.g. configuration options</pre>
+<p>The documentation is also available in HTML format to read online, or download
+from the Template Toolkit web site:</p>
+<pre>
+    <a href="http://template-toolkit.org/docs/">http://template-toolkit.org/docs/</a></pre>
+<p>
+</p>
+<hr />
+<h1><a name="introduction">Introduction</a></h1>
+<p>The Template Toolkit is a set of Perl modules which collectively
+implement a template processing system.</p>
+<p>A template is a text document with special markup tags embedded in it.
+By default, the Template Toolkit uses '<code>[%</code>' and '<code>%]</code>' to denote
+the start and end of a tag.  Here's an example:</p>
+<pre>
+    [% INCLUDE header %]
+    
+    People of [% planet %], your attention please.
+    
+    This is [% captain %] of the
+    Galactic Hyperspace Planning Council.
+    
+    As you will no doubt be aware, the plans
+    for development of the outlying regions
+    of the Galaxy require the building of a
+    hyperspatial express route through your
+    star system, and regrettably your planet
+    is one of those scheduled for destruction.
+    
+    The process will take slightly less than
+    [% time %].
+    
+    Thank you.
+    
+    [% INCLUDE footer %]</pre>
+<p>Tags can contain simple <em>variables</em> (like <code>planet</code> and <code>captain</code>) and more
+complex <em>directives</em> that start with an upper case keyword (like <code>INCLUDE</code>).
+A directive is an instruction that tells the template processor to perform
+some action, like processing another template (<code>header</code> and <code>footer</code> in this
+example) and inserting the output into the current template. In fact, the
+simple variables we mentioned are actually <code>GET</code> directives, but the <code>GET</code>
+keyword is optional.</p>
+<pre>
+    People of [% planet %], your attention please.      # short form
+    People of [% GET planet %], your attention please.  # long form</pre>
+<p>Other directives include <code>SET</code> to set a variable value (the <code>SET</code> keyword is
+also optional), <code>FOREACH</code> to iterate through a list of values, and <code>IF</code>,
+<code>UNLESS</code>, <code>ELSIF</code> and <code>ELSE</code> to declare conditional blocks.</p>
+<p>The Template Toolkit processes all <em>text</em> files equally, regardless of what
+kind of content they contain.  So you can use TT to generate HTML, XML, CSS,
+Javascript, Perl, RTF, LaTeX, or any other text-based format.  In this tutorial,
+however, we'll be concentrating on generating HTML for web pages.</p>
+<p>
+</p>
+<hr />
+<h1><a name="generating_static_web_content">Generating Static Web Content</a></h1>
+<p>Here's an example of a template used to generate an HTML document.</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span> <span class="variable">INCLUDE</span> <span class="variable">header</span>
+          <span class="variable">title</span> <span class="operator">=</span> <span class="string">'This is an HTML example'</span><span class="operator">;</span>
+        
+        <span class="variable">pages</span> <span class="operator">=</span> <span class="operator">[</span>
+          <span class="operator">{</span> <span class="variable">url</span>   <span class="operator">=</span> <span class="string">'http://foo.org'</span>
+            <span class="variable">title</span> <span class="operator">=</span> <span class="string">'The Foo Organisation'</span> 
+          <span class="operator">}</span>
+          <span class="operator">{</span> <span class="variable">url</span>   <span class="operator">=</span> <span class="string">'http://bar.org'</span>
+            <span class="variable">title</span> <span class="operator">=</span> <span class="string">'The Bar Organisation'</span> 
+          <span class="operator">}</span>
+        <span class="operator">]</span>
+    <span class="variable">%]</span>
+       <span class="operator">&lt;</span><span class="variable">h1</span><span class="operator">&gt;</span><span class="variable">Some</span> <span class="variable">Interesting</span> <span class="variable">Links</span><span class="operator">&lt;/</span><span class="variable">h1</span><span class="operator">&gt;</span>
+       <span class="operator">&lt;</span><span class="variable">ul</span><span class="operator">&gt;</span>
+    <span class="operator">[</span><span class="operator">% </span> <span class="variable">FOREACH</span> <span class="variable">page</span> <span class="variable">IN</span> <span class="variable">pages</span> <span class="variable">%]</span>
+         <span class="operator">&lt;</span><span class="variable">li</span><span class="operator">&gt;&lt;</span><span class="variable">a</span> <span class="variable">href</span><span class="operator">=</span><span class="string">"[% page.url %]"</span><span class="operator">&gt;</span><span class="operator">[</span><span class="operator">% </span><span class="variable">page</span><span class="operator">.</span><span class="variable">title</span> <span class="variable">%]</span><span class="operator">&lt;/</span><span class="variable">a</span><span class="operator">&gt;</span>
+    <span class="operator">[</span><span class="operator">% </span> <span class="keyword">END</span> <span class="variable">%]</span>
+       <span class="operator">&lt;/</span><span class="variable">ul</span><span class="operator">&gt;</span>
+    
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">INCLUDE</span> <span class="variable">footer</span> <span class="variable">%]</span>
+</pre>
+<p>This example shows how the <code>INCLUDE</code> directive is used to load and process
+separate '<code>header</code>' and '<code>footer</code>' template files, including the output in
+the current document.  These files might look something like this:</p>
+<p>header:</p>
+<pre>
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;[% title %]&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;</pre>
+<p>footer:</p>
+<pre>
+        <span class="operator">&lt;</span><span class="variable">div</span> <span class="variable">class</span><span class="operator">=</span><span class="string">"copyright"</span><span class="operator">&gt;</span>
+          <span class="operator">&amp;</span><span class="variable">copy</span><span class="operator">;</span> <span class="variable">Copyright</span> <span class="number">2007</span> <span class="variable">Arthur</span> <span class="variable">Dent</span>
+        <span class="operator">&lt;/</span><span class="variable">div</span><span class="operator">&gt;</span>
+              <span class="operator">&lt;/</span><span class="variable">body</span><span class="operator">&gt;</span>
+            <span class="operator">&lt;/</span><span class="variable">html</span><span class="operator">&gt;</span>
+</pre>
+<p>The example also uses the <code>FOREACH</code> directive to iterate through the
+'<code>pages</code>' list to build a table of links. In this example, we have defined
+this list within the template to contain a number of hash references, each
+containing a '<code>url</code>' and '<code>title</code>' member. The <code>FOREACH</code> directive iterates
+through the list, aliasing '<code>page</code>' to each item (in this case, hash array
+references). The <code>[% page.url %]</code> and <code>[% page.title %]</code> directives then
+access the individual values in the hash ararys and insert them into the
+document.</p>
+<p>
+</p>
+<h2><a name="using_tpage">Using tpage</a></h2>
+<p>Having created a template file we can now process it to generate some real
+output. The quickest and easiest way to do this is to use the
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Tools/tpage.html">tpage</a> script. This is provided as part of the
+Template Toolkit and should be installed in your usual Perl bin directory.</p>
+<p>Assuming you saved your template file as <em class="file">example.html</em>, you would run
+the command:</p>
+<pre>
+    $ tpage example.html</pre>
+<p>This will process the template file, sending the output to <code>STDOUT</code> (i.e.
+whizzing past you on the screen). You may want to redirect the output to a
+file but be careful not to specify the same name as the template file, or
+you'll overwrite it. You may want to use one prefix for your templates (e.g.
+'<code>.tt</code>') and another (e.g. '<code>.html</code>') for the output files.</p>
+<pre>
+    $ tpage example.tt &gt; example.html</pre>
+<p>Or you can redirect the output to another directory. e.g.</p>
+<pre>
+    $ tpage templates/example.tt &gt; html/example.html</pre>
+<p>The output generated would look like this:</p>
+<pre>
+    <span class="operator">&lt;</span><span class="variable">html</span><span class="operator">&gt;</span>
+      <span class="operator">&lt;</span><span class="variable">head</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="variable">title</span><span class="operator">&gt;</span><span class="variable">This</span> <span class="variable">is</span> <span class="variable">an</span> <span class="variable">HTML</span> <span class="variable">example</span><span class="operator">&lt;/</span><span class="variable">title</span><span class="operator">&gt;</span>
+      <span class="operator">&lt;/</span><span class="variable">head</span><span class="operator">&gt;</span>
+      <span class="operator">&lt;</span><span class="variable">body</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="variable">h1</span><span class="operator">&gt;</span><span class="variable">Some</span> <span class="variable">Interesting</span> <span class="variable">Links</span><span class="operator">&lt;/</span><span class="variable">h1</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="variable">ul</span><span class="operator">&gt;</span>
+          <span class="operator">&lt;</span><span class="variable">li</span><span class="operator">&gt;&lt;</span><span class="variable">a</span> <span class="variable">href</span><span class="operator">=</span><span class="string">"http://foo.org"</span><span class="operator">&gt;</span><span class="variable">The</span> <span class="variable">Foo</span> <span class="variable">Organsiation</span><span class="operator">&lt;/</span><span class="variable">a</span><span class="operator">&gt;</span>
+          <span class="operator">&lt;</span><span class="variable">li</span><span class="operator">&gt;&lt;</span><span class="variable">a</span> <span class="variable">href</span><span class="operator">=</span><span class="string">"http://bar.org"</span><span class="operator">&gt;</span><span class="variable">The</span> <span class="variable">Bar</span> <span class="variable">Organsiation</span><span class="operator">&lt;/</span><span class="variable">a</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;/</span><span class="variable">ul</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="variable">div</span> <span class="variable">class</span><span class="operator">=</span><span class="string">"copyright"</span><span class="operator">&gt;</span>
+          <span class="operator">&amp;</span><span class="variable">copy</span><span class="operator">;</span> <span class="variable">Copyright</span> <span class="number">2007</span> <span class="variable">Arthur</span> <span class="variable">Dent</span>
+        <span class="operator">&lt;/</span><span class="variable">div</span><span class="operator">&gt;</span>
+      <span class="operator">&lt;/</span><span class="variable">body</span><span class="operator">&gt;</span>
+    <span class="operator">&lt;/</span><span class="variable">html</span><span class="operator">&gt;</span>
+</pre>
+<p>The <em class="file">header</em> and <em class="file">footer</em> template files have been included (assuming
+you created them and they're in the current directory) and the link data 
+has been built into an HTML list.</p>
+<p>
+</p>
+<h2><a name="using_ttree">Using ttree</a></h2>
+<p>The <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Tools/tpage.html">tpage</a> script gives you a simple and easy way to
+process a single template without having to write any Perl code. The
+<a href="../../../../ttree:Template/Tools/ttree.html">the ttree:Template::Tools::ttree manpage</a> script, also distributed as part of the
+Template Toolkit, provides a more flexible way to process a number of template
+documents in one go.</p>
+<p>The first time you run the script, it will ask you if it should create a
+configuration file (<em class="file">.ttreerc</em>) in your home directory. Answer <code>y</code> to have
+it create the file.</p>
+<p>The <a href="../../../../ttree:Template/Tools/ttree.html">the ttree:Template::Tools::ttree manpage</a> documentation describes how you can change
+the location of this file and also explains the syntax and meaning of the
+various options in the file. Comments are written to the sample configuration
+file which should also help.</p>
+<p>In brief, the configuration file describes the directories in which template
+files are to be found (<code>src</code>), where the corresponding output should be
+written to (<code>dest</code>), and any other directories (<code>lib</code>) that may contain
+template files that you plan to <code>INCLUDE</code> into your source documents. You can
+also specify processing options (such as <code>verbose</code> and <code>recurse</code>) and provide
+regular expression to match files that you don't want to process (<code>ignore</code>,
+<a href="../../../../lib/pods/perlfunc.html#accept"><code>accept</code></a>)&gt; or should be copied instead of being processed as templates (<code>copy</code>).</p>
+<p>An example <em class="file">.ttreerc</em> file is shown here:</p>
+<p>$HOME/.ttreerc:</p>
+<pre>
+    verbose 
+    recurse
+    
+    # this is where I keep other ttree config files
+    cfg = ~/.ttree
+    
+    src  = ~/websrc/src
+    lib  = ~/websrc/lib
+    dest = ~/public_html/test
+    
+    ignore = \b(CVS|RCS)\b
+    ignore = ^#</pre>
+<p>You can create many different configuration files and store them
+in the directory specified in the <code>cfg</code> option, shown above.  You then
+add the <code>-f filename</code> option to <code>ttree</code> to have it read that file.</p>
+<p>When you run the script, it compares all the files in the <code>src</code> directory
+(including those in sub-directories if the <code>recurse</code> option is set), with
+those in the <code>dest</code> directory.  If the destination file doesn't exist or
+has an earlier modification time than the corresponding source file, then 
+the source will be processed with the output written to the destination 
+file.  The <a href="../../../../lib/pods/perlrun.html#a"><code>-a</code></a> option forces all files to be processed, regardless of 
+modification times.</p>
+<p>The script <em>doesn't</em> process any of the files in the <code>lib</code> directory, but it
+does add it to the <code>INCLUDE_PATH</code> for the template processor so that it can
+locate these files via an <code>INCLUDE</code>, <code>PROCESS</code> or <code>WRAPPER</code> directive.
+Thus, the <code>lib</code> directory is an excellent place to keep template elements
+such as header, footers, etc., that aren't complete documents in their own
+right.</p>
+<p>You can also specify various Template Toolkit options from the configuration
+file. Consult the <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Tools/ttree.html">ttree</a> documentation and help
+summary (<code>ttree -h</code>) for full details. e.g.</p>
+<p>$HOME/.ttreerc:</p>
+<pre>
+    pre_process = config
+    interpolate
+    post_chomp</pre>
+<p>The <code>pre_process</code> option allows you to specify a template file which
+should be processed before each file.  Unsurprisingly, there's also a
+<code>post_process</code> option to add a template after each file.  In the
+fragment above, we have specified that the <code>config</code> template should be
+used as a prefix template.  We can create this file in the <code>lib</code>
+directory and use it to define some common variables, including those
+web page links we defined earlier and might want to re-use in other
+templates.  We could also include an HTML header, title, or menu bar
+in this file which would then be prepended to each and every template
+file, but for now we'll keep all that in a separate <code>header</code> file.</p>
+<p>$lib/config:</p>
+<pre>
+    <span class="operator">[</span><span class="operator">% </span><span class="variable">root</span>     <span class="operator">=</span> <span class="string">'~/abw'</span>
+       <span class="variable">home</span>     <span class="operator">=</span> <span class="string">"</span><span class="variable">$root</span><span class="string">/index.html"</span>
+       <span class="variable">images</span>   <span class="operator">=</span> <span class="string">"</span><span class="variable">$root</span><span class="string">/images"</span>
+       <span class="variable">email</span>    <span class="operator">=</span> <span class="string">'abw@wardley.org'</span>
+       <span class="variable">graphics</span> <span class="operator">=</span> <span class="number">1</span>
+       <span class="variable">webpages</span> <span class="operator">=</span> <span class="operator">[</span>
+         <span class="operator">{</span> <span class="string">url</span> <span class="operator">=&gt;</span> <span class="string">'http://foo.org'</span><span class="operator">,</span> <span class="string">title</span> <span class="operator">=&gt;</span> <span class="string">'The Foo Organsiation'</span> <span class="operator">}</span>
+         <span class="operator">{</span> <span class="string">url</span> <span class="operator">=&gt;</span> <span class="string">'http://bar.org'</span><span class="operator">,</span> <span class="string">title</span> <span class="operator">=&gt;</span> <span class="string">'The Bar Organsiation'</span> <span class="operator">}</span>
+       <span class="operator">]</span>
+    <span class="variable">%]</span>
+</pre>
+<p>Assuming you've created or copied the <code>header</code> and <code>footer</code> files from the 
+earlier example into your <code>lib</code> directory, you can now start to create 
+web pages like the following in your <code>src</code> directory and process them 
+with <code>ttree</code>.</p>
+<p>$src/newpage.html:</p>
+<pre>
+    [% INCLUDE header
+       title = 'Another Template Toolkit Test Page'
+    %]
+    
+        &lt;a href=&quot;[% home %]&quot;&gt;Home&lt;/a&gt;
+        &lt;a href=&quot;mailto:[% email %]&quot;&gt;Email&lt;/a&gt;
+    
+    [% IF graphics %]
+        &lt;img src=&quot;[% images %]/logo.gif&quot; align=right width=60 height=40&gt;
+    [% END %]
+    
+    [% INCLUDE footer %]</pre>
+<p>Here we've shown how pre-defined variables can be used as flags to
+enable certain feature (e.g. <code>graphics</code>) and to specify common items
+such as an email address and URL's for the home page, images directory
+and so on.  This approach allows you to define these values once so
+that they're consistent across all pages and can easily be changed to 
+new values.</p>
+<p>When you run <em class="file">ttree</em>, you should see output similar to the following
+(assuming you have the verbose flag set).</p>
+<pre>
+    ttree 2.9 (Template Toolkit version 2.20)
+    
+         Source: /home/abw/websrc/src
+    Destination: /home/abw/public_html/test
+   Include Path: [ /home/abw/websrc/lib ]
+         Ignore: [ \b(CVS|RCS)\b, ^# ]
+           Copy: [  ]
+         Accept: [ * ]
+         
+    + newpage.html</pre>
+<p>The <code>+</code> in front of the <code>newpage.html</code> filename shows that the file was
+processed, with the output being written to the destination directory. If you
+run the same command again, you'll see the following line displayed instead
+showing a <code>-</code> and giving a reason why the file wasn't processed.</p>
+<pre>
+    - newpage.html                     (not modified)</pre>
+<p>It has detected a <code>newpage.html</code> in the destination directory which is
+more recent than that in the source directory and so hasn't bothered
+to waste time re-processing it.  To force all files to be processed,
+use the <a href="../../../../lib/pods/perlrun.html#a"><code>-a</code></a> option.  You can also specify one or more filenames as
+command line arguments to <code>ttree</code>:</p>
+<pre>
+    tpage newpage.html</pre>
+<p>This is what the destination page looks like.</p>
+<p>$dest/newpage.html:</p>
+<pre>
+    <span class="operator">&lt;</span><span class="variable">html</span><span class="operator">&gt;</span>
+      <span class="operator">&lt;</span><span class="variable">head</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="variable">title</span><span class="operator">&gt;</span><span class="variable">Another</span> <span class="variable">Template</span> <span class="variable">Toolkit</span> <span class="variable">Test</span> <span class="variable">Page</span><span class="operator">&lt;/</span><span class="variable">title</span><span class="operator">&gt;</span>
+      <span class="operator">&lt;/</span><span class="variable">head</span><span class="operator">&gt;</span>
+      <span class="operator">&lt;</span><span class="variable">body</span><span class="operator">&gt;</span>
+        
+        <span class="operator">&lt;</span><span class="variable">a</span> <span class="variable">href</span><span class="operator">=</span><span class="string">"~/abw/index.html"</span><span class="operator">&gt;</span><span class="variable">Home</span><span class="operator">&lt;/</span><span class="variable">a</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="variable">a</span> <span class="variable">href</span><span class="operator">=</span><span class="string">"mailto:abw</span><span class="variable">@wardley</span><span class="string">.org"</span><span class="operator">&gt;</span><span class="variable">Email</span> <span class="variable">me</span><span class="operator">&lt;/</span><span class="variable">a</span><span class="operator">&gt;</span>
+        <span class="operator">&lt;</span><span class="variable">img</span> <span class="variable">src</span><span class="operator">=</span><span class="string">"~/abw/images/logo.gif"</span> <span class="variable">align</span><span class="operator">=</span><span class="variable">right</span> <span class="variable">width</span><span class="operator">=</span><span class="number">60</span> <span class="variable">height</span><span class="operator">=</span><span class="number">40</span><span class="operator">&gt;</span>
+        
+        <span class="operator">&lt;</span><span class="variable">div</span> <span class="variable">class</span><span class="operator">=</span><span class="string">"copyright"</span><span class="operator">&gt;</span>
+          <span class="operator">&amp;</span><span class="variable">copy</span><span class="operator">;</span> <span class="variable">Copyright</span> <span class="number">2007</span> <span class="variable">Arthur</span> <span class="variable">Dent</span>
+        <span class="operator">&lt;/</span><span class="variable">div</span><span class="operator">&gt;</span>
+      <span class="operator">&lt;/</span><span class="variable">body</span><span class="operator">&gt;</span>
+    <span class="operator">&lt;/</span><span class="variable">html</span><span class="operator">&gt;</span>
+</pre>
+<p>You can add as many documents as you like to the <code>src</code> directory and
+<code>ttree</code> will apply the same process to them all.  In this way, it is
+possible to build an entire tree of static content for a web site with
+a single command.  The added benefit is that you can be assured of
+consistency in links, header style, or whatever else you choose to
+implement in terms of common templates elements or variables.</p>
+<p>
+</p>
+<hr />
+<h1><a name="dynamic_content_generation_via_cgi_script">Dynamic Content Generation Via CGI Script</a></h1>
+<p>The <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a> module provides a simple front-end to the Template Toolkit for
+use in CGI scripts and Apache/mod_perl handlers. Simply <a href="../../../../lib/pods/perlfunc.html#use"><code>use</code></a> the <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a>
+module, create an object instance with the <em>new()</em> method and then call the
+<em>process()</em> method on the object, passing the name of the template file as a
+parameter. The second parameter passed is a reference to a hash array of
+variables that we want made available to the template:</p>
+<pre>
+    <span class="comment">#!/usr/bin/perl</span>
+    <span class="keyword">use</span> <span class="variable">strict</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">warnings</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">Template</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$file</span> <span class="operator">=</span> <span class="string">'src/greeting.html'</span><span class="operator">;</span>
+    <span class="keyword">my</span> <span class="variable">$vars</span> <span class="operator">=</span> <span class="operator">{</span>
+       <span class="string">message</span>  <span class="operator">=&gt;</span> <span class="string">"Hello World\n"</span>
+    <span class="operator">}</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">();</span>
+    
+    <span class="variable">$template</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="variable">$file</span><span class="operator">,</span> <span class="variable">$vars</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="string">"Template process failed: "</span><span class="operator">,</span> <span class="variable">$template</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">(),</span> <span class="string">"\n"</span><span class="operator">;</span>
+</pre>
+<p>So that our scripts will work with the same template files as our earlier
+examples, we'll can add some configuration options to the constructor to 
+tell it about our environment:</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="comment"># where to find template files</span>
+        <span class="string">INCLUDE_PATH</span> <span class="operator">=&gt;</span> <span class="operator">[</span><span class="string">'/home/abw/websrc/src'</span><span class="operator">,</span> <span class="string">'/home/abw/websrc/lib'</span><span class="operator">]</span><span class="operator">,</span>
+        <span class="comment"># pre-process lib/config to define any extra values</span>
+        <span class="string">PRE_PROCESS</span>  <span class="operator">=&gt;</span> <span class="string">'config'</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>Note that here we specify the <code>config</code> file as a <code>PRE_PROCESS</code> option.
+This means that the templates we process can use the same global
+variables defined earlier for our static pages.  We don't have to
+replicate their definitions in this script.  However, we can supply
+additional data and functionality specific to this script via the hash
+of variables that we pass to the <code>process()</code> method.</p>
+<p>These entries in this hash may contain simple text or other values,
+references to lists, others hashes, sub-routines or objects.  The Template
+Toolkit will automatically apply the correct procedure to access these 
+different types when you use the variables in a template.</p>
+<p>Here's a more detailed example to look over.  Amongst the different
+template variables we define in <code>$vars</code>, we create a reference to a
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/CGI.html">the CGI manpage</a> object and a <code>get_user_projects()</code> sub-routine.</p>
+<pre>
+    <span class="comment">#!/usr/bin/perl</span>
+    <span class="keyword">use</span> <span class="variable">strict</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">warnings</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">Template</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">CGI</span><span class="operator">;</span>
+    
+    <span class="variable">$|</span> <span class="operator">=</span> <span class="number">1</span><span class="operator">;</span>
+    <span class="keyword">print</span> <span class="string">"Content-type: text/html\n\n"</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$file</span> <span class="operator">=</span> <span class="string">'userinfo.html'</span><span class="operator">;</span>
+    <span class="keyword">my</span> <span class="variable">$vars</span> <span class="operator">=</span> <span class="operator">{</span>
+        <span class="string">'version'</span>  <span class="operator">=&gt;</span> <span class="number">3.14</span><span class="operator">,</span>
+        <span class="string">'days'</span>     <span class="operator">=&gt;</span> <span class="operator">[</span> <span class="string">qw( mon tue wed thu fri sat sun )</span> <span class="operator">]</span><span class="operator">,</span>
+        <span class="string">'worklist'</span> <span class="operator">=&gt;</span> <span class="operator">\&amp;</span><span class="variable">get_user_projects</span><span class="operator">,</span>
+        <span class="string">'cgi'</span>      <span class="operator">=&gt;</span> <span class="variable">CGI</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(),</span>
+        <span class="string">'me'</span>       <span class="operator">=&gt;</span> <span class="operator">{</span>
+            <span class="string">'id'</span>     <span class="operator">=&gt;</span> <span class="string">'abw'</span><span class="operator">,</span>
+            <span class="string">'name'</span>   <span class="operator">=&gt;</span> <span class="string">'Andy Wardley'</span><span class="operator">,</span>
+        <span class="operator">}</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">;</span>
+    
+    <span class="keyword">sub</span><span class="variable"> get_user_projects </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="variable">$user</span> <span class="operator">=</span> <span class="keyword">shift</span><span class="operator">;</span>
+        <span class="keyword">my</span> <span class="variable">@projects</span> <span class="operator">=</span> <span class="operator">...</span>   <span class="comment"># do something to retrieve data</span>
+        <span class="keyword">return</span> <span class="operator">\</span><span class="variable">@projects</span><span class="operator">;</span>
+    <span class="operator">}</span>
+    
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">INCLUDE_PATH</span> <span class="operator">=&gt;</span> <span class="string">'/home/abw/websrc/src:/home/abw/websrc/lib'</span><span class="operator">,</span>
+        <span class="string">PRE_PROCESS</span>  <span class="operator">=&gt;</span> <span class="string">'config'</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+    
+    <span class="variable">$template</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="variable">$file</span><span class="operator">,</span> <span class="variable">$vars</span><span class="operator">)</span>
+        <span class="operator">||</span> <span class="keyword">die</span> <span class="variable">$template</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">();</span>
+</pre>
+<p>Here's a sample template file that we might create to build the output
+for this script.</p>
+<p>$src/userinfo.html:</p>
+<pre>
+    [% INCLUDE header
+       title = 'Template Toolkit CGI Test'
+    %]
+    
+    &lt;a href=&quot;mailto:[% email %]&quot;&gt;Email [% me.name %]&lt;/a&gt;
+    
+    &lt;p&gt;This is version [% version %]&lt;/p&gt;
+    
+    &lt;h3&gt;Projects&lt;/h3&gt;
+    &lt;ul&gt;
+    [% FOREACH project IN worklist(me.id) %]
+       &lt;li&gt; &lt;a href=&quot;[% project.url %]&quot;&gt;[% project.name %]&lt;/a&gt;
+    [% END %]
+    &lt;/ul&gt;
+    
+    [% INCLUDE footer %]</pre>
+<p>This example shows how we've separated the Perl implementation (code) from the
+presentation (HTML). This not only makes them easier to maintain in isolation,
+but also allows the re-use of existing template elements such as headers and
+footers, etc. By using template to create the output of your CGI scripts, you
+can give them the same consistency as your static pages built via
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Tools/ttree.html">ttree</a> or other means.</p>
+<p>Furthermore, we can modify our script so that it processes any one of a
+number of different templates based on some condition.  A CGI script to
+maintain a user database, for example, might process one template to
+provide an empty form for new users, the same form with some default 
+values set for updating an existing user record, a third template for
+listing all users in the system, and so on.  You can use any Perl 
+functionality you care to write to implement the logic of your 
+application and then choose one or other template to generate the 
+desired output for the application state.</p>
+<p>
+</p>
+<hr />
+<h1><a name="dynamic_content_generation_via_apache_mod_perl_handler">Dynamic Content Generation Via Apache/Mod_Perl Handler</a></h1>
+<p><strong>NOTE:</strong> the <a href="../../../../Apache/Template.html">the Apache::Template manpage</a> module is available from CPAN and provides a
+simple and easy to use Apache/mod_perl interface to the Template Toolkit.
+Although basic, it implements most, if not all of what is described below, and
+it avoids the need to write your own handler. However, in many cases, you'll
+want to write your own handler to customise processing for your own need, and
+this section will show you how to get started.</p>
+<p>The <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a> module can be used from an Apache/mod_perl handler. Here's an
+example of a typical Apache <em class="file">httpd.conf</em> file:</p>
+<pre>
+    <span class="variable">PerlModule</span> <span class="variable">CGI</span><span class="operator">;</span>
+    <span class="variable">PerlModule</span> <span class="variable">Template</span>
+    <span class="variable">PerlModule</span> <span class="variable">MyOrg::Apache::User</span>
+    
+    <span class="variable">PerlSetVar</span> <span class="variable">websrc_root</span>   <span class="operator">/</span><span class="variable">home</span><span class="operator">/</span><span class="variable">abw</span><span class="operator">/</span><span class="variable">websrc</span>
+    
+    <span class="operator">&lt;</span><span class="variable">Location</span> <span class="operator">/</span><span class="variable">user</span><span class="operator">/</span><span class="variable">bin</span><span class="operator">&gt;</span>
+        <span class="variable">SetHandler</span>     <span class="variable">perl</span><span class="operator">-</span><span class="variable">script</span>
+        <span class="variable">PerlHandler</span>    <span class="variable">MyOrg::Apache::User</span>
+    <span class="operator">&lt;/</span><span class="variable">Location</span><span class="operator">&gt;</span>
+</pre>
+<p>This defines a location called <code>/user/bin</code> to which all requests will
+be forwarded to the <code>handler()</code> method of the <code>MyOrg::Apache::User</code>
+module.  That module might look something like this:</p>
+<pre>
+    <span class="keyword">package</span> <span class="variable">MyOrg::Apache::User</span><span class="operator">;</span>
+    
+    <span class="keyword">use</span> <span class="variable">strict</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">vars</span> <span class="string">qw( $VERSION )</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">Apache::Constants</span> <span class="string">qw( :common )</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">Template</span> <span class="string">qw( :template )</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">CGI</span><span class="operator">;</span>
+    
+    <span class="variable">$VERSION</span> <span class="operator">=</span> <span class="number">1.59</span><span class="operator">;</span>
+    
+    <span class="keyword">sub</span><span class="variable"> handler </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="variable">$r</span> <span class="operator">=</span> <span class="keyword">shift</span><span class="operator">;</span>
+        
+        <span class="keyword">my</span> <span class="variable">$websrc</span> <span class="operator">=</span> <span class="variable">$r</span><span class="operator">-&gt;</span><span class="variable">dir_config</span><span class="operator">(</span><span class="string">'websrc_root'</span><span class="operator">)</span>
+            <span class="keyword">or</span> <span class="keyword">return</span> <span class="variable">fail</span><span class="operator">(</span><span class="variable">$r</span><span class="operator">,</span> <span class="variable">SERVER_ERROR</span><span class="operator">,</span>
+                           <span class="string">"'websrc_root' not specified"</span><span class="operator">);</span>
+                           
+        <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> 
+            <span class="string">INCLUDE_PATH</span>  <span class="operator">=&gt;</span> <span class="string">"</span><span class="variable">$websrc</span><span class="string">/src/user:</span><span class="variable">$websrc</span><span class="string">/lib"</span><span class="operator">,</span>
+            <span class="string">PRE_PROCESS</span>   <span class="operator">=&gt;</span> <span class="string">'config'</span><span class="operator">,</span>
+            <span class="string">OUTPUT</span>        <span class="operator">=&gt;</span> <span class="variable">$r</span><span class="operator">,</span>     <span class="comment"># direct output to Apache request</span>
+        <span class="operator">}</span><span class="operator">);</span>
+        
+        <span class="keyword">my</span> <span class="variable">$params</span> <span class="operator">=</span> <span class="operator">{</span>
+            <span class="string">uri</span>     <span class="operator">=&gt;</span> <span class="variable">$r</span><span class="operator">-&gt;</span><span class="variable">uri</span><span class="operator">,</span>
+            <span class="string">cgi</span>     <span class="operator">=&gt;</span> <span class="variable">CGI</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">,</span>
+        <span class="operator">}</span><span class="operator">;</span>
+        
+        <span class="comment"># use the path_info to determine which template file to process</span>
+        <span class="keyword">my</span> <span class="variable">$file</span> <span class="operator">=</span> <span class="variable">$r</span><span class="operator">-&gt;</span><span class="variable">path_info</span><span class="operator">;</span>
+        <span class="variable">$file</span> <span class="operator">=~</span> <span class="regex">s[^/][]</span><span class="operator">;</span>
+        
+        <span class="variable">$r</span><span class="operator">-&gt;</span><span class="variable">content_type</span><span class="operator">(</span><span class="string">'text/html'</span><span class="operator">);</span>
+        <span class="variable">$r</span><span class="operator">-&gt;</span><span class="variable">send_http_header</span><span class="operator">;</span>
+            
+        <span class="variable">$template</span><span class="operator">-&gt;</span><span class="variable">process</span><span class="operator">(</span><span class="variable">$file</span><span class="operator">,</span> <span class="variable">$params</span><span class="operator">)</span> 
+            <span class="operator">||</span> <span class="keyword">return</span> <span class="variable">fail</span><span class="operator">(</span><span class="variable">$r</span><span class="operator">,</span> <span class="variable">SERVER_ERROR</span><span class="operator">,</span> <span class="variable">$template</span><span class="operator">-&gt;</span><span class="variable">error</span><span class="operator">());</span>
+        
+        <span class="keyword">return</span> <span class="variable">OK</span><span class="operator">;</span>
+    <span class="operator">}</span>
+    
+    <span class="keyword">sub</span><span class="variable"> fail </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="operator">(</span><span class="variable">$r</span><span class="operator">,</span> <span class="variable">$status</span><span class="operator">,</span> <span class="variable">$message</span><span class="operator">)</span> <span class="operator">=</span> <span class="variable">@_</span><span class="operator">;</span>
+        <span class="variable">$r</span><span class="operator">-&gt;</span><span class="variable">log_reason</span><span class="operator">(</span><span class="variable">$message</span><span class="operator">,</span> <span class="variable">$r</span><span class="operator">-&gt;</span><span class="variable">filename</span><span class="operator">);</span>
+        <span class="keyword">return</span> <span class="variable">$status</span><span class="operator">;</span>
+    <span class="operator">}</span>
+</pre>
+<p>The handler accepts the request and uses it to determine the <code>websrc_root</code>
+value from the config file.  This is then used to define an <code>INCLUDE_PATH</code>
+for a new <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a> object.  The URI is extracted from the request and a 
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin/CGI.html">the CGI manpage</a> object is created.  These are both defined as template variables.</p>
+<p>The name of the template file itself is taken from the <code>PATH_INFO</code> element
+of the request.  In this case, it would comprise the part of the URL 
+coming after <code>/user/bin</code>,  e.g for <code>/user/bin/edit</code>, the template file
+would be <code>edit</code> located in <code>$websrc/src/user</code>.  The headers are sent 
+and the template file is processed.  All output is sent directly to the
+<a href="../../../../lib/pods/perlfunc.html#print"><code>print()</code></a> method of the Apache request object.</p>
+<p>
+</p>
+<hr />
+<h1><a name="using_plugins_to_extend_functionality">Using Plugins to Extend Functionality</a></h1>
+<p>As we've already shown, it is possible to bind Perl data and functions
+to template variables when creating dynamic content via a CGI script
+or Apache/mod_perl process.  The Template Toolkit also supports a
+plugin interface which allows you define such additional data and/or
+functionality in a separate module and then load and use it as
+required with the <code>USE</code> directive.</p>
+<p>The main benefit to this approach is that you can load the extension into
+any template document, even those that are processed &quot;statically&quot; by 
+<code>tpage</code> or <code>ttree</code>.  You <em>don't</em> need to write a Perl wrapper to 
+explicitly load the module and make it available via the stash.</p>
+<p>Let's demonstrate this principle using the <code>DBI</code> plugin written by Simon
+Matthews (available from CPAN). You can create this template in your <code>src</code>
+directory and process it using <code>ttree</code> to see the results. Of course, this
+example relies on the existence of the appropriate SQL database but you should
+be able to adapt it to your own resources, or at least use it as a
+demonstrative example of what's possible.</p>
+<pre>
+    [% INCLUDE header
+         title = 'User Info'
+    %]
+    
+    [% USE DBI('dbi:mSQL:mydbname') %]
+    
+    &lt;table border=0 width=&quot;100%&quot;&gt;
+      &lt;tr&gt;
+        &lt;th&gt;User ID&lt;/th&gt; 
+        &lt;th&gt;Name&lt;/th&gt;  
+        &lt;th&gt;Email&lt;/th&gt;
+      &lt;/tr&gt;
+    [% FOREACH user IN DBI.query('SELECT * FROM user ORDER BY id') %]
+      &lt;tr&gt;
+        &lt;td&gt;[% user.id %]&lt;/td&gt; 
+        &lt;td&gt;[% user.name %]&lt;/td&gt; 
+        &lt;td&gt;[% user.email %]&lt;/td&gt;
+      &lt;/tr&gt;
+    [% END %]
+    &lt;/table&gt;
+    
+    [% INCLUDE footer %]</pre>
+<p>A plugin is simply a Perl module in a known location and conforming to 
+a known standard such that the Template Toolkit can find and load it 
+automatically.  You can create your own plugin by inheriting from the 
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Plugin.html">the Template::Plugin manpage</a> module.</p>
+<p>Here's an example which defines some data items (<code>foo</code> and <code>people</code>)
+and also an object method (<code>bar</code>).  We'll call the plugin <code>FooBar</code> for
+want of a better name and create it in the <code>MyOrg::Template::Plugin::FooBar</code>
+package.  We've added a <code>MyOrg</code> to the regular <code>Template::Plugin::*</code> package
+to avoid any conflict with existing plugins.</p>
+<pre>
+    <span class="keyword">package</span> <span class="variable">MyOrg::Template::Plugin::FooBar</span><span class="operator">;</span>
+    <span class="keyword">use</span> <span class="variable">base</span> <span class="string">'Template::Plugin'</span>
+    <span class="keyword">our</span> <span class="variable">$VERSION</span> <span class="operator">=</span> <span class="number">1.23</span><span class="operator">;</span>
+    
+    <span class="keyword">sub</span><span class="variable"> new </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="operator">(</span><span class="variable">$class</span><span class="operator">,</span> <span class="variable">$context</span><span class="operator">,</span> <span class="variable">@params</span><span class="operator">)</span> <span class="operator">=</span> <span class="variable">@_</span><span class="operator">;</span>
+        
+        <span class="keyword">bless</span> <span class="operator">{</span>
+            <span class="string">_CONTEXT</span> <span class="operator">=&gt;</span> <span class="variable">$context</span><span class="operator">,</span>
+            <span class="string">foo</span>      <span class="operator">=&gt;</span> <span class="number">25</span><span class="operator">,</span>
+            <span class="string">people</span>   <span class="operator">=&gt;</span> <span class="operator">[</span> <span class="string">'tom'</span><span class="operator">,</span> <span class="string">'dick'</span><span class="operator">,</span> <span class="string">'harry'</span> <span class="operator">]</span><span class="operator">,</span>
+        <span class="operator">}</span><span class="operator">,</span> <span class="variable">$class</span><span class="operator">;</span>
+    <span class="operator">}</span>
+    
+    <span class="keyword">sub</span><span class="variable"> bar </span><span class="operator">{</span>
+        <span class="keyword">my</span> <span class="operator">(</span><span class="variable">$self</span><span class="operator">,</span> <span class="variable">@params</span><span class="operator">)</span> <span class="operator">=</span> <span class="variable">@_</span><span class="operator">;</span>
+        <span class="comment"># ...do something...    </span>
+        <span class="keyword">return</span> <span class="variable">$some_value</span><span class="operator">;</span>
+    <span class="operator">}</span>
+</pre>
+<p>The plugin constructor <code>new()</code> receives the class name as the first
+parameter, as is usual in Perl, followed by a reference to something called a
+<a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a> object. You don't need to worry too much about this at
+the moment, other than to know that it's the main processing object for the
+Template Toolkit. It provides access to the functionality of the processor and
+some plugins may need to communicate with it. We don't at this stage, but
+we'll save the reference anyway in the <code>_CONTEXT</code> member. The leading
+underscore is a convention which indicates that this item is private and the
+Template Toolkit won't attempt to access this member. The other members
+defined, <code>foo</code> and <code>people</code> are regular data items which will be made
+available to templates using this plugin. Following the context reference are
+passed any additional parameters specified with the USE directive, such as the
+data source parameter, <code>dbi:mSQL:mydbname</code>, that we used in the earlier DBI
+example.</p>
+<p>If you don't or can't install it to the regular place for your Perl 
+modules (perhaps because you don't have the required privileges) then
+you can set the PERL5LIB environment variable to specify another location.
+If you're using <code>ttree</code> then you can add the following line to your 
+configuration file instead.</p>
+<p>$HOME/.ttreerc:</p>
+<pre>
+    perl5lib = /path/to/modules</pre>
+<p>One further configuration item must be added to inform the toolkit of
+the new package name we have adopted for our plugins:</p>
+<p>$HOME/.ttreerc:</p>
+<pre>
+    plugin_base = 'MyOrg::Template::Plugin'</pre>
+<p>If you're writing Perl code to control the <a href="../../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a> modules directly,
+then this value can be passed as a configuration parameter when you 
+create the module.</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span> 
+        <span class="string">PLUGIN_BASE</span> <span class="operator">=&gt;</span> <span class="string">'MyOrg::Template::Plugin'</span> 
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>Now we can create a template which uses this plugin:</p>
+<pre>
+    [% INCLUDE header
+       title = 'FooBar Plugin Test'
+    %]
+    
+    [% USE FooBar %]
+    
+    Some values available from this plugin:
+      [% FooBar.foo %] [% FooBar.bar %]
+      
+    The users defined in the 'people' list:
+    [% FOREACH uid = FooBar.people %]
+      * [% uid %]
+    [% END %]
+    
+    [% INCLUDE footer %]</pre>
+<p>The <code>foo</code>, <code>bar</code>, and <code>people</code> items of the FooBar plugin are
+automatically resolved to the appropriate data items or method calls
+on the underlying object.</p>
+<p>Using this approach, it is possible to create application
+functionality in a single module which can then be loaded and used on
+demand in any template.  The simple interface between template
+directives and plugin objects allows complex, dynamic content to be
+built from a few simple template documents without knowing anything
+about the underlying implementation.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../scineplex.css">
+<title>No::Worries::Date - date handling without worries</title>
+<link rel="stylesheet" href="../../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',4);</script>
+<h1><a>No::Worries::Date - date handling without worries</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#functions">FUNCTIONS</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>No::Worries::Date - date handling without worries</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+  <span class="keyword">use</span> <span class="variable">No::Worries::Date</span> <span class="string">qw(date_parse date_stamp date_string)</span><span class="operator">;</span>
+</pre>
+<pre>
+  <span class="variable">$string</span> <span class="operator">=</span> <span class="variable">date_stamp</span><span class="operator">();</span>
+  <span class="comment"># e.g. 2012/04/12-11:01:42</span>
+</pre>
+<pre>
+  <span class="variable">$string</span> <span class="operator">=</span> <span class="variable">date_string</span><span class="operator">(</span><span class="keyword">time</span><span class="operator">());</span>
+  <span class="comment"># e.g. 2012-04-12T09:01:42Z</span>
+</pre>
+<pre>
+  <span class="variable">$string</span> <span class="operator">=</span> <span class="variable">date_string</span><span class="operator">(</span><span class="variable">Time::HiRes::time</span><span class="operator">());</span>
+  <span class="comment"># e.g. 2012-04-12T09:01:42.48602Z</span>
+</pre>
+<pre>
+  <span class="variable">$time</span> <span class="operator">=</span> <span class="variable">date_parse</span><span class="operator">(</span><span class="string">"Sun, 06 Nov 1994 08:49:37 GMT"</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>This module eases date handling by providing convenient wrappers
+around standard date functions. All the functions <a href="../../../../lib/pods/perlfunc.html#die"><code>die()</code></a> on error.</p>
+<p>The strings and times may include fractional seconds like in the
+example above.</p>
+<p><a href="#date_parse"><code>date_parse()</code></a> can accept many more formats than simply what
+<a href="#date_stamp"><code>date_stamp()</code></a> and <a href="#date_string"><code>date_string()</code></a> return.</p>
+<p>
+</p>
+<hr />
+<h1><a name="functions">FUNCTIONS</a></h1>
+<p>This module provides the following functions (none of them being
+exported by default):</p>
+<dl>
+<dt><strong><a name="date_parse" class="item">date_parse(STRING)</a></strong></dt>
+
+<dd>
+<p>parse the given string and return the corresponding numerical time
+(i.e. the number of non-leap seconds since the epoch) or an error;
+<a href="../../../../lib/HTTP/Date.html">the HTTP::Date manpage</a>'s str2time() is used for the parsing</p>
+</dd>
+<dt><strong><a name="date_stamp" class="item">date_stamp([TIME])</a></strong></dt>
+
+<dd>
+<p>convert the given numerical time (or the current time if not given) to
+a human friendly, compact, local time string</p>
+</dd>
+<dt><strong><a name="date_string" class="item">date_string([TIME])</a></strong></dt>
+
+<dd>
+<p>convert the given numerical time (or the current time if not given) to
+a standard, ISO 8601 compliant, UTC based string</p>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../../../lib/HTTP/Date.html">the HTTP::Date manpage</a>,
+<a href="../../../..//Documents and Settings/vbronfman/My Documents/Downloads/PERL/No-Worries-0.5/blib/html/site/lib/No/Worries.html">the No::Worries manpage</a>.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Lionel Cons <a href="http://cern.ch/lionel.cons">http://cern.ch/lionel.cons</a></p>
+<p>Copyright CERN 2012</p>
+
+</body>
+
+</html>

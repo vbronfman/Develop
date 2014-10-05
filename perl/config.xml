@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+<!--  Common Definitions -->
+
+<datasources> 
+ <datasource user="dbuser" pass="dbpass" db_name="db1"> 
+		datasource1
+ </datasource>
+
+  <datasource user="dbuser" pass="dbpass" db_name="db2">
+	 datasource2 
+  </datasource>
+
+</datasources>
+
+<sources>
+
+  <source user="crm" pass="passwd" ST_server="stserver">starteamproj1</source>
+  <source user="billing" pass="passwd" ST_server="stserver">starteamproj1</source>
+
+</sources>
+
+
+  <file_types>
+    <ddl> description </ddl>
+    <sql> description </sql>
+  </file_types>
+
+root element text
+</root>

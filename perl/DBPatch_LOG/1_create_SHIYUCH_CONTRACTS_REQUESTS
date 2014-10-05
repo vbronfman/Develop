@@ -1,0 +1,97 @@
+/home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/1_create_SHIYUCH_CONTRACTS_REQUESTS.sql
+CONNECT STRING : REPORTS/REPORTS@BSCSTST3
+
+Table dropped.
+
+
+Table created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Synonym created.
+
+
+Grant succeeded.
+
+ADD (comp_short_desc varchar2(3))
+     *
+ERROR at line 2:
+ORA-01430: column being added already exists in table 
+
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+Commit complete.
+
+
+Commit complete.
+
+
+View created.
+
+
+View created.
+
+
+----------------------------------------------------------------

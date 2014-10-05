@@ -1,0 +1,220 @@
+<?xml version="1.0" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<!-- saved from url=(0017)http://localhost/ -->
+<script language="JavaScript" src="../../../displayToc.js"></script>
+<script language="JavaScript" src="../../../tocParas.js"></script>
+<script language="JavaScript" src="../../../tocTab.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../scineplex.css">
+<title>Template::Filters - Post-processing filters for template blocks</title>
+<link rel="stylesheet" href="../../../Active.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:" />
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<script>writelinks('__top__',3);</script>
+<h1><a>Template::Filters - Post-processing filters for template blocks</a></h1>
+<p><a name="__index__"></a></p>
+
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#methods">METHODS</a></li>
+	<ul>
+
+		<li><a href="#new___params_"><code>new(\%params)</code></a></li>
+		<li><a href="#fetch__name____args___context_">fetch($name, \@args, $context)</a></li>
+		<li><a href="#use_html_entities__"><code>use_html_entities()</code></a></li>
+		<li><a href="#use_apache_util__"><code>use_apache_util()</code></a></li>
+	</ul>
+
+	<li><a href="#configuration_options">CONFIGURATION OPTIONS</a></li>
+	<ul>
+
+		<li><a href="#filters">FILTERS</a></li>
+		<li><a href="#tolerant">TOLERANT</a></li>
+		<li><a href="#debug">DEBUG</a></li>
+	</ul>
+
+	<li><a href="#standard_filters">STANDARD FILTERS</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Template::Filters - Post-processing filters for template blocks</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template::Filters</span><span class="operator">;</span>
+    
+    <span class="variable">$filters</span> <span class="operator">=</span> <span class="variable">Template::Filters</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(\</span><span class="variable">%config</span><span class="operator">);</span>
+    
+    <span class="operator">(</span><span class="variable">$filter</span><span class="operator">,</span> <span class="variable">$error</span><span class="operator">)</span> <span class="operator">=</span> <span class="variable">$filters</span><span class="operator">-&gt;</span><span class="variable">fetch</span><span class="operator">(</span><span class="variable">$name</span><span class="operator">,</span> <span class="operator">\</span><span class="variable">@args</span><span class="operator">,</span> <span class="variable">$context</span><span class="operator">);</span>
+    
+    <span class="keyword">if</span> <span class="operator">(</span><span class="variable">$filter</span><span class="operator">)</span> <span class="operator">{</span>
+        <span class="keyword">print</span> <span class="operator">&amp;</span><span class="variable">$filter</span><span class="operator">(</span><span class="string">"some text"</span><span class="operator">);</span>
+    <span class="operator">}</span>
+    <span class="keyword">else</span> <span class="operator">{</span>
+        <span class="keyword">print</span> <span class="string">"Could not fetch </span><span class="variable">$name</span><span class="string"> filter: </span><span class="variable">$error</span><span class="string">\n"</span><span class="operator">;</span>
+    <span class="operator">}</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>The <code>Template::Filters</code> module implements a provider for creating subroutines
+that implement the standard filters. Additional custom filters may be provided
+via the <em>FILTERS</em> configuration option.</p>
+<p>
+</p>
+<hr />
+<h1><a name="methods">METHODS</a></h1>
+<p>
+</p>
+<h2><a name="new___params_"><code>new(\%params)</code></a></h2>
+<p>Constructor method which instantiates and returns a reference to a
+<code>Template::Filters</code> object.  A reference to a hash array of configuration
+items may be passed as a parameter.  These are described below.</p>
+<pre>
+    <span class="keyword">my</span> <span class="variable">$filters</span> <span class="operator">=</span> <span class="variable">Template::Filters</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">FILTERS</span> <span class="operator">=&gt;</span> <span class="operator">{</span> <span class="operator">...</span> <span class="operator">}</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+    
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">LOAD_FILTERS</span> <span class="operator">=&gt;</span> <span class="operator">[</span> <span class="variable">$filters</span> <span class="operator">]</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>A default <code>Template::Filters</code> module is created by the <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a> module
+if the <em>LOAD_FILTERS</em> option isn't specified.  All configuration parameters
+are forwarded to the constructor.</p>
+<pre>
+    <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">FILTERS</span> <span class="operator">=&gt;</span> <span class="operator">{</span> <span class="operator">...</span> <span class="operator">}</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="fetch__name____args___context_">fetch($name, \@args, $context)</a></h2>
+<p>Called to request that a filter of a given name be provided.  The name
+of the filter should be specified as the first parameter.  This should
+be one of the standard filters or one specified in the <em>FILTERS</em>
+configuration hash.  The second argument should be a reference to an
+array containing configuration parameters for the filter.  This may be
+specified as 0, or undef where no parameters are provided.  The third
+argument should be a reference to the current <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a>
+object.</p>
+<p>The method returns a reference to a filter sub-routine on success.  It
+may also return <code>(undef, STATUS_DECLINE)</code> to decline the request, to allow
+delegation onto other filter providers in the <em>LOAD_FILTERS</em> chain of 
+responsibility.  On error, <code>($error, STATUS_ERROR)</code> is returned where $error
+is an error message or <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Exception.html">the Template::Exception manpage</a> object indicating the error
+that occurred.</p>
+<p>When the <code>TOLERANT</code> option is set, errors are automatically downgraded to
+a <code>STATUS_DECLINE</code> response.</p>
+<p>
+</p>
+<h2><a name="use_html_entities__"><code>use_html_entities()</code></a></h2>
+<p>This class method can be called to configure the <code>html_entity</code> filter to use
+the <a href="../../../lib/HTML/Entities.html">the HTML::Entities manpage</a> module. An error will be raised if it is not installed
+on your system.</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template::Filters</span><span class="operator">;</span>
+    <span class="variable">Template::Filters</span><span class="operator">-&gt;</span><span class="variable">use_html_entities</span><span class="operator">();</span>
+</pre>
+<p>
+</p>
+<h2><a name="use_apache_util__"><code>use_apache_util()</code></a></h2>
+<p>This class method can be called to configure the <code>html_entity</code> filter to use
+the <a href="../../../Apache/Util.html">the Apache::Util manpage</a> module. An error will be raised if it is not installed on
+your system.</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template::Filters</span><span class="operator">;</span>
+    <span class="variable">Template::Filters</span><span class="operator">-&gt;</span><span class="variable">use_apache_util</span><span class="operator">();</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="configuration_options">CONFIGURATION OPTIONS</a></h1>
+<p>The following list summarises the configuration options that can be provided
+to the <code>Template::Filters</code> <em>new()</em> constructor. Please see
+<a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Manual/Config.html">the Template::Manual::Config manpage</a> for further information about each option.</p>
+<p>
+</p>
+<h2><a name="filters">FILTERS</a></h2>
+<p>The <a href="../../../Template/Manual/Config#FILTERS.html">FILTERS</a> option can be used to specify
+custom filters which can then be used with the
+<a href="../../../Template/Manual/Directives#FILTER.html">FILTER</a> directive like any other. These
+are added to the standard filters which are available by default.</p>
+<pre>
+    <span class="variable">$filters</span> <span class="operator">=</span> <span class="variable">Template::Filters</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">FILTERS</span> <span class="operator">=&gt;</span> <span class="operator">{</span>
+            <span class="string">'sfilt1'</span> <span class="operator">=&gt;</span>   <span class="operator">\&amp;</span><span class="variable">static_filter</span><span class="operator">,</span>
+            <span class="string">'dfilt1'</span> <span class="operator">=&gt;</span> <span class="operator">[</span> <span class="operator">\&amp;</span><span class="variable">dyanamic_filter_factory</span><span class="operator">,</span> <span class="number">1</span> <span class="operator">]</span><span class="operator">,</span>
+        <span class="operator">}</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<h2><a name="tolerant">TOLERANT</a></h2>
+<p>The <a href="../../../Template/Manual/Config#TOLERANT.html">TOLERANT</a> flag can be set to indicate
+that the <code>Template::Filters</code> module should ignore any errors and instead
+return <code>STATUS_DECLINED</code>.</p>
+<p>
+</p>
+<h2><a name="debug">DEBUG</a></h2>
+<p>The <a href="../../../Template/Manual/Config#DEBUG.html">DEBUG</a> option can be used to enable
+debugging messages for the Template::Filters module by setting it to include
+the <code>DEBUG_FILTERS</code> value.</p>
+<pre>
+    <span class="keyword">use</span> <span class="variable">Template::Constants</span> <span class="string">qw( :debug )</span><span class="operator">;</span>
+    
+    <span class="keyword">my</span> <span class="variable">$template</span> <span class="operator">=</span> <span class="variable">Template</span><span class="operator">-&gt;</span><span class="variable">new</span><span class="operator">(</span><span class="operator">{</span>
+        <span class="string">DEBUG</span> <span class="operator">=&gt;</span> <span class="variable">DEBUG_FILTERS</span> <span class="operator">|</span> <span class="variable">DEBUG_PLUGINS</span><span class="operator">,</span>
+    <span class="operator">}</span><span class="operator">);</span>
+</pre>
+<p>
+</p>
+<hr />
+<h1><a name="standard_filters">STANDARD FILTERS</a></h1>
+<p>Please see <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Manual/Filters.html">the Template::Manual::Filters manpage</a> for a list of the filters provided
+with the Template Toolkit, complete with examples of use.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Andy Wardley &lt;<a href="mailto:abw@wardley.org">abw@wardley.org</a>&gt; <a href="http://wardley.org/">http://wardley.org/</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (C) 1996-2007 Andy Wardley.  All Rights Reserved.</p>
+<p>This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p><a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Manual/Filters.html">the Template::Manual::Filters manpage</a>, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template.html">the Template manpage</a>, <a href="../../..//Develop/Perl/Template-Toolkit-2.24/blib/html/site/lib/Template/Context.html">the Template::Context manpage</a></p>
+
+</body>
+
+</html>

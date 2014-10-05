@@ -1,0 +1,1091 @@
+
+2012-05-09 13:52:14	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+13:52:14	 Started
+
+2012-05-09 13:53:33	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+13:53:33	 Started
+
+2012-05-09 13:54:36	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+13:54:36	 Started
+
+2012-05-09 13:55:20	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+13:55:20	 Started
+13:55:57	 cmd=stcmd co -p :49201/BillingMigration/10gba -vl 1 -stop -nologo -eol lf -o -fp  -is -fs  -ts -x
+13:57:41	 Partner::Init::get_label FAILURE 
+
+2012-05-09 13:57:58	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+13:57:58	 Started
+13:58:06	 cmd=stcmd co -p :49201/BillingMigration/10gba -vl 1010g_20120422 -stop -nologo -eol lf -o -fp  -is -fs  -ts -x
+
+2012-05-09 13:59:28	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+13:59:28	 Started
+13:59:46	 cmd=stcmd co -p :49201/BillingMigration/10gba -vl 1010g_20120422 -stop -nologo -eol lf -o -fp  -is -fs  -ts -x
+14:01:47	 Partner::Init::get_label FAILURE 
+14:01:48	 Finished
+2012-05-09 14:01:48	 ##### D:\Develop\Perl\get_fmb.pl Finished ###### 
+
+2012-05-09 14:01:55	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:01:55	 Started
+14:01:57	 cmd=stcmd co -p :/BillingMigration/10gba -vl 1010g_20120422 -stop -nologo -eol lf -o -fp  -is -fs  -ts -x
+14:02:22	 Partner::Init::get_label FAILURE 
+14:02:23	 Finished
+2012-05-09 14:02:23	 ##### D:\Develop\Perl\get_fmb.pl Finished ###### 
+
+2012-05-09 14:02:26	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:02:26	 Started
+
+2012-05-09 14:06:21	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:06:21	 Started
+
+2012-05-09 14:08:41	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:08:41	 Started
+14:08:43	 cmd=stcmd co -p @starteam1:/BillingMigration/10gba -vl 1010g_20120422 -stop -nologo -eol lf -o -fp  -is -fs  -ts -x
+14:09:22	 Partner::Init::get_label FAILURE 
+14:09:23	 Finished
+2012-05-09 14:09:23	 ##### D:\Develop\Perl\get_fmb.pl Finished ###### 
+
+2012-05-09 14:09:26	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:09:26	 Started
+14:09:28	 cmd=stcmd co -p @starteam1:49201/BillingMigration/10gba -vl 1010g_20120422 -stop -nologo -eol lf -o -fp  -is -fs  -ts -x
+14:10:09	 Partner::Init::get_label FAILURE 
+14:10:10	 Finished
+2012-05-09 14:10:10	 ##### D:\Develop\Perl\get_fmb.pl Finished ###### 
+
+2012-05-09 14:10:14	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:10:14	 Started
+14:10:15	 cmd=stcmd co -p @starteam1:49201/BillingMigration/10gba -vl 1010g_20120422 -stop -nologo -eol lf -o -fp  -is -fs  -ts -x
+14:12:04	 Partner::Init::get_label FAILURE 
+14:12:05	 Finished
+2012-05-09 14:12:05	 ##### D:\Develop\Perl\get_fmb.pl Finished ###### 
+
+2012-05-09 14:12:09	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:12:09	 Started
+14:12:12	 cmd=stcmd co -p @starteam1:49201/BillingMigration/10gba -vl 1010g_20120422 -stop -nologo -eol lf -o -fp  -is -fs  -ts -x
+
+2012-05-09 14:13:20	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:13:20	 Started
+14:13:23	 cmd=stcmd co -p  :49201/BillingMigration/10gba -vl 1010g_20120422 -stop -nologo -eol lf -o -fp  -is -fs  -ts -x
+
+2012-05-09 14:14:03	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:14:03	 Started
+
+2012-05-09 14:14:33	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:14:34	 Started
+
+2012-05-09 14:16:17	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:16:17	 Started
+14:16:42	 cmd=stcmd co -p :49201/BillingMigration/10gba -vl 1010g_20120422 -stop -nologo -eol lf -o -fp lkjkl -is -fs  -ts -x
+
+2012-05-09 14:17:14	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:17:14	 Started
+
+2012-05-09 14:18:51	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:18:51	 Started
+
+2012-05-09 14:19:32	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:19:32	 Started
+14:19:55	 cmd=stcmd co -p @starteam1:49201/BillingMigration/10gba -vl 1010g_20120422 -stop -nologo -eol lf -o -fp lkjkl -is -fs  -ts -x
+14:20:29	 Partner::Init::get_label FAILURE 
+14:20:32	 Finished
+2012-05-09 14:20:32	 ##### D:\Develop\Perl\get_fmb.pl Finished ###### 
+
+2012-05-09 14:20:34	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:20:34	 Started
+
+2012-05-09 14:21:01	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:21:01	 Started
+14:21:05	 cmd=stcmd co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 1010g_20120422 -stop -nologo -eol lf -o -fp lkjkl -is -fs  -ts -x
+
+2012-05-09 14:21:40	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:21:40	 Started
+14:21:42	 cmd=stcmd co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 1010g_20120422 -stop -nologo -eol lf -o -fp lkjkl -is -fs  -ts -x
+
+2012-05-09 14:22:12	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:22:12	 Started
+14:22:15	 cmd=stcmd co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 1010g_20120422 -stop -nologo -eol lf -o -fp lkjkl -is -fs  -ts -x
+
+2012-05-09 14:22:55	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:22:55	 Started
+14:22:58	 cmd=stcmd co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 1010g_20120422 -stop -nologo -eol lf -o -fp lkjkl -is -fs  -ts -x
+14:23:36	 Partner::Init::get_label SUCCESS
+14:23:52	 Finished
+2012-05-09 14:23:52	 ##### D:\Develop\Perl\get_fmb.pl Finished ###### 
+
+2012-05-09 14:23:59	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:23:59	 Started
+14:24:04	 cmd=stcmd co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 1010g_20120422 -stop -nologo -eol lf -o -fp lkjkl -is -fs  -ts -x
+
+2012-05-09 14:24:37	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:24:37	 Started
+14:24:40	 cmd=stcmd co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 1010g_20120422 -stop -nologo -eol lf -o -fp lkjkl -is -fs  -ts -x
+14:24:47	 Partner::Init::get_label FAILURE  
+
+2012-05-09 14:25:33	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:25:33	 Started
+14:25:36	 cmd=stcmd co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 1010g_20120422 -stop -nologo -eol lf -o -fp lkjkl -is -fs  -ts -x
+14:25:41	 Partner::Init::get_label FAILURE 1 
+14:26:08	 Finished
+2012-05-09 14:26:09	 ##### D:\Develop\Perl\get_fmb.pl Finished ###### 
+
+2012-05-09 14:26:28	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:26:28	 Started
+14:26:31	 cmd=stcmd co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 1010g_20120422 -stop -nologo -eol lf -o -fp lkjkl -is -fs  -ts -x
+14:27:01	 Partner::Init::get_label FAILURE 1 
+
+2012-05-09 14:27:53	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:27:53	 Started
+14:27:56	 cmd=stcmd co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 1010g_20120422 -stop -nologo -eol lf -o -fp lkjkl -is -fs  -ts -x
+14:27:57	 Partner::Init::get_label FAILURE 1 
+14:27:57	 ERROR Error after get_label
+
+14:29:02	 Finished
+2012-05-09 14:29:02	 ##### D:\Develop\Perl\get_fmb.pl Finished ###### 
+
+2012-05-09 16:23:03	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+16:23:03	 Started
+16:23:08	 cmd=stcmd co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 10g_20120422 -stop -nologo -eol lf -o -fp ./VERSION -is -fs  -ts -x
+16:23:15	 Partner::Init::get_label FAILURE 1 
+16:23:15	 ERROR Error after get_label
+
+
+2012-05-09 16:23:57	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+16:23:57	 Started
+16:24:00	 cmd=stcmd.exe co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 10g_20120422 -stop -nologo -eol lf -o -fp ./VERSION -is -fs  -ts -x
+16:24:01	 Partner::Init::get_label FAILURE 1 
+16:24:01	 ERROR Error after get_label
+
+
+2012-05-09 16:24:34	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+16:24:34	 Started
+16:24:40	 cmd="D:Program FilesBorlandStarTeam Cross-Platform Client 2009stcmd.exe" co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 10g_20120422 -stop -nologo -eol lf -o -fp ./VERSION -is -fs  -ts -x
+16:24:42	 Partner::Init::get_label FAILURE 1 
+16:24:42	 ERROR Error after get_label
+
+
+2012-05-09 16:25:10	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+16:25:10	 Started
+16:25:12	 cmd="D:\Program Files\Borland\StarTeam Cross-Platform Client 2009\stcmd.exe" co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 10g_20120422 -stop -nologo -eol lf -o -fp ./VERSION -is -fs  -ts -x
+
+2012-05-09 16:27:12	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+16:27:12	 Started
+16:27:12	 cmd="D:\Program Files\Borland\StarTeam Cross-Platform Client 2009\stcmd.exe" co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 10g_20120422 -stop -nologo -eol lf -o -fp ./VERSION -is -fs  -ts -x
+16:27:23	 Partner::Init::get_label FAILURE 1 
+16:27:23	 ERROR Error after get_label
+
+16:27:23	 Finished
+2012-05-09 16:27:23	 ##### D:\Develop\Perl\get_fmb.pl Finished ###### 
+
+2012-05-09 17:04:31	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+17:04:31	 Started
+17:04:31	 cmd="D:\Program Files\Borland\StarTeam Cross-Platform Client 2009\stcmd.exe" co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 10g_20120422 -stop -nologo -eol lf -o -fp ./VERSION -is -fs  -ts -x
+17:05:20	 Partner::Init::get_label SUCCESS
+17:05:20	 Finished
+2012-05-09 17:05:20	 ##### D:\Develop\Perl\get_fmb.pl Finished ###### 
+
+2012-05-10 13:42:06	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+13:42:06	 Input 10G_20120422./VERSIONvbronfman
+13:42:09	 DEBUG  
+
+2012-05-10 14:12:26	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:12:26	 Input 10G_20120422./VERSIONvbronfman
+14:12:28	 DEBUG  
+
+2012-05-10 14:18:09	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:18:09	 Input TST110g_20120422./VERSIONvbronfman
+14:18:17	 DEBUG  oraias@it2tst1
+
+2012-05-10 14:18:56	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:18:56	 Input TST110g_20120422./VERSIONvbronfman
+14:19:40	 DEBUG  oraias@it2tst1
+14:19:40	 INFO starting copy of fmb 
+14:19:40	 DEBUG cmd= find ./VERSION -name "*fmb" -type f | xargs -I {} scp {} oraias@it2tst1:/product/OraHome_1/myforms {}  
+
+2012-05-10 14:21:15	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:21:15	 Input TST110g_20120422./VERSIONvbronfman
+14:22:39	 DEBUG  oraias@it2tst1
+14:22:39	 INFO starting copy of fmb 
+14:22:39	 DEBUG cmd= find ./VERSION -name "*fmb" -type f | xargs -I {} scp {} "oraias@it2tst1":/product/OraHome_1/myforms {}  
+
+2012-05-10 16:55:17	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+16:55:17	 Input TST110g_20120422./VERSIONvbronfman
+
+2012-05-10 17:00:42	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+17:00:42	 Input TST110g_20120422./VERSIONvbronfman
+17:00:46	 DEBUG  oraias@it2tst1
+
+2012-05-10 17:13:10	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+17:13:10	 Input TST110g_20120422./VERSIONvbronfman
+17:13:13	 DEBUG  oraias@it2tst1
+
+2012-05-13 10:25:05	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+10:25:05	 Input , TST1,
+    10g_20120422,
+    ./VERSION,
+    vbronfman 
+10:25:37	 DEBUG  oraias@it2tst1
+
+2012-05-13 10:28:36	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+10:28:36	 Input: TST1,
+    10g_20120422,
+    ./VERSION,
+    vbronfman 
+10:28:40	 DEBUG  oraias@it2tst1
+10:28:56	 cmd= stcmd co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 10g_20120422 -stop -nologo -eol lf -o -fp ./VERSION -is -fs  -ts -x 
+
+2012-05-13 10:36:22	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+10:36:22	 Input: TST1,
+    10g_20120422,
+    ./VERSION,
+    vbronfman 
+10:36:22	 DEBUG  oraias@it2tst1
+10:36:28	 cmd= stcmd.exe co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 10g_20120422 -stop -nologo -eol lf -o -fp ./VERSION -is -fs  -ts -x 
+
+2012-05-13 10:46:05	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+10:46:05	 Input: TST1,
+    10g_20120422,
+    ./VERSION,
+    vbronfman 
+10:46:05	 DEBUG  oraias@it2tst1
+10:46:08	 cmd= d:\Program Files\Borland\StarTeam Cross-Platform Client 2009\stcmd.exe co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 10g_20120422 -stop -nologo -eol lf -o -fp ./VERSION -is -fs  -ts -x 
+
+2012-05-13 10:46:53	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+10:46:53	 Input: TST1,
+    10g_20120422,
+    ./VERSION,
+    vbronfman 
+10:46:53	 DEBUG  oraias@it2tst1
+10:46:55	 cmd= d:\Program Files\Borland\StarTeam Cross-Platform Client 2009\stcmd.exe co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 10g_20120422 -stop -nologo -eol lf -o -fp ./VERSION -is -fs  -ts -x 
+
+2012-05-13 10:48:47	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+10:48:47	 Input: TST1,
+    10g_20120422,
+    ./VERSION,
+    vbronfman 
+10:48:47	 DEBUG  oraias@it2tst1
+10:48:50	 cmd= stcmd.exe co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 10g_20120422 -stop -nologo -eol lf -o -fp ./VERSION -is -fs  -ts -x 
+
+2012-05-13 10:50:16	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+10:50:16	 Input: TST1,
+    10g_20120422,
+    ./VERSION,
+    vbronfman 
+10:50:16	 DEBUG  oraias@it2tst1
+
+2012-05-13 10:51:06	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+10:51:06	 Input: TST1,
+    10g_20120422,
+    ./VERSION,
+    vbronfman 
+10:51:06	 DEBUG  oraias@it2tst1
+
+2012-05-13 10:51:42	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+10:51:42	 Input: TST1,
+    10g_20120422,
+    ./VERSION,
+    vbronfman 
+10:51:42	 DEBUG  oraias@it2tst1
+10:51:47	 cmd= stcmd.exe co -p vbronfman@starteam1:49201/BillingMigration/10gba -vl 10g_20120422 -stop -nologo -eol lf -o -fp ./VERSION -is -fs  -ts -x 
+
+2012-05-13 10:52:23	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+10:52:23	 Input: TST1,
+    10g_20120422,
+    ./VERSION,
+    vbronfman 
+10:52:23	 DEBUG  oraias@it2tst1
+10:52:41	 cmd= stcmd.exe co -p vbronfman:Redbl00d15@starteam1:49201/BillingMigration/10gba -vl 10g_20120422 -stop -nologo -eol lf -o -fp ./VERSION -is -fs  -ts -x 
+
+2012-05-13 10:57:50	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+10:57:50	 Input: TST1,
+    10g_20120422,
+    D:/VERSION,
+    vbronfman 
+10:57:50	 DEBUG  oraias@it2tst1
+10:57:52	 cmd= stcmd.exe co -p vbronfman:Redbl00d15@starteam1:49201/BillingMigration/10gba -vl 10g_20120422 -stop -nologo -eol lf -o -fp D:/VERSION -is -fs  -ts -x 
+10:58:42	 Partner::Init::get_label SUCCESS
+10:58:42	 INFO starting copy of fmb 
+10:58:42	 DEBUG cmd= find D:/VERSION -name "*fmb" -type f | xargs -I {} scp "{}" "oraias@it2tst1":/myforms  
+
+2012-05-14 09:22:08	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+09:22:12	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+09:22:14	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+09:22:22	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+09:22:36	 DEBUG DEST_DIR= /myforms
+09:23:05	 DEBUG cmd= stcmd.exe co -p vbronfman:Redbl00d15@starteam1:49201/BillingMigration/10gba -vl 10g_20120422 -stop -nologo -eol lf -o -fp D:/VERSION/10g_20120422 -is -fs  -ts -x -csf 
+
+2012-05-14 13:54:33	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+13:54:33	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+13:54:33	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+13:54:33	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+13:54:34	 DEBUG DEST_DIR= /myforms
+13:54:37	 DEBUG cmd= stcmd.exe co -p vbronfman:Redbl00d15@starteam1:49201/BillingMigration/10gba -vl 10g_20120422 -stop -nologo -eol lf -o -fp D:/VERSION/10g_20120422 -is -fs  -ts -x -csf 
+13:55:25	 Partner::Init::get_label SUCCESS
+13:55:25	 INFO starting copy of fmb
+14:02:51	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+14:02:51	 DEBUG cmd= find D:/VERSION/10g_20120422/ALL_FMB -name "*fmb" -type f  
+
+2012-05-14 14:04:34	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:04:34	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+14:04:34	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+14:04:34	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+14:04:35	 DEBUG DEST_DIR= /myforms
+14:04:35	 INFO starting copy of fmb
+14:04:37	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+14:04:37	 DEBUG cmd= find D:/VERSION/10g_20120422/ALL_FMB -name "*fmb" -type f  
+
+2012-05-14 14:05:45	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:05:45	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+14:05:45	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+14:05:45	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+14:05:47	 DEBUG DEST_DIR= /myforms
+14:05:47	 INFO starting copy of fmb
+14:05:48	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+14:05:48	 DEBUG cmd= find D:/VERSION/10g_20120422/ALL_FMB -name "*fmb" -type f  
+
+2012-05-14 14:06:50	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:06:50	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+14:06:50	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+14:06:50	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+14:06:52	 DEBUG DEST_DIR= /myforms
+14:06:52	 INFO starting copy of fmb
+14:06:54	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+14:06:54	 DEBUG cmd= find D:/VERSION/10g_20120422/ALL_FMB -name "*fmb" -type f  
+
+2012-05-14 14:57:24	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:57:24	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+14:57:24	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+14:57:24	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+14:57:26	 DEBUG DEST_DIR= /myforms
+14:57:26	 INFO starting copy of fmb
+14:57:26	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+14:57:26	 DEBUG cmd= find D:/VERSION/10g_20120422/ALL_FMB -name "*fmb" -type f  
+
+2012-05-14 14:59:48	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+14:59:48	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+14:59:48	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+14:59:48	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+14:59:50	 DEBUG DEST_DIR= /myforms
+14:59:50	 INFO starting copy of fmb
+14:59:53	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+14:59:53	 DEBUG cmd= find D:/VERSION/10g_20120422/ALL_FMB -name "*fmb" -type f  
+
+2012-05-14 15:01:45	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:01:45	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:01:45	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:01:45	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:01:48	 DEBUG DEST_DIR= /myforms
+15:01:48	 INFO starting copy of fmb
+15:01:49	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+15:01:49	 DEBUG cmd= find D:/VERSION/10g_20120422/ALL_FMB -name "*fmb" -type f  
+
+2012-05-14 15:05:54	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:05:54	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:05:54	 DEBUG Get $ORACLE_HOME at ARRAY(0x221c2cc)
+15:05:54	 DEBUG ssh ARRAY(0x221c2cc) 'echo $ORACLE_HOME' 2>/dev/null 
+15:05:54	 DEBUG DEST_DIR= /oraias@it2tst1
+15:05:54	 INFO starting copy of fmb
+15:07:07	 INFO Going to copy *fmb to ARRAY(0x221c2cc):/oraias@it2tst1 
+15:07:07	 DEBUG cmd=ssh ARRAY(0x221c2cc) 'echo $ORACLE_HOME' 2>/dev/null 
+
+2012-05-14 15:07:11	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:07:11	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:07:13	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:07:30	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:07:33	 DEBUG DEST_DIR= /myforms
+
+2012-05-14 15:10:03	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:10:03	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:10:05	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:10:06	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+
+2012-05-14 15:11:51	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:11:51	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:11:56	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:11:57	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:11:59	 DEBUG DEST_DIR= /myforms
+15:12:00	 INFO starting copy of fmb
+
+2012-05-14 15:12:47	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:12:47	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:12:48	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:12:48	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:12:48	 DEBUG DEST_DIR= /myforms
+15:12:48	 INFO starting copy of fmb
+
+2012-05-14 15:13:12	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:13:12	 Input: TST1111,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:13:14	 DEBUG Get $ORACLE_HOME at 
+15:13:14	 DEBUG ssh  'echo $ORACLE_HOME' 2>/dev/null 
+15:13:14	 DEBUG DEST_DIR= /
+15:13:14	 INFO starting copy of fmb
+
+2012-05-14 15:15:31	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:15:31	 Input: TST1111,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:15:40	 DEBUG Get $ORACLE_HOME at 
+
+2012-05-14 15:17:09	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:17:09	 Input: TST1111,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+
+2012-05-14 15:17:58	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:17:58	 Input: TST1111,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+
+2012-05-14 15:18:15	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:18:15	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:18:19	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:18:19	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:18:19	 DEBUG DEST_DIR= /myforms
+15:18:19	 INFO starting copy of fmb
+15:18:21	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+15:18:21	 DEBUG cmd=ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+
+2012-05-14 15:19:01	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:19:01	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:19:03	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:19:03	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:19:03	 DEBUG DEST_DIR= /myforms
+15:19:03	 INFO starting copy of fmb
+15:19:04	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+15:19:04	 DEBUG cmd=ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+
+2012-05-14 15:23:39	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:23:39	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:23:48	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:23:48	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:23:48	 DEBUG DEST_DIR= /myforms
+15:23:48	 INFO starting copy of fmb
+15:23:50	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+
+2012-05-14 15:24:40	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:24:40	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:24:41	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:24:41	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:24:41	 DEBUG DEST_DIR= /myforms
+15:24:41	 INFO starting copy of fmb
+15:24:42	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+15:24:42	 DEBUG cmd= scp -p D:/VERSION/10g_20120422/ALL_FMB/change_payment_type.fmb "oraias@it2tst1":/myforms  
+15:24:44	 
+15:24:44	 main::cp_fmb FAILURE 1
+15:24:56	 DEBUG cmd= scp -p D:/VERSION/10g_20120422/ALL_FMB/fd_activity.fmb "oraias@it2tst1":/myforms  
+15:24:56	 
+15:24:56	 main::cp_fmb FAILURE 1
+15:24:57	 DEBUG cmd= scp -p D:/VERSION/10g_20120422/ALL_FMB/hamsa.fmb "oraias@it2tst1":/myforms  
+15:24:57	 
+15:24:57	 main::cp_fmb FAILURE 1
+15:25:12	 DEBUG cmd= scp -p D:/VERSION/10g_20120422/ALL_FMB/nd_change_dunning_path.fmb "oraias@it2tst1":/myforms  
+15:25:12	 
+15:25:12	 main::cp_fmb FAILURE 1
+15:25:15	 DEBUG cmd= scp -p D:/VERSION/10g_20120422/ALL_FMB/promo_assign.fmb "oraias@it2tst1":/myforms  
+15:25:15	 
+15:25:15	 main::cp_fmb FAILURE 1
+
+2012-05-14 15:25:21	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:25:21	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:25:22	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:25:22	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:25:22	 DEBUG DEST_DIR= /myforms
+15:25:22	 INFO starting copy of fmb
+15:25:23	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+15:25:24	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/change_payment_type.fmb" "oraias@it2tst1":/myforms  
+15:25:24	 
+15:25:24	 main::cp_fmb FAILURE 1
+
+2012-05-14 15:35:52	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:35:52	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:35:53	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:35:53	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:35:53	 DEBUG DEST_DIR= /myforms
+15:35:53	 INFO starting copy of fmb
+15:35:55	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+15:35:57	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/change_payment_type.fmb" "oraias@it2tst1":/myforms  
+15:35:58	 
+15:35:58	 main::cp_fmb FAILURE 1
+15:35:58	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/fd_activity.fmb" "oraias@it2tst1":/myforms  
+15:35:59	 
+15:35:59	 main::cp_fmb FAILURE 1
+15:35:59	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/hamsa.fmb" "oraias@it2tst1":/myforms  
+15:35:59	 
+15:35:59	 main::cp_fmb FAILURE 1
+15:36:02	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/nd_change_dunning_path.fmb" "oraias@it2tst1":/myforms  
+15:36:02	 
+15:36:02	 main::cp_fmb FAILURE 1
+15:36:03	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/promo_assign.fmb" "oraias@it2tst1":/myforms  
+15:36:03	 
+15:36:03	 main::cp_fmb FAILURE 1
+15:36:06	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/rateplan_oper.fmb" "oraias@it2tst1":/myforms  
+15:36:07	 
+15:36:07	 main::cp_fmb FAILURE 1
+15:36:07	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/takeover.fmb" "oraias@it2tst1":/myforms  
+15:36:07	 
+15:36:07	 main::cp_fmb FAILURE 1
+15:36:07	 ERROR Error after cp_fmb
+
+2012-05-14 15:36:24	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:36:24	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:36:25	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:36:25	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:36:25	 DEBUG DEST_DIR= /myforms
+15:36:25	 INFO starting copy of fmb
+15:36:27	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+15:36:27	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/change_payment_type.fmb" "oraias@it2tst1":/myforms  
+15:36:28	 
+15:36:28	 main::cp_fmb FAILURE 1
+15:36:28	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/fd_activity.fmb" "oraias@it2tst1":/myforms  
+15:36:28	 
+15:36:28	 main::cp_fmb FAILURE 1
+15:36:28	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/hamsa.fmb" "oraias@it2tst1":/myforms  
+15:36:28	 
+15:36:28	 main::cp_fmb FAILURE 1
+15:36:28	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/nd_change_dunning_path.fmb" "oraias@it2tst1":/myforms  
+15:36:28	 
+15:36:28	 main::cp_fmb FAILURE 1
+15:36:28	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/promo_assign.fmb" "oraias@it2tst1":/myforms  
+15:36:29	 
+15:36:29	 main::cp_fmb FAILURE 1
+15:36:29	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/rateplan_oper.fmb" "oraias@it2tst1":/myforms  
+15:36:29	 
+15:36:29	 main::cp_fmb FAILURE 1
+15:36:29	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/takeover.fmb" "oraias@it2tst1":/myforms  
+15:36:29	 
+15:36:29	 main::cp_fmb FAILURE 1
+15:36:29	 ERROR Error after cp_fmb
+
+2012-05-14 15:37:11	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:37:11	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:37:12	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:37:12	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:37:12	 DEBUG DEST_DIR= /myforms
+15:37:12	 INFO starting copy of fmb
+15:37:14	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+15:37:14	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/change_payment_type.fmb" "oraias@it2tst1":/myforms  
+15:37:14	 
+15:37:14	 main::cp_fmb FAILURE 1
+15:37:14	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/fd_activity.fmb" "oraias@it2tst1":/myforms  
+15:37:15	 
+15:37:15	 main::cp_fmb FAILURE 1
+15:37:15	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/hamsa.fmb" "oraias@it2tst1":/myforms  
+15:37:15	 
+15:37:15	 main::cp_fmb FAILURE 1
+15:37:15	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/nd_change_dunning_path.fmb" "oraias@it2tst1":/myforms  
+15:37:15	 
+15:37:15	 main::cp_fmb FAILURE 1
+15:37:15	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/promo_assign.fmb" "oraias@it2tst1":/myforms  
+15:37:16	 
+15:37:16	 main::cp_fmb FAILURE 1
+15:37:16	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/rateplan_oper.fmb" "oraias@it2tst1":/myforms  
+15:37:16	 
+15:37:16	 main::cp_fmb FAILURE 1
+15:37:16	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/takeover.fmb" "oraias@it2tst1":/myforms  
+15:37:16	 
+15:37:16	 main::cp_fmb FAILURE 1
+15:37:16	 ERROR Error after cp_fmb
+15:39:26	 main::cp_fmb FAILURE 256
+15:39:26	 ERROR Error after compile_fmb(TST1,/myforms)
+
+2012-05-14 15:39:37	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:39:37	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:39:38	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:39:38	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:39:38	 DEBUG DEST_DIR= /myforms
+15:39:38	 INFO starting copy of fmb
+15:39:40	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+15:39:40	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/change_payment_type.fmb" "oraias@it2tst1":/myforms  
+15:39:40	 
+15:39:40	 main::cp_fmb FAILURE 1
+15:39:40	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/fd_activity.fmb" "oraias@it2tst1":/myforms  
+15:39:41	 
+15:39:41	 main::cp_fmb FAILURE 1
+15:39:41	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/hamsa.fmb" "oraias@it2tst1":/myforms  
+15:39:41	 
+15:39:41	 main::cp_fmb FAILURE 1
+15:39:41	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/nd_change_dunning_path.fmb" "oraias@it2tst1":/myforms  
+15:39:41	 
+15:39:41	 main::cp_fmb FAILURE 1
+15:39:41	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/promo_assign.fmb" "oraias@it2tst1":/myforms  
+15:39:41	 
+15:39:41	 main::cp_fmb FAILURE 1
+15:39:41	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/rateplan_oper.fmb" "oraias@it2tst1":/myforms  
+15:39:42	 
+15:39:42	 main::cp_fmb FAILURE 1
+15:39:42	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/takeover.fmb" "oraias@it2tst1":/myforms  
+15:39:42	 
+15:39:42	 main::cp_fmb FAILURE 1
+15:39:42	 ERROR Error after cp_fmb
+
+2012-05-14 15:41:36	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:41:36	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:41:38	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:41:38	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:41:38	 DEBUG DEST_DIR= /myforms
+15:41:38	 INFO starting copy of fmb
+15:41:39	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+15:41:39	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/change_payment_type.fmb" "oraias@it2tst1":/myforms  
+15:41:40	 
+15:41:40	 main::cp_fmb FAILURE 1
+15:41:40	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/fd_activity.fmb" "oraias@it2tst1":/myforms  
+15:41:40	 
+15:41:40	 main::cp_fmb FAILURE 1
+15:41:40	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/hamsa.fmb" "oraias@it2tst1":/myforms  
+15:41:40	 
+15:41:40	 main::cp_fmb FAILURE 1
+15:41:40	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/nd_change_dunning_path.fmb" "oraias@it2tst1":/myforms  
+15:41:40	 
+15:41:40	 main::cp_fmb FAILURE 1
+15:41:40	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/promo_assign.fmb" "oraias@it2tst1":/myforms  
+15:41:41	 
+15:41:41	 main::cp_fmb FAILURE 1
+15:41:41	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/rateplan_oper.fmb" "oraias@it2tst1":/myforms  
+15:41:41	 
+15:41:41	 main::cp_fmb FAILURE 1
+15:41:41	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/takeover.fmb" "oraias@it2tst1":/myforms  
+15:41:41	 
+15:41:41	 main::cp_fmb FAILURE 1
+15:41:41	 ERROR Error after cp_fmb
+
+2012-05-14 15:44:11	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:44:11	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:44:13	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:44:13	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:44:13	 DEBUG DEST_DIR= /myforms
+15:44:13	 INFO starting copy of fmb
+15:44:15	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+15:44:15	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/change_payment_type.fmb" "oraias@it2tst1":/myforms  
+15:44:16	 
+15:44:16	 main::cp_fmb FAILURE 1
+15:44:16	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/fd_activity.fmb" "oraias@it2tst1":/myforms  
+15:44:16	 
+15:44:16	 main::cp_fmb FAILURE 1
+15:44:16	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/hamsa.fmb" "oraias@it2tst1":/myforms  
+15:44:16	 
+15:44:16	 main::cp_fmb FAILURE 1
+15:44:16	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/nd_change_dunning_path.fmb" "oraias@it2tst1":/myforms  
+15:44:17	 
+15:44:17	 main::cp_fmb FAILURE 1
+15:44:17	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/promo_assign.fmb" "oraias@it2tst1":/myforms  
+15:44:17	 
+15:44:17	 main::cp_fmb FAILURE 1
+15:44:17	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/rateplan_oper.fmb" "oraias@it2tst1":/myforms  
+15:44:17	 
+15:44:17	 main::cp_fmb FAILURE 1
+15:44:17	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/takeover.fmb" "oraias@it2tst1":/myforms  
+15:44:17	 
+15:44:17	 main::cp_fmb FAILURE 1
+15:44:17	 ERROR Error after cp_fmb
+15:45:28	 main::cp_fmb FAILURE 256
+15:45:28	 ERROR Error after compile_fmb(TST1,/myforms)
+
+2012-05-14 15:45:33	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:45:33	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:45:35	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:45:35	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:45:35	 DEBUG DEST_DIR= /myforms
+15:45:35	 INFO starting copy of fmb
+15:45:37	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+15:45:37	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/change_payment_type.fmb" "oraias@it2tst1":/myforms  
+15:45:37	 
+15:45:37	 main::cp_fmb FAILURE 1
+15:45:37	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/fd_activity.fmb" "oraias@it2tst1":/myforms  
+15:45:37	 
+15:45:37	 main::cp_fmb FAILURE 1
+15:45:37	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/hamsa.fmb" "oraias@it2tst1":/myforms  
+15:45:38	 
+15:45:38	 main::cp_fmb FAILURE 1
+15:45:38	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/nd_change_dunning_path.fmb" "oraias@it2tst1":/myforms  
+15:45:38	 
+15:45:38	 main::cp_fmb FAILURE 1
+15:45:38	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/promo_assign.fmb" "oraias@it2tst1":/myforms  
+15:45:38	 
+15:45:38	 main::cp_fmb FAILURE 1
+15:45:38	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/rateplan_oper.fmb" "oraias@it2tst1":/myforms  
+15:45:38	 
+15:45:38	 main::cp_fmb FAILURE 1
+15:45:38	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/takeover.fmb" "oraias@it2tst1":/myforms  
+15:45:39	 
+15:45:39	 main::cp_fmb FAILURE 1
+15:45:39	 ERROR Error after cp_fmb
+
+2012-05-14 15:47:31	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:47:31	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:47:33	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:47:33	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:47:33	 DEBUG DEST_DIR= /myforms
+15:47:33	 INFO starting copy of fmb
+15:47:35	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+15:47:35	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/change_payment_type.fmb" "oraias@it2tst1":/myforms  
+15:47:36	 
+15:47:36	 main::cp_fmb FAILURE 1
+15:47:36	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/fd_activity.fmb" "oraias@it2tst1":/myforms  
+15:47:36	 
+15:47:36	 main::cp_fmb FAILURE 1
+15:47:36	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/hamsa.fmb" "oraias@it2tst1":/myforms  
+15:47:36	 
+15:47:36	 main::cp_fmb FAILURE 1
+15:47:36	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/nd_change_dunning_path.fmb" "oraias@it2tst1":/myforms  
+15:47:37	 
+15:47:37	 main::cp_fmb FAILURE 1
+15:47:37	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/promo_assign.fmb" "oraias@it2tst1":/myforms  
+15:47:37	 
+15:47:37	 main::cp_fmb FAILURE 1
+15:47:37	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/rateplan_oper.fmb" "oraias@it2tst1":/myforms  
+15:47:37	 
+15:47:37	 main::cp_fmb FAILURE 1
+15:47:37	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/takeover.fmb" "oraias@it2tst1":/myforms  
+15:47:37	 
+15:47:37	 main::cp_fmb FAILURE 1
+15:47:37	 ERROR Error after cp_fmb
+15:47:43	 main::cp_fmb FAILURE 256
+15:47:43	 ERROR Error after compile_fmb(TST1,/myforms)
+
+2012-05-14 15:49:45	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:49:45	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:49:47	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:49:47	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:49:47	 DEBUG DEST_DIR= /myforms
+15:49:47	 INFO starting copy of fmb
+15:49:51	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+15:49:51	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/change_payment_type.fmb" "oraias@it2tst1":/myforms  
+15:49:52	 
+15:49:52	 main::cp_fmb FAILURE 1
+15:49:52	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/fd_activity.fmb" "oraias@it2tst1":/myforms  
+15:49:52	 
+15:49:52	 main::cp_fmb FAILURE 1
+15:49:52	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/hamsa.fmb" "oraias@it2tst1":/myforms  
+15:49:52	 
+15:49:52	 main::cp_fmb FAILURE 1
+15:49:52	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/nd_change_dunning_path.fmb" "oraias@it2tst1":/myforms  
+15:49:52	 
+15:49:52	 main::cp_fmb FAILURE 1
+15:49:52	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/promo_assign.fmb" "oraias@it2tst1":/myforms  
+15:49:53	 
+15:49:53	 main::cp_fmb FAILURE 1
+15:49:53	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/rateplan_oper.fmb" "oraias@it2tst1":/myforms  
+15:49:53	 
+15:49:53	 main::cp_fmb FAILURE 1
+15:49:53	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/takeover.fmb" "oraias@it2tst1":/myforms  
+15:49:53	 
+15:49:53	 main::cp_fmb FAILURE 1
+15:49:53	 ERROR Error after cp_fmb
+
+2012-05-14 15:50:57	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:50:57	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+
+2012-05-14 15:51:14	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:51:14	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:51:16	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:51:16	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:51:16	 DEBUG DEST_DIR= /myforms
+15:51:16	 INFO starting copy of fmb
+15:51:18	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+15:51:18	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/change_payment_type.fmb" "oraias@it2tst1":/myforms  
+15:51:18	 
+15:51:18	 main::cp_fmb FAILURE 1
+15:51:18	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/fd_activity.fmb" "oraias@it2tst1":/myforms  
+15:51:19	 
+15:51:19	 main::cp_fmb FAILURE 1
+15:51:19	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/hamsa.fmb" "oraias@it2tst1":/myforms  
+15:51:19	 
+15:51:19	 main::cp_fmb FAILURE 1
+15:51:19	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/nd_change_dunning_path.fmb" "oraias@it2tst1":/myforms  
+15:51:19	 
+15:51:19	 main::cp_fmb FAILURE 1
+15:51:19	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/promo_assign.fmb" "oraias@it2tst1":/myforms  
+15:51:19	 
+15:51:19	 main::cp_fmb FAILURE 1
+15:51:19	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/rateplan_oper.fmb" "oraias@it2tst1":/myforms  
+15:51:20	 
+15:51:20	 main::cp_fmb FAILURE 1
+15:51:20	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/takeover.fmb" "oraias@it2tst1":/myforms  
+15:51:20	 
+15:51:20	 main::cp_fmb FAILURE 1
+15:51:20	 ERROR Error after cp_fmb
+
+2012-05-14 15:51:48	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:51:48	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:51:49	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:51:49	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:51:49	 DEBUG DEST_DIR= /myforms
+15:51:49	 INFO starting copy of fmb
+15:51:50	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+15:51:50	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/change_payment_type.fmb" "oraias@it2tst1":/myforms  
+15:51:51	 
+15:51:51	 main::cp_fmb FAILURE 1
+15:51:51	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/fd_activity.fmb" "oraias@it2tst1":/myforms  
+15:51:51	 
+15:51:51	 main::cp_fmb FAILURE 1
+15:51:51	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/hamsa.fmb" "oraias@it2tst1":/myforms  
+15:51:51	 
+15:51:51	 main::cp_fmb FAILURE 1
+15:51:51	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/nd_change_dunning_path.fmb" "oraias@it2tst1":/myforms  
+15:51:52	 
+15:51:52	 main::cp_fmb FAILURE 1
+15:51:52	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/promo_assign.fmb" "oraias@it2tst1":/myforms  
+15:51:52	 
+15:51:52	 main::cp_fmb FAILURE 1
+15:51:52	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/rateplan_oper.fmb" "oraias@it2tst1":/myforms  
+15:51:52	 
+15:51:52	 main::cp_fmb FAILURE 1
+15:51:52	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/takeover.fmb" "oraias@it2tst1":/myforms  
+15:51:52	 
+15:51:52	 main::cp_fmb FAILURE 1
+15:51:52	 ERROR Error after cp_fmb
+
+2012-05-14 16:01:25	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+16:01:25	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+16:01:27	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+16:01:27	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+16:01:27	 DEBUG DEST_DIR= /myforms
+16:01:27	 INFO starting copy of fmb
+16:01:29	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+16:01:29	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/change_payment_type.fmb" "oraias@it2tst1":/myforms  
+16:01:30	 
+16:01:30	 main::cp_fmb FAILURE 1
+16:01:30	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/fd_activity.fmb" "oraias@it2tst1":/myforms  
+16:01:30	 
+16:01:30	 main::cp_fmb FAILURE 1
+16:01:30	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/hamsa.fmb" "oraias@it2tst1":/myforms  
+16:01:30	 
+16:01:30	 main::cp_fmb FAILURE 1
+16:01:30	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/nd_change_dunning_path.fmb" "oraias@it2tst1":/myforms  
+16:01:30	 
+16:01:30	 main::cp_fmb FAILURE 1
+16:01:30	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/promo_assign.fmb" "oraias@it2tst1":/myforms  
+16:01:31	 
+16:01:31	 main::cp_fmb FAILURE 1
+16:01:31	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/rateplan_oper.fmb" "oraias@it2tst1":/myforms  
+16:01:31	 
+16:01:31	 main::cp_fmb FAILURE 1
+16:01:31	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/takeover.fmb" "oraias@it2tst1":/myforms  
+16:01:31	 
+16:01:31	 main::cp_fmb FAILURE 1
+16:01:31	 ERROR Error after cp_fmb
+
+2012-05-14 16:02:03	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+16:02:03	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+16:02:08	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+16:02:08	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+16:02:08	 DEBUG DEST_DIR= /myforms
+16:02:08	 INFO starting copy of fmb
+16:02:10	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+16:02:10	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/change_payment_type.fmb" "oraias@it2tst1":/myforms  
+16:02:10	 
+16:02:10	 main::cp_fmb FAILURE 1
+16:02:10	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/fd_activity.fmb" "oraias@it2tst1":/myforms  
+16:02:10	 
+16:02:10	 main::cp_fmb FAILURE 1
+16:02:10	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/hamsa.fmb" "oraias@it2tst1":/myforms  
+16:02:11	 
+16:02:11	 main::cp_fmb FAILURE 1
+16:02:11	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/nd_change_dunning_path.fmb" "oraias@it2tst1":/myforms  
+16:02:11	 
+16:02:11	 main::cp_fmb FAILURE 1
+16:02:11	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/promo_assign.fmb" "oraias@it2tst1":/myforms  
+16:02:11	 
+16:02:11	 main::cp_fmb FAILURE 1
+16:02:11	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/rateplan_oper.fmb" "oraias@it2tst1":/myforms  
+16:02:12	 
+16:02:12	 main::cp_fmb FAILURE 1
+16:02:12	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/takeover.fmb" "oraias@it2tst1":/myforms  
+16:02:12	 
+16:02:12	 main::cp_fmb FAILURE 1
+16:02:12	 ERROR Error after cp_fmb
+
+2012-05-14 17:12:51	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+17:12:52	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+17:12:53	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+17:12:53	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+17:12:53	 DEBUG DEST_DIR= /myforms
+17:12:53	 INFO starting copy of fmb
+17:12:57	 INFO Going to copy *fmb to oraias@it2tst1:/myforms 
+17:12:57	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/change_payment_type.fmb" "oraias@it2tst1":/myforms  
+17:12:58	 
+17:12:58	 main::cp_fmb FAILURE 1
+17:12:58	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/fd_activity.fmb" "oraias@it2tst1":/myforms  
+17:12:58	 
+17:12:58	 main::cp_fmb FAILURE 1
+17:12:58	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/hamsa.fmb" "oraias@it2tst1":/myforms  
+17:12:58	 
+17:12:58	 main::cp_fmb FAILURE 1
+17:12:58	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/nd_change_dunning_path.fmb" "oraias@it2tst1":/myforms  
+17:12:59	 
+17:12:59	 main::cp_fmb FAILURE 1
+17:12:59	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/promo_assign.fmb" "oraias@it2tst1":/myforms  
+17:12:59	 
+17:12:59	 main::cp_fmb FAILURE 1
+17:12:59	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/rateplan_oper.fmb" "oraias@it2tst1":/myforms  
+17:12:59	 
+17:12:59	 main::cp_fmb FAILURE 1
+17:12:59	 DEBUG cmd= scp -p "D:/VERSION/10g_20120422/ALL_FMB/takeover.fmb" "oraias@it2tst1":/myforms  
+17:12:59	 
+17:12:59	 main::cp_fmb FAILURE 1
+17:12:59	 ERROR Error after cp_fmb
+
+2012-05-16 08:01:21	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+08:01:21	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+08:01:26	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+08:01:26	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+08:01:26	 DEBUG DEST_DIR= /myforms
+08:01:26	 INFO starting copy of fmb
+
+2012-05-16 08:02:09	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+08:02:09	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+08:02:10	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+08:02:10	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+08:02:10	 DEBUG DEST_DIR= /myforms
+08:02:10	 INFO starting copy of fmb
+
+2012-05-16 08:03:14	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+08:03:14	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+08:03:15	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+08:03:15	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+08:03:15	 DEBUG DEST_DIR= /myforms
+08:03:15	 INFO starting copy of fmb
+
+2012-05-16 08:05:56	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+08:05:56	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+08:05:57	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+08:05:57	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+08:05:57	 DEBUG DEST_DIR= /myforms
+08:05:57	 INFO starting copy of fmb
+set -x
+
+2012-05-16 08:07:24	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+08:07:24	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+08:07:25	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+08:07:25	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+08:07:25	 DEBUG DEST_DIR= /myforms
+08:07:25	 INFO starting copy of fmb
+set -x
+
+2012-06-14 15:07:48	 ##### D:\Develop\Perl\get_fmb.pl Started ##### 
+15:07:48	 Input: TST1,
+    10g_20120422,
+    D:/VERSION/10g_20120422,
+    vbronfman 
+15:07:48	 DEBUG Get $ORACLE_HOME at oraias@it2tst1
+15:07:48	 DEBUG ssh oraias@it2tst1 'echo $ORACLE_HOME' 2>/dev/null 
+15:07:49	 DEBUG DEST_DIR= /myforms
+15:08:02	 DEBUG cmd= stcmd.exe co -p vbronfman:Redbl00d15@starteam1:49201/BillingMigration/10gba -vl 10g_20120422 -stop -nologo -eol lf -o -fp D:/VERSION/10g_20120422 -is -fs  -ts -x -csf 

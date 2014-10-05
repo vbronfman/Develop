@@ -1,0 +1,31 @@
+/home/oracle/ROSH/TST3/BUILD/src/PM_BSS_PM_BSS_201301_20130205_105644/6_GC_DEACTIVATE_CONT_BILL_SPEC.sql
+CONNECT STRING : REPORTS/REPORTS@BSCSTST3
+
+Package created.
+
+create public synonym GC_DEACTIVATE_CONT_BILL for reports.GC_DEACTIVATE_CONT_BILL 
+                      *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+Create synonym if_runner.GC_DEACTIVATE_CONT_BILL for reports.GC_DEACTIVATE_CONT_BILL
+                         *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+Create synonym if_runner.GC_DEACTIVATE_CONT_BILL for reports.GC_DEACTIVATE_CONT_BILL
+                         *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+
+----------------------------------------------------------------
