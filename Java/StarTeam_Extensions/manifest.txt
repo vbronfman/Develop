@@ -1,0 +1,11 @@
+Main-Class: itlabstarteamext.MyStarteamTest
+Class-Path: /users/ccmngr/StarTeamCP_2009/lib/starteam110.jar starteam110.jar
+Name: ItlabStarTeamExtension
+Specification-Title: ITLab Star Team Extension Utility Classes
+Specification-Version: 1.0
+Specification-Vendor: ITLab Team , Orange
+Implementation-Title: itlabstarteamext.MyStarteamTest 
+Implementation-Version: build12
+Implementation-Vendor: ITLab Team, Orange
+
+
