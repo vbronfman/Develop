@@ -1,0 +1,11 @@
+07-23 11:49 __main__     INFO     Started. Logfile: server.log
+07-23 11:50 __main__     INFO     Got connection from [('10.4.10.152', 38169)]
+07-23 11:50 __main__     INFO     Received: {'server': 'osn18169', 'rcmd': '/bin/cat /ITLAB_share/itlab/Monitor/Genesis_monitor.xml', 'verbose': True, 'oper': 'run', 'debug': False}
+07-23 11:50 __main__     INFO     run_cmd
+07-23 11:50 __main__     INFO     ['/bin/cat /ITLAB_share/itlab/Monitor/Genesis_monitor.xml']
+07-23 11:50 __main__     INFO     
+07-23 11:50 __main__     INFO     return code = 1
+07-23 11:50 __main__     INFO     run_cmd:The system cannot find the path specified.
+
+07-23 11:50 __main__     ERROR    cmd /bin/cat /ITLAB_share/itlab/Monitor/Genesis_monitor.xml failed
+07-23 11:50 __main__     DEBUG    after cmd res=1
