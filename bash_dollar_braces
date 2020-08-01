@@ -1,0 +1,19 @@
+#https://www.assertnotmagic.com/2018/06/20/bash-brackets-quick-reference/
+function grades() {
+  name=$1
+  alice=A
+  beth=B
+  charles=C
+  doofus=D
+  echo ${!name}
+}
+
+grades alice
+# => A
+grades doofus
+# => D
+grades "Valoth the Unforgiving"
+# => bash: : bad substitution.
+# There is no variable called Valoth the Unforgiving,
+# so it defaults to a blank value.
+# Then, bash looks for a variable with a name of "" and errors out.
