@@ -1,0 +1,23 @@
+pipeline {
+agent any
+ //options
+ stages {
+     stage('Pre-Build') {
+       //agent ...
+       steps {
+          //scm
+          echo Pre-build  
+          echo Finish
+       }
+     stage('Build'){
+      steps {
+          echo Build
+     }
+     }
+     }
+ 
+ 
+ }
+
+
+}
