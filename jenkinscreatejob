@@ -1,0 +1,9 @@
+job('createJobwithDSL') {
+//scm {}
+//triggers {}
+// wrappers {}
+steps {
+shell('echo Hello,world')
+}
+
+}
