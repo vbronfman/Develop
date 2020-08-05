@@ -2,14 +2,14 @@ pipeline {
 agent any
  //options
  stages {
-     stage('Pre-Build') {
+     stage("Pre-Build") {
        //agent ...
        steps {
           //scm
           echo Pre-build  
           echo Finish
        }
-     stage('Build'){
+     stage("Build"){
       steps {
           echo Build
      }
