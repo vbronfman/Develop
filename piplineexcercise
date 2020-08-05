@@ -6,17 +6,17 @@ agent any
       //agent 
       stage("Pre"){
           steps {
-             echo Pre
-             echo Ok
+             echo "Pre"
+             echo "Ok"
           }
       }
       stage("Buid"){
         steps {
-           echo Build
+           echo "Build"
         }  
         post {
           success {
-              echo Success
+              echo "Success"
           }
           }
       }
