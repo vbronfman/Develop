@@ -1,9 +1,13 @@
-job('createJobwithDSL') {
+//job('createJobwithDSL') {
+job(env.BUILD_NUMBER) {
 //scm {}
 //triggers {}
 // wrappers {}
+description('DSL job from source code')
 steps {
 shell('echo Hello,world')
+shell('echo Another string')
+shell('next we will try to make kubernetes deployment')
 }
 
 }
