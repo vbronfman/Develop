@@ -1,5 +1,5 @@
 //job('createJobwithDSL') {
-job(env.BUILD_NUMBER) {
+job(String s= 'createJobwithDSL'){
 //scm {}
 //triggers {}
 // wrappers {}
