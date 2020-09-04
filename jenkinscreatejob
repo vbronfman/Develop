@@ -1,5 +1,6 @@
+String s= 'createJob_with_DSL'
 //job('createJobwithDSL') {
-job(String s= 'createJobwithDSL'){
+job(s){
 //scm {}
 //triggers {}
 // wrappers {}
