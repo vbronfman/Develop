@@ -1,0 +1,23 @@
+global:
+  scrape_interval: 5s
+  external_labels:
+    monitor: 'ebay_chalenge'
+scrape_configs:
+  - job_name: 'prometheus' 
+    static_configs: 
+      - targets: ['localhost:9090']
+#  - job_name: 'exposer' 
+#    static_configs: 
+#      - targets: ['exposer:8008']
+  - job_name: 'exposer'  
+    file_sd_configs:
+      - files:
+        - /etc/prometheus/targets/exposer.json
+  - job_name: 'viewer'  
+    file_sd_configs:
+      - files:
+        - /etc/prometheus/targets/viewer.json
+  - job_name: 'scraper'  
+    file_sd_configs:
+      - files:
+        - /etc/prometheus/targets/scraper.json

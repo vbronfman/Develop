@@ -1,0 +1,10 @@
+[
+  {
+    "labels": {
+      "job": "viewer" 
+    },
+    "targets": [
+      "viewer:3000"
+    ]
+  }
+]

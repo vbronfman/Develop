@@ -1,0 +1,46 @@
+# https://www.portainer.io/installation/
+
+Installation via Helm + Ingress :
+
+$ helm repo add portainer https://portainer.github.io/k8s/
+"portainer" has been added to your repositories
+
+root_admin@PCBANG MINGW64 ~
+$ helm repo update
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "portainer" chart repository
+...Successfully got an update from the "center" chart repository
+Update Complete. ΓמטHappy Helming!Γמט
+
+root_admin@PCBANG MINGW64 ~
+$ kubectl create namespace portainer
+namespace/portainer created
+
+root_admin@PCBANG MINGW64 ~
+$ helm install -n portainer portainer portainer/portainer --set service.type=ClusterIP
+NAME: portainer
+LAST DEPLOYED: Thu Nov  5 12:52:13 2020
+NAMESPACE: portainer
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Get the application URL by running these commands:
+  export POD_NAME=$(kubectl get pods --namespace portainer -l "app.kubernetes.io/name=portainer,app.kubernetes.io/instance=portainer" -o jsonpath="{.items[0].metadata.name}")
+  echo "Visit http://127.0.0.1:9000 to use your application"
+  kubectl --namespace portainer port-forward $POD_NAME 9000:9000
+
+root_admin@PCBANG MINGW64 ~
+$ export POD_NAME=$(kubectl get pods --namespace portainer -l "app.kubernetes.io/name=portainer,app.kubernetes.io/instance=portainer" -o jsonpath="{.items[0].metadata.name}")
+
+root_admin@PCBANG MINGW64 ~
+$ echo $POD_NAME
+portainer-59bd48b4d-gmwqv
+
+root_admin@PCBANG MINGW64 ~
+$ kubectl --namespace portainer port-forward $POD_NAME 9000:9000
+Forwarding from 127.0.0.1:9000 -> 9000
+Forwarding from [::1]:9000 -> 9000
+Handling connection for 9000
+Handling connection for 9000
+Handling connection for 9000
+

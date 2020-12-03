@@ -1,0 +1,10 @@
+[
+  {
+    "labels": {
+      "job": "exposer" 
+    },
+    "targets": [
+      "exposer:8000"
+    ]
+  }
+]
