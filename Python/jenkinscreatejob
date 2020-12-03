@@ -1,0 +1,14 @@
+String s= 'createJob_with_DSL'
+//job('createJobwithDSL') {
+job(s){
+//scm {}
+//triggers {}
+// wrappers {}
+description('DSL job from source code')
+steps {
+shell('echo Hello,world')
+shell('echo Another string')
+shell('next we will try to make kubernetes deployment')
+}
+
+}

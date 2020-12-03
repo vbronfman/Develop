@@ -1,0 +1,24 @@
+pipeline {
+agent any
+//options
+//environment
+  stages {
+      //agent 
+      stage("Pre"){
+          steps {
+             echo "Pre"
+             echo "Ok"
+          }
+      }
+      stage("Buid"){
+        steps {
+           echo "Build"
+        }  
+        post {
+          success {
+              echo "Success"
+          }
+          }
+      }
+  }
+}

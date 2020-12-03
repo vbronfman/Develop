@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Komodo Project File - DO NOT EDIT -->
 <project id="8809f130-224a-42dc-b990-9f3ff97f9c0e" kpf_version="5" name="EnvironmentManagement.komodoproject">
 </project>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Komodo Project File - DO NOT EDIT -->
+<project id="8809f130-224a-42dc-b990-9f3ff97f9c0e" kpf_version="5" name="EnvironmentManagement.komodoproject">
+</project>
+>>>>>>> e55f97114d0da06a25cf60393f67b0e16521bd92
